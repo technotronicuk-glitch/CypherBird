@@ -45,46 +45,57 @@
         </div>
     </header>
 
-    <section id="hero-main" style="background-color: #0b0f19; color: white; padding: 100px 5%; display: flex; align-items: center; justify-content: space-between; min-height: 500px; gap: 40px; overflow: hidden;">
+    <section id="hero-main" style="background-color: #0b0f19; color: white; padding: 100px 5%; display: flex; align-items: center; justify-content: space-between; min-height: 550px; gap: 40px; overflow: hidden;">
     
     <div class="hero-text" style="flex: 1; max-width: 600px; z-index: 2;">
+        <div style="display: inline-block; padding: 6px 12px; background: rgba(239, 68, 68, 0.1); border: 1px solid #ef4444; border-radius: 4px; color: #ef4444; font-size: 0.75rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 2px;">
+            ⚠️ Data Breaches are Rising
+        </div>
+
         <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; font-weight: 700;">
-            Cypherbird: <br><span style="color: #3b82f6;">Media Privacy Reimagined</span>
+            Your Media is <span style="color: #ef4444;">Vulnerable.</span> <br>
+            <span style="color: #3b82f6;">Secure it with Cypherbird.</span>
         </h1>
+
         <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 35px; line-height: 1.6;">
-            The ultimate tool for turning plain media into encrypted assets. Secure, private, and under your control. Manage your records and assets in one place.
+            Every day, millions of private photos and videos are exposed via cloud leaks and hacks. <strong>Cypherbird</strong> stops the threat by encrypting your media locally—ensuring your personal records stay under your total control.
         </p>
-        <a href="hero.html" style="display: inline-block; padding: 15px 40px; border: 2px solid #3b82f6; color: #3b82f6; text-decoration: none; border-radius: 4px; font-weight: bold; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;">
+
+        <a href="hero.html" style="display: inline-block; padding: 15px 40px; border: 2px solid #3b82f6; color: #3b82f6; text-decoration: none; border-radius: 4px; font-weight: bold; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; background: rgba(59, 130, 246, 0.05);">
             Learn More
         </a>
     </div>
 
-    <div class="hero-slider" style="flex: 1; position: relative; width: 100%; height: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+    <div class="hero-slider" style="flex: 1; position: relative; width: 100%; height: 480px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.6); border: 1px solid #1e293b;">
         
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 1s ease-in-out; background: url('hero1.jpg') center/cover no-repeat;"></div>
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 1.5s ease-in-out; background: url('hero1.jpg') center/cover no-repeat;"></div>
         
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero2.jpg') center/cover no-repeat;"></div>
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background: url('hero2.jpg') center/cover no-repeat;"></div>
         
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero3.jpg') center/cover no-repeat;"></div>
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background: url('hero3.jpg') center/cover no-repeat;"></div>
         
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero4.jpg') center/cover no-repeat;"></div>
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background: url('hero4.jpg') center/cover no-repeat;"></div>
         
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero5.jpg') center/cover no-repeat;"></div>
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; background: url('hero5.jpg') center/cover no-repeat;"></div>
 
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(11,15,25,0.4), transparent);"></div>
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(11,15,25,0.6), transparent);"></div>
     </div>
 </section>
+
 <script>
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     
     function nextSlide() {
+        // Fade out current
         slides[currentSlide].style.opacity = 0;
+        // Increment
         currentSlide = (currentSlide + 1) % slides.length;
+        // Fade in next
         slides[currentSlide].style.opacity = 1;
     }
 
-    // Change image every 8 seconds
+    // Swapping every 4 seconds for a dynamic feel
     setInterval(nextSlide, 4000);
 </script>
     
@@ -163,6 +174,18 @@
             <div style="width: 60px; height: 60px; background: url('security-icon2.png') center/contain no-repeat;"></div>
             <div style="width: 60px; height: 60px; background: url('security-icon3.png') center/contain no-repeat;"></div>
         </div>
+    </div>
+</section>
+    <section style="padding: 120px 20px; background: linear-gradient(135deg, #0b0f19 0%, #1e293b 100%); text-align: center; color: white;">
+    <h2 style="font-size: 3rem; margin-bottom: 30px; font-weight: 800;">Ready to go dark?</h2>
+    <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        Join thousands of users who trust Cypherbird with their most valuable media assets.
+    </p>
+    
+    <div style="display: flex; justify-content: center; gap: 20px;">
+        <a href="portal.html" style="padding: 15px 40px; background: #3b82f6; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);">
+            Get Started Now
+        </a>
     </div>
 </section>
     <footer class="bg-base border-t border-borders pt-16 pb-8">
