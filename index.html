@@ -39,34 +39,132 @@
                 <nav class="hidden md:flex space-x-6 text-sm font-medium uppercase tracking-widest">
                     <a href="career.html" class="hover:text-accent transition">Careers</a>
                     <a href="support.html" class="hover:text-accent transition">Support</a>
-                    <a href="account.html" class="hover:text-accent transition">Portal</a>
+                    <a href="account.html" class="hover:text-accent transition">Account</a>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section style="padding: 100px 20px; text-align: center; background: #0f172a; color: white;">
-    <h1 style="font-size: 3rem; margin-bottom: 20px;">Cypherbird: Media Privacy Reimagined</h1>
-    <p style="font-size: 1.1rem; color: #94a3b8; max-width: 700px; margin: 0 auto 30px;">
-        The ultimate tool for turning plain media into encrypted assets. Secure, private, and under your control.
-    </p>
-    <a href="hero.html" style="display: inline-block; padding: 12px 25px; border: 2px solid #3b82f6; color: #3b82f6; text-decoration: none; border-radius: 5px; font-weight: bold;">Learn More</a>
-</section>
+    <section id="hero-main" style="background-color: #0b0f19; color: white; padding: 100px 5%; display: flex; align-items: center; justify-content: space-between; min-height: 500px; gap: 40px; overflow: hidden;">
     
-    <<section style="padding: 80px 20px; background: #ffffff; text-align: center;">
-    <h2 style="font-size: 2rem; margin-bottom: 20px;">Powerful Encryption Features</h2>
-    <p style="color: #64748b; margin-bottom: 30px;">Explore how we transform your photos, videos and medias into unreadable code.</p>
-    <a href="capabilities.html" style="display: inline-block; padding: 12px 25px; background: #3b82f6; color: white; text-decoration: none; border-radius: 5px;">Learn More</a>
-</section>
-        
-        <section style="padding: 80px 20px; background: #0f172a; color: white; text-align: center;">
-    <h2 style="font-size: 2rem; margin-bottom: 20px;">Zero-Knowledge Architecture</h2>
-    <p style="color: #94a3b8; margin-bottom: 30px;">We believe in transparency. Read our audit reports and technical whitepapers.</p>
-    <a href="security.html" style="display: inline-block; padding: 12px 25px; border: 1px solid white; color: white; text-decoration: none; border-radius: 5px;">Learn More</a>
-</section>
-        
-        /main>
+    <div class="hero-text" style="flex: 1; max-width: 600px; z-index: 2;">
+        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; font-weight: 700;">
+            Cypherbird: <br><span style="color: #3b82f6;">Media Privacy Reimagined</span>
+        </h1>
+        <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 35px; line-height: 1.6;">
+            The ultimate tool for turning plain media into encrypted assets. Secure, private, and under your control. Manage your records and assets in one place.
+        </p>
+        <a href="hero.html" style="display: inline-block; padding: 15px 40px; border: 2px solid #3b82f6; color: #3b82f6; text-decoration: none; border-radius: 4px; font-weight: bold; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px;">
+            Learn More
+        </a>
+    </div>
 
+    <div class="hero-slider" style="flex: 1; position: relative; width: 100%; height: 450px; border-radius: 12px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5);">
+        
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 1s ease-in-out; background: url('hero1.jpg') center/cover no-repeat;"></div>
+        
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero2.jpg') center/cover no-repeat;"></div>
+        
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero3.jpg') center/cover no-repeat;"></div>
+        
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero4.jpg') center/cover no-repeat;"></div>
+        
+        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 1s ease-in-out; background: url('hero5.jpg') center/cover no-repeat;"></div>
+
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(11,15,25,0.4), transparent);"></div>
+    </div>
+</section>
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    
+    function nextSlide() {
+        slides[currentSlide].style.opacity = 0;
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].style.opacity = 1;
+    }
+
+    // Change image every 8 seconds
+    setInterval(nextSlide, 4000);
+</script>
+    
+    <section style="
+    padding: 120px 20px; 
+    background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.8)), url('capabilities-bg.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-attachment: fixed; 
+    text-align: center; 
+    color: white; 
+    border-top: 1px solid #1e293b;">
+    
+    <div style="max-width: 800px; margin: 0 auto;">
+        <h2 style="font-size: 3rem; margin-bottom: 25px; font-weight: 700; letter-spacing: -1px;">
+            Powerful Encryption Features
+        </h2>
+        
+        <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px; line-height: 1.6;">
+            Explore how we transform your photos, videos, and media into unreadable code using military-grade AES-256 protocols. Your privacy is non-negotiable.
+        </p>
+        
+        <a href="capabilities.html" style="
+            display: inline-block; 
+            padding: 15px 35px; 
+            border: 2px solid #3b82f6; 
+            color: #3b82f6; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            background: rgba(59, 130, 246, 0.05); 
+            transition: 0.3s;">
+            Learn More
+        </a>
+    </div>
+</section>
+        <section style="
+    padding: 100px 20px; 
+    background-color: #0b0f19; 
+    background-image: radial-gradient(circle at center, #1e293b 0.5px, transparent 0.5px); 
+    background-size: 30px 30px; 
+    text-align: center; 
+    color: white; 
+    border-top: 1px solid #1e293b;">
+    
+    <div style="max-width: 900px; margin: 0 auto;">
+        <div style="display: inline-block; padding: 5px 15px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 20px; color: #3b82f6; font-size: 0.8rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">
+            Verified Security
+        </div>
+
+        <h2 style="font-size: 2.5rem; margin-bottom: 25px; font-weight: 700;">Zero-Knowledge Architecture</h2>
+        
+        <p style="font-size: 1.1rem; color: #94a3b8; margin-bottom: 40px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto;">
+            Your privacy shouldn't be a "pinky promise." We believe in mathematical transparency. Read our third-party audit reports and technical whitepapers to see how we stay untouchable.
+        </p>
+        
+        <a href="security.html" style="
+            display: inline-block; 
+            padding: 15px 35px; 
+            border: 2px solid #3b82f6; 
+            color: #3b82f6; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: 0.3s;
+            background: none;">
+            Learn More
+        </a>
+
+        <div style="margin-top: 50px; display: flex; justify-content: center; gap: 40px; opacity: 0.5;">
+            <div style="width: 60px; height: 60px; background: url('security-icon1.png') center/contain no-repeat;"></div>
+            <div style="width: 60px; height: 60px; background: url('security-icon2.png') center/contain no-repeat;"></div>
+            <div style="width: 60px; height: 60px; background: url('security-icon3.png') center/contain no-repeat;"></div>
+        </div>
+    </div>
+</section>
     <footer class="bg-base border-t border-borders pt-16 pb-8">
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -123,31 +221,59 @@
             <i class="fas fa-comment-dots text-xl"></i>
         </button>
 
-        <div id="chat-window" class="hidden absolute bottom-20 right-0 w-80 bg-surface border border-borders rounded-2xl shadow-2xl overflow-hidden">
-            <div class="bg-borders p-4 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <span class="text-xs">🦅</span>
-                    <span class="text-xs font-bold uppercase tracking-widest text-white">AI Assistant</span>
-                </div>
-                <button onclick="toggleChat()" class="text-zinc-500 hover:text-white"><i class="fas fa-times"></i></button>
+        <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
+    
+    <div id="chat-window" style="display: none; width: 350px; height: 450px; background: #161b22; border: 1px solid #3b82f6; border-radius: 12px; flex-direction: column; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
+        <div style="background: #3b82f6; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between;">
+            <span>Cypherbird Assistant</span>
+            <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
+        </div>
+        
+        <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; color: #e6edf3; font-size: 0.9rem;">
+            <div style="background: #21262d; padding: 10px; border-radius: 8px; align-self: flex-start; max-width: 80%; border-left: 3px solid #3b82f6;">
+                Hello! I'm your Cypherbird guide. How can I help you secure your media today?
             </div>
-            <div class="h-64 p-4 overflow-y-auto text-xs space-y-4" id="chat-box">
-                <div class="bg-base p-3 rounded-lg border border-borders">
-                    Hello. I am the Cypherbird Intel unit. How can I assist with your sovereignty today?
-                </div>
-            </div>
-            <div class="p-4 border-t border-borders bg-base">
-                <input type="text" placeholder="Ask a question..." class="w-full bg-surface border border-borders p-2 rounded text-xs focus:outline-none focus:border-accent">
-            </div>
+        </div>
+
+        <div style="padding: 15px; background: #0d1117; display: flex; gap: 10px;">
+            <input type="text" id="user-input" placeholder="Ask anything..." style="flex: 1; background: #21262d; border: 1px solid #30363d; color: white; padding: 8px; border-radius: 4px; outline: none;">
+            <button onclick="sendMessage()" style="background: #3b82f6; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">Send</button>
         </div>
     </div>
 
-    <script>
-        function toggleChat() {
-            const chat = document.getElementById('chat-window');
-            chat.classList.toggle('hidden');
-        }
-    </script>
+    <button onclick="toggleChat()" style="width: 60px; height: 60px; border-radius: 50%; background: #3b82f6; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); display: flex; align-items: center; justify-content: center;">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+    </button>
+</div>
 
-</body>
-</html>
+<script>
+function toggleChat() {
+    const window = document.getElementById('chat-window');
+    window.style.display = window.style.display === 'none' ? 'flex' : 'none';
+}
+
+function sendMessage() {
+    const input = document.getElementById('user-input');
+    const msgArea = document.getElementById('chat-messages');
+    
+    if (input.value.trim() === "") return;
+
+    // User Message
+    const userMsg = document.createElement('div');
+    userMsg.style = "background: #3b82f6; padding: 10px; border-radius: 8px; align-self: flex-end; max-width: 80%; color: white;";
+    userMsg.innerText = input.value;
+    msgArea.appendChild(userMsg);
+
+    const typingValue = input.value;
+    input.value = "";
+
+    // Simulate "Human" response
+    setTimeout(() => {
+        const botMsg = document.createElement('div');
+        botMsg.style = "background: #21262d; padding: 10px; border-radius: 8px; align-self: flex-start; max-width: 80%; border-left: 3px solid #10b981;";
+        botMsg.innerText = "Processing your request about '" + typingValue + "'... One moment while I fetch that for you.";
+        msgArea.appendChild(botMsg);
+        msgArea.scrollTop = msgArea.scrollHeight;
+    }, 1000);
+}
+</script>
