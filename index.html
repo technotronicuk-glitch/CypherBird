@@ -1,35 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cypherbird | Secure Future</title>
+    <title>Cypherbird | Private. Secure. Sovereign.</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        base: '#111111',       /* Near Black */
+                        surface: '#1c1c1c',    /* Slightly Lighter Grey */
+                        borders: '#333333',    /* Dark Accent Grey */
+                        silver: '#dcdcdc',     /* Main Text */
+                        accent: '#f59e0b',     /* Warm Amber for highlights */
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-slate-900 text-white font-sans">
+<body class="bg-base text-silver font-sans">
 
-    <header class="border-b border-slate-800 sticky top-0 bg-slate-900/90 backdrop-blur-md z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
+        <div class="max-w-7xl mx-auto px-6">
             <div class="flex justify-between items-center h-20">
                 
-                <div class="flex items-center gap-3">
-                    <div class="bg-indigo-600 p-2 rounded-lg">
-                        <i class="fas fa-dove fa-2-xl text-white"></i> 
-                    </div>
-                    <span class="text-2xl font-bold tracking-tight text-white italic">CYPHER<span class="text-indigo-400">BIRD</span></span>
-                </div>
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <span class="text-3xl">🦅</span> <span class="text-2xl font-black tracking-tighter text-white uppercase italic group-hover:text-accent transition">
+                        CYPHER<span class="font-light opacity-60">BIRD</span>
+                    </span>
+                </a>
 
-                <nav class="hidden md:flex space-x-8 text-sm font-medium uppercase tracking-widest">
-                    <a href="#careers" class="hover:text-indigo-400 transition">Careers</a>
-                    <a href="#support" class="hover:text-indigo-400 transition">Support</a>
-                    <a href="#account" class="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full border border-slate-700 hover:bg-slate-700 transition">
-                        <i class="fas fa-user-circle"></i> Account
+                <nav class="hidden md:flex space-x-1 font-medium tracking-tight text-sm">
+                    <a href="#careers" class="hover:bg-surface hover:text-accent px-4 py-2 rounded-lg transition">Careers</a>
+                    <a href="#support" class="hover:bg-surface hover:text-accent px-4 py-2 rounded-lg transition">Support</a>
+                    <a href="#account" class="hover:bg-surface hover:text-accent px-4 py-2 rounded-lg transition">Account</a>
+                        <i class="fas fa-lock text-xs"></i> Portal Access
                     </a>
                 </nav>
 
                 <div class="md:hidden">
-                    <button class="text-slate-300 hover:text-white">
+                    <button class="text-white hover:text-accent">
                         <i class="fas fa-bars fa-lg"></i>
                     </button>
                 </div>
@@ -38,26 +53,123 @@
     </header>
 
     <main>
-        <section class="py-24 px-6 text-center">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6 bg-gradient-to-r from-white to-slate-500 bg-clip-text text-transparent">
-                Soar Through the Encrypted Sky.
-            </h1>
-            <p class="text-slate-400 text-lg max-w-2xl mx-auto mb-10">
-                The next generation of digital sovereignty. Secure, swift, and decentralized.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <button class="bg-indigo-600 hover:bg-indigo-500 text-white px-8 py-4 rounded-lg font-bold transition">
-                    Get Started
-                </button>
-                <button class="bg-slate-800 hover:bg-slate-700 text-white px-8 py-4 rounded-lg font-bold transition">
-                    Documentation
-                </button>
+        <section id="hero" class="py-32 px-6 text-center border-b border-borders">
+            <div class="max-w-4xl mx-auto">
+                <span class="inline-block bg-accent/10 text-accent text-xs font-bold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6 border border-accent/20">
+                    Encrypted Protocol v0.9
+                </span>
+                <h1 class="text-6xl md:text-8xl font-extrabold mb-8 text-white tracking-tighter leading-none">
+                    Digital Sovereignty,<br> Overhead.
+                </h1>
+                <p class="text-zinc-400 text-xl max-w-2xl mx-auto mb-12 font-light">
+                    Where privacy isn't a feature; it's the foundation. Secure communication and asset management, invisible to the noise.
+                </p>
+                <a href="#account" class="inline-block bg-silver text-base hover:bg-white px-10 py-4 rounded-xl font-bold transition">
+                    Request Credentials
+                </a>
+            </div>
+        </section>
+
+        <section id="careers" class="py-24 px-6 border-b border-borders bg-surface/50">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-4xl font-bold mb-10 text-white tracking-tight">Join The Collective</h2>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <p class="text-zinc-400 mb-6 leading-relaxed">We don't 'hire'. We recruit minds that understand the importance of discretion. Cypherbird is built by architects of the new web.</p>
+                        <p class="text-zinc-400 mb-6 leading-relaxed">If you specialize in cryptography, decentralized systems, or zero-knowledge protocols, we want your signal.</p>
+                        <div class="bg-base p-5 rounded-xl border border-borders">
+                            <p class="font-bold text-white mb-2">Available Nodes:</p>
+                            <ul class="space-y-2 text-sm text-zinc-300 list-disc list-inside">
+                                <li>Protocol Engineer (ZK-SNARK focus)</li>
+                                <li>Operations Security Specialist</li>
+                                <li>Invisible UI Architect</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <form class="bg-base p-8 rounded-2xl border border-borders space-y-5">
+                        <input type="text" placeholder="Handle or Name" class="w-full bg-surface border border-borders p-4 rounded-lg focus:outline-none focus:border-accent">
+                        <input type="email" placeholder="Communication Point (Email/Matrix)" class="w-full bg-surface border border-borders p-4 rounded-lg focus:outline-none focus:border-accent">
+                        
+                        <div class="border-2 border-dashed border-borders hover:border-accent rounded-lg p-6 text-center cursor-pointer transition">
+                            <i class="fas fa-file-upload fa-2x text-borders mb-3"></i>
+                            <p class="text-xs text-zinc-500">Drop dossier/CV here (Max 10MB)</p>
+                        </div>
+
+                        <button type="submit" class="w-full bg-accent text-base hover:bg-amber-400 px-6 py-4 rounded-lg font-bold transition">
+                            Submit for Clearance
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="support" class="py-24 px-6 border-b border-borders">
+            <div class="max-w-5xl mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-6 text-white tracking-tight">Operational Support</h2>
+                <p class="text-zinc-400 text-lg max-w-xl mx-auto mb-16">Guides, documentation, and signal channels for maintaining system integrity.</p>
+                
+                <div class="grid md:grid-cols-3 gap-8 text-left">
+                    <div class="bg-surface p-8 rounded-2xl border border-borders hover:border-zinc-700 transition">
+                        <i class="fas fa-book text-accent fa-xl mb-6"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">System Guides</h3>
+                        <p class="text-sm text-zinc-400">Step-by-step implementation of the Cypherbird core protocol.</p>
+                    </div>
+                    <div class="bg-surface p-8 rounded-2xl border border-borders hover:border-zinc-700 transition">
+                        <i class="fas fa-key text-accent fa-xl mb-6"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">Key Management</h3>
+                        <p class="text-sm text-zinc-400">Best practices for air-gapped storage and seed phrase redundancy.</p>
+                    </div>
+                    <div class="bg-surface p-8 rounded-2xl border border-borders hover:border-zinc-700 transition">
+                        <i class="fas fa-terminal text-accent fa-xl mb-6"></i>
+                        <h3 class="text-xl font-semibold text-white mb-3">CLI Support</h3>
+                        <p class="text-sm text-zinc-400">Command-line interface manual for advanced operators.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="account" class="py-32 px-6 bg-surface/30">
+            <div class="max-w-md mx-auto">
+                <div class="text-center mb-12">
+                    <i class="fas fa-shield-alt fa-3x text-accent mb-6"></i>
+                    <h2 class="text-4xl font-extrabold text-white tracking-tight mb-3">Secure Portal</h2>
+                    <p class="text-zinc-500">Provide credentials to enter the encrypted zone.</p>
+                </div>
+
+                <form class="bg-base p-10 rounded-3xl border border-borders space-y-6 shadow-2xl">
+                    <div>
+                        <label class="text-xs uppercase tracking-widest text-zinc-500 mb-2 block">Operator Alias</label>
+                        <input type="text" placeholder="Name or Handle" class="w-full bg-surface border border-borders p-4 rounded-lg focus:outline-none focus:border-accent text-white">
+                    </div>
+                    <div>
+                        <label class="text-xs uppercase tracking-widest text-zinc-500 mb-2 block">Signal Point</label>
+                        <input type="email" placeholder="email@protocol.io" class="w-full bg-surface border border-borders p-4 rounded-lg focus:outline-none focus:border-accent text-white">
+                    </div>
+                    <div>
+                        <label class="text-xs uppercase tracking-widest text-zinc-500 mb-2 block">Authorization Key</label>
+                        <input type="password" placeholder="••••••••••••" class="w-full bg-surface border border-borders p-4 rounded-lg focus:outline-none focus:border-accent text-white">
+                    </div>
+
+                    <div class="flex items-center justify-between text-sm text-zinc-500 pb-3">
+                        <label class="flex items-center gap-2"><input type="checkbox" class="accent-accent"> Trust node</label>
+                        <a href="#" class="hover:text-accent">Forgot Key?</a>
+                    </div>
+
+                    <button type="submit" class="w-full bg-surface text-accent hover:border-accent px-6 py-4 rounded-xl font-bold transition border border-borders">
+                        Access System
+                    </button>
+                    
+                    <p class="text-center text-xs text-zinc-600 pt-4">No clearance yet? <a href="#" class="text-zinc-400 underline hover:text-white">Request credentials</a>.</p>
+                </form>
             </div>
         </section>
     </main>
 
-    <footer class="border-t border-slate-800 py-10 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Cypherbird Project. All rights reserved.</p>
+    <footer class="border-t border-borders py-12 px-6 text-center text-zinc-600 text-sm">
+        <p class="mb-2">BYP-H-001001-A | Protocol v0.9</p>
+        <p>&copy; 2026 Cypherbird Labs. All protocols initialized.</p>
     </footer>
 
 </body>
