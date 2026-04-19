@@ -9,25 +9,42 @@
     <main class="content-wrapper">
         <header>
             <h1>Operational Capabilities</h1>
-            <p class="tagline">Modular security for the modern ghost.</p>
+            <p class="tagline">Engineered for absolute digital sovereignty.</p>
         </header>
 
         <section class="capability-detail">
-            <div class="feature-block">
-                <h3>1. Zero-Cloud Secure Vault</h3>
-                <p>An encrypted directory within your device hardware. Uses <strong>expo-secure-store</strong> to ensure that even if the phone is unlocked, the vault remains a black box without your 4-digit hardware salt.</p>
+            <div class="feature-block highlight">
+                <h3>The Power of $2^{256}$</h3>
+                <p>Every piece of data in CypherBird is locked behind an AES-256 bit wall. To put this in perspective:</p>
+                <ul>
+                    <li><strong>Combinations:</strong> There are approximately $1.15 \times 10^{77}$ possible keys.</li>
+                    <li><strong>The "Heat Death" Factor:</strong> Even if you turned every atom in the observable universe into a supercomputer, it would take billions of years to brute-force a single CypherBird vault.</li>
+                    <li><strong>Identity Salt:</strong> Your unique identity isn't just a PIN; it's a hardware-bound derivation that transforms your 4-digit input into a high-entropy 64-character hex string.</li>
+                </ul>
             </div>
 
             <div class="feature-block">
-                <h3>2. Asymmetric Payload Encryption</h3>
-                <p>Convert any image or text string into a Cypher-Text block. This payload can be sent via SMS, Email, or even posted publicly—it remains a meaningless string of characters to anyone without your specific identity hash.</p>
+                <h3>Media & Asset Safeguarding</h3>
+                <p>CypherBird treats your images and files as "Binary Blobs." We do not store them as standard gallery files.</p>
+                <ul>
+                    <li><strong>Encapsulation:</strong> When you move a photo to the vault, it is stripped of its metadata (GPS, device info) and re-written into an encrypted binary format.</li>
+                    <li><strong>FileSystem Isolation:</strong> Using <code>expo-file-system</code>, we create a sandboxed directory that is invisible to other apps on your phone. Even if a malicious app has "Gallery Permissions," it cannot "see" the CypherBird vault.</li>
+                </ul>
             </div>
 
             <div class="feature-block">
-                <h3>3. Ephemeral Secure Chat</h3>
-                <p>Direct peer-to-peer logic. No message history is stored in a database. When the session ends, the keys are purged from the device memory.</p>
+                <h3>Account-less Persistence</h3>
+                <p>Traditional accounts are vulnerabilities. CypherBird uses <strong>Local Persistence Architecture</strong>:</p>
+                <ul>
+                    <li><strong>Zero-Database:</strong> We use <code>AsyncStorage</code> only for UI preferences. Your actual security keys exist only in the <strong>SecureStore</strong>, a specialized hardware enclave on your phone's chip.</li>
+                    <li><strong>Self-Destruct Logic:</strong> Because the math is tied to your hardware, deleting the app or losing your PIN doesn't just "lock" the data—it effectively renders the data non-existent, as the decryption key can never be reconstructed.</li>
+                </ul>
             </div>
         </section>
+
+        <footer>
+            <p><em>*Certain cryptographic salt-layering techniques remain proprietary to maintain the CypherBird integrity.</em></p>
+        </footer>
     </main>
 </body>
 </html>
