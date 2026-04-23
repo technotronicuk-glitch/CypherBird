@@ -2,48 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systems & Capabilities | CypherBird</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
 </head>
 <body class="stealth-theme">
-    <main class="content-wrapper">
+    <div class="scanline"></div> <main class="content-wrapper">
+        <nav class="top-nav">
+            <a href="index.html" class="back-btn">← BACK_TO_HOME</a>
+            <div class="system-status">
+                <span class="pulse"></span> SYSTEM_ENCRYPTED: AES_256_ACTIVE
+            </div>
+        </nav>
+
         <header>
-            <h1>Operational Capabilities</h1>
+            <h1 class="glitch-text">Operational Capabilities</h1>
             <p class="tagline">Engineered for absolute digital sovereignty.</p>
         </header>
 
         <section class="capability-detail">
-            <div class="feature-block highlight">
+            <div class="feature-block ultra-highlight">
+                <div class="badge">ULTRA_EXCLUSIVE</div>
+                <h3>Ultra Protocol: Large Asset Scrambling</h3>
+                <p>The core of CypherBird Ultra. We solved the "Mobile Memory" bottleneck using proprietary <strong>Stream Processing</strong>.</p>
+                <ul>
+                    <li><strong>Temporal Chunking:</strong> Large 4K videos and audio files are sliced into small, manageable binary segments in real-time.</li>
+                    <li><strong>Parallel Scrambling:</strong> Each chunk is encrypted independently, ensuring the phone's CPU never overheats or crashes during 1GB+ file processing.</li>
+                    <li><strong>Zero-Buffer Policy:</strong> No unencrypted data is ever written to temporary storage. It moves straight from the "Chunker" to the "Engine."</li>
+                </ul>
+            </div>
+
+            <div class="feature-block">
                 <h3>The Power of $2^{256}$</h3>
                 <p>Every piece of data in CypherBird is locked behind an AES-256 bit wall. To put this in perspective:</p>
                 <ul>
                     <li><strong>Combinations:</strong> There are approximately $1.15 \times 10^{77}$ possible keys.</li>
-                    <li><strong>The "Heat Death" Factor:</strong> Even if you turned every atom in the observable universe into a supercomputer, it would take billions of years to brute-force a single CypherBird vault.</li>
-                    <li><strong>Identity Salt:</strong> Your unique identity isn't just a PIN; it's a hardware-bound derivation that transforms your 4-digit input into a high-entropy 64-character hex string.</li>
+                    <li><strong>The "Heat Death" Factor:</strong> Even if you turned every atom in the observable universe into a supercomputer, it would take billions of years to brute-force a single vault.</li>
+                    <li><strong>Hardware Entropy:</strong> Your PIN is hashed using a salt unique to your phone's processor ID, making "Cloning" the app impossible.</li>
                 </ul>
             </div>
 
             <div class="feature-block">
-                <h3>Media & Asset Safeguarding</h3>
-                <p>CypherBird treats your images and files as "Binary Blobs." We do not store them as standard gallery files.</p>
+                <h3>FileSystem Isolation</h3>
+                <p>CypherBird treats your images as "Binary Blobs," invisible to the OS gallery.</p>
                 <ul>
-                    <li><strong>Encapsulation:</strong> When you move a photo to the vault, it is stripped of its metadata (GPS, device info) and re-written into an encrypted binary format.</li>
-                    <li><strong>FileSystem Isolation:</strong> Using <code>expo-file-system</code>, we create a sandboxed directory that is invisible to other apps on your phone. Even if a malicious app has "Gallery Permissions," it cannot "see" the CypherBird vault.</li>
+                    <li><strong>EXIF Stripping:</strong> All metadata (GPS coordinates, timestamps, device model) is permanently purged upon entry.</li>
+                    <li><strong>Sandbox Architecture:</strong> Using <code>expo-file-system</code>, we create a hidden directory. Other apps see it as "Empty Space," protecting you from cross-app data snooping.</li>
                 </ul>
             </div>
 
             <div class="feature-block">
-                <h3>Account-less Persistence</h3>
-                <p>Traditional accounts are vulnerabilities. CypherBird uses <strong>Local Persistence Architecture</strong>:</p>
+                <h3>Zero-Database Architecture</h3>
+                <p>Traditional accounts are vulnerabilities. CypherBird uses local-only persistence.</p>
                 <ul>
-                    <li><strong>Zero-Database:</strong> We use <code>AsyncStorage</code> only for UI preferences. Your actual security keys exist only in the <strong>SecureStore</strong>, a specialized hardware enclave on your phone's chip.</li>
-                    <li><strong>Self-Destruct Logic:</strong> Because the math is tied to your hardware, deleting the app or losing your PIN doesn't just "lock" the data—it effectively renders the data non-existent, as the decryption key can never be reconstructed.</li>
+                    <li><strong>Hardware Enclave:</strong> Security keys exist only in the **SecureStore**, the specialized security chip on your iPhone or Android.</li>
+                    <li><strong>Account-less Login:</strong> No email, no password, no server-side "reset" buttons. If you don't have the PIN, the data simply doesn't exist.</li>
                 </ul>
             </div>
         </section>
 
         <footer>
             <p><em>*Certain cryptographic salt-layering techniques remain proprietary to maintain the CypherBird integrity.</em></p>
+            <p class="copyright">© 2026 Technotronics Group. All rights reserved.</p>
         </footer>
     </main>
 </body>
