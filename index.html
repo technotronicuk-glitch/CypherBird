@@ -3,296 +3,266 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cypherbird | Secure Hub</title>
+    <title>Cypherbird | Digital Sovereignty Protocols</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
             theme: {
                 extend: {
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    },
                     colors: {
-                        base: '#111111',       
-                        surface: '#1c1c1c',    
-                        borders: '#333333',    
-                        silver: '#dcdcdc',     
+                        base: '#050505',       
+                        surface: '#0a0a0a',    
+                        borders: '#1a1a1a',    
+                        silver: '#a1a1aa',     
                         accent: '#f59e0b',     
+                        cobalt: '#3b82f6',
                     }
                 }
             }
         }
     </script>
     <style>
-        /* Smooth fade for the chat widget */
-        #chat-window.hidden { display: none; }
+        .hero-gradient { background: radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%); }
+        .glass { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); }
+        .ultra-glow { box-shadow: 0 0 40px rgba(245, 158, 11, 0.05); }
     </style>
 </head>
-<body class="bg-base text-silver font-sans flex flex-col min-h-screen">
+<body class="bg-base text-silver font-sans selection:bg-cobalt selection:text-white">
 
-    <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-center h-20">
-                <a href="index.html" class="flex items-center gap-3 group">
-                    <span class="text-3xl">🦅</span> 
-                    <span class="text-2xl font-black tracking-tighter text-white uppercase italic">CYPHERBIRD</span>
-                </a>
-                <nav class="hidden md:flex space-x-6 text-sm font-medium uppercase tracking-widest">
-                    <a href="career.html" class="hover:text-accent transition">Careers</a>
-                    <a href="support.html" class="hover:text-accent transition">Support</a>
-                    <a href="account.html" class="hover:text-accent transition">Account</a>
-                </nav>
-            </div>
+    <header class="border-b border-borders sticky top-0 glass z-[100]">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <span class="text-2xl">🦅</span> 
+                <span class="text-xl font-black tracking-tighter text-white uppercase italic font-sans">CYPHERBIRD</span>
+            </a>
+            <nav class="hidden md:flex space-x-10 text-[10px] font-bold uppercase tracking-[0.2em]">
+                <a href="capabilities.html" class="hover:text-white transition">Intelligence</a>
+                <a href="support.html" class="hover:text-white transition">Protocol_Support</a>
+                <a href="account.html" class="text-cobalt border border-cobalt/30 px-4 py-2 hover:bg-cobalt hover:text-white transition-all">Node_Access</a>
+            </nav>
         </div>
     </header>
-<section id="hero-main" style="background-color: #0b0f19; color: white; padding: 120px 5%; display: flex; align-items: center; justify-content: space-between; min-height: 550px; gap: 50px; overflow: hidden; border-bottom: 1px solid #1e293b;">
-    
-    <div class="hero-text" style="flex: 1; max-width: 600px; z-index: 2;">
-        <div style="display: inline-block; padding: 6px 14px; background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.3); border-radius: 4px; color: #94a3b8; font-size: 0.8rem; font-weight: bold; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 1px;">
-            🔒 Military-Grade Media Encryption
-        </div>
 
-        <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 25px; font-weight: 700;">
-            Your Media. <span style="color: #3b82f6;">Under Your Total Control.</span>
-        </h1>
-
-        <p style="font-size: 1.25rem; color: #94a3b8; margin-bottom: 40px; line-height: 1.7;">
-            In an era of rising data risks, **Cypherbird** provides the ultimate safe harbor. We empower you to effortlessly transform plain photos and videos into impenetrable encrypted assets, ensuring your digital life remains truly private.
-        </p>
-
-        <div style="display: flex; gap: 15px;">
-            <a href="portal.html" style="display: inline-block; padding: 16px 45px; background-color: #3b82f6; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 1.1rem; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.4);">
-                Get Started
-            </a>
-            <a href="capabilities.html" style="display: inline-block; padding: 16px 30px; border: 2px solid #1e293b; color: #94a3b8; text-decoration: none; border-radius: 4px; font-weight: bold; transition: all 0.3s ease;">
-                How It Works →
-            </a>
-        </div>
-    </div>
-
-    <div class="hero-slider" style="flex: 1; position: relative; width: 100%; height: 500px; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.6); border: 1px solid #1e293b;">
-        
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 1; transition: opacity 2s ease-in-out; background: url('hero1.jpg') center/cover no-repeat;"></div>
-        
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; background: url('hero2.jpg') center/cover no-repeat;"></div>
-        
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; background: url('hero3.jpg') center/cover no-repeat;"></div>
-        
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; background: url('hero4.jpg') center/cover no-repeat;"></div>
-        
-        <div class="slide" style="position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 2s ease-in-out; background: url('hero5.jpg') center/cover no-repeat;"></div>
-
-        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(11,15,25,0.7), transparent 70%);"></div>
-    </div>
-</section>
-
-<script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    
-    function nextSlide() {
-        slides[currentSlide].style.opacity = 0;
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].style.opacity = 1;
-    }
-
-    // A slightly slower, more elegant transition (5 seconds)
-    setInterval(nextSlide, 5000);
-</script>
-    <section style="
-    padding: 120px 20px; 
-    background: linear-gradient(rgba(11, 15, 25, 0.8), rgba(11, 15, 25, 0.8)), url('capabilities-bg.jpg'); 
-    background-size: cover; 
-    background-position: center; 
-    background-attachment: fixed; 
-    text-align: center; 
-    color: white; 
-    border-top: 1px solid #1e293b;">
-    
-    <div style="max-width: 800px; margin: 0 auto;">
-        <h2 style="font-size: 3rem; margin-bottom: 25px; font-weight: 700; letter-spacing: -1px;">
-            Powerful Encryption Features
-        </h2>
-        
-        <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px; line-height: 1.6;">
-            Explore how we transform your photos, videos, and media into unreadable code using military-grade AES-256 protocols. Your privacy is non-negotiable.
-        </p>
-        
-        <a href="capabilities.html" style="
-            display: inline-block; 
-            padding: 15px 35px; 
-            border: 2px solid #3b82f6; 
-            color: #3b82f6; 
-            text-decoration: none; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            background: rgba(59, 130, 246, 0.05); 
-            transition: 0.3s;">
-            Learn More
-        </a>
-    </div>
-</section>
-        <section style="
-    padding: 100px 20px; 
-    background-color: #0b0f19; 
-    background-image: radial-gradient(circle at center, #1e293b 0.5px, transparent 0.5px); 
-    background-size: 30px 30px; 
-    text-align: center; 
-    color: white; 
-    border-top: 1px solid #1e293b;">
-    
-    <div style="max-width: 900px; margin: 0 auto;">
-        <div style="display: inline-block; padding: 5px 15px; background: rgba(59, 130, 246, 0.1); border: 1px solid #3b82f6; border-radius: 20px; color: #3b82f6; font-size: 0.8rem; font-weight: bold; margin-bottom: 20px; text-transform: uppercase;">
-            Verified Security
-        </div>
-
-        <h2 style="font-size: 2.5rem; margin-bottom: 25px; font-weight: 700;">Zero-Knowledge Architecture</h2>
-        
-        <p style="font-size: 1.1rem; color: #94a3b8; margin-bottom: 40px; line-height: 1.7; max-width: 700px; margin-left: auto; margin-right: auto;">
-            Your privacy shouldn't be a "pinky promise." We believe in mathematical transparency. Read our third-party audit reports and technical whitepapers to see how we stay untouchable.
-        </p>
-        
-        <a href="security.html" style="
-            display: inline-block; 
-            padding: 15px 35px; 
-            border: 2px solid #3b82f6; 
-            color: #3b82f6; 
-            text-decoration: none; 
-            border-radius: 4px; 
-            font-weight: bold; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: 0.3s;
-            background: none;">
-            Learn More
-        </a>
-
-        <div style="margin-top: 50px; display: flex; justify-content: center; gap: 40px; opacity: 0.5;">
-            <div style="width: 60px; height: 60px; background: url('security-icon1.png') center/contain no-repeat;"></div>
-            <div style="width: 60px; height: 60px; background: url('security-icon2.png') center/contain no-repeat;"></div>
-            <div style="width: 60px; height: 60px; background: url('security-icon3.png') center/contain no-repeat;"></div>
-        </div>
-    </div>
-</section>
-    <section style="padding: 120px 20px; background: linear-gradient(135deg, #0b0f19 0%, #1e293b 100%); text-align: center; color: white;">
-    <h2 style="font-size: 3rem; margin-bottom: 30px; font-weight: 800;">Ready to go dark?</h2>
-    <p style="font-size: 1.2rem; color: #94a3b8; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
-        Join thousands of users who trust Cypherbird with their most valuable media assets.
-    </p>
-    
-    <div style="display: flex; justify-content: center; gap: 20px;">
-        <a href="portal.html" style="padding: 15px 40px; background: #3b82f6; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);">
-            Get Started Now
-        </a>
-    </div>
-</section>
-    <footer class="bg-base border-t border-borders pt-16 pb-8">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            
-            <div class="col-span-1">
-                <div class="flex items-center gap-2 mb-4">
-                    <span>🦅</span>
-                    <span class="text-xl font-bold text-white uppercase tracking-tighter">CYPHERBIRD</span>
+    <section class="relative min-h-[90vh] flex items-center overflow-hidden hero-gradient border-b border-borders">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center py-20">
+            <div class="z-10">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-cobalt/30 bg-cobalt/5 text-cobalt text-[10px] font-bold uppercase tracking-widest mb-8">
+                    <span class="relative flex h-2 w-2"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cobalt opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-cobalt"></span></span>
+                    Now_Active: AES_256 Ultra Protocol
                 </div>
-                <p class="text-xs text-zinc-500 leading-relaxed uppercase tracking-widest">
-                    Digital Sovereignty Protocols<br>
-                    &copy; 2026. All Rights Reserved.
+                <h1 class="text-6xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter mb-8 uppercase italic">
+                    Your Media. <br><span class="text-cobalt">Untouchable.</span>
+                </h1>
+                <p class="text-lg text-zinc-500 max-w-lg mb-10 leading-relaxed font-light">
+                    Cypherbird transforms plain digital assets into impenetrable binary blobs. No backdoors. No cloud snooping. Total sovereignty over your private life.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#pricing" class="px-10 py-5 bg-white text-black font-black text-xs uppercase tracking-widest hover:bg-cobalt hover:text-white transition-all">Initialize_Deployment</a>
+                    <a href="capabilities.html" class="px-10 py-5 border border-zinc-800 text-white text-xs font-bold tracking-widest hover:border-zinc-400 transition-all">View_Spec →</a>
+                </div>
+            </div>
+            
+            <div class="relative hidden md:block">
+                <div class="aspect-square bg-surface border border-borders rounded-2xl p-4 overflow-hidden shadow-2xl relative">
+                    <div id="hero-slides" class="h-full w-full relative">
+                        <div class="absolute inset-0 opacity-100 transition-opacity duration-1000 bg-[url('hero1.jpg')] bg-cover bg-center slide-item"></div>
+                        <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 bg-[url('hero2.jpg')] bg-cover bg-center slide-item"></div>
+                        <div class="absolute inset-0 opacity-0 transition-opacity duration-1000 bg-[url('hero3.jpg')] bg-cover bg-center slide-item"></div>
+                    </div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 bg-surface border-b border-borders">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="space-y-4">
+                    <h2 class="text-cobalt font-mono text-xs uppercase tracking-widest">01 / Hardware_Enclave</h2>
+                    <h3 class="text-white text-xl font-bold">Local-Only Processing</h3>
+                    <p class="text-sm leading-relaxed">Your data never touches our servers. Encryption happens on your device's silicon.</p>
+                </div>
+                <div class="space-y-4">
+                    <h2 class="text-cobalt font-mono text-xs uppercase tracking-widest">02 / Temporal_Chunking</h2>
+                    <h3 class="text-white text-xl font-bold">Ultra 4K Stream</h3>
+                    <p class="text-sm leading-relaxed">Slice large video assets into scrambled binary segments for crash-free mobile security.</p>
+                </div>
+                <div class="space-y-4">
+                    <h2 class="text-cobalt font-mono text-xs uppercase tracking-widest">03 / Zero_Knowledge</h2>
+                    <h3 class="text-white text-xl font-bold">Mathematical Trust</h3>
+                    <p class="text-sm leading-relaxed">We don't hold your keys. If you lose your PIN, even we cannot recover the assets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="py-32 bg-base relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-4">Choose Your Protocol</h2>
+                <p class="text-zinc-600 font-mono text-xs uppercase tracking-[0.4em]">Subscription_Licensing_Model</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 items-center">
+                <div class="bg-surface border border-borders p-10 rounded-xl hover:border-zinc-700 transition-all">
+                    <h4 class="text-white font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
+                    <div class="text-4xl text-white font-black mb-8 italic">£0.00</div>
+                    <ul class="text-xs space-y-4 mb-12 text-zinc-500 font-mono">
+                        <li>[✓] AES-256 Photo Vault</li>
+                        <li>[✓] Basic Metadata Stripping</li>
+                        <li>[✕] No Video Support</li>
+                    </ul>
+                    <button class="w-full py-4 border border-zinc-800 text-white text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-black transition-all">INITIALIZE</button>
+                </div>
+
+                <div class="bg-black border-2 border-accent p-10 rounded-xl ultra-glow relative z-10 md:scale-110">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-accent text-black text-[9px] font-black px-4 py-1 uppercase italic tracking-widest">Elite_Choice</div>
+                    <h4 class="text-accent font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Protocol</h4>
+                    <div class="text-4xl text-white font-black mb-8 italic">£8.99 <span class="text-xs text-zinc-600 font-normal">/mo</span></div>
+                    <ul class="text-xs space-y-4 mb-12 text-white font-mono">
+                        <li>[✓] Unlimited 4K Video Scrambling</li>
+                        <li>[✓] Audio & Voice Stealth Mode</li>
+                        <li>[✓] 10GB Zero-Knowledge Cloud</li>
+                        <li>[✓] Priority Neural Processing</li>
+                    </ul>
+                    <button class="w-full py-4 bg-accent text-black text-[10px] font-black tracking-[0.2em] hover:bg-amber-400 transition-all shadow-xl shadow-accent/20">ACTIVATE_ULTRA</button>
+                </div>
+
+                <div class="bg-surface border border-borders p-10 rounded-xl hover:border-zinc-700 transition-all">
+                    <h4 class="text-white font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Pro Grade</h4>
+                    <div class="text-4xl text-white font-black mb-8 italic">£3.99 <span class="text-xs text-zinc-600 font-normal">/mo</span></div>
+                    <ul class="text-xs space-y-4 mb-12 text-zinc-500 font-mono">
+                        <li>[✓] Bulk Asset Scrambling</li>
+                        <li>[✓] Biometric Stealth Lock</li>
+                        <li>[✓] 2GB Secure Backup</li>
+                    </ul>
+                    <button class="w-full py-4 border border-zinc-800 text-white text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-black transition-all">UPGRADE_NOW</button>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-[10px] text-zinc-600 uppercase tracking-[0.3em]">Temporary Node? <a href="#" class="text-accent underline ml-2">Acquire 500MB Asset Pass for £1.99</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 border-t border-borders text-center relative overflow-hidden">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-black text-white italic uppercase tracking-tighter mb-10">Ready to go dark?</h2>
+            <p class="text-zinc-500 mb-12 max-w-xl mx-auto">Join a global network of users who have reclaimed their digital privacy.</p>
+            <div class="flex justify-center gap-6">
+                <a href="portal.html" class="px-12 py-6 bg-cobalt text-white font-black text-xs uppercase tracking-[0.2em] hover:bg-white hover:text-black transition-all">Establish_Signal</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-surface py-20 border-t border-borders">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16">
+            <div class="col-span-1">
+                <div class="flex items-center gap-2 mb-6">
+                    <span>🦅</span>
+                    <span class="text-lg font-bold text-white uppercase italic tracking-tighter">CYPHERBIRD</span>
+                </div>
+                <p class="text-[10px] text-zinc-600 leading-relaxed uppercase tracking-widest font-mono">
+                    Technotronics Group // Secure Ops<br>
+                    Lon. 0.1276° W / Lat. 51.5074° N<br>
+                    &copy; 2026. ALL_RIGHTS_RESERVED.
                 </p>
             </div>
-
-            <div>
-                <h4 class="text-white text-xs font-bold uppercase tracking-widest mb-6">Governance</h4>
-                <ul class="text-sm space-y-3 text-zinc-500">
-                    <li><a href="#" class="hover:text-accent">FAQ</a></li>
-                    <li><a href="#" class="hover:text-accent">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-accent">Terms of Service</a></li>
+            <div class="space-y-4">
+                <h4 class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Nodes</h4>
+                <ul class="text-[11px] space-y-2 uppercase text-zinc-500 font-mono">
+                    <li><a href="#" class="hover:text-accent transition">Status_Alpha</a></li>
+                    <li><a href="#" class="hover:text-accent transition">Support_Center</a></li>
+                    <li><a href="#" class="hover:text-accent transition">Changelog</a></li>
                 </ul>
             </div>
-
-            <div>
-                <h4 class="text-white text-xs font-bold uppercase tracking-widest mb-6">Nodes</h4>
-                <ul class="text-sm space-y-3 text-zinc-500">
-                    <li><a href="support.html" class="hover:text-accent">Help Center</a></li>
-                    <li><a href="career.html" class="hover:text-accent">Join Our Team</a></li>
-                    <li><a href="#" class="hover:text-accent">Status Alpha</a></li>
+            <div class="space-y-4">
+                <h4 class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Governance</h4>
+                <ul class="text-[11px] space-y-2 uppercase text-zinc-500 font-mono">
+                    <li><a href="#" class="hover:text-accent transition">Privacy_Protocol</a></li>
+                    <li><a href="#" class="hover:text-accent transition">Legal_Brief</a></li>
                 </ul>
             </div>
-
-            <div>
-                <h4 class="text-white text-xs font-bold uppercase tracking-widest mb-6">Social Links</h4>
-                <div class="flex flex-wrap gap-4 text-xl">
-                    <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-zinc-500 hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="mailto:contact@cypherbird.io" class="text-zinc-500 hover:text-white transition"><i class="fas fa-envelope"></i></a>
+            <div class="space-y-6">
+                <h4 class="text-white text-[10px] font-black uppercase tracking-[0.3em]">Social_Signals</h4>
+                <div class="flex gap-4 text-zinc-600">
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin text-lg"></i></a>
+                    <a href="#" class="hover:text-white transition"><i class="fa-solid fa-envelope text-lg"></i></a>
                 </div>
             </div>
-
-        </div> </div>
+        </div>
     </footer>
 
-    <div class="fixed bottom-6 right-6 z-[100]">
-        <button onclick="toggleChat()" class="bg-accent hover:bg-amber-400 text-base w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-transform hover:scale-110">
-            <i class="fas fa-comment-dots text-xl"></i>
-        </button>
-
-        <div id="chat-container" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000; font-family: sans-serif;">
-    
-    <div id="chat-window" style="display: none; width: 350px; height: 450px; background: #161b22; border: 1px solid #3b82f6; border-radius: 12px; flex-direction: column; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-        <div style="background: #3b82f6; color: white; padding: 15px; font-weight: bold; display: flex; justify-content: space-between;">
-            <span>Cypherbird Assistant</span>
-            <button onclick="toggleChat()" style="background:none; border:none; color:white; cursor:pointer;">✕</button>
-        </div>
-        
-        <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; color: #e6edf3; font-size: 0.9rem;">
-            <div style="background: #21262d; padding: 10px; border-radius: 8px; align-self: flex-start; max-width: 80%; border-left: 3px solid #3b82f6;">
-                Hello! I'm your Cypherbird guide. How can I help you secure your media today?
+    <div class="fixed bottom-8 right-8 z-[1000] font-mono">
+        <div id="chat-window" class="hidden w-80 h-[450px] glass border border-cobalt/50 rounded-2xl flex-col shadow-2xl mb-4 overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300">
+            <div class="bg-cobalt p-4 text-white text-[10px] font-bold flex justify-between uppercase tracking-widest">
+                <span>Assistant // Alpha</span>
+                <button onclick="toggleChat()" class="hover:rotate-90 transition-all">✕</button>
+            </div>
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-4 text-[11px]">
+                <div class="bg-zinc-900 border border-zinc-800 p-3 rounded-lg text-zinc-300">
+                    Welcome to Cypherbird Secure Comms. How can I assist your deployment?
+                </div>
+            </div>
+            <div class="p-4 border-t border-borders bg-base flex gap-2">
+                <input type="text" id="user-input" placeholder="Type command..." class="flex-1 bg-surface border border-borders p-2 text-white text-xs outline-none focus:border-cobalt transition-all">
+                <button onclick="sendMessage()" class="bg-cobalt text-white px-3 py-1 text-[10px] font-bold uppercase tracking-tighter">Send</button>
             </div>
         </div>
-
-        <div style="padding: 15px; background: #0d1117; display: flex; gap: 10px;">
-            <input type="text" id="user-input" placeholder="Ask anything..." style="flex: 1; background: #21262d; border: 1px solid #30363d; color: white; padding: 8px; border-radius: 4px; outline: none;">
-            <button onclick="sendMessage()" style="background: #3b82f6; color: white; border: none; padding: 8px 15px; border-radius: 4px; cursor: pointer; font-weight: bold;">Send</button>
-        </div>
+        <button onclick="toggleChat()" class="w-16 h-16 bg-cobalt rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all group">
+            <i class="fa-solid fa-shield-halved text-white text-xl group-hover:animate-pulse"></i>
+        </button>
     </div>
 
-    <button onclick="toggleChat()" style="width: 60px; height: 60px; border-radius: 50%; background: #3b82f6; border: none; cursor: pointer; box-shadow: 0 5px 15px rgba(59, 130, 246, 0.4); display: flex; align-items: center; justify-content: center;">
-        <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-    </button>
-</div>
+    <script>
+        // SLIDER LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide-item');
+        function nextSlide() {
+            slides[currentSlide].classList.replace('opacity-100', 'opacity-0');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.replace('opacity-0', 'opacity-100');
+        }
+        setInterval(nextSlide, 5000);
 
-<script>
-function toggleChat() {
-    const window = document.getElementById('chat-window');
-    window.style.display = window.style.display === 'none' ? 'flex' : 'none';
-}
+        // CHAT LOGIC
+        function toggleChat() {
+            const win = document.getElementById('chat-window');
+            win.classList.toggle('hidden');
+            win.classList.toggle('flex');
+        }
 
-function sendMessage() {
-    const input = document.getElementById('user-input');
-    const msgArea = document.getElementById('chat-messages');
-    
-    if (input.value.trim() === "") return;
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const msgArea = document.getElementById('chat-messages');
+            if (!input.value.trim()) return;
 
-    // User Message
-    const userMsg = document.createElement('div');
-    userMsg.style = "background: #3b82f6; padding: 10px; border-radius: 8px; align-self: flex-end; max-width: 80%; color: white;";
-    userMsg.innerText = input.value;
-    msgArea.appendChild(userMsg);
+            const userMsg = document.createElement('div');
+            userMsg.className = "bg-cobalt/20 border border-cobalt/30 p-3 rounded-lg text-cobalt text-right ml-8";
+            userMsg.innerText = input.value;
+            msgArea.appendChild(userMsg);
 
-    const typingValue = input.value;
-    input.value = "";
+            const prompt = input.value;
+            input.value = "";
 
-    // Simulate "Human" response
-    setTimeout(() => {
-        const botMsg = document.createElement('div');
-        botMsg.style = "background: #21262d; padding: 10px; border-radius: 8px; align-self: flex-start; max-width: 80%; border-left: 3px solid #10b981;";
-        botMsg.innerText = "Processing your request about '" + typingValue + "'... One moment while I fetch that for you.";
-        msgArea.appendChild(botMsg);
-        msgArea.scrollTop = msgArea.scrollHeight;
-    }, 1000);
-}
-</script>
+            setTimeout(() => {
+                const botMsg = document.createElement('div');
+                botMsg.className = "bg-zinc-900 border border-zinc-800 p-3 rounded-lg text-zinc-300 mr-8";
+                botMsg.innerText = `Query received: "${prompt}". Fetching protocol documentation...`;
+                msgArea.appendChild(botMsg);
+                msgArea.scrollTop = msgArea.scrollHeight;
+            }, 800);
+        }
+    </script>
+</body>
+</html>
