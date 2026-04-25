@@ -17,7 +17,7 @@
                         sans: ['Inter', 'sans-serif'],
                     },
                     colors: {
-                        base: '#050505',       
+                        base: '#000000',       
                         surface: '#0a0a0a',    
                         borders: '#1a1a1a',    
                         silver: '#a1a1aa',     
@@ -29,30 +29,26 @@
         }
     </script>
     <style>
-        .hero-gradient { background: radial-gradient(circle at 70% 30%, #001a4d 0%, #050505 100%); }
         .glass { background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(12px); }
-        .shimmer { background: linear-gradient(90deg, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
-        @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
         .perspective-tilt { transform: perspective(1000px) rotateY(-5deg); transition: transform 0.5s ease; }
         .perspective-tilt:hover { transform: perspective(1000px) rotateY(0deg); }
-        
-        /* Chat Widget Animations */
         @keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
         .online-dot { animation: pulse-soft 2s infinite; }
+        #chat-stream::-webkit-scrollbar { width: 4px; }
+        #chat-stream::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
     </style>
 </head>
 <body class="bg-base text-silver font-sans selection:bg-cobalt selection:text-white">
 
 <div id="cookie-protocol" class="fixed bottom-6 left-6 z-[100] max-w-xs w-full glass border border-borders p-6 hidden">
-    <p class="text-[10px] font-mono uppercase tracking-widest text-zinc-400 mb-4">[SYSTEM] This node uses cookies to maintain session entropy and secure your encryption handshake.</p>
+    <p class="text-[10px] font-mono uppercase tracking-widest text-zinc-500 mb-4">[SYSTEM] This node uses cookies for session entropy.</p>
     <div class="flex gap-3">
         <button onclick="acceptProtocol()" class="flex-1 bg-white text-black text-[10px] font-black py-2 uppercase hover:bg-zinc-200 transition">Authorize</button>
-        <button onclick="acceptProtocol()" class="flex-1 border border-borders text-zinc-500 text-[10px] font-black py-2 uppercase hover:text-white transition">Decline</button>
     </div>
 </div>
 
 <div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-    <div id="chat-interface" class="w-80 h-[450px] glass border border-borders mb-4 rounded-2xl overflow-hidden hidden flex flex-col shadow-2xl">
+    <div id="chat-interface" class="w-80 h-[480px] glass border border-borders mb-4 rounded-2xl overflow-hidden hidden flex flex-col shadow-2xl">
         <div class="p-4 border-b border-borders bg-white/5 flex justify-between items-center">
             <div>
                 <p class="text-white text-[10px] font-black uppercase tracking-widest">Sovereign Assistant</p>
@@ -63,37 +59,40 @@
             </div>
             <button onclick="toggleChat()" class="text-zinc-500 hover:text-white transition">✕</button>
         </div>
+
         <div id="chat-stream" class="flex-1 overflow-y-auto p-4 space-y-4 font-mono text-[11px] leading-relaxed">
             <div class="bg-cobalt/10 border-l-2 border-cobalt p-3 text-zinc-300">
-                Connection established. I am your protocol assistant. How can I help secure your legacy today?
+                [NODE]: Connection established. I can provide details on our 'privacy' protocols or 'services'. What do you require?
             </div>
         </div>
-        <a href="chat.html" class="p-4 bg-white text-black text-[10px] font-black uppercase text-center hover:bg-zinc-200 transition">
-            Initialize Full Secure Channel
-        </a>
+
+        <div class="border-t border-borders p-2 bg-black flex gap-2">
+            <input id="user-input" type="text" placeholder="Type message..." class="flex-1 bg-transparent text-white font-mono text-[11px] p-2 outline-none">
+            <button onclick="manualQuery()" class="bg-white text-black text-[10px] font-black uppercase px-4 py-2 rounded-sm transition">Send</button>
+        </div>
     </div>
-    <button onclick="toggleChat()" class="w-16 h-16 bg-white text-black rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform active:scale-95 shadow-cobalt/20">
+    <button onclick="toggleChat()" class="w-16 h-16 bg-white text-black rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition shadow-cobalt/20">
         <span class="text-2xl">🦅</span>
     </button>
 </div>
 
 <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
     <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3 group shrink-0">
+        <a href="index.html" class="flex items-center gap-3 shrink-0">
             <span class="text-2xl">🦅</span> 
-            <span class="text-2xl font-black tracking-tighter text-white uppercase italic leading-none">CYPHERBIRD</span>
+            <span class="text-2xl font-black tracking-tighter text-white uppercase italic">CYPHERBIRD</span>
         </a>
         <nav class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
             <a href="capabilities.html" class="text-zinc-400 hover:text-cobalt transition">Capabilities</a>
             <a href="career.html" class="text-zinc-400 hover:text-cobalt transition">Careers</a>
             <a href="news.html" class="text-zinc-400 hover:text-cobalt transition">News</a>
-            <a href="account.html" class="text-zinc-400 hover:text-cobalt transition text-white px-4 py-2 border border-borders rounded-sm">Account</a>
+            <a href="account.html" class="text-white px-4 py-2 border border-borders rounded-sm">Account</a>
         </nav>
     </div>
 </header>
 
 <main>
-    <section id="hero-main" class="hero-gradient min-h-[90vh] flex flex-col lg:flex-row items-center justify-center gap-16 px-8 py-20 overflow-hidden">
+    <section id="hero-main" class="bg-base min-h-[90vh] flex flex-col lg:flex-row items-center justify-center gap-16 px-8 py-16 overflow-hidden">
         <div class="max-w-xl z-10">
             <div class="inline-flex items-center px-3 py-1 rounded bg-cobalt/10 border border-cobalt/30 text-cobalt text-[10px] font-black tracking-[2px] mb-8 uppercase">
                 ● PERSONAL VAULT PROTOCOL ACTIVE
@@ -102,196 +101,135 @@
                 Protect your <br><span class="text-cobalt italic underline decoration-1 underline-offset-8">Legacy.</span>
             </h1>
             <p class="text-zinc-400 text-lg lg:text-xl font-light leading-relaxed mb-10 max-w-lg">
-                Some memories are too precious for the open cloud. We wrap your history in an invisible, proprietary shield that only you can unlock.
+                Your history wrapped in a proprietary shield that only you can unlock.
             </p>
             <div class="flex flex-wrap gap-4">
                 <a href="hero.html" class="px-10 py-5 bg-cobalt text-white text-xs font-black uppercase tracking-widest rounded-sm hover:bg-blue-500 transition shadow-2xl shadow-cobalt/20">Learn More</a>
-                <a href="" class="px-10 py-5 border border-borders text-zinc-500 text-xs font-black uppercase tracking-widest rounded-sm hover:border-white hover:text-white transition"> How it Works </a>
             </div>
         </div>
 
-        <div class="perspective-tilt w-full max-w-[500px] h-[600px] bg-surface rounded-[40px] overflow-hidden border border-white/5 relative shadow-2xl shadow-black">
+        <div class="perspective-tilt w-full max-w-[500px] h-[550px] bg-surface rounded-[40px] overflow-hidden border border-white/5 relative shadow-2xl shadow-black">
             <div class="slide absolute inset-0 opacity-100 transition-opacity duration-1000 bg-[url('https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center"></div>
             <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 bg-[url('https://images.unsplash.com/photo-1476703993599-0035a21b17a9?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center"></div>
             <div class="slide absolute inset-0 opacity-0 transition-opacity duration-1000 bg-[url('https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&q=80&w=1000')] bg-cover bg-center"></div>
-            
             <div class="absolute inset-0 bg-gradient-to-t from-base via-transparent to-transparent opacity-60"></div>
-            <div class="absolute bottom-8 left-8 glass p-6 border border-white/10 rounded-2xl">
-                <p class="text-cobalt text-[10px] font-black uppercase tracking-widest mb-1">Status: Vaulted</p>
-                <p class="text-white text-sm font-mono tracking-tighter">CB-PRV-MEM-882.AES</p>
-            </div>
         </div>
     </section>
 
-    <section id="the-crisis" class="py-32 bg-base border-y border-borders">
+    <section class="py-32 bg-base border-y border-borders">
         <div class="max-w-4xl mx-auto px-8 text-center">
-            <h2 class="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em] mb-6 underline decoration-cobalt underline-offset-4">Identity Intelligence</h2>
-            <h3 class="text-white text-4xl lg:text-5xl font-black tracking-tighter mb-8 leading-tight">Your life isn't just data.<br>It's your story.</h3>
-            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-16 max-w-2xl mx-auto">
-                Think of the first steps of your child. Standard clouds treat these as commodities. We treat them as <span class="text-white">sacred assets</span>.
-            </p>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-10 bg-surface border border-borders rounded-3xl text-left hover:border-cobalt/50 transition">
-                    <h4 class="text-white font-bold text-lg mb-4">The Prying Eye</h4>
-                    <p class="text-zinc-500 text-sm leading-relaxed">Major tech firms scan your media to profile your family. We built a wall they cannot climb.</p>
-                </div>
-                <div class="p-10 bg-surface border border-borders rounded-3xl text-left hover:border-cobalt/50 transition">
-                    <h4 class="text-white font-bold text-lg mb-4">The Permanent Memory</h4>
-                    <p class="text-zinc-500 text-sm leading-relaxed">Leaks are forever. Cypherbird ensures your legacy remains exclusively in your hands.</p>
-                </div>
-            </div>
+            <h3 class="text-white text-4xl lg:text-5xl font-black tracking-tighter mb-8 leading-tight">Your life isn't just data.</h3>
+            <p class="text-zinc-400 text-lg font-light leading-relaxed mb-16 max-w-2xl mx-auto">We treat your story as a <span class="text-white">sacred asset</span>.</p>
         </div>
     </section>
 
-    <section id="pricing" class="py-32 bg-base">
+    <section class="py-32 bg-base">
         <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
-                <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em]">Subscription_Licensing_Model</p>
-            </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition">
-                    <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
+                <div class="bg-surface border border-borders p-12 rounded-3xl">
+                    <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01</h4>
                     <div class="text-5xl text-white font-black mb-8 italic">$0.00</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                        <li>[✓] Photo Vault</li>
-                        <li>[✕] No Video Support</li>
-                    </ul>
-                    <a href="portal.html" class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest hover:bg-white hover:text-black transition">INITIALIZE</a>
+                    <a href="portal.html" class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest transition">INITIALIZE</a>
                 </div>
-
                 <div class="bg-black border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl shadow-cobalt/20">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
-                    <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Protocol</h4>
+                    <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03</h4>
                     <div class="text-5xl text-white font-black mb-8 italic">$8.99</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-white font-mono uppercase tracking-widest">
-                        <li>[✓] Unlimited 4K Scrambling</li>
-                        <li>[✓] Priority Neural Uplink</li>
-                    </ul>
-                    <a href="ultra.html" class="block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition shadow-lg">ACTIVATE_ULTRA</a>
+                    <a href="ultra.html" class="block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest transition">ACTIVATE_ULTRA</a>
                 </div>
-
-                <div class="bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition">
-                    <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Elite Grade</h4>
+                <div class="bg-surface border border-borders p-12 rounded-3xl">
+                    <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02</h4>
                     <div class="text-5xl text-white font-black mb-8 italic">$3.99</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                        <li>[✓] Bulk Scrambling</li>
-                        <li>[✓] 2GB Secure Backup</li>
-                    </ul>
-                    <a href="elite.html" class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest hover:bg-white hover:text-black transition">UPGRADE</a>
+                    <a href="elite.html" class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest transition">UPGRADE</a>
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-<footer class="bg-base border-t border-borders pt-20 pb-12">
+<footer class="bg-base border-t border-borders pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-8">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            <div class="space-y-6">
-                <div class="flex items-center gap-3">
-                    <span class="text-2xl">🦅</span>
-                    <span class="text-xl font-black text-white uppercase italic tracking-tighter">CYPHERBIRD</span>
-                </div>
-                <p class="text-zinc-500 text-sm leading-relaxed max-w-xs">
-                    Advancing digital sovereignty through SHA-512 hardware-grade encryption and zero-knowledge protocols.
-                </p>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-x-12 gap-y-8 items-start mb-8 text-[11px] font-mono text-zinc-600 uppercase tracking-widest">
+            <div class="flex items-center gap-3">
+                <span class="text-2xl">🦅</span> 
+                <span class="text-xl font-black text-white italic tracking-tighter">CYPHERBIRD</span>
             </div>
-
-            <div class="grid grid-cols-2 gap-8">
-                <div>
-                    <h4 class="text-white text-[10px] font-mono uppercase tracking-widest mb-6 text-zinc-400">Resources</h4>
-                    <ul class="space-y-4 text-sm text-zinc-500 font-medium">
-                        <li><a href="#faq" class="hover:text-white transition">F.A.Q.</a></li>
-                        <li><a href="chat.html" class="hover:text-white transition">Live Support</a></li>
-                        <li><a href="#" class="hover:text-white transition">Audit Reports</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-white text-[10px] font-mono uppercase tracking-widest mb-6 text-zinc-400">Legal</h4>
-                    <ul class="space-y-4 text-sm text-zinc-500 font-medium">
-                        <li><a href="#" class="hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms of Service</a></li>
-                        <li><a href="#" class="hover:text-white transition">Cookie Protocol</a></li>
-                    </ul>
-                </div>
+            <div class="space-y-3">
+                <h4 class="text-white font-bold opacity-50 mb-4">Legal</h4>
+                <a href="#" class="block hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="block hover:text-white transition">Terms of Service</a>
+                <a href="#" class="block hover:text-white transition">Cookie Protocol</a>
             </div>
-
-            <div class="flex flex-col md:items-end gap-6">
-                <div class="flex gap-6 text-zinc-500 text-xl">
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a> 
+            <div class="space-y-3">
+                <h4 class="text-white font-bold opacity-50 mb-4">Support</h4>
+                <a href="#faq" class="block hover:text-white transition">F.A.Q.</a>
+                <a href="chat.html" class="block hover:text-white transition">Protocol Help</a>
+            </div>
+            <div class="flex flex-col md:items-end gap-6 pt-1">
+                <div class="flex gap-6 text-xl text-zinc-500">
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a> 
                 </div>
-                <p class="text-[10px] text-zinc-600 font-mono uppercase tracking-[0.2em]">Digital Sovereignty Protocols &copy; 2026</p>
+                <p class="text-[9px] text-zinc-700 tracking-[0.2em] whitespace-nowrap">Digital Sovereignty Protocols &copy; 2026</p>
             </div>
         </div>
     </div>
 </footer>
 
 <script>
-    // 1. Gallery Slider Logic
+    // Gallery Slider
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
-    
-    function nextSlide() {
+    setInterval(() => {
         slides[currentSlide].style.opacity = 0;
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].style.opacity = 1;
-    }
-    setInterval(nextSlide, 5000);
+    }, 5000);
 
-    // 2. Cookie Protocol Logic
+    // Cookie Consent
     function acceptProtocol() {
         document.getElementById('cookie-protocol').style.display = 'none';
         localStorage.setItem('protocol_authorized', 'true');
     }
-
     window.onload = () => {
         if (!localStorage.getItem('protocol_authorized')) {
-            setTimeout(() => {
-                document.getElementById('cookie-protocol').classList.remove('hidden');
-            }, 2000);
+            setTimeout(() => document.getElementById('cookie-protocol').classList.remove('hidden'), 2000);
         }
     };
 
-    // 3. Chat Widget Logic
+    // Chat Logic
     function toggleChat() {
         const chat = document.getElementById('chat-interface');
         chat.classList.toggle('hidden');
     }
 
-    const assistantKnowledge = [
-        "Did you know Tier 03 supports 4K video scrambling at 512-bit depth?",
-        "Our SHA-512 protocol ensures that not even our engineers can view your legacy.",
-        "Your data is your story. Standard clouds commoditize it; we protect it.",
-        "I can help you understand our Privacy Commitments if you'd like to dive deeper.",
-        "Remember, your Sovereign Master Key is generated locally—it never touches our servers."
-    ];
+    function manualQuery() {
+        const input = document.getElementById('user-input');
+        const stream = document.getElementById('chat-stream');
+        const query = input.value.trim().toLowerCase();
+        if (!query) return;
 
-    function injectEngagingMessage() {
-        const chatStream = document.getElementById('chat-stream');
-        const chatInterface = document.getElementById('chat-interface');
-        
-        if (!chatInterface.classList.contains('hidden')) {
-            const msg = document.createElement('div');
-            msg.className = "bg-white/5 border-l-2 border-zinc-500 p-3 text-zinc-400 animate-pulse";
-            msg.innerText = assistantKnowledge[Math.floor(Math.random() * assistantKnowledge.length)];
-            chatStream.appendChild(msg);
+        const uDiv = document.createElement('div');
+        uDiv.className = "p-3 bg-zinc-900 text-right text-zinc-400 self-end ml-10 border-r-2 border-zinc-700";
+        uDiv.innerHTML = `<span class="opacity-30">[OPERATOR]:</span> ${input.value}`;
+        stream.appendChild(uDiv);
+        input.value = '';
+        stream.scrollTop = stream.scrollHeight;
+
+        setTimeout(() => {
+            let reply = "Query not recognized. Please specify 'privacy' or 'services' for node details.";
+            if(query.includes('privacy')) reply = "Cypherbird privacy is absolute. Our SHA-512 master keys are generated locally and never touch the cloud.";
+            if(query.includes('services')) reply = "We offer Standard, Elite, and Ultra protocols for image and 4K video scrambling.";
             
-            // Auto-scroll to bottom
-            chatStream.scrollTop = chatStream.scrollHeight;
-            
-            // Remove pulse after a second
-            setTimeout(() => msg.classList.remove('animate-pulse'), 1500);
-        }
+            const aDiv = document.createElement('div');
+            aDiv.className = "p-3 bg-cobalt/5 border-l-2 border-cobalt text-zinc-300 mr-10";
+            aDiv.innerHTML = `<span class="opacity-30">[NODE]:</span> ${reply}`;
+            stream.appendChild(aDiv);
+            stream.scrollTop = stream.scrollHeight;
+        }, 1000);
     }
-
-    // Engaging interaction every 12 seconds
-    setInterval(injectEngagingMessage, 12000);
 </script>
-
 </body>
 </html>
