@@ -3,46 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ | Cypherbird Intelligence</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>
-        tailwind.config = { theme: { extend: { colors: { base: '#111111', surface: '#1c1c1c', borders: '#333333', silver: '#dcdcdc', accent: '#f59e0b' } } } }
-    </script>
+    <title>FAQ | CypherBird Protocol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-black: #0a0a0a;
+            --accent-blue: #007AFF;
+            --text-main: #1d1d1f;
+            --text-muted: #6e6e73;
+            --bg-white: #ffffff;
+            --border-color: #d2d2d7;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-white);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin: 0 0 16px 0;
+            color: var(--primary-black);
+        }
+
+        .intro-text {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .faq-section {
+            margin-top: 40px;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faq-item input[type="checkbox"] {
+            display: none;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 32px 0;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.25rem;
+            transition: color 0.2s ease;
+            user-select: none;
+        }
+
+        .faq-question:hover {
+            color: var(--accent-blue);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: var(--text-muted);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            padding-bottom: 0;
+        }
+
+        .faq-item input[type="checkbox"]:checked ~ .faq-answer {
+            max-height: 600px;
+            padding-bottom: 32px;
+        }
+
+        .faq-item input[type="checkbox"]:checked ~ .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 120px;
+            padding-top: 40px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .contact-btn {
+            display: inline-block;
+            margin-top: 24px;
+            padding: 12px 28px;
+            background: var(--primary-black);
+            color: white;
+            text-decoration: none;
+            border-radius: 980px; /* Apple pill shape */
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.02);
+            background: #333;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.2rem; }
+            .container { padding: 60px 20px; }
+            .faq-question { font-size: 1.1rem; }
+        }
+    </style>
 </head>
-<body class="bg-base text-silver font-sans">
+<body>
 
-    <nav class="p-6 border-b border-borders flex justify-between items-center">
-        <a href="index.html" class="text-2xl">🦅 <span class="font-bold text-white uppercase italic ml-2">CYPHERBIRD</span></a>
-        <a href="index.html" class="text-xs uppercase tracking-widest hover:text-accent transition">← Back to Hub</a>
-    </nav>
+<div class="container">
+    <header>
+        <span class="logo-text">CypherBird Protocol</span>
+        <h1>Support</h1>
+        <p class="intro-text">Understanding the Sovereign Engine and your digital rights.</p>
+    </header>
 
-    <main class="max-w-3xl mx-auto py-20 px-6">
-        <h1 class="text-4xl font-black text-white mb-4 uppercase tracking-tighter italic">Common Inquiries</h1>
-        <p class="text-zinc-500 mb-12 uppercase tracking-widest text-xs">Knowledge Base / Protocol Documentation</p>
-
-        <div class="space-y-6">
-            <div class="bg-surface p-6 rounded-xl border border-borders">
-                <h3 class="text-white font-bold mb-2">What exactly is Cypherbird?</h3>
-                <p class="text-sm text-zinc-400 leading-relaxed">Cypherbird is a decentralized sovereignty protocol designed to provide users with encrypted communication and private asset management, free from central oversight.</p>
-            </div>
-
-            <div class="bg-surface p-6 rounded-xl border border-borders">
-                <h3 class="text-white font-bold mb-2">How does the "Eagle" protocol work?</h3>
-                <p class="text-sm text-zinc-400 leading-relaxed">It utilizes peer-to-peer mesh networking and end-to-end encryption. Your data never touches a central server; it "flies" between nodes until it reaches its destination.</p>
-            </div>
-
-            <div class="bg-surface p-6 rounded-xl border border-borders">
-                <h3 class="text-white font-bold mb-2">Is my data really private?</h3>
-                <p class="text-sm text-zinc-400 leading-relaxed">Yes. We use zero-knowledge architecture. This means even the developers of Cypherbird cannot access your keys, messages, or files.</p>
-            </div>
-
-            <div class="bg-surface p-6 rounded-xl border border-borders">
-                <h3 class="text-white font-bold mb-2">How do I get an Access Key?</h3>
-                <p class="text-sm text-zinc-400 leading-relaxed">Access keys are generated locally on your device during the Portal initialization. We never store these keys on any external drives.</p>
+    <div class="faq-section">
+        
+        <div class="faq-item">
+            <input type="checkbox" id="faq1">
+            <label class="faq-question" for="faq1">What happens if I forget my PIN?</label>
+            <div class="faq-answer">
+                <p>CypherBird is a <strong>Zero-Knowledge</strong> system. We do not store your keys, PINs, or recovery phrases on our servers. This ensures total privacy, but it means if you lose your credentials, <strong>we cannot recover your data.</strong> Your information is locked by you, for you.</p>
             </div>
         </div>
-    </main>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq2">
+            <label class="faq-question" for="faq2">Can CypherBird see my media?</label>
+            <div class="faq-answer">
+                <p>No. Encryption happens <strong>locally</strong> on your device before it ever reaches our Vault. To our servers, your data looks like a "Sovereign Payload"—meaningless noise that can only be decrypted by your specific hardware and key.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq3">
+            <label class="faq-question" for="faq3">How is illegal content managed?</label>
+            <div class="faq-answer">
+                <p>We use a <strong>Client-Side Integrity Algorithm</strong>. Before encryption, your device locally checks for prohibited material (illegal or underage content). If a violation is detected, the engine will refuse to encrypt the file. We do not see your data, but we do not protect illegal acts.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq4">
+            <label class="faq-question" for="faq4">Why is there a subscription fee?</label>
+            <div class="faq-answer">
+                <p>Privacy is not a commodity, but maintaining a secure, unhackable infrastructure has costs. Your subscription funds server maintenance, constant security hardening, and ensures that <strong>you</strong> are the customer, not the product.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <input type="checkbox" id="faq5">
+            <label class="faq-question" for="faq5">Is the 'Handshake' secure?</label>
+            <div class="faq-answer">
+                <p>Yes. The Handshake is an <strong>RSA hardware-bound protocol</strong>. When you add a contact, you are creating a verified trust-link. This prevents man-in-the-middle attacks and ensures that only your intended recipient can ever view your shared payloads.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Need more technical assistance?</p>
+        <a href="mailto:support@cypherbird.io" class="contact-btn">Email Technical Support</a>
+        <p style="margin-top: 40px;">&copy; 2026 CypherBird. Your Media. Your Sovereignty.</p>
+    </footer>
+</div>
 
 </body>
 </html>
