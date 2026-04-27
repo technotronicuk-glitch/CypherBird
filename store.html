@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol | Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #050505; color: white; }
@@ -10,124 +11,158 @@
         .border-borders { border-color: #1a1a1a; }
         .text-cobalt { color: #4484ff; }
         .bg-cobalt { background-color: #4484ff; }
+        /* Custom scrollbar for terminal feel */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
     </style>
 </head>
 <body class="font-sans antialiased">
 
-    <header class="py-10 border-b border-borders text-center">
-        <h1 class="text-3xl font-black italic uppercase tracking-tighter mb-6">Protocol_Configuration</h1>
+    <div class="fixed top-8 left-8 z-50">
+        <a href="index.html" class="flex items-center text-zinc-500 hover:text-white font-mono text-[9px] uppercase tracking-[0.3em] transition-all group">
+            <span class="mr-3 group-hover:-translate-x-1 transition-transform">←</span>
+            <span class="border-b border-transparent group-hover:border-white pb-1">[ BACK_TO_DASHBOARD ]</span>
+        </a>
+    </div>
+
+    <header class="py-16 border-b border-borders text-center relative">
+        <h1 class="text-4xl font-black italic uppercase tracking-tighter mb-6">Protocol_Configuration</h1>
         
         <div class="flex items-center justify-center space-x-4">
             <span class="text-zinc-500 font-mono text-[10px] uppercase">Monthly</span>
-            <button class="w-12 h-6 bg-zinc-800 rounded-full p-1 relative transition">
+            <button class="w-12 h-6 bg-zinc-900 rounded-full p-1 relative transition border border-zinc-800">
                 <div class="bg-cobalt w-4 h-4 rounded-full shadow-lg"></div>
             </button>
             <span class="text-white font-mono text-[10px] uppercase font-bold tracking-widest">Yearly (Save €20+)</span>
         </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-8 py-16">
+    <main class="max-w-6xl mx-auto px-8 py-20">
         
-        <section class="mb-24">
-            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-10">Step_01: Select_Core_Protocol</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="bg-surface border-2 border-borders p-8 rounded-2xl hover:border-zinc-700 transition cursor-pointer">
-                    <div class="h-32 w-full bg-zinc-900 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
-                        <span class="text-zinc-800 text-[10px] font-mono">[IMAGE_PLACEHOLDER]</span>
+        <section class="mb-32">
+            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_01: Select_Core_Protocol</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <div class="bg-surface border-2 border-borders p-10 rounded-3xl hover:border-zinc-700 transition-all duration-500 cursor-pointer group">
+                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-8 flex items-center justify-center overflow-hidden border border-borders">
+                        <img src="Free Chat.png" alt="Standard" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <h3 class="text-white font-black italic uppercase">Standard</h3>
-                    <p class="text-zinc-500 text-[10px] mt-2 italic">€0.00 / mo</p>
+                    <h3 class="text-white font-black italic uppercase text-xl">Standard</h3>
+                    <p class="text-zinc-500 font-mono text-[10px] mt-2 italic tracking-widest uppercase">€0.00 / mo</p>
                 </div>
 
-                <div class="bg-black border-2 border-cobalt p-8 rounded-2xl shadow-2xl shadow-cobalt/10 cursor-pointer relative">
-                    <div class="absolute -top-3 right-4 bg-cobalt text-white text-[8px] px-3 py-0.5 italic font-black uppercase">Active</div>
-                    <div class="h-32 w-full bg-zinc-900 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
-                        <span class="text-zinc-800 text-[10px] font-mono">[IMAGE_PLACEHOLDER]</span>
+                <div class="bg-black border-2 border-cobalt p-10 rounded-3xl shadow-2xl shadow-cobalt/20 cursor-pointer relative md:-mt-4 md:mb-4 group">
+                    <div class="absolute -top-3 right-8 bg-cobalt text-white text-[9px] px-4 py-1 italic font-black uppercase tracking-widest">Active_Selection</div>
+                    <div class="h-48 w-full bg-zinc-900 rounded-2xl mb-8 flex items-center justify-center overflow-hidden">
+                        <img src="Ultra Chat.png" alt="Ultra" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <h3 class="text-white font-black italic uppercase">Ultra</h3>
-                    <p class="text-zinc-500 text-[10px] mt-2 italic">€8.99 / mo</p>
+                    <h3 class="text-white font-black italic uppercase text-xl text-cobalt">Ultra_Protocol</h3>
+                    <p class="text-zinc-400 font-mono text-[10px] mt-2 italic tracking-widest uppercase font-bold">€8.99 / mo</p>
                 </div>
 
-                <div class="bg-surface border-2 border-borders p-8 rounded-2xl hover:border-zinc-700 transition cursor-pointer">
-                    <div class="h-32 w-full bg-zinc-900 rounded-xl mb-6 flex items-center justify-center overflow-hidden">
-                        <span class="text-zinc-800 text-[10px] font-mono">[IMAGE_PLACEHOLDER]</span>
+                <div class="bg-surface border-2 border-borders p-10 rounded-3xl hover:border-zinc-700 transition-all duration-500 cursor-pointer group">
+                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-8 flex items-center justify-center overflow-hidden border border-borders">
+                        <img src="elite-icon.png" alt="Elite Chat.png" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-500">
                     </div>
-                    <h3 class="text-white font-black italic uppercase">Elite</h3>
-                    <p class="text-zinc-500 text-[10px] mt-2 italic">€3.99 / mo</p>
+                    <h3 class="text-white font-black italic uppercase text-xl">Elite_Grade</h3>
+                    <p class="text-zinc-500 font-mono text-[10px] mt-2 italic tracking-widest uppercase">€3.99 / mo</p>
                 </div>
             </div>
         </section>
 
-        <section class="mb-24">
-            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-10">Step_02: Deploy_Cloud_Vault</h2>
+        <section class="mb-32">
+            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_02: Deploy_Cloud_Vault</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="flex bg-surface border border-borders rounded-3xl p-6 hover:border-cobalt transition group">
-                    <div class="w-1/3 h-40 bg-zinc-900 rounded-2xl mr-6 flex items-center justify-center">
-                         <span class="text-zinc-800 text-[8px] font-mono">[VAULT_IMG]</span>
+                
+                <div class="flex bg-surface border border-borders rounded-[2.5rem] p-8 hover:border-cobalt transition-all duration-500 group">
+                    <div class="w-2/5 h-48 bg-zinc-950 rounded-3xl mr-8 flex items-center justify-center overflow-hidden border border-borders">
+                         <img src="Vault 50Gb.png" alt="Alpha Vault" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700">
                     </div>
-                    <div class="w-2/3 flex flex-col justify-center">
-                        <h4 class="text-white font-black italic uppercase text-xl">Alpha Vault</h4>
-                        <p class="text-zinc-500 text-[10px] uppercase tracking-widest mt-1 italic">50MB STORAGE_EXPANSION</p>
-                        <div class="mt-6 flex items-baseline gap-2">
-                            <span class="text-white font-black text-2xl">€4.99</span>
-                            <span class="text-zinc-500 text-[10px]">/ mo</span>
+                    <div class="w-3/5 flex flex-col justify-center">
+                        <h4 class="text-white font-black italic uppercase text-2xl">Alpha_Vault</h4>
+                        <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-2 italic">50MB STORAGE_UNIT</p>
+                        <div class="mt-8 flex items-baseline gap-2">
+                            <span class="text-white font-black text-3xl italic">€4.99</span>
+                            <span class="text-zinc-600 font-mono text-[10px]">/ MONTHLY</span>
                         </div>
-                        <button class="mt-4 border border-zinc-700 py-2 text-[10px] font-bold uppercase tracking-widest group-hover:bg-white group-hover:text-black transition">Add_to_Protocol</button>
+                        <button class="mt-6 border border-zinc-800 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] group-hover:bg-white group-hover:text-black transition-all">Add_Expansion</button>
                     </div>
                 </div>
 
-                <div class="flex bg-surface border border-borders rounded-3xl p-6 hover:border-cobalt transition group">
-                    <div class="w-1/3 h-40 bg-zinc-900 rounded-2xl mr-6 flex items-center justify-center">
-                         <span class="text-zinc-800 text-[8px] font-mono">[VAULT_IMG]</span>
+                <div class="flex bg-surface border border-borders rounded-[2.5rem] p-8 hover:border-cobalt transition-all duration-500 group">
+                    <div class="w-2/5 h-48 bg-zinc-950 rounded-3xl mr-8 flex items-center justify-center overflow-hidden border border-borders">
+                         <img src="vault-deep.png" alt="Vault 200Gb.png" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700">
                     </div>
-                    <div class="w-2/3 flex flex-col justify-center">
-                        <h4 class="text-white font-black italic uppercase text-xl">Deep Vault</h4>
-                        <p class="text-zinc-500 text-[10px] uppercase tracking-widest mt-1 italic">200GB STORAGE_EXPANSION</p>
-                        <div class="mt-6 flex items-baseline gap-2">
-                            <span class="text-white font-black text-2xl">€19.99</span>
-                            <span class="text-zinc-500 text-[10px]">/ mo</span>
+                    <div class="w-3/5 flex flex-col justify-center">
+                        <h4 class="text-white font-black italic uppercase text-2xl">Deep_Vault</h4>
+                        <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-2 italic">200GB STORAGE_UNIT</p>
+                        <div class="mt-8 flex items-baseline gap-2">
+                            <span class="text-white font-black text-3xl italic">€19.99</span>
+                            <span class="text-zinc-600 font-mono text-[10px]">/ MONTHLY</span>
                         </div>
-                        <button class="mt-4 border border-zinc-700 py-2 text-[10px] font-bold uppercase tracking-widest group-hover:bg-white group-hover:text-black transition">Add_to_Protocol</button>
+                        <button class="mt-6 border border-zinc-800 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] group-hover:bg-white group-hover:text-black transition-all">Add_Expansion</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-40">
-            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-10">Step_03: Individual_Top_Ups (One_Time)</h2>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="bg-surface border border-borders p-6 rounded-2xl text-center hover:border-cobalt cursor-pointer transition">
-                    <div class="text-white font-black text-lg mb-1">500MB</div>
-                    <div class="text-cobalt text-[10px] font-mono uppercase mb-4">€1.99</div>
-                    <div class="text-zinc-600 text-[8px] uppercase tracking-widest">[ + ADD ]</div>
-                </div>
-                <div class="bg-surface border border-borders p-6 rounded-2xl text-center hover:border-cobalt cursor-pointer transition">
-                    <div class="text-white font-black text-lg mb-1">1GB</div>
-                    <div class="text-cobalt text-[10px] font-mono uppercase mb-4">€2.99</div>
-                    <div class="text-zinc-600 text-[8px] uppercase tracking-widest">[ + ADD ]</div>
-                </div>
-                <div class="bg-surface border border-borders p-6 rounded-2xl text-center hover:border-cobalt cursor-pointer transition">
-                    <div class="text-white font-black text-lg mb-1">5GB</div>
-                    <div class="text-cobalt text-[10px] font-mono uppercase mb-4">€4.99</div>
-                    <div class="text-zinc-600 text-[8px] uppercase tracking-widest">[ + ADD ]</div>
-                </div>
+        <section class="mb-48">
+    <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: Individual_Top_Ups (One_Time)</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-surface border border-borders rounded-3xl hover:border-cobalt transition-all duration-500 group relative overflow-hidden h-72 flex flex-col justify-end p-6 cursor-pointer">
+            <img src="Top-Up 500MB.png" alt="500MB Top Up" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="relative z-10 w-full">
+                <button class="w-full bg-black/60 backdrop-blur-md border border-white/10 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-widest group-hover:bg-cobalt group-hover:border-cobalt transition-all">
+                    [ + ADD_TO_CART ]
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-surface border border-borders rounded-3xl hover:border-cobalt transition-all duration-500 group relative overflow-hidden h-72 flex flex-col justify-end p-6 cursor-pointer">
+            <img src="Top up 1 GB.png" alt="1GB Top Up" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="relative z-10 w-full">
+                <button class="w-full bg-black/60 backdrop-blur-md border border-white/10 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-widest group-hover:bg-cobalt group-hover:border-cobalt transition-all">
+                    [ + ADD_TO_CART ]
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-surface border border-borders rounded-3xl hover:border-cobalt transition-all duration-500 group relative overflow-hidden h-72 flex flex-col justify-end p-6 cursor-pointer">
+            <img src="5gb-topup.png" alt="Top-Up 5GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            
+            <div class="relative z-10 w-full">
+                <button class="w-full bg-black/60 backdrop-blur-md border border-white/10 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-widest group-hover:bg-cobalt group-hover:border-cobalt transition-all">
+                    [ + ADD_TO_CART ]
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
             </div>
         </section>
     </main>
 
-    <footer class="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-md border-t border-cobalt/30 py-6 px-10 z-50">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+    <footer class="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-xl border-t border-cobalt/30 py-8 px-12 z-50">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-                <p class="text-zinc-500 font-mono text-[9px] uppercase tracking-widest">Current_Selection</p>
-                <h4 class="text-white font-black italic uppercase">Ultra Protocol <span class="text-cobalt">+ Deep Vault</span></h4>
+                <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.3em] mb-1 italic">Active_Configuration</p>
+                <h4 class="text-white font-black italic uppercase text-lg tracking-tight">
+                    Ultra_Protocol <span class="text-cobalt mx-2">+</span> Deep_Vault <span class="text-zinc-700 mx-2 text-sm italic">(Monthly)</span>
+                </h4>
             </div>
-            <div class="flex items-center gap-8">
+            <div class="flex items-center gap-10">
                 <div class="text-right">
-                    <p class="text-zinc-500 font-mono text-[9px] uppercase">Total_Due</p>
-                    <div class="text-white text-3xl font-black italic">€28.98</div>
+                    <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-widest mb-1">Estimated_Total</p>
+                    <div class="text-white text-4xl font-black italic tracking-tighter">€28.98</div>
                 </div>
-                <button class="bg-cobalt text-white px-10 py-4 font-black italic uppercase tracking-widest hover:bg-blue-400 transition shadow-lg shadow-cobalt/20">
-                    Review_Final_Order
+                <button class="bg-cobalt text-white px-12 py-5 font-black italic uppercase tracking-[0.2em] text-[11px] hover:bg-blue-400 transition-all shadow-2xl shadow-cobalt/20 active:scale-95">
+                    Initialize_Checkout
                 </button>
             </div>
         </div>
