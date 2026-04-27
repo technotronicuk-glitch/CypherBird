@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocol | Store</title>
+    <title>Protocol | Configuration Store</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background-color: #050505; color: white; }
@@ -11,30 +11,28 @@
         .border-borders { border-color: #1a1a1a; }
         .text-cobalt { color: #4484ff; }
         .bg-cobalt { background-color: #4484ff; }
-        /* Custom scrollbar for terminal feel */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased pb-40">
 
     <div class="fixed top-8 left-8 z-50">
         <a href="index.html" class="flex items-center text-zinc-500 hover:text-white font-mono text-[9px] uppercase tracking-[0.3em] transition-all group">
             <span class="mr-3 group-hover:-translate-x-1 transition-transform">←</span>
-            <span class="border-b border-transparent group-hover:border-white pb-1">[ BACK_TO_DASHBOARD ]</span>
+            <span>[ BACK_TO_DASHBOARD ]</span>
         </a>
     </div>
 
-    <header class="py-16 border-b border-borders text-center relative">
+    <header class="py-16 border-b border-borders text-center">
         <h1 class="text-4xl font-black italic uppercase tracking-tighter mb-6">Protocol_Configuration</h1>
-        
         <div class="flex items-center justify-center space-x-4">
-            <span class="text-zinc-500 font-mono text-[10px] uppercase">Monthly</span>
-            <button class="w-12 h-6 bg-zinc-900 rounded-full p-1 relative transition border border-zinc-800">
-                <div class="bg-cobalt w-4 h-4 rounded-full shadow-lg"></div>
+            <span id="label-monthly" class="text-white font-mono text-[10px] uppercase font-bold">Monthly</span>
+            <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-900 rounded-full p-1 relative border border-zinc-800">
+                <div id="toggle-knob" class="bg-cobalt w-4 h-4 rounded-full transition-transform duration-300 translate-x-0"></div>
             </button>
-            <span class="text-white font-mono text-[10px] uppercase font-bold tracking-widest">Yearly (Save €20+)</span>
+            <span id="label-yearly" class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">Yearly (Save €20+)</span>
         </div>
     </header>
 
@@ -43,30 +41,31 @@
         <section class="mb-32">
             <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_01: Select_Core_Protocol</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                
-                <div class="bg-surface border-2 border-borders p-10 rounded-3xl hover:border-zinc-700 transition-all duration-500 cursor-pointer group">
-                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-8 flex items-center justify-center overflow-hidden border border-borders">
-                        <img src="Free chat.png" alt="Standard" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-500">
+                <div id="card-standard" onclick="selectProtocol('Standard', 0)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-500 transition-all group relative">
+                    <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
+                        <img id="img-standard" src="Free chat.png" class="w-full h-full object-contain p-6">
                     </div>
                     <h3 class="text-white font-black italic uppercase text-xl">Standard</h3>
-                    <p class="text-zinc-500 font-mono text-[10px] mt-2 italic tracking-widest uppercase">€0.00 / mo</p>
+                    <p class="text-zinc-500 font-mono text-[10px] mt-2 uppercase">€0.00</p>
                 </div>
 
-                <div class="bg-black border-2 border-cobalt p-10 rounded-3xl shadow-2xl shadow-cobalt/20 cursor-pointer relative md:-mt-4 md:mb-4 group">
-                    <div class="absolute -top-3 right-8 bg-cobalt text-white text-[9px] px-4 py-1 italic font-black uppercase tracking-widest">Active_Selection</div>
-                    <div class="h-48 w-full bg-zinc-900 rounded-2xl mb-8 flex items-center justify-center overflow-hidden">
-                        <img src="Ultra Chat.png" alt="Ultra" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-500">
+                <div id="card-ultra" onclick="selectProtocol('Ultra', 8.99, 99.99)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-cobalt transition-all group relative">
+                    <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
+                        <img id="img-ultra" src="Ultra Chat.png" class="w-full h-full object-contain p-6">
                     </div>
-                    <h3 class="text-white font-black italic uppercase text-xl text-cobalt">Ultra_Protocol</h3>
-                    <p class="text-zinc-400 font-mono text-[10px] mt-2 italic tracking-widest uppercase font-bold">€8.99 / mo</p>
+                    <h3 class="text-white font-black italic uppercase text-xl">Ultra_Protocol</h3>
+                    <p id="price-ultra" class="text-zinc-500 font-mono text-[10px] mt-2 uppercase">€8.99 / mo</p>
                 </div>
 
-                <div class="bg-surface border-2 border-borders p-10 rounded-3xl hover:border-zinc-700 transition-all duration-500 cursor-pointer group">
-                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-8 flex items-center justify-center overflow-hidden border border-borders">
-                        <img src="Elite Chat.png" alt="Elite Chat.png" class="w-full h-full object-contain p-6 group-hover:scale-110 transition-transform duration-500">
+                <div id="card-elite" onclick="selectProtocol('Elite', 3.99, 39.99)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-500 transition-all group relative">
+                    <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
+                        <img id="img-elite" src="Elite Chat.png" class="w-full h-full object-contain p-6">
                     </div>
                     <h3 class="text-white font-black italic uppercase text-xl">Elite_Grade</h3>
-                    <p class="text-zinc-500 font-mono text-[10px] mt-2 italic tracking-widest uppercase">€3.99 / mo</p>
+                    <p id="price-elite" class="text-zinc-500 font-mono text-[10px] mt-2 uppercase">€3.99 / mo</p>
                 </div>
             </div>
         </section>
@@ -74,95 +73,119 @@
         <section class="mb-32">
             <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_02: Deploy_Cloud_Vault</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                
-                <div class="flex bg-surface border border-borders rounded-[2.5rem] p-8 hover:border-cobalt transition-all duration-500 group">
-                    <div class="w-2/5 h-48 bg-zinc-950 rounded-3xl mr-8 flex items-center justify-center overflow-hidden border border-borders">
-                         <img src="Vault 50Gb.png" alt="Alpha Vault" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700">
+                <div id="card-alpha" onclick="selectVault('Alpha', 4.99, 49.89)" class="flex bg-surface border border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-white transition-all group relative">
+                    <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="w-1/3 h-40 bg-zinc-950 rounded-2xl mr-6 overflow-hidden">
+                        <img id="img-alpha" src="Vault 50Gb.png" class="w-full h-full object-contain p-4">
                     </div>
-                    <div class="w-3/5 flex flex-col justify-center">
-                        <h4 class="text-white font-black italic uppercase text-2xl">Alpha_Vault</h4>
-                        <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-2 italic">50MB STORAGE_UNIT</p>
-                        <div class="mt-8 flex items-baseline gap-2">
-                            <span class="text-white font-black text-3xl italic">€4.99</span>
-                            <span class="text-zinc-600 font-mono text-[10px]">/ MONTHLY</span>
-                        </div>
-                        <button class="mt-6 border border-zinc-800 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] group-hover:bg-white group-hover:text-black transition-all">Add_Expansion</button>
+                    <div class="w-2/3 flex flex-col justify-center">
+                        <h4 class="text-white font-black italic uppercase text-xl">Alpha_Vault</h4>
+                        <p id="price-alpha" class="text-zinc-500 font-mono text-[10px] mt-2">€4.99 / mo</p>
                     </div>
                 </div>
 
-                <div class="flex bg-surface border border-borders rounded-[2.5rem] p-8 hover:border-cobalt transition-all duration-500 group">
-                    <div class="w-2/5 h-48 bg-zinc-950 rounded-3xl mr-8 flex items-center justify-center overflow-hidden border border-borders">
-                         <img src="Vault 200Gb.png" alt="Deep Vault" class="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-700">
+                <div id="card-deep" onclick="selectVault('Deep', 19.99, 109.99)" class="flex bg-surface border border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-white transition-all group relative">
+                    <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="w-1/3 h-40 bg-zinc-950 rounded-2xl mr-6 overflow-hidden">
+                        <img id="img-deep" src="Vault 200Gb.png" class="w-full h-full object-contain p-4">
                     </div>
-                    <div class="w-3/5 flex flex-col justify-center">
-                        <h4 class="text-white font-black italic uppercase text-2xl">Deep_Vault</h4>
-                        <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-2 italic">200GB STORAGE_UNIT</p>
-                        <div class="mt-8 flex items-baseline gap-2">
-                            <span class="text-white font-black text-3xl italic">€19.99</span>
-                            <span class="text-zinc-600 font-mono text-[10px]">/ MONTHLY</span>
-                        </div>
-                        <button class="mt-6 border border-zinc-800 py-3 rounded-lg text-[10px] font-black uppercase tracking-[0.2em] group-hover:bg-white group-hover:text-black transition-all">Add_Expansion</button>
+                    <div class="w-2/3 flex flex-col justify-center">
+                        <h4 class="text-white font-black italic uppercase text-xl">Deep_Vault</h4>
+                        <p id="price-deep" class="text-zinc-500 font-mono text-[10px] mt-2">€19.99 / mo</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="mb-48">
-    <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: Individual_Top_Ups (One_Time)</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
-        <div class="bg-surface border border-borders rounded-3xl hover:border-cobalt transition-all duration-500 group relative overflow-hidden h-72 flex flex-col justify-end p-6 cursor-pointer">
-            <img src="Top-Up 500MB.png" alt="500MB Top Up" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            
-            <div class="relative z-10 w-full">
-                <button class="w-full bg-black/60 backdrop-blur-md border border-white/10 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-widest group-hover:bg-cobalt group-hover:border-cobalt transition-all">
-                    [ + ADD_TO_CART ]
-                </button>
-            </div>
-        </div>
-
-        <div class="bg-surface border border-borders rounded-3xl hover:border-cobalt transition-all duration-500 group relative overflow-hidden h-72 flex flex-col justify-end p-6 cursor-pointer">
-            <img src="Top up 1 GB.png" alt="1GB Top Up" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            
-            <div class="relative z-10 w-full">
-                <button class="w-full bg-black/60 backdrop-blur-md border border-white/10 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-widest group-hover:bg-cobalt group-hover:border-cobalt transition-all">
-                    [ + ADD_TO_CART ]
-                </button>
-            </div>
-        </div>
-
-        <div class="bg-surface border border-borders rounded-3xl hover:border-cobalt transition-all duration-500 group relative overflow-hidden h-72 flex flex-col justify-end p-6 cursor-pointer">
-            <img src="Top-Up 5GB.png" alt="Top-Up 5GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            
-            <div class="relative z-10 w-full">
-                <button class="w-full bg-black/60 backdrop-blur-md border border-white/10 py-3 rounded-xl text-white text-[10px] font-black uppercase tracking-widest group-hover:bg-cobalt group-hover:border-cobalt transition-all">
-                    [ + ADD_TO_CART ]
-                </button>
-            </div>
-
-            </div>
-        </section>
     </main>
 
-    <footer class="fixed bottom-0 left-0 w-full bg-black/80 backdrop-blur-xl border-t border-cobalt/30 py-8 px-12 z-50">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-2xl border-t border-cobalt/30 py-8 px-12 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div>
-                <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.3em] mb-1 italic">Active_Configuration</p>
-                <h4 class="text-white font-black italic uppercase text-lg tracking-tight">
-                    Ultra_Protocol <span class="text-cobalt mx-2">+</span> Deep_Vault <span class="text-zinc-700 mx-2 text-sm italic">(Monthly)</span>
+                <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-widest mb-1 italic">Active_Configuration</p>
+                <h4 id="selection-summary" class="text-white font-black italic uppercase text-lg">
+                    No Protocol Selected <span class="text-zinc-800 mx-2">+</span> No Vault
                 </h4>
             </div>
-            <div class="flex items-center gap-10">
+            <div class="flex items-center gap-12">
                 <div class="text-right">
-                    <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-widest mb-1">Estimated_Total</p>
-                    <div class="text-white text-4xl font-black italic tracking-tighter">€28.98</div>
+                    <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-widest">Total_Investment</p>
+                    <div id="display-total" class="text-white text-4xl font-black italic tracking-tighter">€0.00</div>
                 </div>
-                <button class="bg-cobalt text-white px-12 py-5 font-black italic uppercase tracking-[0.2em] text-[11px] hover:bg-blue-400 transition-all shadow-2xl shadow-cobalt/20 active:scale-95">
-                    Initialize_Checkout
-                </button>
+                <button class="bg-cobalt text-white px-10 py-4 font-black italic uppercase tracking-widest text-[11px] hover:bg-blue-400 transition-all">Initialize_Checkout</button>
             </div>
         </div>
     </footer>
 
+    <script>
+        let isYearly = false;
+        let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
+        let selectedVault = { name: null, priceM: 0, priceY: 0 };
+
+        function toggleBilling() {
+            isYearly = !isYearly;
+            document.getElementById('toggle-knob').style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
+            document.getElementById('label-monthly').className = isYearly ? 'text-zinc-500 font-mono text-[10px] uppercase' : 'text-white font-mono text-[10px] uppercase font-bold';
+            document.getElementById('label-yearly').className = isYearly ? 'text-white font-mono text-[10px] uppercase font-bold' : 'text-zinc-500 font-mono text-[10px] uppercase tracking-widest';
+            
+            // Swap Prices and Images (Add your yearly filenames here)
+            document.getElementById('price-ultra').innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
+            document.getElementById('price-elite').innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
+            document.getElementById('price-alpha').innerText = isYearly ? "€49.89 / yr" : "€4.99 / mo";
+            document.getElementById('price-deep').innerText = isYearly ? "€109.99 / yr" : "€19.99 / mo";
+            
+            if(isYearly) {
+                document.getElementById('img-ultra').src = "Ultra Annual Package.png";
+                document.getElementById('img-elite').src = "Elite Annual Package.png";
+                document.getElementById('img-alpha').src = "AlphaVault Yearly.png";
+                document.getElementById('img-deep').src = "DeepVault Yearly.png";
+            } else {
+                document.getElementById('img-ultra').src = "Ultra Chat.png";
+                document.getElementById('img-elite').src = "Elite Chat.png";
+                document.getElementById('img-alpha').src = "Vault 50Gb.png";
+                document.getElementById('img-deep').src = "Vault 200Gb.png";
+            }
+            updateUI();
+        }
+
+        function selectProtocol(name, priceM, priceY = 0) {
+            // Reset borders
+            ['standard', 'ultra', 'elite'].forEach(id => document.getElementById('card-'+id).classList.replace('border-cobalt', 'border-borders'));
+            
+            selectedProtocol = { name, priceM, priceY };
+            document.getElementById('card-' + name.toLowerCase().split('_')[0]).classList.replace('border-borders', 'border-cobalt');
+            updateUI();
+        }
+
+        function selectVault(name, priceM, priceY) {
+            ['alpha', 'deep'].forEach(id => document.getElementById('card-'+id).classList.replace('border-white', 'border-borders'));
+            
+            selectedVault = { name, priceM, priceY };
+            document.getElementById('card-' + name.toLowerCase()).classList.replace('border-borders', 'border-white');
+            updateUI();
+        }
+
+        function removeProtocol() {
+            selectedProtocol = { name: null, priceM: 0, priceY: 0 };
+            ['standard', 'ultra', 'elite'].forEach(id => document.getElementById('card-'+id).classList.replace('border-cobalt', 'border-borders'));
+            updateUI();
+        }
+
+        function removeVault() {
+            selectedVault = { name: null, priceM: 0, priceY: 0 };
+            ['alpha', 'deep'].forEach(id => document.getElementById('card-'+id).classList.replace('border-white', 'border-borders'));
+            updateUI();
+        }
+
+        function updateUI() {
+            const pName = selectedProtocol.name || "No Protocol";
+            const vName = selectedVault.name || "No Vault";
+            const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
+            const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
+            
+            document.getElementById('selection-summary').innerHTML = `${pName} <span class="text-cobalt mx-2">+</span> ${vName} Vault <span class="text-zinc-700 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
+            document.getElementById('display-total').innerText = `€${(pPrice + vPrice).toFixed(2)}`;
+        }
+    </script>
 </body>
 </html>
