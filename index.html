@@ -131,47 +131,57 @@
     </section>
 
     <section id="pricing" class="py-32 bg-base border-t border-borders">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-20">
-                <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
-                <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em]">Subscription_Licensing_Model</p>
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-20">
+            <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
+            <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em]">Subscription_Licensing_Model</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8 items-center">
+            
+            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-500 group cursor-pointer">
+                <h4 class="text-zinc-500 group-hover:text-cobalt font-bold tracking-widest text-xs mb-8 uppercase transition">Tier_01: Standard</h4>
+                <div class="text-5xl text-white font-black mb-8 italic">€0.00</div>
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
+                    <li>[✓] Photo Vault</li>
+                    <li>[✕] No Video Support</li>
+                    <li>[✓] Standard Scrambling</li>
+                </ul>
+                <button class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition">SELECT_BASE</button>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition">
-                    <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
-                    <div class="text-5xl text-white font-black mb-8 italic">$0.00</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                        <li>[✓] Photo Vault</li>
-                        <li>[✕] No Video Support</li>
-                        <li>[✓] Standard Scrambling</li>
-                    </ul>
-                    <a href="portal.html" class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest hover:bg-white hover:text-black transition">INITIALIZE</a>
-                </div>
-
-                <div class="bg-black border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl shadow-cobalt/20 z-10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
-                    <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Protocol</h4>
-                    <div class="text-5xl text-white font-black mb-8 italic">$8.99</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-white font-mono uppercase tracking-widest">
-                        <li>[✓] Unlimited 4K Scrambling</li>
-                        <li>[✓] 10GB Zero-Cloud Backup</li>
-                        <li>[✓] Priority Neural Support</li>
-                    </ul>
-                    <a href="ultra.html" class="block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition shadow-lg">ACTIVATE_ULTRA</a>
-                </div>
-
-                <div class="bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition">
-                    <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Elite Grade</h4>
-                    <div class="text-5xl text-white font-black mb-8 italic">$3.99</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                        <li>[✓] Bulk Scrambling</li>
-                        <li>[✓] 2GB Secure Backup</li>
-                        <li>[✓] Video Encryption</li>
-                    </ul>
-                    <a href="elite.html" class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest hover:bg-white hover:text-black transition">UPGRADE</a>
-                </div>
+            <div class="protocol-card bg-black border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl shadow-cobalt/20 z-10 cursor-pointer group">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
+                <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Protocol</h4>
+                <div class="text-5xl text-white font-black mb-8 italic">€8.99</div>
+                <ul class="text-[10px] space-y-4 mb-12 text-white font-mono uppercase tracking-widest">
+                    <li>[✓] Unlimited 4K Scrambling</li>
+                    <li>[✓] 10GB Zero-Cloud Backup</li>
+                    <li>[✓] Priority Neural Support</li>
+                </ul>
+                <button class="block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition shadow-lg">SELECT_ULTRA</button>
             </div>
+
+            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-500 group cursor-pointer">
+                <h4 class="text-zinc-500 group-hover:text-cobalt font-bold tracking-widest text-xs mb-8 uppercase transition">Tier_02: Elite Grade</h4>
+                <div class="text-5xl text-white font-black mb-8 italic">€3.99</div>
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
+                    <li>[✓] Bulk Scrambling</li>
+                    <li>[✓] 2GB Secure Backup</li>
+                    <li>[✓] Video Encryption</li>
+                </ul>
+                <button class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition">SELECT_ELITE</button>
+            </div>
+        </div>
+
+        <div class="mt-24 text-center border-t border-borders pt-12">
+            <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mb-6">Need individual modules or storage?</p>
+            <a href="#store" class="text-white hover:text-cobalt font-black italic uppercase tracking-tighter text-2xl transition-all">
+                Visit_The_Protocol_Store <span class="ml-2">→</span>
+            </a>
+        </div>
+    </div>
+</section>
         </div>
     </section>
 </main>
