@@ -130,61 +130,198 @@
         </div>
     </section>
 
-    <section id="pricing" class="py-32 bg-base border-t border-borders">
+    <section id="commitments" class="py-24 bg-base border-t border-borders">
     <div class="max-w-7xl mx-auto px-8">
-        <div class="text-center mb-20">
-            <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
-            <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em]">Subscription_Licensing_Model</p>
+        
+        <div class="mb-16">
+            <h2 class="text-white text-3xl font-black italic uppercase tracking-tighter">Our_Commitments</h2>
+            <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em]">Core_Operational_Values</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 items-center">
+        <div class="grid md:grid-cols-3 gap-12">
             
-            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-500 group cursor-pointer">
-                <h4 class="text-zinc-500 group-hover:text-cobalt font-bold tracking-widest text-xs mb-8 uppercase transition">Tier_01: Standard</h4>
-                <div class="text-5xl text-white font-black mb-8 italic">€0.00</div>
+            <div class="group">
+                <div class="w-12 h-1px bg-cobalt mb-6 group-hover:w-full transition-all duration-700"></div>
+                <h3 class="text-white font-black italic uppercase text-xl mb-4 tracking-tight">Zero_Knowledge</h3>
+                <p class="text-zinc-500 font-mono text-[11px] leading-relaxed mb-8 uppercase tracking-widest">
+                    We cannot see your data. Our architecture ensures that decryption keys never leave your local device. Absolute privacy by design.
+                </p>
+                <a href="commitments.html#zero-knowledge" class="text-cobalt font-mono text-[9px] uppercase tracking-[0.3em] flex items-center hover:text-white transition">
+                    [ LEARN_MORE ] <span class="ml-2">→</span>
+                </a>
+            </div>
+
+            <div class="group">
+                <div class="w-12 h-1px bg-cobalt mb-6 group-hover:w-full transition-all duration-700"></div>
+                <h3 class="text-white font-black italic uppercase text-xl mb-4 tracking-tight">Ethics_&_Morality</h3>
+                <p class="text-zinc-500 font-mono text-[11px] leading-relaxed mb-8 uppercase tracking-widest">
+                    Data integrity is a human right. We operate outside of standard data-mining practices to protect individual digital sovereignty.
+                </p>
+                <a href="commitments.html#ethics" class="text-cobalt font-mono text-[9px] uppercase tracking-[0.3em] flex items-center hover:text-white transition">
+                    [ LEARN_MORE ] <span class="ml-2">→</span>
+                </a>
+            </div>
+
+            <div class="group">
+                <div class="w-12 h-1px bg-cobalt mb-6 group-hover:w-full transition-all duration-700"></div>
+                <h3 class="text-white font-black italic uppercase text-xl mb-4 tracking-tight">Digital_Hardening</h3>
+                <p class="text-zinc-500 font-mono text-[11px] leading-relaxed mb-8 uppercase tracking-widest">
+                    Infrastructure designed to withstand systemic failures. Your vault remains accessible even when central nodes go offline.
+                </p>
+                <a href="commitments.html#hardening" class="text-cobalt font-mono text-[9px] uppercase tracking-[0.3em] flex items-center hover:text-white transition">
+                    [ LEARN_MORE ] <span class="ml-2">→</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+    <section id="pricing" class="py-32 bg-base border-t border-borders">
+    <div class="max-w-7xl mx-auto px-8">
+        
+        <div class="text-center mb-16">
+            <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
+            <p class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Subscription_Licensing_Model</p>
+            
+            <div class="flex items-center justify-center gap-4">
+                <span id="monthly-label" class="text-white font-mono text-[10px] uppercase tracking-widest">Monthly</span>
+                <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-900 rounded-full p-1 relative border border-zinc-800">
+                    <div id="toggle-knob" class="bg-cobalt w-4 h-4 rounded-full transition-all duration-300 transform translate-x-0"></div>
+                </button>
+                <span id="yearly-label" class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">Yearly (-20%)</span>
+            </div>
+        </div>
+
+        <div id="protocol-grid" class="grid md:grid-cols-3 gap-8 items-center">
+            
+            <div onclick="selectTier(this)" class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition-all duration-300 cursor-pointer group relative">
+                <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
+                <div class="price-val text-5xl text-white font-black mb-8 italic">€0.00</div>
                 <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
                     <li>[✓] Photo Vault</li>
                     <li>[✕] No Video Support</li>
                     <li>[✓] Standard Scrambling</li>
                 </ul>
-                <button class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition">SELECT_BASE</button>
+                <button class="select-btn block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition uppercase">Initialize</button>
             </div>
 
-            <div class="protocol-card bg-black border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl shadow-cobalt/20 z-10 cursor-pointer group">
-                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
+            <div onclick="selectTier(this)" class="protocol-card bg-black border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl shadow-cobalt/20 z-10 cursor-pointer group">
+                <div class="active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
                 <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Protocol</h4>
-                <div class="text-5xl text-white font-black mb-8 italic">€8.99</div>
+                <div class="price-val text-5xl text-white font-black mb-8 italic">€8.99</div>
                 <ul class="text-[10px] space-y-4 mb-12 text-white font-mono uppercase tracking-widest">
                     <li>[✓] Unlimited 4K Scrambling</li>
                     <li>[✓] 10GB Zero-Cloud Backup</li>
                     <li>[✓] Priority Neural Support</li>
                 </ul>
-                <button class="block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition shadow-lg">SELECT_ULTRA</button>
+                <button class="select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg">Activate_Ultra</button>
             </div>
 
-            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-500 group cursor-pointer">
-                <h4 class="text-zinc-500 group-hover:text-cobalt font-bold tracking-widest text-xs mb-8 uppercase transition">Tier_02: Elite Grade</h4>
-                <div class="text-5xl text-white font-black mb-8 italic">€3.99</div>
+            <div onclick="selectTier(this)" class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition-all duration-300 cursor-pointer group relative">
+                <h4 class="text-zinc-500 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Elite Grade</h4>
+                <div class="price-val text-5xl text-white font-black mb-8 italic">€3.99</div>
                 <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
                     <li>[✓] Bulk Scrambling</li>
                     <li>[✓] 2GB Secure Backup</li>
                     <li>[✓] Video Encryption</li>
                 </ul>
-                <button class="block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition">SELECT_ELITE</button>
+                <button class="select-btn block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition uppercase">Upgrade</button>
             </div>
         </div>
 
-        <div class="mt-24 text-center border-t border-borders pt-12">
-            <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mb-6">Need individual modules or storage?</p>
-            <a href="#store" class="text-white hover:text-cobalt font-black italic uppercase tracking-tighter text-2xl transition-all">
-                Visit_The_Protocol_Store <span class="ml-2">→</span>
+        <div class="mt-24 text-center">
+            <a href="store.html" class="inline-flex items-center text-zinc-500 hover:text-white font-mono text-[10px] uppercase tracking-[0.3em] transition-all group">
+                <span class="border-b border-zinc-800 group-hover:border-white pb-1">Visit_The_Protocol_Store</span>
+                <span class="ml-3 group-hover:translate-x-1 transition-transform">→</span>
             </a>
         </div>
     </div>
 </section>
-        </div>
+
+<script>
+    let isYearly = false;
+
+    function toggleBilling() {
+        isYearly = !isYearly;
+        const knob = document.getElementById('toggle-knob');
+        const mLabel = document.getElementById('monthly-label');
+        const yLabel = document.getElementById('yearly-label');
+        const prices = document.querySelectorAll('.price-val');
+
+        if (isYearly) {
+            knob.classList.replace('translate-x-0', 'translate-x-6');
+            yLabel.classList.replace('text-zinc-500', 'text-white');
+            mLabel.classList.replace('text-white', 'text-zinc-500');
+            // Annual prices from your notes
+            prices[0].innerText = "€0.00";
+            prices[1].innerText = "€99.99";
+            prices[2].innerText = "€39.99";
+        } else {
+            knob.classList.replace('translate-x-6', 'translate-x-0');
+            mLabel.classList.replace('text-zinc-500', 'text-white');
+            yLabel.classList.replace('text-white', 'text-zinc-500');
+            // Monthly prices
+            prices[0].innerText = "€0.00";
+            prices[1].innerText = "€8.99";
+            prices[2].innerText = "€3.99";
+        }
+    }
+
+    function selectTier(element) {
+        document.querySelectorAll('.protocol-card').forEach(card => {
+            card.className = "protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-zinc-700 transition-all duration-300 cursor-pointer group relative";
+            const btn = card.querySelector('.select-btn');
+            btn.className = "select-btn block w-full py-4 text-center border border-borders text-white text-[10px] font-black tracking-widest group-hover:bg-white group-hover:text-black transition uppercase";
+            const tag = card.querySelector('.active-tag');
+            if(tag) tag.remove();
+        });
+
+        element.className = "protocol-card bg-black border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl shadow-cobalt/20 z-10 cursor-pointer group";
+        const activeBtn = element.querySelector('.select-btn');
+        activeBtn.className = "select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg";
+        
+        // Add the floating badge
+        const badge = document.createElement('div');
+        badge.className = "active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest";
+        badge.innerText = "Current Selection";
+        element.appendChild(badge);
+    }
+</script>
     </section>
 </main>
+    <section id="subscribe" class="py-32 bg-black border-t border-borders relative overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cobalt/5 blur-[120px] rounded-full"></div>
+
+    <div class="max-w-3xl mx-auto px-8 text-center relative z-10">
+        <div class="inline-block border border-cobalt/30 px-4 py-1 rounded-full mb-8">
+            <span class="text-cobalt font-mono text-[9px] uppercase tracking-[0.3em] italic">Network_Status: Online</span>
+        </div>
+        
+        <h2 class="text-white text-5xl font-black italic uppercase tracking-tighter mb-6">Join_The_Protocol</h2>
+        <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest mb-12 leading-relaxed">
+            Subscribe to receive critical security updates, new module deployments, and exclusive community access.
+        </p>
+
+        <form class="relative max-w-md mx-auto group">
+            <input 
+                type="email" 
+                placeholder="ENTER_EMAIL_ADDRESS" 
+                class="w-full bg-surface border border-borders py-5 px-6 rounded-xl text-white font-mono text-xs uppercase tracking-widest focus:outline-none focus:border-cobalt transition-all placeholder:text-zinc-700"
+            >
+            <button 
+                type="submit" 
+                class="absolute right-2 top-2 bottom-2 bg-cobalt text-white px-6 rounded-lg font-black italic text-[10px] uppercase tracking-widest hover:bg-blue-400 transition-all active:scale-95"
+            >
+                Initialize
+            </button>
+        </form>
+        
+        <p class="mt-8 text-zinc-700 font-mono text-[8px] uppercase tracking-widest">
+            By joining, you agree to our <a href="#" class="underline hover:text-zinc-500">Encryption_Terms</a>
+        </p>
+    </div>
+</section>
             
 <footer class="bg-base border-t border-borders pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-8">
