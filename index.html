@@ -368,11 +368,11 @@
         </div>
 
         <div class="relative group overflow-hidden bg-surface border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-cobalt transition-all">
-            <img src="Top up 1 GB.png" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
+            <img src="Top up 2 GB.png" class="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
-                        <h3 class="text-white font-black italic text-2xl uppercase">1GB</h3>
+                        <h3 class="text-white font-black italic text-2xl uppercase">2GB</h3>
                         <p class="text-cobalt font-mono text-xs font-bold mt-1">€2.99</p>
                     </div>
                     <button class="bg-white text-black px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-cobalt hover:text-white transition-all shadow-xl">
@@ -465,7 +465,7 @@
                 <h4 class="text-white font-bold opacity-50 mb-2 md:hidden">Social</h4>
                 <div class="flex gap-6 text-xl text-zinc-500">
                     <a href="#" class="hover:text-white transition"><i class="fa-brands fa-whatsapp"></i></a>
-                    <a href="#" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.instagram.com/cypherbird.io" class="hover:text-white transition"><i class="fa-brands fa-instagram"></i></a>
                     <a href="#" class="hover:text-white transition"><i class="fa-brands fa-facebook"></i></a>
                     <a href="#" class="hover:text-white transition"><i class="fa-brands fa-x-twitter"></i></a> 
                 </div>
@@ -476,46 +476,100 @@
 </footer>
 
 <script>
-    // Gallery Slider
+    // --- Gallery Slider (Kept your original logic) ---
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
-    setInterval(() => {
-        slides[currentSlide].style.opacity = 0;
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].style.opacity = 1;
-    }, 5000);
+    if(slides.length > 0) {
+        setInterval(() => {
+            slides[currentSlide].style.opacity = 0;
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].style.opacity = 1;
+        }, 5000);
+    }
 
-    // Chat Logic
+    // --- Enhanced Chat Logic ---
     function toggleChat() {
         const chat = document.getElementById('chat-interface');
         chat.classList.toggle('hidden');
+        
+        // Human Touch: If opening for the first time, say hi!
+        const stream = document.getElementById('chat-stream');
+        if (stream.children.length === 0) {
+            addBotMessage("Hi there! Welcome to CypherBird. 🦅 I can help you with account opening, news, or our ethics. What's on your mind?");
+        }
     }
 
-    function manualQuery() {
-        const input = document.getElementById('user-input');
+    // Helper: Add User Message to UI
+    function addUserMessage(text) {
         const stream = document.getElementById('chat-stream');
+        const uDiv = document.createElement('div');
+        uDiv.className = "p-3 bg-zinc-800 text-right text-white self-end ml-10 rounded-lg mb-2 border-r-4 border-blue-500 shadow-sm";
+        uDiv.innerHTML = `<span class='text-xs block opacity-50 mb-1'>YOU</span> ${text}`;
+        stream.appendChild(uDiv);
+        stream.scrollTop = stream.scrollHeight;
+    }
+
+    // Helper: Add Bot Message with "Typing" feel
+    async function addBotMessage(text) {
+        const stream = document.getElementById('chat-stream');
+        
+        // Create typing indicator
+        const tDiv = document.createElement('div');
+        tDiv.className = "p-3 text-zinc-400 italic text-sm";
+        tDiv.id = "typing-indicator";
+        tDiv.innerText = "CypherBird is typing...";
+        stream.appendChild(tDiv);
+        stream.scrollTop = stream.scrollHeight;
+
+        // Human-like delay
+        await new Promise(res => setTimeout(res, 1000));
+        tDiv.remove();
+
+        const aDiv = document.createElement('div');
+        aDiv.className = "p-3 bg-blue-900/20 border-l-4 border-blue-400 text-zinc-200 mr-10 rounded-lg mb-2 shadow-sm";
+        aDiv.innerHTML = `<span class='text-xs block opacity-50 mb-1 font-bold'>CYPHERBIRD</span> ${text}`;
+        stream.appendChild(aDiv);
+        stream.scrollTop = stream.scrollHeight;
+    }
+
+    async function manualQuery() {
+        const input = document.getElementById('user-input');
         const query = input.value.trim().toLowerCase();
         if (!query) return;
 
-        const uDiv = document.createElement('div');
-        uDiv.className = "p-3 bg-zinc-900 text-right text-zinc-400 self-end ml-10 border-r-2 border-zinc-700";
-        uDiv.innerHTML = `<span class="opacity-30">[OPERATOR]:</span> ${input.value}`;
-        stream.appendChild(uDiv);
+        addUserMessage(input.value); // Show user's original text
+        const originalInput = input.value;
         input.value = '';
-        stream.scrollTop = stream.scrollHeight;
 
-        setTimeout(() => {
-            let reply = "Query not recognized. Specify 'privacy' or 'services' for node details.";
-            if(query.includes('privacy')) reply = "Cypherbird privacy is absolute. Our SHA-512 master keys are generated locally and never touch the cloud.";
-            if(query.includes('services')) reply = "We offer Standard, Elite, and Ultra protocols for image and 4K video scrambling.";
-            
-            const aDiv = document.createElement('div');
-            aDiv.className = "p-3 bg-cobalt/5 border-l-2 border-cobalt text-zinc-300 mr-10";
-            aDiv.innerHTML = `<span class="opacity-30">[NODE]:</span> ${reply}`;
-            stream.appendChild(aDiv);
-            stream.scrollTop = stream.scrollHeight;
-        }, 800);
+        // --- Intelligence Logic ---
+        if (query.includes('human') || query.includes('contact') || query.includes('help')) {
+            await addBotMessage("I totally understand. Sometimes you just need a human! You can email us at **support@cypherbird.com** or I can open our contact page for you.");
+            // Optional: Auto-redirect or pop up contact
+            setTimeout(() => { 
+                if(confirm("Would you like to visit our Contact Page now?")) window.location.href = 'contact.html';
+            }, 2000);
+        } 
+        else if (query.includes('privacy') || query.includes('ethics')) {
+            await addBotMessage("Privacy is our DNA. Our SHA-512 keys stay local—never cloud-bound. You can read our full Manifesto on the **Ethics** page.");
+        }
+        else if (query.includes('account') || query.includes('open')) {
+            await addBotMessage("Ready to join the nest? 🦜 Account opening takes 2 minutes. You'll need the CypherBird app installed first!");
+        }
+        else if (query.includes('store') || query.includes('buy')) {
+            await addBotMessage("Looking for gear? Our store has the latest encryption nodes. Want me to show you the bestsellers?");
+        }
+        else if (query.includes('news')) {
+            await addBotMessage("We just updated our protocol to v2.4! You can see the full changelog on our **News** section.");
+        }
+        else {
+            await addBotMessage("That's an interesting one! I'm still learning, but I can tell you about our **Privacy**, **Store**, or how to **Contact a human**.");
+        }
     }
+
+    // Allow "Enter" key to send
+    document.getElementById('user-input').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') manualQuery();
+    });
 </script>
 </body>
 </html>
