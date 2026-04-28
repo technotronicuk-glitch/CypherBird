@@ -11,12 +11,13 @@
         .border-borders { border-color: #1a1a1a; }
         .text-cobalt { color: #4484ff; }
         .bg-cobalt { background-color: #4484ff; }
+        .glow-active { box-shadow: 0 0 20px rgba(68, 132, 255, 0.2); }
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #050505; }
         ::-webkit-scrollbar-thumb { background: #1a1a1a; border-radius: 10px; }
     </style>
 </head>
-<body class="font-sans antialiased pb-40">
+<body class="font-sans antialiased pb-48">
 
     <div class="fixed top-8 left-8 z-50">
         <a href="index.html" class="flex items-center text-zinc-500 hover:text-white font-mono text-[9px] uppercase tracking-[0.3em] transition-all group">
@@ -41,7 +42,7 @@
         <section class="mb-32">
             <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_01: Select_Core_Protocol</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div id="card-standard" onclick="selectProtocol('Standard', 0)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-500 transition-all group relative">
+                <div id="card-standard" onclick="selectProtocol('Standard', 0, 0)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-500 transition-all group relative">
                     <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
                     <div class="h-48 w-full bg-zinc-950 rounded-2xl mb-6 flex items-center justify-center overflow-hidden">
                         <img id="img-standard" src="Free chat.png" class="w-full h-full object-contain p-6">
@@ -73,7 +74,7 @@
         <section class="mb-32">
             <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_02: Deploy_Cloud_Vault</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div id="card-alpha" onclick="selectVault('Alpha', 4.99, 49.89)" class="flex bg-surface border border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-white transition-all group relative">
+                <div id="card-alpha" onclick="selectVault('Alpha', 4.99, 49.89)" class="flex bg-surface border-2 border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-white transition-all group relative">
                     <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
                     <div class="w-1/3 h-40 bg-zinc-950 rounded-2xl mr-6 overflow-hidden">
                         <img id="img-alpha" src="Vault 50Gb.png" class="w-full h-full object-contain p-4">
@@ -84,7 +85,7 @@
                     </div>
                 </div>
 
-                <div id="card-deep" onclick="selectVault('Deep', 19.99, 109.99)" class="flex bg-surface border border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-white transition-all group relative">
+                <div id="card-deep" onclick="selectVault('Deep', 19.99, 109.99)" class="flex bg-surface border-2 border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-white transition-all group relative">
                     <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-700 hover:text-white opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
                     <div class="w-1/3 h-40 bg-zinc-950 rounded-2xl mr-6 overflow-hidden">
                         <img id="img-deep" src="Vault 200Gb.png" class="w-full h-full object-contain p-4">
@@ -97,13 +98,55 @@
             </div>
         </section>
 
+        <section class="mb-32">
+            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Technical_Price_Comparison</h2>
+            <div class="overflow-hidden bg-surface border border-borders rounded-[2rem]">
+                <table class="w-full text-left font-mono text-[11px] uppercase tracking-wider">
+                    <thead>
+                        <tr class="border-b border-borders bg-zinc-900/50">
+                            <th class="p-6 text-zinc-500">Feature</th>
+                            <th class="p-6 text-white italic">Standard</th>
+                            <th class="p-6 text-zinc-400">Elite</th>
+                            <th class="p-6 text-cobalt font-black italic">Ultra</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b border-borders hover:bg-white/[0.02]">
+                            <td class="p-6 text-zinc-400 font-bold">AES-256 Scrambling</td>
+                            <td class="p-6">✓ Basic</td>
+                            <td class="p-6">✓ Advanced</td>
+                            <td class="p-6 text-cobalt">✓ Neural_Triple</td>
+                        </tr>
+                        <tr class="border-b border-borders hover:bg-white/[0.02]">
+                            <td class="p-6 text-zinc-400 font-bold">Max File Size</td>
+                            <td class="p-6">25MB</td>
+                            <td class="p-6">500MB</td>
+                            <td class="p-6 text-cobalt">Unlimited</td>
+                        </tr>
+                        <tr class="border-b border-borders hover:bg-white/[0.02]">
+                            <td class="p-6 text-zinc-400 font-bold">Cloud Sync</td>
+                            <td class="p-6">✕</td>
+                            <td class="p-6">1GB</td>
+                            <td class="p-6 text-cobalt">2GB Included</td>
+                        </tr>
+                        <tr class="hover:bg-white/[0.02]">
+                            <td class="p-6 text-zinc-400 font-bold">Priority Support</td>
+                            <td class="p-6">✕</td>
+                            <td class="p-6">Email</td>
+                            <td class="p-6 text-cobalt">24/7 Neural</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
     </main>
 
     <footer class="fixed bottom-0 left-0 w-full bg-black/90 backdrop-blur-2xl border-t border-cobalt/30 py-8 px-12 z-50">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div>
-                <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-widest mb-1 italic">Active_Configuration</p>
-                <h4 id="selection-summary" class="text-white font-black italic uppercase text-lg">
+                <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-widest mb-1 italic text-center md:text-left">Active_Configuration</p>
+                <h4 id="selection-summary" class="text-white font-black italic uppercase text-lg text-center md:text-left">
                     No Protocol Selected <span class="text-zinc-800 mx-2">+</span> No Vault
                 </h4>
             </div>
@@ -112,7 +155,9 @@
                     <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-widest">Total_Investment</p>
                     <div id="display-total" class="text-white text-4xl font-black italic tracking-tighter">€0.00</div>
                 </div>
-                <button class="bg-cobalt text-white px-10 py-4 font-black italic uppercase tracking-widest text-[11px] hover:bg-blue-400 transition-all">Initialize_Checkout</button>
+                <a href="checkout.html" id="checkout-link" class="bg-cobalt text-white px-10 py-4 font-black italic uppercase tracking-widest text-[11px] hover:bg-blue-400 transition-all shadow-lg shadow-cobalt/20">
+                    Initialize_Checkout
+                </a>
             </div>
         </div>
     </footer>
@@ -128,52 +173,60 @@
             document.getElementById('label-monthly').className = isYearly ? 'text-zinc-500 font-mono text-[10px] uppercase' : 'text-white font-mono text-[10px] uppercase font-bold';
             document.getElementById('label-yearly').className = isYearly ? 'text-white font-mono text-[10px] uppercase font-bold' : 'text-zinc-500 font-mono text-[10px] uppercase tracking-widest';
             
-            // Swap Prices and Images (Add your yearly filenames here)
             document.getElementById('price-ultra').innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
             document.getElementById('price-elite').innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
             document.getElementById('price-alpha').innerText = isYearly ? "€49.89 / yr" : "€4.99 / mo";
             document.getElementById('price-deep').innerText = isYearly ? "€109.99 / yr" : "€19.99 / mo";
             
-            if(isYearly) {
-                document.getElementById('img-ultra').src = "Ultra Annual Package.png";
-                document.getElementById('img-elite').src = "Elite Annual Package.png";
-                document.getElementById('img-alpha').src = "AlphaVault Yearly.png";
-                document.getElementById('img-deep').src = "DeepVault Yearly.png";
-            } else {
-                document.getElementById('img-ultra').src = "Ultra Chat.png";
-                document.getElementById('img-elite').src = "Elite Chat.png";
-                document.getElementById('img-alpha').src = "Vault 50Gb.png";
-                document.getElementById('img-deep').src = "Vault 200Gb.png";
-            }
             updateUI();
         }
 
-        function selectProtocol(name, priceM, priceY = 0) {
-            // Reset borders
-            ['standard', 'ultra', 'elite'].forEach(id => document.getElementById('card-'+id).classList.replace('border-cobalt', 'border-borders'));
+        function selectProtocol(name, priceM, priceY) {
+            // Reset ALL protocol borders first
+            ['standard', 'ultra', 'elite'].forEach(id => {
+                const card = document.getElementById('card-'+id);
+                card.classList.remove('border-cobalt', 'glow-active');
+                card.classList.add('border-borders');
+            });
             
             selectedProtocol = { name, priceM, priceY };
-            document.getElementById('card-' + name.toLowerCase().split('_')[0]).classList.replace('border-borders', 'border-cobalt');
+            const activeCard = document.getElementById('card-' + name.toLowerCase());
+            activeCard.classList.replace('border-borders', 'border-cobalt');
+            activeCard.classList.add('glow-active');
             updateUI();
         }
 
         function selectVault(name, priceM, priceY) {
-            ['alpha', 'deep'].forEach(id => document.getElementById('card-'+id).classList.replace('border-white', 'border-borders'));
+            // Reset ALL vault borders first
+            ['alpha', 'deep'].forEach(id => {
+                const card = document.getElementById('card-'+id);
+                card.classList.remove('border-white');
+                card.classList.add('border-borders');
+            });
             
             selectedVault = { name, priceM, priceY };
-            document.getElementById('card-' + name.toLowerCase()).classList.replace('border-borders', 'border-white');
+            const activeCard = document.getElementById('card-' + name.toLowerCase());
+            activeCard.classList.replace('border-borders', 'border-white');
             updateUI();
         }
 
         function removeProtocol() {
             selectedProtocol = { name: null, priceM: 0, priceY: 0 };
-            ['standard', 'ultra', 'elite'].forEach(id => document.getElementById('card-'+id).classList.replace('border-cobalt', 'border-borders'));
+            ['standard', 'ultra', 'elite'].forEach(id => {
+                const card = document.getElementById('card-'+id);
+                card.classList.remove('border-cobalt', 'glow-active');
+                card.classList.add('border-borders');
+            });
             updateUI();
         }
 
         function removeVault() {
             selectedVault = { name: null, priceM: 0, priceY: 0 };
-            ['alpha', 'deep'].forEach(id => document.getElementById('card-'+id).classList.replace('border-white', 'border-borders'));
+            ['alpha', 'deep'].forEach(id => {
+                const card = document.getElementById('card-'+id);
+                card.classList.remove('border-white');
+                card.classList.add('border-borders');
+            });
             updateUI();
         }
 
@@ -185,7 +238,20 @@
             
             document.getElementById('selection-summary').innerHTML = `${pName} <span class="text-cobalt mx-2">+</span> ${vName} Vault <span class="text-zinc-700 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
             document.getElementById('display-total').innerText = `€${(pPrice + vPrice).toFixed(2)}`;
+            
+            // Disallow checkout if nothing selected
+            const checkoutBtn = document.getElementById('checkout-link');
+            if(pPrice + vPrice === 0) {
+                checkoutBtn.style.opacity = "0.3";
+                checkoutBtn.style.pointerEvents = "none";
+            } else {
+                checkoutBtn.style.opacity = "1";
+                checkoutBtn.style.pointerEvents = "auto";
+            }
         }
+        
+        // Initial UI check
+        updateUI();
     </script>
 </body>
 </html>
