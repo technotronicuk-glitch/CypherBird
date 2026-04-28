@@ -2,66 +2,129 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Protocol Intelligence | CypherBird</title>
+    <style>
+        body { background-color: #050505; color: #71717a; }
+        .bg-surface { background-color: #0a0a0a; }
+        .text-cobalt { color: #4484ff; }
+        .border-cobalt { border-color: #4484ff; }
+        .bg-cobalt { background-color: #4484ff; }
+        .glow-text { text-shadow: 0 0 20px rgba(68, 132, 255, 0.4); }
+        
+        /* Custom scrollbar for that tech feel */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #1a1a1a; }
+    </style>
 </head>
-<body class="bg-black text-zinc-400 font-mono">
+<body class="font-sans antialiased selection:bg-cobalt selection:text-white">
 
-    <nav class="p-8 flex justify-between">
-        <a href="index.html" class="text-white font-bold">🦅 CYPHERBIRD</a>
-        <a href="index.html" class="text-xs text-amber-500">← EXIT_SECURE_ZONE</a>
+    <nav class="p-8 flex justify-between items-center fixed top-0 w-full z-50 bg-black/50 backdrop-blur-md border-b border-white/5">
+        <a href="index.html" class="text-white font-black italic tracking-tighter text-xl">🦅 CYPHERBIRD</a>
+        <a href="index.html" class="font-mono text-[10px] text-zinc-500 hover:text-white transition-colors tracking-[0.3em] uppercase">
+            [ EXIT_SECURE_ZONE ]
+        </a>
     </nav>
 
-    <main class="max-w-4xl mx-auto py-20 px-6">
-        <h1 class="text-6xl font-black text-white uppercase italic tracking-tighter mb-12">System Comparison</h1>
+    <main class="max-w-5xl mx-auto pt-40 pb-20 px-8">
         
-        <table class="w-full border-collapse">
-            <thead>
-                <tr class="border-b border-zinc-800 text-left text-[10px] tracking-widest uppercase">
-                    <th class="py-4 pb-8">Feature_Set</th>
-                    <th class="py-4 pb-8 text-zinc-500">Free</th>
-                    <th class="py-4 pb-8 text-amber-600">Ultra</th>
-                </tr>
-            </thead>
-            <tbody class="text-sm">
-                <tr class="border-b border-zinc-900">
-                    <td class="py-6 text-white font-bold">AES-256 Scrambling</td>
-                    <td class="py-6">✓ Active</td>
-                    <td class="py-6 text-amber-500">✓ Triple-Salted</td>
-                </tr>
-                <tr class="border-b border-zinc-900">
-                    <td class="py-6 text-white font-bold">Large Video Support</td>
-                    <td class="py-6 text-zinc-700">✕ Restricted</td>
-                    <td class="py-6 text-amber-500">✓ Unlimited 4K/60fps</td>
-                </tr>
-                <tr class="border-b border-zinc-900">
-                    <td class="py-6 text-white font-bold">Cloud Synchronization</td>
-                    <td class="py-6 text-zinc-700">✕ Local Only</td>
-                    <td class="py-6 text-amber-500">✓ 10GB Encrypted Sync</td>
-                </tr>
-                <tr class="border-b border-zinc-900">
-                    <td class="py-6 text-white font-bold">Identity Obfuscation</td>
-                    <td class="py-6">✓ Basic</td>
-                    <td class="py-6 text-amber-500">✓ Deep Neural Anonymity</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <div class="mt-20 p-10 bg-[#0a0a0a] border border-zinc-800 rounded-3xl">
-            <h2 class="text-2xl text-white font-bold mb-4 uppercase italic">Technotronics Cloud Infrastructure</h2>
-            <p class="text-sm leading-relaxed mb-6">
-                Unlike standard cloud storage, CypherBird Cloud never sees your "actual" files. We store the <strong>encrypted blobs</strong>. Even Technotronics engineers cannot view your data because the private keys remain in your device's Secure Enclave.
+        <div class="mb-24">
+            <p class="text-cobalt font-mono text-[10px] uppercase tracking-[0.5em] mb-4 font-bold">Neural_Architecture_Intelligence</p>
+            <h1 class="text-7xl font-black text-white uppercase italic tracking-tighter leading-none mb-8">
+                Protocol <span class="text-cobalt glow-text">Intelligence</span>
+            </h1>
+            <p class="max-w-2xl text-zinc-500 leading-relaxed font-medium">
+                Our architecture is built on the principle of <span class="text-white">mathematical sovereignty</span>. We don't just protect data; we render it physically impossible to access without the primary neural key held exclusively by the operator.
             </p>
-            <div class="grid grid-cols-2 gap-4">
-                <div class="border border-zinc-900 p-4 rounded-lg">
-                    <span class="block text-white text-xs font-bold uppercase mb-1">Redundancy</span>
-                    <span class="text-[10px]">Tier-4 Datacenter Distribution</span>
+        </div>
+
+        <section class="mb-32">
+            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Comparative_Analysis_Matrix</h2>
+            <div class="bg-surface border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl">
+                <table class="w-full border-collapse">
+                    <thead>
+                        <tr class="bg-zinc-900/50 text-left text-[9px] tracking-[0.3em] uppercase">
+                            <th class="p-8 font-black text-zinc-500">Classification</th>
+                            <th class="p-8 font-black text-zinc-500">Standard_Tier</th>
+                            <th class="p-8 font-black text-cobalt underline underline-offset-8">Ultra_Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-xs font-mono">
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors group">
+                            <td class="p-8 text-white font-bold italic uppercase tracking-wider">AES-256 Scrambling</td>
+                            <td class="p-8 text-zinc-600 italic">✓ Baseline_Active</td>
+                            <td class="p-8 text-cobalt font-black italic">✓ Triple-Salted_Entropy</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="p-8 text-white font-bold italic uppercase tracking-wider">Neural Bandwidth</td>
+                            <td class="p-8 text-zinc-800 italic">✕ Throttled</td>
+                            <td class="p-8 text-cobalt font-black italic">✓ Priority_Fiber_Route</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="p-8 text-white font-bold italic uppercase tracking-wider">Video Support</td>
+                            <td class="p-8 text-zinc-800 italic">✕ Compressed_Only</td>
+                            <td class="p-8 text-cobalt font-black italic">✓ RAW_4K/60_Encryption</td>
+                        </tr>
+                        <tr class="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
+                            <td class="p-8 text-white font-bold italic uppercase tracking-wider">Sync_Protocol</td>
+                            <td class="p-8 text-zinc-600 italic">Local_Lockdown</td>
+                            <td class="p-8 text-cobalt font-black italic">✓ Deep_Vault_Sync</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <div class="grid md:grid-cols-3 gap-8 mb-32">
+            <div class="bg-surface border border-white/5 p-8 rounded-3xl group hover:border-cobalt transition-all duration-500">
+                <div class="w-10 h-10 rounded-full bg-cobalt/10 flex items-center justify-center mb-6">
+                    <div class="w-2 h-2 rounded-full bg-cobalt animate-pulse"></div>
                 </div>
-                <div class="border border-zinc-900 p-4 rounded-lg">
-                    <span class="block text-white text-xs font-bold uppercase mb-1">Zero-Knowledge</span>
-                    <span class="text-[10px]">Encryption at Rest & In-Transit</span>
+                <h3 class="text-white font-black italic uppercase text-lg mb-2">Zero-Trace</h3>
+                <p class="text-[11px] leading-relaxed text-zinc-500">Metadata is scrubbed at the point of ingestion. No IP logs, no time stamps, no digital fingerprints.</p>
+            </div>
+            <div class="bg-surface border border-white/5 p-8 rounded-3xl group hover:border-cobalt transition-all duration-500">
+                <div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center mb-6">
+                    <span class="text-cobalt font-mono text-xs">99.9%</span>
+                </div>
+                <h3 class="text-white font-black italic uppercase text-lg mb-2">Resilience</h3>
+                <p class="text-[11px] leading-relaxed text-zinc-500">Distributed shard storage ensures your vault remains online even if central nodes are compromised.</p>
+            </div>
+            <div class="bg-surface border border-white/5 p-8 rounded-3xl group hover:border-cobalt transition-all duration-500">
+                <div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center mb-6 text-cobalt">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                </div>
+                <h3 class="text-white font-black italic uppercase text-lg mb-2">Client-Side</h3>
+                <p class="text-[11px] leading-relaxed text-zinc-500">Decryption only occurs in the browser RAM. No unencrypted data ever touches our physical drives.</p>
+            </div>
+        </div>
+
+        <div class="p-1 w-full bg-gradient-to-r from-zinc-800 via-cobalt to-zinc-800 rounded-[2.5rem]">
+            <div class="bg-black p-12 rounded-[2.4rem] relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-cobalt/5 blur-[100px] rounded-full"></div>
+                <h2 class="text-3xl text-white font-black italic mb-6 uppercase tracking-tighter">Technotronics Cloud Core</h2>
+                <p class="text-sm leading-relaxed text-zinc-400 mb-10 max-w-2xl">
+                    Technotronics engineers handle the hardware, but your key handles the privacy. We store <span class="text-white">"Encrypted Blobs"</span>—mathematical noise that can only be reassembled by your local Secure Enclave. We are blind to your data by design.
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-zinc-900/30 border border-white/5 p-6 rounded-2xl">
+                        <span class="block text-cobalt text-[9px] font-black uppercase tracking-[0.3em] mb-3">Core_Architecture</span>
+                        <p class="text-white font-mono text-[11px] uppercase tracking-wider">Tier-4 Datacenter Distribution</p>
+                    </div>
+                    <div class="bg-zinc-900/30 border border-white/5 p-6 rounded-2xl">
+                        <span class="block text-cobalt text-[9px] font-black uppercase tracking-[0.3em] mb-3">Sovereignty_Status</span>
+                        <p class="text-white font-mono text-[11px] uppercase tracking-wider">End-To-End Zero-Knowledge</p>
+                    </div>
                 </div>
             </div>
+        </div>
+
+        <div class="mt-32 text-center">
+            <a href="store.html" class="inline-block bg-cobalt text-white px-12 py-5 font-black italic uppercase tracking-[0.2em] text-[11px] hover:bg-blue-400 transition-all shadow-2xl shadow-cobalt/20">
+                Initialize_Selection_Store
+            </a>
         </div>
     </main>
 </body>
