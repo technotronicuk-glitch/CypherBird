@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Secure Checkout | Protocol</title>
+    <style>
+        body { background-color: #050505; color: #71717a; }
+        .bg-surface { background-color: #0a0a0a; }
+        .text-cobalt { color: #4484ff; }
+        .border-cobalt { border-color: #4484ff; }
+        .bg-cobalt { background-color: #4484ff; }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <nav class="p-8 flex justify-between items-center border-b border-white/5">
+        <a href="index.html" class="text-white font-black italic tracking-tighter text-xl uppercase">🦅 CypherBird</a>
+        <span class="text-[10px] font-mono text-zinc-500 uppercase tracking-widest italic">Encrypted_Session_Active</span>
+    </nav>
+
+    <main class="max-w-6xl mx-auto py-20 px-8 grid md:grid-cols-2 gap-20">
+        
+        <div>
+            <h1 class="text-4xl font-black text-white uppercase italic mb-10">Payment_Method</h1>
+            
+            <div class="grid grid-cols-2 gap-4 mb-10">
+                <button class="bg-white hover:bg-zinc-200 text-black py-4 rounded-xl flex items-center justify-center transition-all">
+                    <span class="font-bold text-lg italic">Apple Pay</span>
+                </button>
+                <button class="bg-zinc-900 border border-zinc-800 hover:border-zinc-500 text-white py-4 rounded-xl flex items-center justify-center transition-all">
+                    <span class="font-bold text-lg italic text-blue-400">G</span><span class="font-bold text-lg italic">Pay</span>
+                </button>
+                <button class="col-span-2 bg-[#0070ba] hover:bg-[#005ea6] text-white py-4 rounded-xl flex items-center justify-center transition-all">
+                    <span class="font-black italic text-lg">PayPal</span>
+                </button>
+            </div>
+
+            <div class="flex items-center gap-4 mb-10">
+                <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+                <span class="text-[9px] font-mono uppercase tracking-[0.3em]">OR_USE_CARD</span>
+                <div class="h-[1px] bg-zinc-800 flex-grow"></div>
+            </div>
+
+            <form class="space-y-6">
+                <div>
+                    <label class="block text-[10px] uppercase font-black tracking-widest mb-2 text-zinc-500">Cardholder_Name</label>
+                    <input type="text" class="w-full bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-white font-mono focus:border-cobalt outline-none transition-all" placeholder="JOHN DOE">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase font-black tracking-widest mb-2 text-zinc-500">Card_Number</label>
+                    <input type="text" class="w-full bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-white font-mono focus:border-cobalt outline-none transition-all" placeholder="0000 0000 0000 0000">
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-[10px] uppercase font-black tracking-widest mb-2 text-zinc-500">Expiry</label>
+                        <input type="text" class="w-full bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-white font-mono focus:border-cobalt outline-none transition-all" placeholder="MM/YY">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] uppercase font-black tracking-widest mb-2 text-zinc-500">CVC</label>
+                        <input type="text" class="w-full bg-zinc-900 border border-zinc-800 p-4 rounded-xl text-white font-mono focus:border-cobalt outline-none transition-all" placeholder="***">
+                    </div>
+                </div>
+
+                <button type="button" class="w-full bg-cobalt text-white py-6 rounded-2xl font-black italic uppercase tracking-[0.2em] text-sm hover:bg-blue-400 transition-all shadow-2xl shadow-cobalt/20">
+                    Authorize_&_Deploy_Protocol
+                </button>
+            </form>
+        </div>
+
+        <div class="bg-surface border border-white/5 p-12 rounded-[3rem] h-fit sticky top-32">
+            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-8">Order_Manifest</h2>
+            
+            <div id="order-items" class="space-y-6 mb-10">
+                <div class="flex justify-between items-center border-b border-white/5 pb-6">
+                    <div>
+                        <p class="text-white font-black italic uppercase tracking-wider">Ultra_Protocol</p>
+                        <p class="text-[9px] font-mono text-zinc-600 uppercase">Neural_Subscription (Monthly)</p>
+                    </div>
+                    <span class="text-white font-bold">€8.99</span>
+                </div>
+                <div class="flex justify-between items-center border-b border-white/5 pb-6">
+                    <div>
+                        <p class="text-white font-black italic uppercase tracking-wider">Deep_Vault</p>
+                        <p class="text-[9px] font-mono text-zinc-600 uppercase">Storage_Configuration</p>
+                    </div>
+                    <span class="text-white font-bold">€19.99</span>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <span class="text-zinc-400 font-mono text-xs uppercase tracking-widest">Total_Investment</span>
+                <span class="text-4xl text-white font-black italic">€28.98</span>
+            </div>
+            
+            <p class="mt-8 text-[9px] text-zinc-600 font-mono leading-relaxed uppercase tracking-tighter">
+                By clicking Authorize, you agree to the Technotronics Zero-Knowledge Service Agreement. Transaction is protected by 256-bit scrambling.
+            </p>
+        </div>
+    </main>
+
+</body>
+</html>
