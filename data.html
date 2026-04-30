@@ -6,117 +6,132 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Data Sovereignty | Protocol</title>
     <style>
-        body { background-color: #050505; color: #71717a; }
-        .bg-surface { background-color: #0a0a0a; }
-        .text-cobalt { color: #4484ff; }
-        .border-cobalt { border-color: #4484ff; }
-        .glow-border { box-shadow: 0 0 15px rgba(68, 132, 255, 0.1); }
-        .data-grid { background-image: radial-gradient(#1a1a1a 1px, transparent 1px); background-size: 30px 30px; }
+        body { background-color: #fafafa; color: #52525b; }
+        .bg-surface { background-color: #ffffff; }
+        .text-cobalt { color: #3b82f6; }
+        .border-cobalt { border-color: #3b82f6; }
+        .glow-border { box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); }
+        /* Premium Data Grid Overlay */
+        .data-grid { background-image: radial-gradient(#e5e5e5 1px, transparent 1px); background-size: 30px 30px; }
+        
+        /* Smooth Fade for Background Images */
+        .header-bg {
+            background: linear-gradient(to bottom, rgba(250, 250, 250, 0.7), #fafafa), 
+                        url('datacenter_core.png');
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-cobalt selection:text-white">
 
-    <nav class="p-8 flex justify-between items-center fixed top-0 w-full z-50 bg-black/80 backdrop-blur-xl border-b border-white/5">
-        <a href="index.html" class="text-white font-black italic tracking-tighter text-xl uppercase">🦅 CypherBird</a>
-        <div class="flex gap-8 items-center">
-            <a href="intelligence.html" class="font-mono text-[9px] text-zinc-500 hover:text-white transition-colors tracking-widest uppercase">Intelligence_Report</a>
-            <a href="index.html" class="font-mono text-[9px] text-zinc-500 hover:text-cobalt transition-colors tracking-widest uppercase">[ EXIT_SECURE_ZONE ]</a>
+    <!-- Navigation with High Visibility Back Button -->
+    <nav class="p-6 flex justify-between items-center fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200">
+        <a href="index.html" class="text-zinc-900 font-black italic tracking-tighter text-xl uppercase">🦅 CypherBird</a>
+        <div class="flex gap-6 items-center">
+            <a href="intelligence.html" class="font-mono text-[9px] text-zinc-400 hover:text-zinc-900 transition-colors tracking-widest uppercase">Intelligence_Report</a>
+            <!-- Enhanced Back to Home Button -->
+            <a href="index.html" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full font-mono text-[10px] hover:bg-cobalt transition-all tracking-widest uppercase shadow-lg active:scale-95">
+                [ RETURN_HOME ]
+            </a>
         </div>
     </nav>
 
-    <header class="relative h-[60vh] flex items-center justify-center overflow-hidden data-grid">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black z-10"></div>
-        <img src="datacenter_core.png" alt="Protocol Datacenter" class="absolute inset-0 w-full h-full object-cover opacity-40 grayscale hover:grayscale-0 transition-all duration-1000">
+    <!-- Header with Data Center Background -->
+    <header class="relative h-[70vh] flex items-center justify-center overflow-hidden header-bg">
+        <div class="absolute inset-0 data-grid opacity-40"></div>
         
-        <div class="relative z-20 text-center px-6">
-            <p class="text-cobalt font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black">Physical_Infrastructure_Layer</p>
-            <h1 class="text-6xl md:text-8xl font-black text-white uppercase italic tracking-tighter leading-none">
+        <div class="relative z-20 text-center px-6 mt-20">
+            <p class="text-cobalt font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black">Physical Infrastructure Layer</p>
+            <h1 class="text-6xl md:text-8xl font-black text-zinc-900 uppercase italic tracking-tighter leading-none">
                 Data_<span class="text-cobalt">Sovereignty</span>
             </h1>
+            <p class="mt-8 text-zinc-400 font-mono text-[11px] uppercase tracking-widest">Global Node Distribution: Active</p>
         </div>
     </header>
 
     <main class="max-w-5xl mx-auto py-20 px-8">
         
+        <!-- Section 01 -->
         <section class="grid md:grid-cols-2 gap-16 mb-40 items-center">
             <div>
-                <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-8">01_The_Decryption_Key</h2>
-                <h3 class="text-3xl text-white font-black italic uppercase leading-tight mb-6">Your Password is the <span class="text-cobalt">Only</span> Key.</h3>
-                <p class="text-zinc-400 leading-relaxed mb-6">
-                    Unlike traditional services, we do not store your password. We store a <span class="text-white">cryptographic hash</span>. When you log in, your password generates the decryption key locally in your device's RAM. 
+                <h2 class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-8">01_The Decryption Key</h2>
+                <h3 class="text-3xl text-zinc-900 font-black italic uppercase leading-tight mb-6">Your Password is the <span class="text-cobalt">Only</span> Key.</h3>
+                <p class="text-zinc-500 leading-relaxed mb-6">
+                    CypherBird architecture ensures that your cryptographic hash never leaves the local environment. Security is handled at the hardware level.
                 </p>
-                <div class="p-6 bg-zinc-900/50 border-l-2 border-cobalt rounded-r-2xl italic text-sm text-zinc-300">
-                    "If you lose your master password, Technotronics cannot recover your data. This is not a limitation; it is the ultimate security feature."
+                <div class="p-6 bg-white border border-zinc-100 border-l-4 border-l-cobalt rounded-r-2xl italic text-sm text-zinc-600 shadow-sm">
+                    "Zero-Knowledge means even we cannot see your files. You are the sole administrator of your digital assets."
                 </div>
             </div>
-            <div class="bg-surface border border-white/5 p-10 rounded-[2.5rem] glow-border relative">
-                <div class="absolute -top-4 -left-4 bg-cobalt text-white font-mono text-[10px] px-4 py-1 uppercase font-bold tracking-widest">Secure_Enclave</div>
+            
+            <div class="bg-white border border-zinc-100 p-10 rounded-[2.5rem] glow-border relative">
+                <div class="absolute -top-4 -left-4 bg-zinc-900 text-white font-mono text-[10px] px-4 py-1 uppercase font-bold tracking-widest shadow-md">Secure_Enclave</div>
                 <ul class="space-y-6">
                     <li class="flex gap-4">
                         <span class="text-cobalt font-bold">01</span>
-                        <p class="text-xs uppercase tracking-wider text-white">Client-Side Scrambling (AES-256)</p>
+                        <p class="text-xs uppercase tracking-wider text-zinc-800 font-bold">AES-256 Client-Side Encryption</p>
                     </li>
-                    <li class="flex gap-4 border-t border-white/5 pt-6">
+                    <li class="flex gap-4 border-t border-zinc-50 pt-6">
                         <span class="text-cobalt font-bold">02</span>
-                        <p class="text-xs uppercase tracking-wider text-white">Zero-Knowledge Transmission (SSL/TLS)</p>
+                        <p class="text-xs uppercase tracking-wider text-zinc-800 font-bold">Encrypted Tunneling (SSL/TLS)</p>
                     </li>
-                    <li class="flex gap-4 border-t border-white/5 pt-6">
+                    <li class="flex gap-4 border-t border-zinc-50 pt-6">
                         <span class="text-cobalt font-bold">03</span>
-                        <p class="text-xs uppercase tracking-wider text-white">Fragmented Storage Distribution</p>
+                        <p class="text-xs uppercase tracking-wider text-zinc-800 font-bold">Multi-Regional Data Sharding</p>
                     </li>
                 </ul>
             </div>
         </section>
 
+        <!-- Section 02 -->
         <section class="mb-40">
-            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-12 text-center">02_Data_Fragmentation_Protocol</h2>
+            <h2 class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12 text-center">02_Data Fragmentation Protocol</h2>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-8 border border-white/5 bg-surface rounded-3xl">
-                    <div class="text-cobalt text-4xl mb-6 font-black italic">SHARD</div>
-                    <p class="text-sm text-zinc-500 italic">Your files are broken into encrypted fragments (shards) before they even leave your hardware.</p>
+                <div class="group text-center p-8 border border-zinc-100 bg-white rounded-3xl shadow-sm hover:border-cobalt transition-all duration-500">
+                    <div class="text-zinc-900 text-4xl mb-6 font-black italic group-hover:text-cobalt transition-colors">SHARD</div>
+                    <p class="text-sm text-zinc-400 italic">Encrypted fragmentation occurs at the source before transmission.</p>
                 </div>
-                <div class="text-center p-8 border border-white/5 bg-surface rounded-3xl">
-                    <div class="text-cobalt text-4xl mb-6 font-black italic">SCATTER</div>
-                    <p class="text-sm text-zinc-500 italic">Each shard is sent to a different physical server node across our global Tier-4 network.</p>
+                <div class="group text-center p-8 border border-zinc-100 bg-white rounded-3xl shadow-sm hover:border-cobalt transition-all duration-500">
+                    <div class="text-zinc-900 text-4xl mb-6 font-black italic group-hover:text-cobalt transition-colors">SCATTER</div>
+                    <p class="text-sm text-zinc-400 italic">Shards are distributed across isolated Tier-4 global server nodes.</p>
                 </div>
-                <div class="text-center p-8 border border-white/5 bg-surface rounded-3xl">
-                    <div class="text-cobalt text-4xl mb-6 font-black italic">SHIELD</div>
-                    <p class="text-sm text-zinc-500 italic">Even if a node is breached, the attacker only finds a meaningless piece of encrypted noise.</p>
+                <div class="group text-center p-8 border border-zinc-100 bg-white rounded-3xl shadow-sm hover:border-cobalt transition-all duration-500">
+                    <div class="text-zinc-900 text-4xl mb-6 font-black italic group-hover:text-cobalt transition-colors">SHIELD</div>
+                    <p class="text-sm text-zinc-400 italic">No single node contains a complete or readable file segment.</p>
                 </div>
             </div>
         </section>
 
-        <section class="p-12 bg-surface border border-white/5 rounded-[3rem] relative overflow-hidden">
+        <!-- Section 03 -->
+        <section class="p-12 bg-zinc-900 border border-zinc-800 rounded-[3rem] relative overflow-hidden shadow-2xl">
             <div class="absolute top-0 right-0 p-8">
-                <div class="w-20 h-20 border-t-2 border-r-2 border-zinc-800 opacity-30"></div>
+                <div class="w-20 h-20 border-t-2 border-r-2 border-zinc-700 opacity-30"></div>
             </div>
-            <h2 class="text-zinc-600 font-mono text-[10px] uppercase tracking-[0.4em] mb-8">03_Jurisdiction_&_Privacy</h2>
+            <h2 class="text-zinc-500 font-mono text-[10px] uppercase tracking-[0.4em] mb-8">03_Jurisdiction_&_Privacy</h2>
             <div class="max-w-3xl">
-                <h4 class="text-2xl text-white font-black italic uppercase mb-6">Unreadable by Subpoena</h4>
+                <h4 class="text-2xl text-white font-black italic uppercase mb-6">Sovereign Data Storage</h4>
                 <p class="text-zinc-400 text-sm leading-relaxed mb-8">
-                    Technotronics operates under strict digital sovereignty laws. Because we do not possess the keys to your data, we cannot comply with data requests from third parties. We literally cannot show them what we cannot see. 
+                    Technotronics operates outside standard surveillance jurisdictions. We possess zero keys to your vault, rendering legal data requests technically impossible to fulfill.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <span class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-[9px] font-mono uppercase tracking-widest text-zinc-500 italic">No_Log_Policy</span>
-                    <span class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-[9px] font-mono uppercase tracking-widest text-zinc-500 italic">Encrypted_Metadata</span>
-                    <span class="px-4 py-2 bg-zinc-900 border border-zinc-800 rounded-lg text-[9px] font-mono uppercase tracking-widest text-zinc-500 italic">GDPR_Compliant_Plus</span>
+                    <span class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-[9px] font-mono uppercase tracking-widest text-zinc-400 italic">No_Metadata_Logs</span>
+                    <span class="px-4 py-2 bg-zinc-800 border border-zinc-700 rounded-lg text-[9px] font-mono uppercase tracking-widest text-zinc-400 italic">GDPR_Ultra_Verified</span>
                 </div>
             </div>
         </section>
 
-        <div class="mt-40 text-center border-t border-white/5 pt-20">
-            <p class="text-zinc-600 font-mono text-[9px] uppercase tracking-[0.3em] mb-8 italic">Secure_Connection_Established</p>
-            <a href="store.html" class="inline-flex items-center px-12 py-5 bg-white text-black font-black italic uppercase tracking-[0.2em] text-[11px] hover:bg-cobalt hover:text-white transition-all shadow-2xl active:scale-95">
-                Initialize_Vault_Expansion
+        <!-- Footer Call to Action -->
+        <div class="mt-40 text-center border-t border-zinc-200 pt-20">
+            <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-[0.3em] mb-8 italic">Secure_Protocol_Active</p>
+            <a href="store.html" class="inline-flex items-center px-12 py-5 bg-zinc-900 text-white font-black italic uppercase tracking-[0.2em] text-[11px] hover:bg-cobalt transition-all shadow-xl active:scale-95 rounded-full">
+                Initialize Vault Expansion
                 <span class="ml-4">→</span>
             </a>
         </div>
-
     </main>
-
-    <footer class="py-12 px-8 border-t border-white/5 text-center">
-        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-700">© 2026 Technotronics_Systems // Zero_Knowledge_Architecture</p>
+    <footer class="py-12 px-8 border-t border-zinc-200 text-center">
+        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-400">© 2026 Technotronics Systems // Global Data Sovereignty</p>
     </footer>
-
 </body>
 </html>
