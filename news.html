@@ -10,13 +10,13 @@
         
         body { 
             font-family: 'Inter', sans-serif; 
-            background-color: #f8f9fa; /* Premium light grey */
+            background-color: #f8f9fa; 
             color: #1a1a1a; 
         }
 
         .news-card {
             background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid #e5e7eb;
         }
 
@@ -33,38 +33,38 @@
         }
 
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
-        
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;  
-            overflow: hidden;
-        }
     </style>
 </head>
 <body class="py-12 px-6">
 
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-6xl mx-auto">
         <header class="mb-16 border-b border-zinc-200 pb-10">
             <a href="index.html" class="text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-600 transition">← Return to Terminal</a>
             <h1 class="text-5xl font-extrabold tracking-tighter mt-6 text-zinc-900">Threat Intelligence</h1>
-            <p class="text-zinc-500 text-sm mt-3 font-light tracking-wide uppercase">Daily updates on global vulnerabilities and digital surveillance.</p>
+            <p class="text-zinc-500 text-sm mt-3 font-light tracking-wide uppercase">Real-time official news from the security frontline.</p>
         </header>
 
-        <div id="news-feed" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Loading States -->
-            <div class="shimmer h-64 w-full rounded-2xl"></div>
-            <div class="shimmer h-64 w-full rounded-2xl"></div>
+        <div id="news-feed" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="shimmer h-80 w-full rounded-2xl"></div>
+            <div class="shimmer h-80 w-full rounded-2xl"></div>
+            <div class="shimmer h-80 w-full rounded-2xl"></div>
         </div>
 
         <footer class="mt-20 text-center opacity-50">
-            <p class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Feed provided by Global Security RSS Protocols</p>
+            <p class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Feed sourced via official RSS uplink</p>
         </footer>
     </div>
 
     <script>
         const RSS_FEED_URL = 'https://thehackernews.com/feeds/posts/default';
         const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_FEED_URL)}`;
+
+        // Function to extract image URL from the article description HTML
+        function extractImageUrl(content) {
+            const imgRegExp = /<img[^>]+src="([^">]+)"/;
+            const match = imgRegExp.exec(content);
+            return match ? match[1] : null;
+        }
 
         async function fetchNews() {
             try {
@@ -75,30 +75,31 @@
                 if (data.status === 'ok') {
                     container.innerHTML = ''; 
                     
-                    data.items.slice(0, 8).forEach(item => {
+                    data.items.slice(0, 9).forEach(item => {
                         const date = new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
                         
-                        // Check if thumbnail exists, otherwise use a high-quality tech placeholder
-                        const thumbnail = item.thumbnail || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80`;
+                        // Try to get image from standard field, then try extracting from content
+                        const extractedImg = extractImageUrl(item.content || item.description);
+                        const thumbnail = extractedImg || item.thumbnail || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800`;
 
                         const article = `
                             <div class="news-card flex flex-col rounded-2xl transition-all duration-300 overflow-hidden group">
-                                <div class="h-48 overflow-hidden">
-                                    <img src="${thumbnail}" alt="news-image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                                <div class="h-48 overflow-hidden bg-zinc-100">
+                                    <img src="${thumbnail}" alt="news-image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                                 </div>
                                 <div class="p-6 flex flex-col flex-grow">
                                     <div class="flex justify-between items-start mb-3">
-                                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">${item.categories[0] || 'Breach Alert'}</span>
+                                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">${item.categories[0] || 'Intelligence'}</span>
                                         <span class="text-[10px] text-zinc-400 font-mono">${date}</span>
                                     </div>
-                                    <h3 class="text-xl font-bold mb-3 text-zinc-900 group-hover:text-blue-600 transition-colors leading-tight">
+                                    <h3 class="text-lg font-bold mb-3 text-zinc-900 group-hover:text-blue-600 transition-colors leading-tight">
                                         <a href="${item.link}" target="_blank">${item.title}</a>
                                     </h3>
                                     <p class="text-sm text-zinc-500 line-clamp-3 font-light leading-relaxed mb-6">
-                                        ${item.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...
+                                        ${item.description.replace(/<[^>]*>?/gm, '').substring(0, 120)}...
                                     </p>
                                     <div class="mt-auto">
-                                        <a href="${item.link}" target="_blank" class="text-[10px] font-black text-zinc-900 uppercase tracking-widest border-b-2 border-blue-200 hover:border-blue-600 pb-1 transition-all">Read Full Intel →</a>
+                                        <a href="${item.link}" target="_blank" class="text-[10px] font-black text-zinc-900 uppercase tracking-widest border-b-2 border-blue-100 hover:border-blue-600 pb-1 transition-all">Read Intel →</a>
                                     </div>
                                 </div>
                             </div>
@@ -107,7 +108,7 @@
                     });
                 }
             } catch (error) {
-                document.getElementById('news-feed').innerHTML = '<p class="text-zinc-500">Uplink failed. Please refresh the protocol.</p>';
+                container.innerHTML = '<p class="text-zinc-500">Uplink failed. Please refresh.</p>';
             }
         }
 
