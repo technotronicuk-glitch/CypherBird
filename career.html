@@ -2,41 +2,108 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Careers | Cypherbird</title>
-</head>
-<body class="bg-[#111111] text-[#dcdcdc]">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8f9fa; 
+            color: #1a1a1a; 
+        }
 
-    <nav class="p-6 border-b border-[#333333]">
-        <a href="index.html" class="text-2xl">🦅 <span class="font-bold text-white ml-2 uppercase tracking-tighter">Cypherbird</span></a>
+        .premium-card {
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .input-field {
+            background-color: #fcfcfc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #3b82f6;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Referencing your image file as a background element */
+        .hero-banner {
+            background: linear-gradient(rgba(248, 249, 250, 0.85), rgba(248, 249, 250, 0.85)), url('image_f27cde.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <nav class="p-6 border-b border-zinc-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl">🦅 <span class="font-black text-zinc-900 ml-2 uppercase tracking-tighter">Cypherbird</span></a>
+            <div class="space-x-8">
+                <a href="news.html" class="text-[10px] font-bold tracking-widest uppercase text-zinc-400 hover:text-blue-600 transition">Intelligence Feed</a>
+            </div>
+        </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto py-20 px-6">
-        <h2 class="text-5xl font-black text-white mb-6 uppercase italic">Join the Nest.</h2>
-        <p class="text-zinc-400 mb-12 text-lg">We are looking for ghosts, architects, and visionaries. If you value privacy over fame, you're in the right place.</p>
+    <header class="hero-banner py-24 px-6 border-b border-zinc-200">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-6xl font-extrabold text-zinc-900 mb-6 tracking-tighter">Join the Nest.</h2>
+            <p class="text-zinc-500 max-w-xl mx-auto text-lg font-light leading-relaxed">
+                We are looking for ghosts, architects, and visionaries. If you value privacy over fame, you're in the right place.
+            </p>
+        </div>
+    </header>
 
-        <form class="grid md:grid-cols-2 gap-8 bg-[#1c1c1c] p-10 rounded-3xl border border-[#333333]">
+    <main class="max-w-4xl mx-auto py-16 px-6">
+        <form class="grid md:grid-cols-2 gap-10 premium-card p-8 md:p-12 rounded-3xl">
             <div class="space-y-6">
-                <input type="text" placeholder="Full Name" class="w-full bg-[#111111] border border-[#333333] p-4 rounded focus:border-amber-500 outline-none">
-                <input type="email" placeholder="Email Address" class="w-full bg-[#111111] border border-[#333333] p-4 rounded focus:border-amber-500 outline-none">
-                <select class="w-full bg-[#111111] border border-[#333333] p-4 rounded focus:border-amber-500 outline-none">
-                    <option>Select Role</option>
-                    <option>Developer</option>
-                    <option>Security Researcher</option>
-                    <option>Community Growth</option>
-                </select>
-            </div>
-            <div class="space-y-6 text-center">
-                <div class="border-2 border-dashed border-[#333333] rounded-xl p-10 hover:border-amber-500 cursor-pointer transition">
-                    <i class="fas fa-cloud-upload-alt text-3xl mb-4 text-zinc-600"></i>
-                    <p class="text-xs uppercase tracking-widest text-zinc-500">Upload CV / Portfolio</p>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2 ml-1">Full Name</label>
+                    <input type="text" placeholder="John Doe" class="input-field w-full p-4 rounded-xl text-zinc-800">
                 </div>
-                <button class="w-full py-4 bg-amber-500 text-black font-bold rounded uppercase tracking-widest text-xs hover:bg-amber-400 transition">
+                
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2 ml-1">Email Address</label>
+                    <input type="email" placeholder="contact@secure.com" class="input-field w-full p-4 rounded-xl text-zinc-800">
+                </div>
+
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2 ml-1">Desired Role</label>
+                    <select class="input-field w-full p-4 rounded-xl text-zinc-800 appearance-none bg-white">
+                        <option>Select Role</option>
+                        <option>Full-Stack Developer</option>
+                        <option>Security Researcher</option>
+                        <option>Community Growth</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex flex-col justify-between space-y-6">
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2 ml-1">Credentials</label>
+                    <div class="border-2 border-dashed border-zinc-200 rounded-2xl p-12 text-center hover:border-blue-400 hover:bg-blue-50/30 cursor-pointer transition-all group">
+                        <i class="fas fa-cloud-upload-alt text-4xl mb-4 text-zinc-300 group-hover:text-blue-500 transition-colors"></i>
+                        <p class="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">Upload CV / Portfolio</p>
+                    </div>
+                </div>
+
+                <button type="button" class="w-full py-5 bg-zinc-900 text-white font-bold rounded-xl uppercase tracking-[0.2em] text-[10px] hover:bg-blue-600 shadow-lg shadow-zinc-200 hover:shadow-blue-200 transition-all active:scale-[0.98]">
                     Submit Application
                 </button>
             </div>
         </form>
+
+        <footer class="mt-16 text-center">
+            <p class="text-[10px] uppercase tracking-[0.3em] text-zinc-300 font-bold">Secure Node v2.4 // Cypherbird Systems</p>
+        </footer>
     </main>
 
 </body>
