@@ -7,34 +7,62 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #050505; color: white; }
-        .news-card:hover { border-color: #3b82f6; background-color: #0a0a0a; }
-        .shimmer { background: linear-gradient(90deg, #0a0a0a 25%, #1a1a1a 50%, #0a0a0a 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8f9fa; /* Premium light grey */
+            color: #1a1a1a; 
+        }
+
+        .news-card {
+            background-color: white;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid #e5e7eb;
+        }
+
+        .news-card:hover { 
+            border-color: #3b82f6; 
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .shimmer { 
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); 
+            background-size: 200% 100%; 
+            animation: shimmer 1.5s infinite; 
+        }
+
         @keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
     </style>
 </head>
 <body class="py-12 px-6">
 
-    <div class="max-w-4xl mx-auto">
-        <header class="mb-16 border-b border-zinc-900 pb-10">
-            <a href="index.html" class="text-zinc-500 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-white transition">← Return to Terminal</a>
-            <h1 class="text-5xl font-extrabold tracking-tighter mt-6">Threat Intelligence</h1>
-            <p class="text-zinc-500 text-sm mt-3 font-light tracking-wide">Daily updates on global data breaches, surveillance, and digital vulnerabilities.</p>
+    <div class="max-w-5xl mx-auto">
+        <header class="mb-16 border-b border-zinc-200 pb-10">
+            <a href="index.html" class="text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-600 transition">← Return to Terminal</a>
+            <h1 class="text-5xl font-extrabold tracking-tighter mt-6 text-zinc-900">Threat Intelligence</h1>
+            <p class="text-zinc-500 text-sm mt-3 font-light tracking-wide uppercase">Daily updates on global vulnerabilities and digital surveillance.</p>
         </header>
 
-        <div id="news-feed" class="space-y-6">
-            <div class="shimmer h-32 w-full rounded-2xl"></div>
-            <div class="shimmer h-32 w-full rounded-2xl"></div>
-            <div class="shimmer h-32 w-full rounded-2xl"></div>
+        <div id="news-feed" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Loading States -->
+            <div class="shimmer h-64 w-full rounded-2xl"></div>
+            <div class="shimmer h-64 w-full rounded-2xl"></div>
         </div>
 
-        <footer class="mt-20 text-center opacity-30">
-            <p class="text-[10px] uppercase tracking-widest">Feed provided by Global Security RSS Protocols</p>
+        <footer class="mt-20 text-center opacity-50">
+            <p class="text-[10px] text-zinc-400 uppercase tracking-widest font-bold">Feed provided by Global Security RSS Protocols</p>
         </footer>
     </div>
 
     <script>
-        // Use a free RSS-to-JSON API to fetch live news
         const RSS_FEED_URL = 'https://thehackernews.com/feeds/posts/default';
         const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_FEED_URL)}`;
 
@@ -45,25 +73,34 @@
                 const container = document.getElementById('news-feed');
                 
                 if (data.status === 'ok') {
-                    container.innerHTML = ''; // Clear loading state
+                    container.innerHTML = ''; 
                     
-                    // Show top 7 articles
-                    data.items.slice(0, 7).forEach(item => {
+                    data.items.slice(0, 8).forEach(item => {
                         const date = new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
                         
+                        // Check if thumbnail exists, otherwise use a high-quality tech placeholder
+                        const thumbnail = item.thumbnail || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80`;
+
                         const article = `
-                            <div class="news-card border border-zinc-900 p-6 rounded-2xl transition-all group">
-                                <div class="flex justify-between items-start mb-3">
-                                    <span class="text-[10px] font-bold text-blue-500 uppercase tracking-widest">${item.categories[0] || 'Breach Alert'}</span>
-                                    <span class="text-[10px] text-zinc-600 font-mono">${date}</span>
+                            <div class="news-card flex flex-col rounded-2xl transition-all duration-300 overflow-hidden group">
+                                <div class="h-48 overflow-hidden">
+                                    <img src="${thumbnail}" alt="news-image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                                 </div>
-                                <h3 class="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors leading-tight">
-                                    <a href="${item.link}" target="_blank">${item.title}</a>
-                                </h3>
-                                <p class="text-sm text-zinc-500 line-clamp-2 font-light leading-relaxed mb-4">
-                                    ${item.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...
-                                </p>
-                                <a href="${item.link}" target="_blank" class="text-[10px] font-black uppercase tracking-widest border-b border-blue-500 pb-1 hover:text-blue-400 transition">Read Full Intel →</a>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <div class="flex justify-between items-start mb-3">
+                                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">${item.categories[0] || 'Breach Alert'}</span>
+                                        <span class="text-[10px] text-zinc-400 font-mono">${date}</span>
+                                    </div>
+                                    <h3 class="text-xl font-bold mb-3 text-zinc-900 group-hover:text-blue-600 transition-colors leading-tight">
+                                        <a href="${item.link}" target="_blank">${item.title}</a>
+                                    </h3>
+                                    <p class="text-sm text-zinc-500 line-clamp-3 font-light leading-relaxed mb-6">
+                                        ${item.description.replace(/<[^>]*>?/gm, '').substring(0, 150)}...
+                                    </p>
+                                    <div class="mt-auto">
+                                        <a href="${item.link}" target="_blank" class="text-[10px] font-black text-zinc-900 uppercase tracking-widest border-b-2 border-blue-200 hover:border-blue-600 pb-1 transition-all">Read Full Intel →</a>
+                                    </div>
+                                </div>
                             </div>
                         `;
                         container.innerHTML += article;
