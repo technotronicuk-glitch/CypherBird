@@ -255,53 +255,58 @@
             </div>
         </div>
     </section>
-    <div class="mb-16">
-    <h2 class="text-zinc-900 text-3xl font-black italic uppercase tracking-tighter mb-4">Neural Data Top-Ups</h2>
-    <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: One_Time_Refills</p>
+   <div class="mb-16 max-w-7xl mx-auto px-4">
+    <!-- Header Fixed: Added text-left and removed centering constraints -->
+    <div class="text-left">
+        <h2 class="text-zinc-900 text-3xl font-black italic uppercase tracking-tighter mb-4">Neural Data Top-Ups</h2>
+        <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: One_Time_Refills</p>
+    </div>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- 500MB -->
-        <div class="relative group overflow-hidden bg-white border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-cobalt transition-all shadow-sm">
-            <img src="Top-Up 500MB.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent p-6 flex flex-col justify-end">
+        <!-- 500MB Card -->
+        <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
+            <!-- Fixed Image: Removed opacity-40 so colors are vibrant -->
+            <img src="Top-Up 500MB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <!-- Fixed Overlay: Changed white gradient to a subtle dark bottom-fade for text readability -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
-                        <h3 class="text-zinc-900 font-black italic text-2xl uppercase">500MB</h3>
-                        <p class="text-cobalt font-mono text-xs font-bold mt-1">€1.99</p>
+                        <h3 class="text-white font-black italic text-2xl uppercase">500MB</h3>
+                        <p class="text-blue-400 font-mono text-xs font-bold mt-1">€1.99</p>
                     </div>
-                    <button class="bg-zinc-900 text-white px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-cobalt transition-all shadow-xl">
+                    <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- 2GB -->
-        <div class="relative group overflow-hidden bg-white border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-cobalt transition-all shadow-sm">
-            <img src="Top-Up 2GB.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent p-6 flex flex-col justify-end">
+        <!-- 2GB Card -->
+        <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
+            <img src="Top-Up 2GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
-                        <h3 class="text-zinc-900 font-black italic text-2xl uppercase">2GB</h3>
-                        <p class="text-cobalt font-mono text-xs font-bold mt-1">€2.99</p>
+                        <h3 class="text-white font-black italic text-2xl uppercase">2GB</h3>
+                        <p class="text-blue-400 font-mono text-xs font-bold mt-1">€2.99</p>
                     </div>
-                    <button class="bg-zinc-900 text-white px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-cobalt transition-all shadow-xl">
+                    <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- 5GB -->
-        <div class="relative group overflow-hidden bg-white border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-cobalt transition-all shadow-sm">
-            <img src="Top-Up 5GB.png" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-white via-white/20 to-transparent p-6 flex flex-col justify-end">
+        <!-- 5GB Card -->
+        <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
+            <img src="Top-Up 5GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
-                        <h3 class="text-zinc-900 font-black italic text-2xl uppercase">5GB</h3>
-                        <p class="text-cobalt font-mono text-xs font-bold mt-1">€4.99</p>
+                        <h3 class="text-white font-black italic text-2xl uppercase">5GB</h3>
+                        <p class="text-blue-400 font-mono text-xs font-bold mt-1">€4.99</p>
                     </div>
-                    <button class="bg-zinc-900 text-white px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-cobalt transition-all shadow-xl">
+                    <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
                     </button>
                 </div>
@@ -309,15 +314,14 @@
         </div>
     </div>
 
-    <!-- Store Button -->
+    <!-- Store Button: Styled like the blue 'LEARN MORE' button in image 2 -->
     <div class="mt-24 text-center">
-        <a href="store.html" class="inline-flex items-center px-12 py-5 bg-white border border-borders rounded-full text-zinc-900 hover:border-cobalt hover:text-cobalt hover:shadow-[0_10px_30px_rgba(59,130,246,0.1)] font-mono text-[11px] font-black uppercase tracking-[0.4em] transition-all duration-500 group">
+        <a href="store.html" class="inline-flex items-center px-12 py-5 bg-[#3b82f6] text-white rounded-lg hover:bg-blue-600 shadow-lg font-sans text-[13px] font-black uppercase tracking-widest transition-all duration-300 group">
             Visit_The_Protocol_Store
-            <span class="ml-4 group-hover:translate-x-2 transition-transform duration-500 text-cobalt">→</span>
+            <span class="ml-4 group-hover:translate-x-2 transition-transform duration-500">→</span>
         </a>
     </div>
-</div>
-
+</div> 
     <section id="subscribe" class="py-32 bg-white border-t border-borders relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cobalt/5 blur-[120px] rounded-full"></div>
         <div class="max-w-3xl mx-auto px-8 text-center relative z-10">
@@ -359,6 +363,7 @@
             <div class="flex flex-col md:items-end gap-6">
                 <div class="flex gap-6 text-xl text-zinc-400">
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-facebook"></i></a> 
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-x-twitter"></i></a> 
