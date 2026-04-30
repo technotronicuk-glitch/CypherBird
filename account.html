@@ -2,36 +2,187 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <title>Portal Access | Cypherbird</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8f9fa; 
+            color: #1a1a1a; 
+        }
+
+        .premium-card {
+            background: white;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+        }
+
+        .input-field {
+            background-color: #fcfcfc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        .input-field:focus {
+            border-color: #3b82f6;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        .hidden { display: none; }
+        
+        .tab-active {
+            border-bottom: 2px solid #3b82f6;
+            color: #1a1a1a;
+            font-weight: 800;
+        }
+    </style>
 </head>
-<body class="bg-[#111111] text-[#dcdcdc] font-sans flex items-center justify-center min-h-screen">
+<body class="flex flex-col min-h-screen">
 
-    <div class="max-w-md w-full px-6">
-        <div class="text-center mb-10">
-            <a href="index.html" class="text-4xl mb-4 inline-block">🦅</a>
-            <h1 class="text-2xl font-bold text-white uppercase tracking-tighter">System Access</h1>
-            <p class="text-zinc-500 text-sm italic">Identify yourself to the network</p>
+    <nav class="p-6 border-b border-zinc-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-xl">🦅 <span class="font-black text-zinc-900 ml-2 uppercase tracking-tighter">Cypherbird</span></a>
+            <div id="user-status-nav" class="hidden text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-widest">
+                Tier: Ultra
+            </div>
         </div>
+    </nav>
 
-        <form class="bg-[#1c1c1c] p-8 rounded-2xl border border-[#333333] shadow-2xl space-y-6">
-            <div>
-                <label class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 block mb-2">Operator Alias</label>
-                <input type="text" placeholder="Username" class="w-full bg-[#111111] border border-[#333333] p-3 rounded focus:border-amber-500 outline-none transition text-white">
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="max-w-md w-full">
+            
+            <!-- Tab Navigation -->
+            <div class="flex justify-center space-x-8 mb-8">
+                <button onclick="showTab('login')" id="login-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2 tab-active">Login</button>
+                <button onclick="showTab('signup')" id="signup-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2">Sign Up</button>
+                <button onclick="showTab('status')" id="status-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2">Live Status</button>
             </div>
-            <div>
-                <label class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 block mb-2">Passkey</label>
-                <input type="password" placeholder="••••••••" class="w-full bg-[#111111] border border-[#333333] p-3 rounded focus:border-amber-500 outline-none transition text-white">
-            </div>
-            <button class="w-full py-4 bg-white text-black font-bold rounded uppercase tracking-widest text-xs hover:bg-amber-500 transition">
-                Initialize Session
-            </button>
-            <div class="text-center pt-2">
-                <a href="index.html" class="text-xs text-zinc-600 hover:text-zinc-400">← Return to Public Terminal</a>
-            </div>
-        </form>
-    </div>
 
+            <!-- LOGIN VIEW -->
+            <form id="login-view" class="premium-card p-8 rounded-3xl space-y-5">
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2">Operator Alias</label>
+                    <input type="text" placeholder="Full Name" class="input-field w-full p-3 rounded-xl">
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2">Cypher ID</label>
+                    <input type="text" placeholder="CB-XXXX-XXXX" class="input-field w-full p-3 rounded-xl font-mono text-sm">
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2">Security PIN</label>
+                    <input type="password" maxlength="4" placeholder="••••" class="input-field w-full p-3 rounded-xl tracking-[1em] text-center">
+                </div>
+                <button type="button" class="w-full py-4 bg-zinc-900 text-white font-bold rounded-xl uppercase tracking-widest text-xs hover:bg-blue-600 transition shadow-lg shadow-zinc-200">
+                    Access Terminal
+                </button>
+            </form>
+
+            <!-- SIGNUP VIEW -->
+            <form id="signup-view" class="premium-card p-8 rounded-3xl space-y-4 hidden">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Full Name</label>
+                        <input type="text" class="input-field w-full p-3 rounded-xl">
+                    </div>
+                    <div>
+                        <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Country</label>
+                        <input type="text" placeholder="e.g. USA" class="input-field w-full p-3 rounded-xl">
+                    </div>
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Mail Address</label>
+                    <input type="email" placeholder="secure@cypherbird.com" class="input-field w-full p-3 rounded-xl">
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Phone Number</label>
+                    <input type="tel" placeholder="+X XXX XXX XXXX" class="input-field w-full p-3 rounded-xl">
+                </div>
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Setup 4-Digit PIN</label>
+                    <input type="password" maxlength="4" placeholder="••••" class="input-field w-full p-3 rounded-xl tracking-[1em] text-center">
+                </div>
+                <div class="flex items-start space-x-3 pt-2">
+                    <input type="checkbox" id="policy" class="mt-1">
+                    <label for="policy" class="text-[10px] text-zinc-400 leading-tight">I accept the Protocol Policies and confirm that I am solely responsible for my Cypher ID keys.</label>
+                </div>
+                <button type="button" class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl uppercase tracking-widest text-xs hover:bg-zinc-900 transition shadow-lg shadow-blue-100">
+                    Generate Identity
+                </button>
+            </form>
+
+            <!-- LIVE STATUS VIEW (Dashboard) -->
+            <div id="status-view" class="premium-card p-8 rounded-3xl space-y-6 hidden">
+                <div class="flex justify-between items-center border-b border-zinc-100 pb-4">
+                    <div>
+                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Active Tier</p>
+                        <h2 class="text-2xl font-black text-blue-600">ULTRA SERVICE</h2>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">ID Status</p>
+                        <span class="text-[10px] bg-green-50 text-green-600 px-2 py-1 rounded font-bold uppercase">Verified</span>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <div class="flex justify-between text-[10px] font-bold uppercase tracking-widest">
+                        <span class="text-zinc-400">Vault Storage Usage</span>
+                        <span class="text-zinc-900">75% Used</span>
+                    </div>
+                    <!-- Progress Bar -->
+                    <div class="w-full h-3 bg-zinc-100 rounded-full overflow-hidden">
+                        <div class="bg-blue-600 h-full w-[75%] rounded-full shadow-inner"></div>
+                    </div>
+                    <div class="flex justify-between text-xs font-medium pt-1">
+                        <span class="text-zinc-500 font-mono">750 GB Used</span>
+                        <span class="text-blue-600 font-mono">250 GB Left</span>
+                    </div>
+                </div>
+
+                <div class="bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
+                    <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Cypher ID Fingerprint</p>
+                    <p class="font-mono text-[11px] break-all text-zinc-600">CB-8821-4490-X9-ULTR</p>
+                </div>
+
+                <p class="text-center text-[9px] text-zinc-300 uppercase tracking-widest font-bold">Encrypted via Cypherbird v5.1 Uplink</p>
+            </div>
+
+            <div class="text-center mt-8">
+                <a href="index.html" class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest hover:text-blue-600 transition">← Back to Gateway</a>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function showTab(tab) {
+            // Hide all views
+            document.getElementById('login-view').classList.add('hidden');
+            document.getElementById('signup-view').classList.add('hidden');
+            document.getElementById('status-view').classList.add('hidden');
+            
+            // Remove active classes from tabs
+            document.getElementById('login-tab').classList.remove('tab-active');
+            document.getElementById('signup-tab').classList.remove('tab-active');
+            document.getElementById('status-tab').classList.remove('tab-active');
+            
+            // Show selected view
+            document.getElementById(tab + '-view').classList.remove('hidden');
+            
+            // Add active class to selected tab
+            document.getElementById(tab + '-tab').classList.add('tab-active');
+
+            // Show status chip in nav if on status tab
+            if(tab === 'status') {
+                document.getElementById('user-status-nav').classList.remove('hidden');
+            } else {
+                document.getElementById('user-status-nav').classList.add('hidden');
+            }
+        }
+    </script>
 </body>
 </html>
