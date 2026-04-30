@@ -256,10 +256,10 @@
         </div>
     </section>
    <div class="mb-16 max-w-7xl mx-auto px-4">
-    <!-- Header Fixed: Added text-left and removed centering constraints -->
-    <div class="text-left">
+    <!-- Header Fixed: Changed text-left to text-center -->
+    <div class="text-center">
         <h2 class="text-zinc-900 text-3xl font-black italic uppercase tracking-tighter mb-4">Neural Data Top-Ups</h2>
-        <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: One_Time_Refills</p>
+        <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: One Time Refills</p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -322,20 +322,30 @@
         </a>
     </div>
 </div> 
-    <section id="subscribe" class="py-32 bg-white border-t border-borders relative overflow-hidden">
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cobalt/5 blur-[120px] rounded-full"></div>
-        <div class="max-w-3xl mx-auto px-8 text-center relative z-10">
-            <div class="inline-block border border-cobalt/30 px-4 py-1 rounded-full mb-8">
-                <span class="text-cobalt font-mono text-[9px] uppercase tracking-[0.3em] italic">Network_Status: Online</span>
-            </div>
-            <h2 class="text-zinc-900 text-5xl font-black italic uppercase tracking-tighter mb-6">Join_The_Protocol</h2>
-            <p class="text-zinc-500 font-mono text-xs uppercase tracking-widest mb-12 leading-relaxed">Subscribe to receive critical security updates, new module deployments, and exclusive community access.</p>
-            <form class="relative max-w-md mx-auto group">
-                <input type="email" placeholder="ENTER_EMAIL_ADDRESS" class="w-full bg-base border border-borders py-5 px-6 rounded-xl text-zinc-900 font-mono text-xs uppercase tracking-widest focus:outline-none focus:border-cobalt transition-all placeholder:text-zinc-300">
-                <button type="submit" class="absolute right-2 top-2 bottom-2 bg-zinc-900 text-white px-6 rounded-lg font-black italic text-[10px] uppercase tracking-widest hover:bg-cobalt transition-all active:scale-95">Initialize</button>
-            </form>
+    <section id="subscribe" class="py-16 bg-white border-t border-borders relative overflow-hidden">
+    <!-- Slimmed the glow effect slightly -->
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cobalt/5 blur-[100px] rounded-full"></div>
+    
+    <div class="max-w-3xl mx-auto px-8 text-center relative z-10">
+        <!-- Reduced margin-bottom from mb-8 to mb-4 -->
+        <div class="inline-block border border-cobalt/30 px-3 py-0.5 rounded-full mb-4">
+            <span class="text-cobalt font-mono text-[8px] uppercase tracking-[0.3em] italic">Network_Status: Online</span>
         </div>
-    </section>
+        
+        <!-- Reduced text size from text-5xl to text-3xl and margin from mb-6 to mb-2 -->
+        <h2 class="text-zinc-900 text-3xl font-black italic uppercase tracking-tighter mb-2">Join The Protocol</h2>
+        
+        <!-- Reduced margin from mb-12 to mb-8 -->
+        <p class="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mb-8 leading-relaxed">Subscribe for security updates and module deployments.</p>
+        
+        <form class="relative max-w-sm mx-auto group">
+            <!-- Slimmed input padding from py-5 to py-3.5 -->
+            <input type="email" placeholder="ENTER_EMAIL_ADDRESS" class="w-full bg-base border border-borders py-3.5 px-5 rounded-xl text-zinc-900 font-mono text-[10px] uppercase tracking-widest focus:outline-none focus:border-cobalt transition-all placeholder:text-zinc-300">
+            <!-- Adjusted button to fit the slimmer input -->
+            <button type="submit" class="absolute right-1.5 top-1.5 bottom-1.5 bg-zinc-900 text-white px-5 rounded-lg font-black italic text-[9px] uppercase tracking-widest hover:bg-cobalt transition-all active:scale-95">Initialize</button>
+        </form>
+    </div>
+</section>
 </main>
 
 <footer class="bg-base border-t border-borders pt-16 pb-12">
