@@ -4,60 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Systems & Capabilities | CypherBird</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
-    
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* BASE THEME */
-        body.stealth-theme {
-            background-color: #050505;
-            color: #d1d1d1;
-            font-family: 'JetBrains Mono', monospace;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f8f9fa; 
+            color: #1a1a1a; 
         }
 
-        .content-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 20px;
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .premium-card {
+            background: white;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
 
-        /* NAVIGATION & BACK BUTTON */
-        .top-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 50px;
-        }
-
-        .back-btn {
-            text-decoration: none;
-            color: #00ff41; /* Cyber Green */
-            border: 1px solid #00ff41;
-            padding: 10px 20px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            transition: all 0.3s;
-        }
-
-        .back-btn:hover {
-            background: #00ff41;
-            color: #000;
-            box-shadow: 0 0 15px #00ff41;
-        }
-
-        .system-status {
-            color: #555;
-            font-size: 0.7rem;
-            letter-spacing: 1px;
+        .premium-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.07);
         }
 
         .pulse {
             display: inline-block;
             width: 8px;
             height: 8px;
-            background: #00ff41;
+            background: #3b82f6;
             border-radius: 50%;
             margin-right: 8px;
             animation: blink 1.5s infinite;
@@ -69,116 +44,113 @@
             100% { opacity: 1; }
         }
 
-        /* HEADER */
-        header h1 {
-            font-size: 2.5rem;
-            color: #fff;
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .tagline {
-            color: #888;
-            font-size: 1.1rem;
-            margin-bottom: 40px;
-        }
-
-        /* FEATURE BLOCKS */
-        .feature-block {
-            background: #111;
-            padding: 30px;
-            border-radius: 4px;
-            margin-bottom: 25px;
-            border-left: 2px solid #333;
-        }
-
-        .ultra-highlight {
-            border: 1px solid #ff003c;
-            background: rgba(255, 0, 60, 0.03);
-            position: relative;
-        }
-
-        .badge {
-            background: #ff003c;
-            color: white;
-            font-size: 0.6rem;
-            padding: 3px 10px;
-            display: inline-block;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        h3 {
-            color: #fff;
-            margin-top: 0;
-        }
-
-        ul {
-            padding-left: 20px;
-            list-style: square;
-            color: #aaa;
-        }
-
-        li strong {
-            color: #00ff41;
-        }
-
-        /* FOOTER */
-        footer {
-            margin-top: 60px;
-            padding-top: 20px;
-            border-top: 1px solid #222;
-            font-size: 0.8rem;
-            color: #444;
-            text-align: center;
-        }
-
-        .copyright {
-            margin-top: 10px;
-            color: #333;
+        .hero-gradient {
+            background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
         }
     </style>
 </head>
-<body class="stealth-theme">
-    <main class="content-wrapper">
-        <nav class="top-nav">
-            <a href="index.html" class="back-btn">← BACK_TO_HOME</a>
-            <div class="system-status">
-                <span class="pulse"></span> SYSTEM_ENCRYPTED: AES_256_ACTIVE
+<body class="py-12 px-6">
+
+    <div class="max-w-5xl mx-auto">
+        <!-- Navigation -->
+        <nav class="flex justify-between items-center mb-16">
+            <a href="index.html" class="text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-600 transition">
+                ← BACK_TO_HOME
+            </a>
+            <div class="mono text-[10px] text-zinc-500 font-medium tracking-tighter flex items-center bg-white px-4 py-2 rounded-full border border-zinc-200">
+                <span class="pulse"></span> SYSTEM_ENCRYPTED: <span class="text-blue-600 ml-1">AES_256_ACTIVE</span>
             </div>
         </nav>
 
-        <header>
-            <h1>Operational Capabilities</h1>
-            <p class="tagline">Engineered for absolute digital sovereignty.</p>
+        <!-- Header -->
+        <header class="mb-20">
+            <h1 class="text-6xl font-extrabold tracking-tighter text-zinc-900 mb-6">Operational Capabilities</h1>
+            <p class="text-zinc-500 text-xl font-light max-w-2xl leading-relaxed">
+                Engineered for absolute digital sovereignty. Our systems leverage high-entropy cryptography and hardware-bound protocols.
+            </p>
         </header>
 
-        <section class="capability-detail">
-            <div class="feature-block ultra-highlight">
-                <div class="badge">ULTRA_EXCLUSIVE</div>
-                <h3>Ultra Protocol: Large Asset Scrambling</h3>
-                <p>The core of CypherBird Ultra. We solved the "Mobile Memory" bottleneck using proprietary <strong>Stream Processing</strong>.</p>
-                <ul>
-                    <li><strong>Temporal Chunking:</strong> Files are sliced into manageable binary segments in real-time.</li>
-                    <li><strong>Parallel Scrambling:</strong> Each chunk is encrypted independently to prevent CPU crashes.</li>
-                    <li><strong>Zero-Buffer Policy:</strong> No unencrypted data is ever written to temporary storage.</li>
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- Ultra Protocol Card (Featured) -->
+            <div class="md:col-span-2 premium-card rounded-3xl p-10 border-t-4 border-t-blue-600">
+                <span class="inline-block bg-blue-50 text-blue-600 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded mb-6">Ultra Protocol</span>
+                <h3 class="text-3xl font-bold mb-6 tracking-tight">Large Asset Scrambling</h3>
+                <p class="text-zinc-500 mb-8 leading-relaxed">
+                    The core of CypherBird Ultra. We solved the "Mobile Memory" bottleneck using proprietary <strong>Stream Processing</strong>, allowing the encryption of multi-gigabyte files without system degradation.
+                </p>
+                <ul class="space-y-4 mono text-xs text-zinc-600">
+                    <li class="flex items-start">
+                        <span class="text-blue-500 mr-3">//</span>
+                        <span><strong>Temporal Chunking:</strong> Files are sliced into manageable binary segments in real-time.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 mr-3">//</span>
+                        <span><strong>Parallel Processing:</strong> Each chunk is encrypted independently to prevent CPU spikes.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 mr-3">//</span>
+                        <span><strong>Zero-Buffer Policy:</strong> No unencrypted data is ever written to temporary cache.</span>
+                    </li>
                 </ul>
             </div>
 
-            <div class="feature-block">
-                <h3>The Power of AES-256</h3>
-                <p>Every piece of data is locked behind a mathematical wall that would take billions of years to brute-force.</p>
-                <ul>
-                    <li><strong>Identity Salt:</strong> Your unique identity is hardware-bound, transforming your PIN into a high-entropy string.</li>
-                    <li><strong>Zero-Database:</strong> We don't store your keys. They stay in your phone's Secure Enclave.</li>
-                </ul>
+            <!-- AES-256 Info -->
+            <div class="premium-card rounded-3xl p-10 flex flex-col justify-between">
+                <div>
+                    <h3 class="text-2xl font-bold mb-4 tracking-tight">AES-256 Solid State</h3>
+                    <p class="text-sm text-zinc-500 leading-relaxed mb-6">
+                        Every piece of data is locked behind a mathematical wall that would take billions of years to brute-force.
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
+                        <p class="mono text-[10px] font-bold uppercase text-zinc-400 mb-1">Identity Salt</p>
+                        <p class="text-xs text-zinc-600">Hardware-bound entropy mapping.</p>
+                    </div>
+                    <div class="p-4 bg-zinc-50 rounded-xl border border-zinc-100">
+                        <p class="mono text-[10px] font-bold uppercase text-zinc-400 mb-1">Zero-Database</p>
+                        <p class="text-xs text-zinc-600">Keys remain in the Secure Enclave.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Intel Section -->
+            <div class="premium-card rounded-3xl p-10">
+                <h4 class="text-lg font-bold mb-4 tracking-tight">Neural Obfuscation</h4>
+                <p class="text-sm text-zinc-500 leading-relaxed">
+                    Cypherbird uses polymorphic code structures to hide the application logic from forensic memory analysis.
+                </p>
+            </div>
+
+            <div class="premium-card rounded-3xl p-10">
+                <h4 class="text-lg font-bold mb-4 tracking-tight">Network Ghosting</h4>
+                <p class="text-sm text-zinc-500 leading-relaxed">
+                    Proprietary routing that fragments packet headers to bypass deep packet inspection (DPI) in restricted zones.
+                </p>
+            </div>
+
+            <div class="premium-card rounded-3xl p-10">
+                <h4 class="text-lg font-bold mb-4 tracking-tight">Secure Erase</h4>
+                <p class="text-sm text-zinc-500 leading-relaxed">
+                    Uses NIST-compliant multi-pass overwriting to ensure deleted assets are unrecoverable by hardware lab tools.
+                </p>
             </div>
         </section>
 
-        <footer>
-            <p><em>*Certain cryptographic salt-layering techniques remain proprietary to maintain CypherBird integrity.</em></p>
-            <p class="copyright">© 2026 Technotronics Group. All rights reserved.</p>
+        <!-- Footer -->
+        <footer class="mt-24 pt-12 border-t border-zinc-200">
+            <div class="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 text-center md:text-left">
+                <p class="text-[10px] uppercase tracking-widest text-zinc-400 font-medium">
+                    © 2026 Technotronics Group. Certain cryptographic salt-layering techniques remain proprietary.
+                </p>
+                <div class="flex space-x-6">
+                    <span class="text-[10px] uppercase tracking-widest text-zinc-300 font-bold">Node: 49.02.11</span>
+                    <span class="text-[10px] uppercase tracking-widest text-zinc-300 font-bold">Protocol: Cypherbird_V5</span>
+                </div>
+            </div>
         </footer>
-    </main>
+    </div>
+
 </body>
 </html>
