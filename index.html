@@ -136,16 +136,24 @@
             <button onclick="manualQuery()" class="bg-zinc-900 text-white text-[10px] font-black uppercase px-4 py-2 rounded-sm transition hover:bg-cobalt">Send</button>
         </div>
     </div>
-    <button onclick="toggleChat()" class="w-16 h-16 bg-zinc-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition shadow-cobalt/20">
-        <span class="text-2xl">🦅</span>
-    </button>
+<button onclick="toggleChat()" 
+        class="fixed bottom-8 right-8 w-16 h-16 bg-zinc-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 border border-zinc-800 group shadow-blue-900/20">
+    <img src="Logo.png" 
+         alt="Chat Support" 
+         class="w-8 h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity">
+    <span class="absolute top-0 right-0 flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
+    </span>
+</button>
 </div>
-
-<header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
-    <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-3 shrink-0">
-            <span class="text-2xl">🦅</span> 
-            <span class="text-2xl font-black tracking-tighter text-zinc-900 uppercase italic leading-none">CYPHERBIRD</span>
+        <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+        <a href="index.html" class="flex items-center gap-4 shrink-0 group">
+            <img src="Logo.png" alt="Cypherbird Logo" class="h-10 w-auto object-contain"> 
+            <span class="text-2xl font-black tracking-tighter text-zinc-900 uppercase italic leading-none">
+                CYPHERBIRD
+            </span>
         </a>
         <nav class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
             <a href="capabilities.html" class="text-zinc-500 hover:text-cobalt transition">Capabilities</a>
@@ -438,7 +446,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-[11px] font-mono text-zinc-500 uppercase tracking-widest items-start">
             <div class="flex flex-col gap-4">
                 <div class="flex items-center gap-3">
-                    <span class="text-2xl">🦅</span> 
+                    <img src="Logo.png" alt="Cypherbird" class="h-8 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                     <span class="text-xl font-black text-zinc-900 italic tracking-tighter">CYPHERBIRD</span>
                 </div> 
                 <p class="normal-case font-sans tracking-normal leading-relaxed text-zinc-500" style="font-size: 14px;">Reclaiming Digital Privacy &copy; 2026</p>
