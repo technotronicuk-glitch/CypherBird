@@ -2,34 +2,154 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The Digital Risk | CypherBird</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body class="stealth-theme">
-    <main class="content-wrapper">
-        <header>
-            <h1>The Illusion of Privacy</h1>
-            <p class="tagline">Why standard encryption isn't enough anymore.</p>
-        </header>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Protect Your Legacy | CypherBird</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #fcfcfc; 
+            color: #1a1a1a; 
+        }
 
-        <section class="deep-dive">
-            <h2>The Growing Risk</h2>
-            <p>Every "secure" app you use today relies on a central server. This means your data—even if encrypted—is sitting in a cloud vault owned by a corporation. Data brokers, accidental leaks, and state-level surveillance don't "break" encryption; they simply demand the key from the provider.</p>
-            
-            <div class="threat-grid">
-                <div class="threat">
-                    <h3>Metadata Harvesting</h3>
-                    <p>They might not read your message, but they know <strong>who</strong> you talked to, <strong>when</strong>, and for <strong>how long</strong>.</p>
+        .mono { font-family: 'JetBrains Mono', monospace; }
+
+        .hero-bg {
+            background: linear-gradient(180deg, #ffffff 0%, #f3f4f6 100%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.05);
+        }
+
+        .legacy-gradient {
+            background: linear-gradient(90deg, #1a1a1a 0%, #4b5563 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .image-placeholder {
+            background: #f3f4f6 url('image_f27cde.jpg') center/cover;
+            filter: grayscale(100%) contrast(1.1);
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Header -->
+    <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-zinc-100 px-8 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-600 transition">
+                ← BACK_TO_DASHBOARD
+            </a>
+            <div class="flex items-center space-x-6">
+                <span class="mono text-[9px] text-zinc-400">ENCRYPTION: ACTIVE</span>
+                <a href="account.html" class="text-[10px] font-extrabold uppercase tracking-widest text-zinc-900 border-b-2 border-blue-600 pb-1">Access Vault</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="hero-bg pt-32 pb-20">
+        <!-- Main Hero Section -->
+        <section class="max-w-6xl mx-auto px-8 mb-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <span class="text-blue-600 font-mono text-[10px] font-bold uppercase tracking-[0.4em] mb-6 block">Legacy Preservation Protocol</span>
+                    <h1 class="text-6xl md:text-7xl font-extrabold tracking-tighter leading-[0.9] mb-8 legacy-gradient">
+                        Protect Your <br>Legacy.
+                    </h1>
+                    <p class="text-zinc-500 text-xl font-light leading-relaxed mb-10">
+                        Personal memories aren't data—they're <span class="font-semibold text-zinc-900">sacred assets</span>. We wrap your history in an invisible, proprietary shield that only you can unlock.
+                    </p>
+                    <div class="flex space-x-4">
+                        <button class="bg-zinc-900 text-white px-8 py-4 text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-blue-600 transition shadow-xl">Initialize Shield</button>
+                        <button class="bg-white text-zinc-900 border border-zinc-200 px-8 py-4 text-[10px] font-black uppercase tracking-widest rounded-full hover:border-zinc-900 transition">Intelligence Brief</button>
+                    </div>
                 </div>
-                <div class="threat">
-                    <h3>Cloud Vulnerability</h3>
-                    <p>Backups are the "backdoor" of the 21st century. If your chat is backed up to a cloud, it is no longer private.</p>
+                <div class="relative">
+                    <div class="w-full h-[500px] rounded-[3rem] image-placeholder shadow-2xl"></div>
+                    <div class="absolute -bottom-6 -left-6 glass-card p-6 rounded-2xl max-w-xs">
+                        <p class="mono text-[10px] text-blue-600 font-bold mb-2 uppercase tracking-tighter">Status: Protected</p>
+                        <p class="text-xs text-zinc-500 leading-tight">Your digital history is sharded across three disconnected geographic nodes.</p>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <h2>How CypherBird Intervenes</h2>
-            <p>CypherBird operates on a <strong>Local-First</strong> philosophy. We don't have servers to hack, because we don't store your data. We provide the "Invisible Ink" and the "Glass Decipherer," but the paper never leaves your pocket.</p>
+        <!-- Information Deep Dive -->
+        <section class="max-w-6xl mx-auto px-8">
+            <div class="border-t border-zinc-200 pt-20">
+                <h2 class="text-[10px] font-black uppercase tracking-[0.5em] text-zinc-400 mb-16 text-center">Technical Sovereignty Overview</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                    <!-- Column 1 -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-zinc-900 font-bold text-lg mb-3">The Illusion of Privacy</h3>
+                            <p class="text-sm text-zinc-500 leading-relaxed">Most secure apps rely on central servers. Even if encrypted, your legacy is a "request" away from being seized by corporations or state actors.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+                            <h4 class="mono text-[10px] font-bold text-blue-600 uppercase mb-2">Threat 01: Metadata</h4>
+                            <p class="text-[11px] text-zinc-500 leading-normal">Standard encryption hides content but leaves a "trail." We mask the connection itself.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-zinc-900 font-bold text-lg mb-3">Invisible Ink Strategy</h3>
+                            <p class="text-sm text-zinc-500 leading-relaxed">CypherBird operates on a Local-First philosophy. We provide the tools, but the "paper" never leaves your physical possession until it is sharded.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+                            <h4 class="mono text-[10px] font-bold text-blue-600 uppercase mb-2">Threat 02: Backdoors</h4>
+                            <p class="text-[11px] text-zinc-500 leading-normal">Cloud backups are the "backdoor" of the 21st century. CypherBird eliminates third-party storage risk.</p>
+                        </div>
+                    </div>
+
+                    <!-- Column 3 -->
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-zinc-900 font-bold text-lg mb-3">Neural Archival</h3>
+                            <p class="text-sm text-zinc-500 leading-relaxed">We use high-entropy scrambling to ensure that even if our code were made public, your specific assets remain mathematically unreachable.</p>
+                        </div>
+                        <div class="p-6 bg-zinc-50 rounded-2xl border border-zinc-100">
+                            <h4 class="mono text-[10px] font-bold text-blue-600 uppercase mb-2">Threat 03: Obsolescence</h4>
+                            <p class="text-[11px] text-zinc-500 leading-normal">Your memories stay compatible with future decryption standards through our dynamic key-rotation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Call to Action -->
+        <section class="max-w-4xl mx-auto px-8 mt-32">
+            <div class="bg-zinc-900 rounded-[3rem] p-12 md:p-20 text-center text-white relative overflow-hidden">
+                <div class="relative z-10">
+                    <h2 class="text-4xl font-bold mb-6 tracking-tighter">Your history belongs to you. <br>Keep it that way.</h2>
+                    <p class="text-zinc-400 text-lg font-light mb-10 max-w-lg mx-auto">Join the elite network of individuals who treat their personal data with the respect of a sovereign state.</p>
+                    <a href="store.html" class="inline-block bg-white text-zinc-900 px-10 py-4 text-[10px] font-black uppercase tracking-widest rounded-full hover:bg-blue-500 hover:text-white transition shadow-2xl">Start Your Legacy Protection</a>
+                </div>
+                <!-- Abstract visual element -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/20 blur-[120px] rounded-full"></div>
+                <div class="absolute bottom-0 left-0 w-64 h-64 bg-zinc-700/30 blur-[100px] rounded-full"></div>
+            </div>
         </section>
     </main>
+
+    <footer class="py-12 border-t border-zinc-100 text-center">
+        <p class="mono text-[9px] text-zinc-300 uppercase tracking-widest">CypherBird Protocol // Est. 2026 // Technotronics Group</p>
+    </footer>
+
 </body>
 </html>
