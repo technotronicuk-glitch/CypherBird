@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Philosophy | CypherBird Protocol</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+        :root {
+            --primary-black: #0a0a0a;
+            --accent-blue: #007AFF;
+            --text-main: #1d1d1f;
+            --text-muted: #6e6e73;
+            --bg-premium: #f9f9f9; /* Premium Off-White/Grey */
+            --white: #ffffff;
+            --border-color: #e5e5e7;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-premium);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 90px;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            margin: 0 0 20px 0;
+            color: var(--primary-black);
+            line-height: 1.1;
+        }
+
+        .intro-text {
+            color: var(--text-muted);
+            font-size: 1.25rem;
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        section {
+            background: var(--white);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-top: 0;
+            color: var(--primary-black);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+        }
+
+        .comparison-table th {
+            text-align: left;
+            padding: 15px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+
+        .check { color: #27ae60; font-weight: bold; }
+        .cross { color: #e74c3c; font-weight: bold; }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+        }
+
+        .pricing-hero {
+            background: var(--primary-black);
+            color: var(--white);
+            padding: 60px;
+            border-radius: 32px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .price-tag {
+            font-size: 4rem;
+            font-weight: 600;
+            margin: 20px 0;
+        }
+
+        .price-tag span {
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 100px;
+            padding-top: 40px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .philosophy-grid { grid-template-columns: 1fr; }
+            .container { padding: 60px 20px; }
+            section, .card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <span class="logo-text">The CypherBird Manifesto</span>
+        <h1>Why Privacy Is Never "Free"</h1>
+        <p class="intro-text">Uncompromising digital sovereignty requires a sustainable economic foundation.</p>
+    </header>
+
+    <section>
+        <h2>The Incentives of Sovereignty</h2>
+        <p>If a service is free, your data is the currency. Silicon Valley business models depend on harvesting metadata—analyzing who you are, what you store, and when you connect. CypherBird rejects this. By charging a <strong>Protocol Maintenance Fee</strong>, we align our interests entirely with your privacy. We don't sell your attention; we sell security.</p>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Infrastructure Attribute</th>
+                    <th>Free Apps</th>
+                    <th>CypherBird</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Business Goal</td>
+                    <td>Data Profiling</td>
+                    <td>Data Sovereignty[cite: 1]</td>
+                </tr>
+                <tr>
+                    <td>Encryption Logic</td>
+                    <td>Cloud-Side</td>
+                    <td>Edge-Processing (Local)[cite: 1]</td>
+                </tr>
+                <tr>
+                    <td>Metadata Collection</td>
+                    <td class="check">Extensive</td>
+                    <td class="cross">Zero[cite: 1]</td>
+                </tr>
+                <tr>
+                    <td>Ethical Guardrails</td>
+                    <td>Reactive</td>
+                    <td>Proactive (Client-Side)</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <div class="philosophy-grid">
+        <div class="card">
+            <h2>The Cost of "Zero-Knowledge"</h2>
+            <p>Maintaining a <strong>Zero-Knowledge Vault</strong> is technically demanding. Unlike standard cloud storage, our servers host unreadable "Sovereign Payloads"[cite: 1]. We invest your subscription into the specialized high-redundancy hardware required to store encrypted cyphertext without compromising its integrity[cite: 1].</p>
+        </div>
+        <div class="card">
+            <h2>Ethical Infrastructure</h2>
+            <p>Part of your fee supports our <strong>Client-Side Integrity Filtering</strong>[cite: 2]. This sophisticated local algorithm ensures the CypherBird Protocol remains a sanctuary for privacy while proactively blocking illegal or underage content before it can ever be encrypted[cite: 2].</p>
+        </div>
+    </div>
+
+    <div class="pricing-hero">
+        <span style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; opacity: 0.7;">The Sovereign Tier</span>
+        <div class="price-tag">€3.99<span>/mo</span></div>
+        <p style="font-size: 1.1rem; opacity: 0.9;">500MB of Encrypted Sovereign Storage</p>
+        <hr style="margin: 30px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="font-size: 0.9rem; color: #aaa;">
+            <strong>Our Pledge:</strong> We are committed to price transparency. As our community reaches critical scale milestones, we commit to reducing fees or increasing storage capacity for all protocol members.
+        </p>
+    </div>
+
+    <footer>
+        <p>Digital sovereignty is not a product—it is a discipline.</p>
+        <p style="margin-top: 20px;">&copy; 2026 CypherBird Protocol. Privacy is a Right. Sovereignty is a Duty.</p>
+    </footer>
+</div>
+
+</body>
+</html>
