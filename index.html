@@ -111,41 +111,6 @@
         </div>
     </div>
 </div>
-
-<div class="fixed bottom-6 right-6 z-[100] flex flex-col items-end">
-    <div id="chat-interface" class="w-80 h-[480px] glass border border-borders mb-4 rounded-2xl overflow-hidden hidden flex flex-col shadow-2xl">
-        <div class="p-4 border-b border-borders bg-zinc-100 flex justify-between items-center">
-            <div>
-                <p class="text-zinc-900 text-[10px] font-black uppercase tracking-widest">Sovereign Assistant</p>
-                <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 bg-emerald-500 rounded-full online-dot"></span>
-                    <span class="text-zinc-500 text-[9px] font-mono uppercase">Node Active</span>
-                </div>
-            </div>
-            <button onclick="toggleChat()" class="text-zinc-500 hover:text-zinc-900 transition">✕</button>
-        </div>
-
-        <div id="chat-stream" class="flex-1 overflow-y-auto p-4 space-y-4 font-mono text-[11px] leading-relaxed">
-            <div class="bg-cobalt/10 border-l-2 border-cobalt p-3 text-zinc-700">
-                Welcome to CypherBird How May I help You ?
-            </div>
-        </div>
-
-        <div class="border-t border-borders p-2 bg-white flex gap-2">
-            <input id="user-input" type="text" placeholder="Type message..." class="flex-1 bg-transparent text-zinc-900 font-mono text-[11px] p-2 outline-none" onkeypress="if(event.key === 'Enter') manualQuery()">
-            <button onclick="manualQuery()" class="bg-zinc-900 text-white text-[10px] font-black uppercase px-4 py-2 rounded-sm transition hover:bg-cobalt">Send</button>
-        </div>
-    </div>
-<button onclick="toggleChat()" 
-        class="fixed bottom-8 right-8 w-16 h-16 bg-zinc-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 border border-zinc-800 group shadow-blue-900/20">
-    <img src="logo.png" 
-         alt="Chat Support" 
-         class="w-8 h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity">
-    <span class="absolute top-0 right-0 flex h-3 w-3">
-        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-        <span class="relative inline-flex rounded-full h-3 w-3 bg-blue-600"></span>
-    </span>
-</button>
 </div>
         <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
         <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
@@ -448,96 +413,18 @@
     </div>
 </footer>
 <script>
-    /* --- State Management --- */
-let isYearly = false;
-let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
-let selectedVault = { name: null, priceM: 0, priceY: 0 };
+        let isYearly = false;
+        let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
+        let selectedVault = { name: null, priceM: 0, priceY: 0 };
 
-/* --- UI Update Engine --- */
-function updateDisplay() {
-    // 1. Set Static Plan Prices
-    const ultraPrice = document.getElementById('price-ultra');
-    const elitePrice = document.getElementById('price-elite');
-
-    if (ultraPrice) {
-        ultraPrice.innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
-    }
-    if (elitePrice) {
-        elitePrice.innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
-    }
-
-    // 2. Update Protocol Price based on current toggle state
-    if (selectedProtocol.name) {
-        const pElem = document.getElementById('selected-protocol-price');
-        if (pElem) {
-            pElem.innerText = isYearly 
-                ? `€${selectedProtocol.priceY} / yr` 
-                : `€${selectedProtocol.priceM} / mo`;
-        }
-    }
-
-    // 3. Update Vault Price based on current toggle state
-    if (selectedVault.name) {
-        const vElem = document.getElementById('selected-vault-price');
-        if (vElem) {
-            vElem.innerText = isYearly 
-                ? `€${selectedVault.priceY} / yr` 
-                : `€${selectedVault.priceM} / mo`;
-        }
-    }
-}
-
-/* --- Billing Toggle --- */
-function toggleBilling() {
-    isYearly = !isYearly;
-    
-    // Animation & Visuals
-    const knob = document.getElementById('toggle-knob');
-    const labelM = document.getElementById('label-monthly');
-    const labelY = document.getElementById('label-yearly');
-
-    if (knob) knob.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
-    
-    if (labelM) {
-        labelM.className = isYearly 
-            ? 'text-zinc-400 font-mono text-[10px] uppercase' 
-            : 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
-    }
-    if (labelY) {
-        labelY.className = isYearly 
-            ? 'text-zinc-900 font-mono text-[10px] uppercase font-bold' 
-            : 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
-    }
-    // Run the price update
-    updateDisplay();
-}
-/* --- Selection Handlers --- */
-// Use these functions when the user clicks a card/button to select an option
-function selectProtocol(name, priceM, priceY) {
-    selectedProtocol = { name, priceM, priceY };
-    updateDisplay();
-}
-function selectVault(name, priceM, priceY) {
-    selectedVault = { name, priceM, priceY };
-    updateDisplay();
-}
-    /* --- Chat Logic --- */
-    function toggleChat() {
-        const chat = document.getElementById('chat-interface');
-        chat.classList.toggle('hidden');
-    }
-
-    function manualQuery() {
-        const input = document.getElementById('user-input');
-        const stream = document.getElementById('chat-stream');
-        if (input.value.trim() !== "") {
-            const msg = document.createElement('div');
-            msg.className = "bg-zinc-900 text-white p-3 rounded-lg ml-8 text-right";
-            msg.innerText = input.value;
-            stream.appendChild(msg);
-            input.value = "";
-            stream.scrollTop = stream.scrollHeight;
-        }
+        function toggleBilling() {
+            isYearly = !isYearly;
+            document.getElementById('toggle-knob').style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
+            document.getElementById('label-monthly').className = isYearly ? 'text-zinc-400 font-mono text-[10px] uppercase' : 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
+            document.getElementById('label-yearly').className = isYearly ? 'text-zinc-900 font-mono text-[10px] uppercase font-bold' : 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
+            
+            document.getElementById('price-ultra').innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
+            document.getElementById('price-elite').innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
     }
 
     /* --- Cookie Logic --- */
