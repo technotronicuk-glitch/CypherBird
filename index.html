@@ -138,7 +138,7 @@
     </div>
 <button onclick="toggleChat()" 
         class="fixed bottom-8 right-8 w-16 h-16 bg-zinc-900 text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-all duration-300 border border-zinc-800 group shadow-blue-900/20">
-    <img src="Logo.png" 
+    <img src="logo.png" 
          alt="Chat Support" 
          class="w-8 h-8 object-contain opacity-90 group-hover:opacity-100 transition-opacity">
     <span class="absolute top-0 right-0 flex h-3 w-3">
@@ -150,7 +150,7 @@
         <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
         <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-4 shrink-0 group">
-            <img src="Logo.png" alt="Cypherbird Logo" class="h-10 w-auto object-contain"> 
+            <img src="logo.png" alt="Cypherbird Logo" class="h-10 w-auto object-contain"> 
             <span class="text-2xl font-black tracking-tighter text-zinc-900 uppercase italic leading-none">
                 CYPHERBIRD
             </span>
@@ -160,36 +160,6 @@
             <a href="career.html" class="text-zinc-500 hover:text-cobalt transition">Careers</a>
             <a href="news.html" class="text-zinc-500 hover:text-cobalt transition">News</a>
             <a href="account.html" class="text-zinc-500 hover:text-cobalt transition border border-borders px-4 py-2">Account</a>
-            <!-- Place this inside your Header/Nav -->
-<div class="header-utilities">
-    <div class="language-selector">
-        <button class="lang-btn" onclick="toggleLangMenu()" aria-label="Select Language">
-            <span class="globe-icon">🌐</span>
-            <span class="current-lang">EN</span>
-            <span class="arrow">▾</span>
-        </button>
-        
-        <div id="langDropdown" class="lang-dropdown">
-            <div class="dropdown-header">Select Language</div>
-            <div class="lang-grid">
-                <a href="#" onclick="changeLanguage('en')">English</a>
-                <a href="#" onclick="changeLanguage('de')">Deutsch</a>
-                <a href="#" onclick="changeLanguage('fr')">Français</a>
-                <a href="#" onclick="changeLanguage('es')">Español</a>
-                <a href="#" onclick="changeLanguage('it')">Italiano</a>
-                <a href="#" onclick="changeLanguage('pt')">Português</a>
-                <a href="#" onclick="changeLanguage('nl')">Nederlands</a>
-                <a href="#" onclick="changeLanguage('ru')">Русский</a>
-                <a href="#" onclick="changeLanguage('zh')">中文 (简体)</a>
-                <a href="#" onclick="changeLanguage('he'">)עברית</a>
-                <a href="#" onclick="changeLanguage('sv')">Svenska</a>
-                <a href="#" onclick="changeLanguage('fi')">Suomi</a>
-                <a href="#" onclick="changeLanguage('tr')">Türkçe</a>
-                <a href="#" onclick="changeLanguage('ko')">한국어</a>
-                <a href="#" onclick="changeLanguage('ja')">日本語</a>
-                
-            </div>
-        </div>
     </div>
 </div>
         </nav>
@@ -446,7 +416,7 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-[11px] font-mono text-zinc-500 uppercase tracking-widest items-start">
             <div class="flex flex-col gap-4">
                 <div class="flex items-center gap-3">
-                    <img src="Logo.png" alt="Cypherbird" class="h-8 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
+                    <img src="logo.png" alt="Cypherbird" class="h-8 w-auto object-contain grayscale opacity-80 hover:grayscale-0 hover:opacity-100 transition-all duration-300">
                     <span class="text-xl font-black text-zinc-900 italic tracking-tighter">CYPHERBIRD</span>
                 </div> 
                 <p class="normal-case font-sans tracking-normal leading-relaxed text-zinc-500" style="font-size: 14px;">Reclaiming Digital Privacy &copy; 2026</p>
@@ -479,12 +449,40 @@
 </footer>
 
 <script>
-    /* Cookie Logic */
+    <!-- 1. THE COOKIE BOX (HTML) -->
+<div id="cookie-banner" class="fixed bottom-6 left-6 w-72 bg-white border border-zinc-200 shadow-2xl p-6 rounded-2xl z-[100] transform transition-transform duration-500 translate-y-[150%]">
+    <div class="flex flex-col gap-4">
+        <div class="bg-blue-600/10 w-10 h-10 rounded-full flex items-center justify-center">
+            <span class="text-xl">🍪</span>
+        </div>
+        <div>
+            <h4 class="text-sm font-bold text-zinc-900 uppercase tracking-wider">Cookie Policy</h4>
+            <p class="text-xs text-zinc-500 leading-relaxed mt-1">
+                We use cookies to enhance your experience and analyze our traffic.
+            </p>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="acceptCookies()" class="flex-1 bg-zinc-900 text-white text-[10px] font-black py-3 uppercase tracking-widest hover:bg-blue-600 transition">
+                Accept
+            </button>
+            <button onclick="closeCookieBanner()" class="flex-1 border border-zinc-200 text-zinc-500 text-[10px] font-black py-3 uppercase tracking-widest hover:bg-zinc-50 transition">
+                Decline
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- 2. THE COMPLETE SCRIPT -->
+<script>
+    /**
+     * COOKIE LOGIC
+     * Handles the bottom-left rectangular popup
+     */
     window.addEventListener('DOMContentLoaded', () => {
         const consent = localStorage.getItem('cypherbird_cookies');
         if (!consent) {
             setTimeout(() => {
-                document.getElementById('cookie-banner').classList.remove('translate-y-full');
+                document.getElementById('cookie-banner').classList.remove('translate-y-[150%]');
             }, 1000);
         }
     });
@@ -495,10 +493,13 @@
     }
 
     function closeCookieBanner() {
-        document.getElementById('cookie-banner').classList.add('translate-y-full');
+        document.getElementById('cookie-banner').classList.add('translate-y-[150%]');
     }
 
-    /* Original Page Logic */
+    /**
+     * YEARLY TOGGLE LOGIC (The part you asked for)
+     * This moves the knob and updates the price values
+     */
     let isYearly = false;
     function toggleBilling() {
         isYearly = !isYearly;
@@ -506,34 +507,53 @@
         const mLabel = document.getElementById('monthly-label');
         const yLabel = document.getElementById('yearly-label');
         const prices = document.querySelectorAll('.price-val');
+        
         if (isYearly) {
-            knob.style.transform = 'translateX(24px)';
-            yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-            mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-            prices[1].innerText = "€99.99"; prices[2].innerText = "€39.99";
+            // Move knob to the right
+            if(knob) knob.style.transform = 'translateX(24px)';
+            // Update Text Colors
+            if(yLabel) yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+            if(mLabel) mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+            // Update Prices to Yearly amounts
+            if(prices[1]) prices[1].innerText = "€99.99"; 
+            if(prices[2]) prices[2].innerText = "€39.99";
         } else {
-            knob.style.transform = 'translateX(0px)';
-            mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-            yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-            prices[1].innerText = "€8.99"; prices[2].innerText = "€3.99";
+            // Move knob back to the left
+            if(knob) knob.style.transform = 'translateX(0px)';
+            // Update Text Colors
+            if(mLabel) mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+            if(yLabel) yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+            // Update Prices to Monthly amounts
+            if(prices[1]) prices[1].innerText = "€8.99"; 
+            if(prices[2]) prices[2].innerText = "€3.99";
         }
     }
 
+    /**
+     * TIER SELECTION
+     * Handles clicking on the pricing cards
+     */
     function selectTier(element) {
         document.querySelectorAll('.protocol-card').forEach(card => {
             card.className = "protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm";
             const btn = card.querySelector('.select-btn');
-            btn.className = "select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase";
+            if(btn) btn.className = "select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase";
             const tag = card.querySelector('.active-tag'); if(tag) tag.remove();
         });
+        
         element.className = "protocol-card bg-white border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group";
         const activeBtn = element.querySelector('.select-btn');
-        activeBtn.className = "select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg";
+        if(activeBtn) activeBtn.className = "select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg";
+        
         const badge = document.createElement('div');
         badge.className = "active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest";
-        badge.innerText = "Current Selection"; element.appendChild(badge);
+        badge.innerText = "Current Selection"; 
+        element.appendChild(badge);
     }
 
+    /**
+     * SLIDESHOW & CHAT
+     */
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     if(slides.length > 0) {
@@ -545,7 +565,8 @@
     }
 
     function toggleChat() {
-        document.getElementById('chat-interface').classList.toggle('hidden');
+        const chat = document.getElementById('chat-interface');
+        if(chat) chat.classList.toggle('hidden');
     }
 
     async function manualQuery() {
@@ -553,34 +574,11 @@
         const val = input.value; if(!val) return;
         const stream = document.getElementById('chat-stream');
         const uDiv = document.createElement('div');
-        uDiv.className = "p-3 bg-zinc-100 text-right text-zinc-900 self-end ml-10 rounded-lg mb-2 border-r-4 border-cobalt shadow-sm";
+        uDiv.className = "p-3 bg-zinc-100 text-right text-zinc-900 self-end ml-10 rounded-lg mb-2 border-r-4 border-blue-600 shadow-sm";
         uDiv.innerHTML = `<span class='text-xs block opacity-50 mb-1'>YOU</span> ${val}`;
         stream.appendChild(uDiv); input.value = '';
         stream.scrollTop = stream.scrollHeight;
     }
-</script>
-        <script>
-function toggleLangMenu() {
-    document.getElementById("langDropdown").classList.toggle("show");
-}
-
-// Close menu if user clicks outside
-window.onclick = function(event) {
-    if (!event.target.matches('.lang-btn') && !event.target.closest('.lang-btn')) {
-        var dropdowns = document.getElementsByClassName("lang-dropdown");
-        for (var i = 0; i < dropdowns.length; i++) {
-            if (dropdowns[i].classList.contains('show')) {
-                dropdowns[i].classList.remove('show');
-            }
-        }
-    }
-}
-
-function changeLanguage(lang) {
-    document.querySelector('.current-lang').innerText = lang.toUpperCase();
-    // Logic: In a real scenario, you'd redirect to /en/ or /de/ here
-    toggleLangMenu();
-}
 </script>
 </body>
 </html>
