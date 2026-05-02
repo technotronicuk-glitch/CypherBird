@@ -491,84 +491,82 @@
         localStorage.setItem('cypherbird_cookies', 'accepted');
         closeCookieBanner();
     }
+    /* --- Global State --- */
+let isYearly = false;
 
-    function closeCookieBanner() {
-        document.getElementById('cookie-banner').classList.add('translate-y-[150%]');
+/* --- Yearly Toggle Logic --- */
+function toggleBilling() {
+    isYearly = !isYearly;
+    
+    const knob = document.getElementById('toggle-knob');
+    const mLabel = document.getElementById('monthly-label');
+    const yLabel = document.getElementById('yearly-label');
+    const prices = document.querySelectorAll('.price-val');
+
+    // 1. Handle the Visual Toggle Switch
+    if (knob) {
+        knob.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
     }
 
-    /**
-     * YEARLY TOGGLE LOGIC (The part you asked for)
-     * This moves the knob and updates the price values
-     */
-    let isYearly = false;
-    function toggleBilling() {
-        isYearly = !isYearly;
-        const knob = document.getElementById('toggle-knob');
-        const mLabel = document.getElementById('monthly-label');
-        const yLabel = document.getElementById('yearly-label');
-        const prices = document.querySelectorAll('.price-val');
-        
+    // 2. Handle Label Colors (Switching between Zinc-400 and Zinc-900)
+    if (yLabel && mLabel) {
         if (isYearly) {
-            // Move knob to the right
-            if(knob) knob.style.transform = 'translateX(24px)';
-            // Update Text Colors
-            if(yLabel) yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-            if(mLabel) mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-            // Update Prices to Yearly amounts
-            if(prices[1]) prices[1].innerText = "€99.99"; 
-            if(prices[2]) prices[2].innerText = "€39.99";
-        } else {
-            // Move knob back to the left
-            if(knob) knob.style.transform = 'translateX(0px)';
-            // Update Text Colors
-            if(mLabel) mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-            if(yLabel) yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-            // Update Prices to Monthly amounts
-            if(prices[1]) prices[1].innerText = "€8.99"; 
-            if(prices[2]) prices[2].innerText = "€3.99";
-        }
-    }
- /* Original Page Logic */
-    let isYearly = false;
-    function toggleBilling() {
-        isYearly = !isYearly;
-        const knob = document.getElementById('toggle-knob');
-        const mLabel = document.getElementById('monthly-label');
-        const yLabel = document.getElementById('yearly-label');
-        const prices = document.querySelectorAll('.price-val');
-        if (isYearly) {
-            knob.style.transform = 'translateX(24px)';
             yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
             mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-            prices[1].innerText = "€99.99"; prices[2].innerText = "€39.99";
         } else {
-            knob.style.transform = 'translateX(0px)';
             mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
             yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-            prices[1].innerText = "€8.99"; prices[2].innerText = "€3.99";
         }
     }
-    /**
-     * TIER SELECTION
-     * Handles clicking on the pricing cards
-     */
-    function selectTier(element) {
-        document.querySelectorAll('.protocol-card').forEach(card => {
-            card.className = "protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm";
-            const btn = card.querySelector('.select-btn');
-            if(btn) btn.className = "select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase";
-            const tag = card.querySelector('.active-tag'); if(tag) tag.remove();
-        });
-        
-        element.className = "protocol-card bg-white border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group";
-        const activeBtn = element.querySelector('.select-btn');
-        if(activeBtn) activeBtn.className = "select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg";
-        
-        const badge = document.createElement('div');
-        badge.className = "active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest";
-        badge.innerText = "Current Selection"; 
-        element.appendChild(badge);
+
+    // 3. Update Prices (Index 0: Standard, Index 1: Ultra, Index 2: Elite)
+    if (prices.length >= 3) {
+        if (isYearly) {
+            prices[0].innerText = "€0.00";   // Standard stays free
+            prices[1].innerText = "€99.99";  // Ultra Yearly
+            prices[2].innerText = "€39.99";  // Elite Yearly
+        } else {
+            prices[0].innerText = "€0.00";   // Standard
+            prices[1].innerText = "€8.99";   // Ultra Monthly
+            prices[2].innerText = "€3.99";   // Elite Monthly
+        }
     }
+}
+
+/* --- Tier Selection (Outline Logic) --- */
+function selectTier(element) {
+    // 1. Reset all cards to default state
+    document.querySelectorAll('.protocol-card').forEach(card => {
+        // Standard non-selected class string
+        card.className = "protocol-card bg-white border border-zinc-100 p-12 rounded-3xl hover:border-blue-500 transition-all duration-300 cursor-pointer group relative shadow-sm";
+        
+        // Reset buttons inside cards
+        const btn = card.querySelector('.select-btn');
+        if (btn) {
+            btn.className = "select-btn block w-full py-4 text-center border border-zinc-100 text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase";
+        }
+        
+        // Remove "Current Selection" tags
+        const tag = card.querySelector('.active-tag');
+        if (tag) tag.remove();
+    });
+
+    // 2. Apply "Active" state to the clicked card
+    // Note: We add border-2 and border-blue-500 (or cobolt) to create the outline
+    element.className = "protocol-card bg-white border-2 border-blue-600 p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group";
+    
+    // Highlight the button of the active card
+    const activeBtn = element.querySelector('.select-btn');
+    if (activeBtn) {
+        activeBtn.className = "select-btn block w-full py-4 text-center bg-blue-600 text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg";
+    }
+
+    // Add the "Current Selection" badge
+    const badge = document.createElement('div');
+    badge.className = "active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest";
+    badge.innerText = "Current Selection"; 
+    element.appendChild(badge);
+}
 
     /**
      * SLIDESHOW & CHAT
