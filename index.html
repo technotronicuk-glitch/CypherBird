@@ -449,31 +449,78 @@
 </footer>
 <script>
     /* --- State Management --- */
-    let isYearly = false;
+let isYearly = false;
+let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
+let selectedVault = { name: null, priceM: 0, priceY: 0 };
 
-    /* --- Billing Toggle --- */
-    function toggleBilling() {
-        isYearly = !isYearly;
-        const knob = document.getElementById('toggle-knob');
-        const mLabel = document.getElementById('monthly-label');
-        const yLabel = document.getElementById('yearly-label');
-        const prices = document.querySelectorAll('.price-val');
+/* --- UI Update Engine --- */
+function updateDisplay() {
+    // 1. Set Static Plan Prices
+    const ultraPrice = document.getElementById('price-ultra');
+    const elitePrice = document.getElementById('price-elite');
 
-        knob.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
-        
-        if(isYearly) {
-            yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-            mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-        } else {
-            mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-            yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-        }
-
-        prices.forEach(p => {
-            p.innerText = isYearly ? p.getAttribute('data-yearly') : p.getAttribute('data-monthly');
-        });
+    if (ultraPrice) {
+        ultraPrice.innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
+    }
+    if (elitePrice) {
+        elitePrice.innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
     }
 
+    // 2. Update Protocol Price based on current toggle state
+    if (selectedProtocol.name) {
+        const pElem = document.getElementById('selected-protocol-price');
+        if (pElem) {
+            pElem.innerText = isYearly 
+                ? `€${selectedProtocol.priceY} / yr` 
+                : `€${selectedProtocol.priceM} / mo`;
+        }
+    }
+
+    // 3. Update Vault Price based on current toggle state
+    if (selectedVault.name) {
+        const vElem = document.getElementById('selected-vault-price');
+        if (vElem) {
+            vElem.innerText = isYearly 
+                ? `€${selectedVault.priceY} / yr` 
+                : `€${selectedVault.priceM} / mo`;
+        }
+    }
+}
+
+/* --- Billing Toggle --- */
+function toggleBilling() {
+    isYearly = !isYearly;
+    
+    // Animation & Visuals
+    const knob = document.getElementById('toggle-knob');
+    const labelM = document.getElementById('label-monthly');
+    const labelY = document.getElementById('label-yearly');
+
+    if (knob) knob.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
+    
+    if (labelM) {
+        labelM.className = isYearly 
+            ? 'text-zinc-400 font-mono text-[10px] uppercase' 
+            : 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
+    }
+    if (labelY) {
+        labelY.className = isYearly 
+            ? 'text-zinc-900 font-mono text-[10px] uppercase font-bold' 
+            : 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
+    }
+    // Run the price update
+    updateDisplay();
+}
+/* --- Selection Handlers --- */
+// Use these functions when the user clicks a card/button to select an option
+function selectProtocol(name, priceM, priceY) {
+    selectedProtocol = { name, priceM, priceY };
+    updateDisplay();
+}
+function selectVault(name, priceM, priceY) {
+    selectedVault = { name, priceM, priceY };
+    updateDisplay();
+}
     /* --- Chat Logic --- */
     function toggleChat() {
         const chat = document.getElementById('chat-interface');
