@@ -228,65 +228,69 @@
             </div>
         </div>
     </section>
-
-    <section id="pricing" class="py-32 bg-base border-t border-borders">
-        <div class="max-w-7xl mx-auto px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-zinc-900 text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
-                <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Subscription_Licensing_Model</p>
-                
-                <div class="flex items-center justify-center gap-4">
-                    <span id="monthly-label" class="text-zinc-900 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300">Monthly</span>
-                    <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-200 rounded-full p-1 relative border border-borders">
-                        <div id="toggle-knob" class="bg-cobalt w-4 h-4 rounded-full transition-all duration-300 transform translate-x-0"></div>
-                    </button>
-                    <span id="yearly-label" class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300">Yearly (-20%)</span>
-                </div>
-            </div>
-
-            <div id="protocol-grid" class="grid md:grid-cols-3 gap-8 items-center mb-32">
-                <!-- Standard Tier -->
-                <div onclick="selectTier(this)" class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm">
-                    <h4 class="text-zinc-400 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
-                    <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic">€0.00</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                        <li>[✓] Photo Vault</li>
-                        <li>[✕] No Video Support</li>
-                        <li>[✓] Standard Scrambling</li>
-                    </ul>
-                    <a href="account.html" class="block w-full group">
-                    <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Initialize</button>
-                </div>
-
-                <!-- Elite Choice -->
-                <div onclick="selectTier(this)" class="protocol-card bg-white border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group">
-                    <div class="active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
-                    <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Grade</h4>
-                    <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic">€8.99</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-700 font-mono uppercase tracking-widest">
-                        <li>[✓] Unlimited 4K Scrambling</li>
-                        <li>[✓] 2GB Zero-Cloud Backup</li>
-                        <li>[✓] Priority Neural Support</li>
-                    </ul>
-                    <a href="store.html" class="block w-full group">
-                    <button class="select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg">Activate_Ultra</button>
-                </div>
-
-                <!-- Elite Grade -->
-                <div onclick="selectTier(this)" class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm">
-                    <h4 class="text-zinc-400 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Elite Grade</h4>
-                    <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic">€3.99</div>
-                    <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                        <li>[✓] Bulk Scrambling</li>
-                        <li>[✓] 1GB Secure Backup</li>
-                        <li>[✓] Video Encryption</li>
-                    </ul>
-                    <a href="store.html" class="block w-full group">
-                    <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Upgrade</button>
-                </div>
+<section id="pricing" class="py-32 bg-base border-t border-borders">
+    <div class="max-w-7xl mx-auto px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-zinc-900 text-5xl font-black italic uppercase tracking-tighter mb-4">Select Protocol</h2>
+            <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Subscription_Licensing_Model</p>
+            
+            <!-- Updated Toggle -->
+            <div class="flex items-center justify-center gap-4">
+                <span id="monthly-label" class="text-zinc-900 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300">Monthly</span>
+                <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-200 rounded-full p-1 relative border border-borders">
+                    <div id="toggle-knob" class="bg-cobalt w-4 h-4 rounded-full transition-all duration-300 transform translate-x-0"></div>
+                </button>
+                <span id="yearly-label" class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300">Yearly (-20%)</span>
             </div>
         </div>
-    </section>
+
+        <div id="protocol-grid" class="grid md:grid-cols-3 gap-8 items-center mb-32">
+            <!-- Tier 01: Standard -->
+            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm">
+                <h4 class="text-zinc-400 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
+                <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic" data-monthly="€0.00" data-yearly="€0.00">€0.00</div>
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
+                    <li>[✓] Photo Vault</li>
+                    <li>[✕] No Video Support</li>
+                    <li>[✓] Standard Scrambling</li>
+                </ul>
+                <a href="account.html" class="block w-full">
+                    <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Initialize</button>
+                </a>
+            </div>
+
+            <!-- Tier 02: Elite Grade -->
+            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm">
+                <h4 class="text-zinc-400 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Elite Grade</h4>
+                <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic" data-monthly="€3.99" data-yearly="€39.99">€3.99</div>
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
+                    <li>[✓] Bulk Scrambling</li>
+                    <li>[✓] 1GB Secure Backup</li>
+                    <li>[✓] Video Encryption</li>
+                </ul>
+                <a href="store.html" class="block w-full">
+                    <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Upgrade</button>
+                </a>
+            </div>
+
+            <!-- Tier 03: Ultra Grade -->
+            <div class="protocol-card bg-white border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group">
+                <div class="active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
+                <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase italic">Tier_03: Ultra Grade</h4>
+                <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic" data-monthly="€9.99" data-yearly="€99.99">€8.99</div>
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-700 font-mono uppercase tracking-widest">
+                    <li>[✓] Unlimited 4K Scrambling</li>
+                    <li>[✓] 2GB Zero-Cloud Backup</li>
+                    <li>[✓] Priority Neural Support</li>
+                </ul>
+                <a href="store.html" class="block w-full">
+                    <button class="select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg">Activate_Ultra</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+    
    <div class="mb-16 max-w-7xl mx-auto px-4">
     <!-- Header Fixed: Changed text-left to text-center -->
     <div class="text-center">
@@ -416,20 +420,6 @@
     </div>
 </footer>
 <script>
-        let isYearly = false;
-        let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
-        let selectedVault = { name: null, priceM: 0, priceY: 0 };
-
-        function toggleBilling() {
-            isYearly = !isYearly;
-            document.getElementById('toggle-knob').style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
-            document.getElementById('label-monthly').className = isYearly ? 'text-zinc-400 font-mono text-[10px] uppercase' : 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
-            document.getElementById('label-yearly').className = isYearly ? 'text-zinc-900 font-mono text-[10px] uppercase font-bold' : 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
-            
-            document.getElementById('price-ultra').innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
-            document.getElementById('price-elite').innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
-    }
-
     /* --- Cookie Logic --- */
     window.addEventListener('DOMContentLoaded', () => {
         if (!localStorage.getItem('cypherbird_cookies')) {
@@ -447,6 +437,36 @@
     function closeCookieBanner() {
         document.getElementById('cookie-banner').classList.add('translate-y-[150%]');
     }
+</script>
+    <script>
+let isYearly = false;
+
+function toggleBilling() {
+    isYearly = !isYearly;
+    const knob = document.getElementById('toggle-knob');
+    const monthlyLabel = document.getElementById('monthly-label');
+    const yearlyLabel = document.getElementById('yearly-label');
+    const prices = document.querySelectorAll('.price-val');
+
+    if (isYearly) {
+        knob.classList.add('translate-x-6'); // Adjust value based on your toggle width
+        yearlyLabel.classList.add('text-zinc-900');
+        yearlyLabel.classList.remove('text-zinc-400');
+        monthlyLabel.classList.add('text-zinc-400');
+        monthlyLabel.classList.remove('text-zinc-900');
+    } else {
+        knob.classList.remove('translate-x-6');
+        monthlyLabel.classList.add('text-zinc-900');
+        monthlyLabel.classList.remove('text-zinc-400');
+        yearlyLabel.classList.add('text-zinc-400');
+        yearlyLabel.classList.remove('text-zinc-900');
+    }
+
+    prices.forEach(price => {
+        const value = isYearly ? price.getAttribute('data-yearly') : price.getAttribute('data-monthly');
+        price.textContent = value;
+    });
+}
 </script>
 </body>
 </html>
