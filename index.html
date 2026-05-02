@@ -528,7 +528,26 @@
             if(prices[2]) prices[2].innerText = "€3.99";
         }
     }
-
+ /* Original Page Logic */
+    let isYearly = false;
+    function toggleBilling() {
+        isYearly = !isYearly;
+        const knob = document.getElementById('toggle-knob');
+        const mLabel = document.getElementById('monthly-label');
+        const yLabel = document.getElementById('yearly-label');
+        const prices = document.querySelectorAll('.price-val');
+        if (isYearly) {
+            knob.style.transform = 'translateX(24px)';
+            yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+            mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+            prices[1].innerText = "€99.99"; prices[2].innerText = "€39.99";
+        } else {
+            knob.style.transform = 'translateX(0px)';
+            mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+            yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+            prices[1].innerText = "€8.99"; prices[2].innerText = "€3.99";
+        }
+    }
     /**
      * TIER SELECTION
      * Handles clicking on the pricing cards
