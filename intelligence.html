@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intelligence_Report | Protocol</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cobalt: '#2563eb',
+                        base: '#ffffff',     /* Premium White */
+                        surface: '#fafafa',  /* Premium Ultra-Light Grey */
+                        borders: '#e4e4e7',
+                    },
+                    fontFamily: {
+                        mono: ['JetBrains Mono', 'Menlo', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .kerning-wide { letter-spacing: 0.3em; }
+    </style>
+</head>
+<body class="bg-base text-zinc-900 antialiased">
+
+    <!-- Navigation -->
+    <nav class="border-b border-borders py-6 px-8 flex justify-between items-center bg-white sticky top-0 z-50">
+        <div class="font-black tracking-tighter text-2xl uppercase">Protocol</div>
+        <div class="flex gap-8 items-center">
+            <a href="index.html" class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition">Return_Home</a>
+            <a href="store.html" class="bg-zinc-900 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-cobalt transition">Get_Started</a>
+        </div>
+    </nav>
+
+    <!-- Header Section (Inspired by image_4f0577.png) -->
+    <section class="py-32 border-b border-borders">
+        <div class="max-w-4xl mx-auto px-8 text-center">
+            <div class="w-20 h-[2px] bg-cobalt mx-auto mb-16"></div>
+            
+            <h1 class="text-7xl font-black uppercase tracking-tighter mb-8">Zero Knowledge</h1>
+            
+            <div class="space-y-6">
+                <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy_Architecture_Analysis</p>
+                <p class="text-xl text-zinc-500 leading-relaxed max-w-2xl mx-auto uppercase font-light">
+                    We cannot see your data. Our architecture ensures that decryption keys never leave your local device.
+                </p>
+            </div>
+
+            <div class="mt-12 flex justify-center items-center gap-2">
+                <span class="text-cobalt font-mono text-xs">[</span>
+                <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn_More</a>
+                <span class="text-cobalt font-mono text-xs">]</span>
+                <span class="text-cobalt text-xs">→</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Content Layer (Premium Grey Background) -->
+    <section id="deep-dive" class="py-32 bg-surface">
+        <div class="max-w-7xl mx-auto px-8">
+            
+            <!-- Grid 01: Encryption -->
+            <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
+                <div>
+                    <h2 class="text-4xl font-black uppercase mb-8">Hardware_Level Security</h2>
+                    <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest mb-8 leading-loose border-l-2 border-cobalt pl-4">
+                        Subsystem: Local_Key_Gen<br>
+                        Status: Active Shield
+                    </p>
+                    <p class="text-zinc-600 leading-relaxed mb-8">
+                        The "Zero Knowledge" protocol means we are mathematically excluded from your data. Unlike traditional cloud services, we don't store your password or your keys. Your identity is verified via a cryptographic proof that doesn't reveal the actual secret.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="p-4 bg-white border border-borders rounded-xl">
+                            <div class="text-cobalt font-black text-xl mb-1">AES-256</div>
+                            <div class="text-[9px] text-zinc-400 font-mono uppercase">Military Grade</div>
+                        </div>
+                        <div class="p-4 bg-white border border-borders rounded-xl">
+                            <div class="text-cobalt font-black text-xl mb-1">P-384</div>
+                            <div class="text-[9px] text-zinc-400 font-mono uppercase">Elliptic Curve</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="absolute -inset-4 bg-cobalt/5 rounded-full blur-3xl"></div>
+                    <div class="relative bg-white border border-borders p-2 rounded-[2.5rem] shadow-xl">
+                        <div class="bg-zinc-900 rounded-[2rem] p-8 aspect-square flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <div class="w-12 h-12 border border-zinc-700 rounded-lg flex items-center justify-center">
+                                    <div class="w-2 h-2 bg-cobalt animate-pulse"></div>
+                                </div>
+                                <div class="text-right">
+                                    <div class="text-zinc-500 font-mono text-[9px] uppercase">Node Status</div>
+                                    <div class="text-emerald-400 font-mono text-[10px]">ENCRYPTED</div>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="h-1 bg-zinc-800 w-full"></div>
+                                <div class="h-1 bg-zinc-800 w-3/4"></div>
+                                <div class="h-1 bg-zinc-800 w-1/2"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grid 02: Intelligence Layer -->
+            <div class="grid md:grid-cols-2 gap-24 items-center">
+                <div class="order-2 md:order-1 bg-zinc-900 p-10 rounded-3xl shadow-2xl overflow-hidden relative">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cobalt to-transparent"></div>
+                    <pre class="text-zinc-400 font-mono text-[11px] leading-relaxed">
+<span class="text-cobalt">// ANALYZING INTELLIGENCE PROTOCOL</span>
+{
+  "system_id": "PROTOCOL_V3",
+  "data_state": <span class="text-emerald-400">"Obfuscated"</span>,
+  "neural_relay": {
+    "active": true,
+    "leak_protection": 100,
+    "user_control": "Full"
+  },
+  "verdict": <span class="text-emerald-400">"Secure Node Established"</span>
+}</pre>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-4xl font-black uppercase mb-8">Neural Scrambling</h2>
+                    <p class="text-zinc-600 leading-relaxed mb-8">
+                        Our intelligence doesn't process your images; it processes the <span class="text-zinc-900 font-bold underline decoration-cobalt underline-offset-4">relationships</span> between data points. This allows for organization and search capabilities without ever decrypting the actual file on our servers.
+                    </p>
+                    <ul class="space-y-4 mb-10">
+                        <li class="flex items-center gap-4 text-[11px] font-mono uppercase tracking-widest text-zinc-500">
+                            <span class="w-1.5 h-1.5 bg-cobalt"></span> No Metadata Leakage
+                        </li>
+                        <li class="flex items-center gap-4 text-[11px] font-mono uppercase tracking-widest text-zinc-500">
+                            <span class="w-1.5 h-1.5 bg-cobalt"></span> Anonymous Indexing
+                        </li>
+                        <li class="flex items-center gap-4 text-[11px] font-mono uppercase tracking-widest text-zinc-500">
+                            <span class="w-1.5 h-1.5 bg-cobalt"></span> Client-Side Decryption Only
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-borders bg-white">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <div class="font-black tracking-tighter text-xl uppercase mb-4">Protocol</div>
+            <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-[0.5em]">Secure Storage Intelligence 2026</p>
+        </div>
+    </footer>
+
+</body>
+</html>
