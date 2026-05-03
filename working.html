@@ -40,44 +40,48 @@
 </head>
 <body class="antialiased selection:bg-blue-600 selection:text-white">
 
-    <nav class="p-8 flex justify-between items-center fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200">
-        <a href="index.html" class="text-zinc-900 font-black italic tracking-tighter text-xl uppercase">🦅 CypherBird</a>
-        <a href="data.html" class="font-mono text-[9px] text-zinc-400 hover:text-blue-600 transition-colors tracking-widest uppercase font-bold">Data_Sovereignty</a>
-    </nav>
+    <!-- Navigation -->
+<nav class="border-b border-borders py-6 px-8 flex justify-between items-center bg-white sticky top-0 z-50">
+    <div class="font-black tracking-tighter text-2xl uppercase">Protocol</div>
+    <div class="flex gap-8 items-center">
+        <a href="index.html" class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition">Return_Home</a>
+        <a href="store.html" class="bg-zinc-900 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-blue-600 transition">Get_Started</a>
+    </div>
+</nav>
 
-    <main class="max-w-5xl mx-auto pt-40 pb-20 px-8">
+<section class="py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-8">
         
-        <section class="mb-32">
-            <p class="text-cobalt font-mono text-[10px] uppercase tracking-[0.5em] mb-4 font-black">Operational_Workflow_v.4</p>
-            <h1 class="text-6xl md:text-7xl font-black text-zinc-900 uppercase italic tracking-tighter leading-none mb-8">
-                How It <span class="text-cobalt">Works</span>
-            </h1>
-            <p class="max-w-2xl text-zinc-500 leading-relaxed font-light text-lg">
-                From the moment you select a file to its final resting place in the Deep Vault, every microsecond is governed by the Scrambling Protocol.
-            </p>
-        </section>
+        <div class="text-center mb-24">
+            <h2 class="text-5xl font-black uppercase tracking-tighter mb-4">How It Works</h2>
+            <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em]">System Operational Flow</p>
+        </div>
 
         <section class="space-y-32 relative">
             <!-- Central Timeline Line -->
-            <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] timeline-line opacity-20"></div>
+            <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-zinc-100 md:opacity-100 opacity-20"></div>
 
             <!-- STEP 01 -->
             <div class="relative flex flex-col md:flex-row items-center group">
                 <div class="md:w-1/2 md:pr-20 pb-10 md:pb-0 text-right hidden md:block">
-                    <h4 class="text-zinc-900 font-black italic uppercase text-2xl mb-4">Local Ingestion</h4>
+                    <h4 class="text-zinc-900 font-black uppercase text-2xl mb-4">Local Ingestion</h4>
                     <p class="text-sm text-zinc-500 leading-relaxed font-light">Your file is analyzed locally. We create a secure instance on your device—nothing has touched the internet yet.</p>
                 </div>
                 <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-10 h-10 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-all">
                     <div class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
                 </div>
                 <div class="md:w-1/2 md:pl-20 pl-12">
-                    <span class="step-number text-6xl font-black italic block mb-2">01</span>
+                    <span class="step-number text-6xl font-black block mb-2 text-zinc-100 group-hover:text-blue-50 transition-colors">01</span>
                     <div class="md:hidden">
-                        <h4 class="text-zinc-900 font-black italic uppercase text-2xl mb-2">Local Ingestion</h4>
+                        <h4 class="text-zinc-900 font-black uppercase text-2xl mb-2">Local Ingestion</h4>
                         <p class="text-sm text-zinc-500 mb-6 font-light">Analyzed on-device. Zero external exposure during initialization.</p>
                     </div>
-                    <div class="h-40 w-full bg-white border border-zinc-200 shadow-sm rounded-3xl flex items-center justify-center overflow-hidden group-hover:border-blue-300 transition-all">
-                         <div class="text-zinc-200 font-mono text-[10px]"> [ INITIALIZING_LOCAL_INSTANCE ] </div>
+                    <!-- Image Container -->
+                    <div class="h-64 w-full bg-zinc-900 border border-zinc-200 shadow-2xl rounded-3xl overflow-hidden group-hover:border-blue-400 transition-all relative">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Local Security" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white font-mono text-[10px] bg-black/50 px-4 py-2 backdrop-blur-sm border border-white/20 uppercase tracking-widest"> [ Initializing_Local_Instance ] </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,11 +89,15 @@
             <!-- STEP 02 -->
             <div class="relative flex flex-col md:flex-row items-center group">
                 <div class="md:w-1/2 md:pr-20 pl-12 md:pl-0 order-2 md:order-1 text-left md:text-right">
-                     <span class="step-number text-6xl font-black italic block mb-2">02</span>
-                     <h4 class="text-zinc-900 font-black italic uppercase text-2xl mb-2">The Scramble</h4>
-                     <p class="text-sm text-zinc-500 mb-6 font-light leading-relaxed">Our proprietary AES-256 algorithm "shatters" the data into mathematical equations that mean nothing without your unique primary key.</p>
-                     <div class="h-40 w-full bg-white border border-zinc-200 shadow-sm rounded-3xl flex items-center justify-center overflow-hidden group-hover:border-blue-300 transition-all">
-                        <div class="text-zinc-200 font-mono text-[10px]"> [ EXECUTING_SCRAMBLE_V5 ] </div>
+                    <span class="step-number text-6xl font-black block mb-2 text-zinc-100 group-hover:text-blue-50 transition-colors">02</span>
+                    <h4 class="text-zinc-900 font-black uppercase text-2xl mb-2">The Scramble</h4>
+                    <p class="text-sm text-zinc-500 mb-6 font-light leading-relaxed">Our proprietary AES-256 algorithm "shatters" the data into mathematical equations that mean nothing without your unique primary key.</p>
+                    <!-- Image Container -->
+                    <div class="h-64 w-full bg-zinc-900 border border-zinc-200 shadow-2xl rounded-3xl overflow-hidden group-hover:border-blue-400 transition-all relative">
+                        <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800" alt="Cryptography" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white font-mono text-[10px] bg-black/50 px-4 py-2 backdrop-blur-sm border border-white/20 uppercase tracking-widest"> [ Executing_Scramble_V5 ] </div>
+                        </div>
                     </div>
                 </div>
                 <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-10 h-10 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-all">
@@ -101,20 +109,24 @@
             <!-- STEP 03 -->
             <div class="relative flex flex-col md:flex-row items-center group">
                 <div class="md:w-1/2 md:pr-20 pb-10 md:pb-0 text-right hidden md:block">
-                    <h4 class="text-zinc-900 font-black italic uppercase text-2xl mb-4">Sharded Transmission</h4>
+                    <h4 class="text-zinc-900 font-black uppercase text-2xl mb-4">Sharded Transmission</h4>
                     <p class="text-sm text-zinc-500 leading-relaxed font-light">Encrypted shards travel via multi-path SSL tunnels to our node distribution centers, ensuring no single observer sees the whole "shattered" file.</p>
                 </div>
                 <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-10 h-10 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-all">
                     <div class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></div>
                 </div>
                 <div class="md:w-1/2 md:pl-20 pl-12">
-                    <span class="step-number text-6xl font-black italic block mb-2">03</span>
+                    <span class="step-number text-6xl font-black block mb-2 text-zinc-100 group-hover:text-blue-50 transition-colors">03</span>
                     <div class="md:hidden">
-                        <h4 class="text-zinc-900 font-black italic uppercase text-2xl mb-2">Sharded Transmission</h4>
+                        <h4 class="text-zinc-900 font-black uppercase text-2xl mb-2">Sharded Transmission</h4>
                         <p class="text-sm text-zinc-500 mb-6 font-light">SSL-encrypted tunnel shards distributed globally.</p>
                     </div>
-                    <div class="h-40 w-full bg-white border border-zinc-200 shadow-sm rounded-3xl flex items-center justify-center overflow-hidden group-hover:border-blue-300 transition-all">
-                        <div class="text-zinc-200 font-mono text-[10px]"> [ DISTRIBUTING_SHARDS_GLOBAL ] </div>
+                    <!-- Image Container -->
+                    <div class="h-64 w-full bg-zinc-900 border border-zinc-200 shadow-2xl rounded-3xl overflow-hidden group-hover:border-blue-400 transition-all relative">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Global Network" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white font-mono text-[10px] bg-black/50 px-4 py-2 backdrop-blur-sm border border-white/20 uppercase tracking-widest"> [ Distributing_Shards_Global ] </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -122,11 +134,15 @@
             <!-- STEP 04 -->
             <div class="relative flex flex-col md:flex-row items-center group">
                 <div class="md:w-1/2 md:pr-20 pl-12 md:pl-0 order-2 md:order-1 text-left md:text-right">
-                     <span class="step-number text-6xl font-black italic block mb-2">04</span>
-                     <h4 class="text-zinc-900 font-black italic uppercase text-2xl mb-2">Vault Integration</h4>
-                     <p class="text-sm text-zinc-500 mb-6 font-light leading-relaxed">Shards are stored across three disconnected physical regions. Only you hold the blueprint required to reassemble them.</p>
-                     <div class="h-40 w-full bg-white border border-zinc-200 shadow-sm rounded-3xl flex items-center justify-center overflow-hidden group-hover:border-blue-300 transition-all">
-                        <div class="text-zinc-200 font-mono text-[10px]"> [ VAULT_LOCK_CONFIRMED ] </div>
+                    <span class="step-number text-6xl font-black block mb-2 text-zinc-100 group-hover:text-blue-50 transition-colors">04</span>
+                    <h4 class="text-zinc-900 font-black uppercase text-2xl mb-2">Vault Integration</h4>
+                    <p class="text-sm text-zinc-500 mb-6 font-light leading-relaxed">Shards are stored across three disconnected physical regions. Only you hold the blueprint required to reassemble them.</p>
+                    <!-- Image Container -->
+                    <div class="h-64 w-full bg-zinc-900 border border-zinc-200 shadow-2xl rounded-3xl overflow-hidden group-hover:border-blue-400 transition-all relative">
+                        <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc51?auto=format&fit=crop&q=80&w=800" alt="Data Center" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700">
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="text-white font-mono text-[10px] bg-black/50 px-4 py-2 backdrop-blur-sm border border-white/20 uppercase tracking-widest"> [ Vault_Lock_Confirmed ] </div>
+                        </div>
                     </div>
                 </div>
                 <div class="absolute left-0 md:left-1/2 -translate-x-1/2 w-10 h-10 bg-white border-4 border-blue-600 rounded-full flex items-center justify-center z-10 shadow-xl group-hover:scale-110 transition-all">
@@ -135,17 +151,20 @@
                 <div class="md:w-1/2 md:pl-20 hidden md:block"></div>
             </div>
         </section>
+    </div>
+</section>
+        </section>
 
         <!-- Premium CTA with requested image integration -->
         <section class="mt-48 p-16 call-to-action border border-zinc-200 rounded-[3rem] text-center shadow-2xl relative overflow-hidden">
             <div class="relative z-10">
-                <h2 class="text-4xl text-zinc-900 font-black italic uppercase mb-6 tracking-tighter">Ready to Initialize?</h2>
+                <h2 class="text-4xl text-zinc-900 font-black uppercase mb-6 tracking-tighter">Ready to Initialize?</h2>
                 <p class="text-zinc-500 text-md mb-12 max-w-lg mx-auto font-light leading-relaxed">
                     Deploy the most sophisticated scrambling protocol ever released to the private sector.
                 </p>
                 <div class="flex flex-col md:flex-row justify-center gap-6">
-                    <a href="store.html" class="bg-blue-600 text-white px-12 py-5 font-black italic uppercase tracking-widest text-[10px] hover:bg-zinc-900 transition-all shadow-lg shadow-blue-200">Enter_Selection_Store</a>
-                    <a href="intelligence.html" class="bg-white text-zinc-900 px-12 py-5 font-black italic uppercase tracking-widest text-[10px] border border-zinc-200 hover:border-blue-600 transition-all">Intelligence_Report</a>
+                    <a href="store.html" class="bg-blue-600 text-white px-12 py-5 font-black uppercase tracking-widest text-[10px] hover:bg-zinc-900 transition-all shadow-lg shadow-blue-200">Enter_Selection_Store</a>
+                    <a href="intelligence.html" class="bg-white text-zinc-900 px-12 py-5 font-black uppercase tracking-widest text-[10px] border border-zinc-200 hover:border-blue-600 transition-all">Intelligence_Report</a>
                 </div>
             </div>
         </section>
@@ -153,7 +172,7 @@
     </main>
 
     <footer class="py-12 px-8 border-t border-zinc-200 text-center">
-        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-400 font-bold">© 2026 Technotronics_Systems // Operational_Transparency</p>
+        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-400 font-bold">© 2026 Technotronics_Systems // Operational Transparency</p>
     </footer>
 
 </body>
