@@ -97,7 +97,7 @@
                     </div>
                     <div class="w-2/3 flex flex-col justify-center">
                         <h4 class="text-zinc-900 font-black italic uppercase text-xl">Deep Vault</h4>
-                        <p id="price-deep" class="text-zinc-400 font-mono text-[10px] mt-2">€19.99 / mo</p>
+                        <p id="price-deep" class="text-zinc-400 font-mono text-[10px] mt-2">€9.99 / mo</p>
                     </div>
                 </div>
             </div>
@@ -250,26 +250,50 @@
             </div>
         </div>
     </footer>
-
-    <script>
+<script>
+        // --- STATE MANAGEMENT ---
         let isYearly = false;
         let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
         let selectedVault = { name: null, priceM: 0, priceY: 0 };
+        
+        // Financial Globals for Currency Logic
+        let globalRate = 1;
+        let globalCurrency = 'EUR';
+        let globalLocale = 'en-IE';
 
+        // --- CORE TOGGLE LOGIC ---
+        // This function handles both the visual animation and the logic update
         function toggleBilling() {
             isYearly = !isYearly;
-            document.getElementById('toggle-knob').style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
-            document.getElementById('label-monthly').className = isYearly ? 'text-zinc-400 font-mono text-[10px] uppercase' : 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
-            document.getElementById('label-yearly').className = isYearly ? 'text-zinc-900 font-mono text-[10px] uppercase font-bold' : 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
             
+            // 1. Update Toggle Visuals
+            const knob = document.getElementById('toggle-knob');
+            const mLabel = document.getElementById('label-monthly');
+            const yLabel = document.getElementById('label-yearly');
+            
+            // Moves the cobalt knob
+            knob.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
+            
+            // Highlights the active label (Monthly vs Yearly)
+            if (isYearly) {
+                yLabel.className = 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
+                mLabel.className = 'text-zinc-400 font-mono text-[10px] uppercase';
+            } else {
+                mLabel.className = 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
+                yLabel.className = 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
+            }
+
+            // 2. Update Hardcoded Price Labels in the Cards
             document.getElementById('price-ultra').innerText = isYearly ? "€99.99 / yr" : "€8.99 / mo";
             document.getElementById('price-elite').innerText = isYearly ? "€39.99 / yr" : "€3.99 / mo";
             document.getElementById('price-alpha').innerText = isYearly ? "€49.89 / yr" : "€4.99 / mo";
             document.getElementById('price-deep').innerText = isYearly ? "€109.99 / yr" : "€19.99 / mo";
             
+            // 3. Update the Footer Summary and Total
             updateUI();
         }
 
+        // --- SELECTION LOGIC ---
         function selectProtocol(name, priceM, priceY) {
             ['standard', 'ultra', 'elite'].forEach(id => {
                 const card = document.getElementById('card-'+id);
@@ -318,145 +342,60 @@
             updateUI();
         }
 
+        // --- UI RENDERING (FOOTER) ---
         function updateUI() {
             const pName = selectedProtocol.name || "No Protocol";
             const vName = selectedVault.name || "No Vault";
             const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
             const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
             
-            document.getElementById('selection-summary').innerHTML = `${pName} <span class="text-cobalt mx-2">+</span> ${vName} Vault <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
-            document.getElementById('display-total').innerText = `€${(pPrice + vPrice).toFixed(2)}`;
+            const summary = document.getElementById('selection-summary');
+            if(summary) {
+                summary.innerHTML = `${pName} <span class="text-cobalt mx-2">+</span> ${vName} Vault <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
+            }
+            
+            const totalDisplay = document.getElementById('display-total');
+            if(totalDisplay) {
+                totalDisplay.innerText = `€${(pPrice + vPrice).toFixed(2)}`;
+            }
             
             const checkoutBtn = document.getElementById('checkout-link');
-            if(pPrice + vPrice === 0) {
-                checkoutBtn.style.opacity = "0.2";
-                checkoutBtn.style.pointerEvents = "none";
-            } else {
-                checkoutBtn.style.opacity = "1";
-                checkoutBtn.style.pointerEvents = "auto";
+            if(checkoutBtn) {
+                if(pPrice + vPrice === 0) {
+                    checkoutBtn.style.opacity = "0.2";
+                    checkoutBtn.style.pointerEvents = "none";
+                } else {
+                    checkoutBtn.style.opacity = "1";
+                    checkoutBtn.style.pointerEvents = "auto";
+                }
             }
         }
-        
-        updateUI();
+
+        // --- DYNAMIC CURRENCY LOGIC ---
+        async function initGlobalIntelligence() {
+            try {
+                const geoRes = await fetch('https://ipapi.co/json/');
+                const geoData = await geoRes.json();
+                globalCurrency = geoData.currency || 'EUR';
+                globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+
+                const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
+                const rateData = await rateRes.json();
+                globalRate = rateData.rates[globalCurrency] || 1;
+
+                // You can add more complex logic here to convert all prices based on globalRate
+                console.log(`Currency: ${globalCurrency}`);
+            } catch (error) {
+                console.error("Currency detection failed. Using EUR.");
+            }
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            initGlobalIntelligence();
+            updateUI();
+        });
     </script>
-    <script>
-/**
- * PROTOCOL CORE: Global Currency & Billing Logic
- * Base Currency: EUR
- */
-
-let globalRate = 1;
-let globalCurrency = 'EUR';
-let globalLocale = 'en-IE';
-window.isYearly = false;
-
-/**
- * Initialization: Logic to detect user and fetch market rates
- */
-async function initGlobalIntelligence() {
-    try {
-        // 1. Locate user via IP Geolocation
-        const geoRes = await fetch('https://ipapi.co/json/');
-        const geoData = await geoRes.json();
-        
-        globalCurrency = geoData.currency || 'EUR';
-        // Fallback to English-Ireland if locale detection is spotty
-        globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
-
-        // 2. Fetch Live Market Rates (Euro Base)
-        // Using Open Exchange Rates API (No-Key Free Tier)
-        const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
-        const rateData = await rateRes.json();
-        
-        globalRate = rateData.rates[globalCurrency] || 1;
-
-        console.log(`Protocol: Currency set to ${globalCurrency} at rate ${globalRate}`);
-        
-        // Initial UI Render
-        updateAllPricingUI();
-
-    } catch (error) {
-        console.error("Protocol Error: Connection to financial nodes failed. Defaulting to EUR.");
-        updateAllPricingUI(); // Fallback to hardcoded EUR values
-    }
-}
-
-/**
- * UI Renderer: Updates all elements with currency-specific formatting
- */
-function updateAllPricingUI() {
-    const formatter = new Intl.NumberFormat(globalLocale, {
-        style: 'currency',
-        currency: globalCurrency,
-        minimumFractionDigits: 2
-    });
-
-    // A. Handle Subscription Tiers (.price-val)
-    document.querySelectorAll('.price-val').forEach(el => {
-        const baseVal = window.isYearly 
-            ? el.getAttribute('data-base-yearly') 
-            : el.getAttribute('data-base-monthly');
-        
-        const numericBase = parseFloat(baseVal);
-
-        if (numericBase === 0) {
-            el.innerText = globalCurrency === 'JPY' ? '無料' : 'Free'; 
-            return;
-        }
-
-        // Apply Conversion + Professional Rounding (.99)
-        let converted = numericBase * globalRate;
-        
-        // We only apply .99 rounding to foreign currencies to keep EUR prices exact
-        if (globalCurrency !== 'EUR') {
-            converted = Math.ceil(converted) - 0.01;
-        }
-
-        el.innerText = formatter.format(converted);
-    });
-
-    // B. Handle Neural Top-Ups (.price-topup)
-    document.querySelectorAll('.price-topup').forEach(el => {
-        const baseTopup = el.getAttribute('data-base-topup');
-        const numericBase = parseFloat(baseTopup);
-
-        let convertedTopup = numericBase * globalRate;
-        
-        if (globalCurrency !== 'EUR') {
-            convertedTopup = Math.ceil(convertedTopup) - 0.01;
-        }
-
-        el.innerText = formatter.format(convertedTopup);
-    });
-}
-
-/**
- * Toggle Switch Logic: Monthly vs Yearly
- */
-function toggleBilling() {
-    window.isYearly = !window.isYearly;
-    
-    // UI Visual States
-    const knob = document.getElementById('toggle-knob');
-    const mLabel = document.getElementById('monthly-label');
-    const yLabel = document.getElementById('yearly-label');
-
-    if (window.isYearly) {
-        knob.style.transform = 'translateX(24px)';
-        yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-        mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-    } else {
-        knob.style.transform = 'translateX(0)';
-        mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-        yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
-    }
-
-    // Re-run the renderer
-    updateAllPricingUI();
-}
-
-// Initialize on Document Load
-document.addEventListener('DOMContentLoaded', initGlobalIntelligence);
-</script>
 </body>
 </html>
+   
