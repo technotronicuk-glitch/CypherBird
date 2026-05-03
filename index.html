@@ -234,7 +234,7 @@
             <h2 class="text-zinc-900 text-5xl font-black uppercase tracking-tighter mb-4">Select Protocol</h2>
             <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Subscription Licensing Model</p>
             
-            <!-- Updated Toggle -->
+            <!-- Billing Toggle -->
             <div class="flex items-center justify-center gap-4">
                 <span id="monthly-label" class="text-zinc-900 font-mono text-[10px] uppercase tracking-widest transition-colors duration-300">Monthly</span>
                 <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-200 rounded-full p-1 relative border border-borders">
@@ -246,45 +246,55 @@
 
         <div id="protocol-grid" class="grid md:grid-cols-3 gap-8 items-center mb-32">
             <!-- Tier 01: Standard -->
-            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm">
+            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm h-full flex flex-col">
                 <h4 class="text-zinc-400 font-bold tracking-widest text-xs mb-8 uppercase">Tier_01: Standard</h4>
-                <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic" data-monthly="€0.00" data-yearly="€0.00">€0.00</div>
-                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                    <li>[✓] Photo Vault</li>
-                    <li>[✕] No Video Support</li>
-                    <li>[✓] Standard Scrambling</li>
+                <!-- data-base-monthly/yearly set for currency script -->
+                <div class="price-val text-5xl text-zinc-900 font-black mb-8" data-base-monthly="0.00" data-base-yearly="0.00">€0.00</div>
+                
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest flex-grow">
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Photo Vault</li>
+                    <li class="flex items-center gap-2"><span class="text-zinc-300">[✕]</span> No Video Support</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Standard Scrambling</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Local Storage Only</li>
                 </ul>
+
                 <a href="account.html" class="block w-full">
                     <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Initialize</button>
                 </a>
             </div>
 
             <!-- Tier 02: Elite Grade -->
-            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm">
+            <div class="protocol-card bg-surface border border-borders p-12 rounded-3xl hover:border-cobalt transition-all duration-300 cursor-pointer group relative shadow-sm h-full flex flex-col">
                 <h4 class="text-zinc-400 font-bold tracking-widest text-xs mb-8 uppercase">Tier_02: Elite Grade</h4>
-                <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic" data-monthly="€3.99" data-yearly="€39.99">€3.99</div>
-                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest">
-                    <li>[✓] Bulk Scrambling</li>
-                    <li>[✓] 1GB Secure Cloud Backup</li>
-                    <li>[✓] Video Encryption</li>
+                <div class="price-val text-5xl text-zinc-900 font-black mb-8" data-base-monthly="3.99" data-base-yearly="39.99">€3.99</div>
+                
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-500 font-mono uppercase tracking-widest flex-grow">
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Bulk Scrambling</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> 1GB Secure Cloud</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Video Encryption</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Multi-Device Sync</li>
                 </ul>
+
                 <a href="store.html" class="block w-full">
-                    <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Upgrade</button>
+                    <button class="select-btn block w-full py-4 text-center border border-borders text-zinc-900 text-[10px] font-black tracking-widest group-hover:bg-zinc-900 group-hover:text-white transition uppercase">Upgrade_Elite</button>
                 </a>
             </div>
 
             <!-- Tier 03: Ultra Grade -->
-            <div class="protocol-card bg-white border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group">
-                <div class="active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase italic tracking-widest">Elite Choice</div>
+            <div class="protocol-card bg-white border-2 border-cobalt p-12 rounded-3xl relative md:scale-110 shadow-2xl z-10 cursor-pointer group h-full flex flex-col">
+                <div class="active-tag absolute -top-4 left-1/2 -translate-x-1/2 bg-cobalt text-white text-[9px] font-black px-5 py-1 uppercase tracking-widest">Elite Choice</div>
                 <h4 class="text-cobalt font-bold tracking-widest text-xs mb-8 uppercase">Tier_03: Ultra Grade</h4>
-                <div class="price-val text-5xl text-zinc-900 font-black mb-8 italic" data-monthly="€9.99" data-yearly="€99.99">€8.99</div>
-                <ul class="text-[10px] space-y-4 mb-12 text-zinc-700 font-mono uppercase tracking-widest">
-                    <li>[✓] Unlimited 4K Scrambling</li>
-                    <li>[✓] 2GB Secure Cloud Backup</li>
-                    <li>[✓] Priority Neural Support</li>
+                <div class="price-val text-5xl text-zinc-900 font-black mb-8" data-base-monthly="9.99" data-base-yearly="99.99">€9.99</div>
+                
+                <ul class="text-[10px] space-y-4 mb-12 text-zinc-700 font-mono uppercase tracking-widest flex-grow">
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Unlimited 4K Scrambling</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> 2GB Secure Cloud</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Priority Neural Support</li>
+                    <li class="flex items-center gap-2"><span class="text-cobalt">[✓]</span> Biometric Lock</li>
                 </ul>
+
                 <a href="store.html" class="block w-full">
-                    <button class="select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-blue-400 transition uppercase shadow-lg">Activate_Ultra</button>
+                    <button class="select-btn block w-full py-4 text-center bg-cobalt text-white text-[10px] font-black tracking-widest hover:bg-zinc-900 transition uppercase shadow-lg">Activate_Ultra</button>
                 </a>
             </div>
         </div>
@@ -292,7 +302,7 @@
 </section>
     
    <div class="mb-16 max-w-7xl mx-auto px-4">
-    <!-- Header Fixed: Changed text-left to text-center -->
+    <!-- Header -->
     <div class="text-center">
         <h2 class="text-zinc-900 text-5xl font-black uppercase tracking-tighter mb-4">Neural Data Top-Ups</h2>
         <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-[0.4em] mb-12">Step_03: One Time Refills</p>
@@ -301,14 +311,13 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- 500MB Card -->
         <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
-            <!-- Fixed Image: Removed opacity-40 so colors are vibrant -->
             <img src="Top-Up 500MB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <!-- Fixed Overlay: Changed white gradient to a subtle dark bottom-fade for text readability -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">500MB</h3>
-                        <p class="text-blue-400 font-mono text-xs font-bold mt-1">€1.99</p>
+                        <!-- Class and Data Attribute added for script compatibility -->
+                        <p class="price-topup text-blue-400 font-mono text-xs font-bold mt-1" data-base-topup="1.99">€1.99</p>
                     </div>
                     <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
@@ -320,11 +329,12 @@
         <!-- 2GB Card -->
         <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
             <img src="Top-Up 2GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">2GB</h3>
-                        <p class="text-blue-400 font-mono text-xs font-bold mt-1">€2.99</p>
+                        <!-- Class and Data Attribute added for script compatibility -->
+                        <p class="price-topup text-blue-400 font-mono text-xs font-bold mt-1" data-base-topup="2.99">€2.99</p>
                     </div>
                     <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
@@ -336,11 +346,12 @@
         <!-- 5GB Card -->
         <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
             <img src="Top-Up 5GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent p-6 flex flex-col justify-end">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">5GB</h3>
-                        <p class="text-blue-400 font-mono text-xs font-bold mt-1">€4.99</p>
+                        <!-- Class and Data Attribute added for script compatibility -->
+                        <p class="price-topup text-blue-400 font-mono text-xs font-bold mt-1" data-base-topup="4.99">€4.99</p>
                     </div>
                     <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
@@ -349,6 +360,7 @@
             </div>  
         </div>
     </div>
+</div>
 
     <!-- Store Button: Styled like the blue 'LEARN MORE' button in image 2 -->
     <div class="mt-24 text-center">
@@ -483,6 +495,125 @@ function toggleBilling() {
         price.textContent = value;
     });
 }
+</script>
+    <script>
+/**
+ * PROTOCOL CORE: Global Currency & Billing Logic
+ * Base Currency: EUR
+ */
+
+let globalRate = 1;
+let globalCurrency = 'EUR';
+let globalLocale = 'en-IE';
+window.isYearly = false;
+
+/**
+ * Initialization: Logic to detect user and fetch market rates
+ */
+async function initGlobalIntelligence() {
+    try {
+        // 1. Locate user via IP Geolocation
+        const geoRes = await fetch('https://ipapi.co/json/');
+        const geoData = await geoRes.json();
+        
+        globalCurrency = geoData.currency || 'EUR';
+        // Fallback to English-Ireland if locale detection is spotty
+        globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+
+        // 2. Fetch Live Market Rates (Euro Base)
+        // Using Open Exchange Rates API (No-Key Free Tier)
+        const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
+        const rateData = await rateRes.json();
+        
+        globalRate = rateData.rates[globalCurrency] || 1;
+
+        console.log(`Protocol: Currency set to ${globalCurrency} at rate ${globalRate}`);
+        
+        // Initial UI Render
+        updateAllPricingUI();
+
+    } catch (error) {
+        console.error("Protocol Error: Connection to financial nodes failed. Defaulting to EUR.");
+        updateAllPricingUI(); // Fallback to hardcoded EUR values
+    }
+}
+
+/**
+ * UI Renderer: Updates all elements with currency-specific formatting
+ */
+function updateAllPricingUI() {
+    const formatter = new Intl.NumberFormat(globalLocale, {
+        style: 'currency',
+        currency: globalCurrency,
+        minimumFractionDigits: 2
+    });
+
+    // A. Handle Subscription Tiers (.price-val)
+    document.querySelectorAll('.price-val').forEach(el => {
+        const baseVal = window.isYearly 
+            ? el.getAttribute('data-base-yearly') 
+            : el.getAttribute('data-base-monthly');
+        
+        const numericBase = parseFloat(baseVal);
+
+        if (numericBase === 0) {
+            el.innerText = globalCurrency === 'JPY' ? '無料' : 'Free'; 
+            return;
+        }
+
+        // Apply Conversion + Professional Rounding (.99)
+        let converted = numericBase * globalRate;
+        
+        // We only apply .99 rounding to foreign currencies to keep EUR prices exact
+        if (globalCurrency !== 'EUR') {
+            converted = Math.ceil(converted) - 0.01;
+        }
+
+        el.innerText = formatter.format(converted);
+    });
+
+    // B. Handle Neural Top-Ups (.price-topup)
+    document.querySelectorAll('.price-topup').forEach(el => {
+        const baseTopup = el.getAttribute('data-base-topup');
+        const numericBase = parseFloat(baseTopup);
+
+        let convertedTopup = numericBase * globalRate;
+        
+        if (globalCurrency !== 'EUR') {
+            convertedTopup = Math.ceil(convertedTopup) - 0.01;
+        }
+
+        el.innerText = formatter.format(convertedTopup);
+    });
+}
+
+/**
+ * Toggle Switch Logic: Monthly vs Yearly
+ */
+function toggleBilling() {
+    window.isYearly = !window.isYearly;
+    
+    // UI Visual States
+    const knob = document.getElementById('toggle-knob');
+    const mLabel = document.getElementById('monthly-label');
+    const yLabel = document.getElementById('yearly-label');
+
+    if (window.isYearly) {
+        knob.style.transform = 'translateX(24px)';
+        yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+        mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+    } else {
+        knob.style.transform = 'translateX(0)';
+        mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+        yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+    }
+
+    // Re-run the renderer
+    updateAllPricingUI();
+}
+
+// Initialize on Document Load
+document.addEventListener('DOMContentLoaded', initGlobalIntelligence);
 </script>
 </body>
 </html>
