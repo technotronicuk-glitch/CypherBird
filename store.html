@@ -339,5 +339,124 @@
         
         updateUI();
     </script>
+    <script>
+/**
+ * PROTOCOL CORE: Global Currency & Billing Logic
+ * Base Currency: EUR
+ */
+
+let globalRate = 1;
+let globalCurrency = 'EUR';
+let globalLocale = 'en-IE';
+window.isYearly = false;
+
+/**
+ * Initialization: Logic to detect user and fetch market rates
+ */
+async function initGlobalIntelligence() {
+    try {
+        // 1. Locate user via IP Geolocation
+        const geoRes = await fetch('https://ipapi.co/json/');
+        const geoData = await geoRes.json();
+        
+        globalCurrency = geoData.currency || 'EUR';
+        // Fallback to English-Ireland if locale detection is spotty
+        globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+
+        // 2. Fetch Live Market Rates (Euro Base)
+        // Using Open Exchange Rates API (No-Key Free Tier)
+        const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
+        const rateData = await rateRes.json();
+        
+        globalRate = rateData.rates[globalCurrency] || 1;
+
+        console.log(`Protocol: Currency set to ${globalCurrency} at rate ${globalRate}`);
+        
+        // Initial UI Render
+        updateAllPricingUI();
+
+    } catch (error) {
+        console.error("Protocol Error: Connection to financial nodes failed. Defaulting to EUR.");
+        updateAllPricingUI(); // Fallback to hardcoded EUR values
+    }
+}
+
+/**
+ * UI Renderer: Updates all elements with currency-specific formatting
+ */
+function updateAllPricingUI() {
+    const formatter = new Intl.NumberFormat(globalLocale, {
+        style: 'currency',
+        currency: globalCurrency,
+        minimumFractionDigits: 2
+    });
+
+    // A. Handle Subscription Tiers (.price-val)
+    document.querySelectorAll('.price-val').forEach(el => {
+        const baseVal = window.isYearly 
+            ? el.getAttribute('data-base-yearly') 
+            : el.getAttribute('data-base-monthly');
+        
+        const numericBase = parseFloat(baseVal);
+
+        if (numericBase === 0) {
+            el.innerText = globalCurrency === 'JPY' ? '無料' : 'Free'; 
+            return;
+        }
+
+        // Apply Conversion + Professional Rounding (.99)
+        let converted = numericBase * globalRate;
+        
+        // We only apply .99 rounding to foreign currencies to keep EUR prices exact
+        if (globalCurrency !== 'EUR') {
+            converted = Math.ceil(converted) - 0.01;
+        }
+
+        el.innerText = formatter.format(converted);
+    });
+
+    // B. Handle Neural Top-Ups (.price-topup)
+    document.querySelectorAll('.price-topup').forEach(el => {
+        const baseTopup = el.getAttribute('data-base-topup');
+        const numericBase = parseFloat(baseTopup);
+
+        let convertedTopup = numericBase * globalRate;
+        
+        if (globalCurrency !== 'EUR') {
+            convertedTopup = Math.ceil(convertedTopup) - 0.01;
+        }
+
+        el.innerText = formatter.format(convertedTopup);
+    });
+}
+
+/**
+ * Toggle Switch Logic: Monthly vs Yearly
+ */
+function toggleBilling() {
+    window.isYearly = !window.isYearly;
+    
+    // UI Visual States
+    const knob = document.getElementById('toggle-knob');
+    const mLabel = document.getElementById('monthly-label');
+    const yLabel = document.getElementById('yearly-label');
+
+    if (window.isYearly) {
+        knob.style.transform = 'translateX(24px)';
+        yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+        mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+    } else {
+        knob.style.transform = 'translateX(0)';
+        mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
+        yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+    }
+
+    // Re-run the renderer
+    updateAllPricingUI();
+}
+
+// Initialize on Document Load
+document.addEventListener('DOMContentLoaded', initGlobalIntelligence);
+</script>
 </body>
 </html>
