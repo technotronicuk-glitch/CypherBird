@@ -281,23 +281,6 @@
         </div>
     </div>
 </footer>
-
-<!-- 2. STRIPE OVERLAY (Moved OUTSIDE footer so it can be full-screen) -->
-<div id="stripe-overlay" class="hidden fixed inset-0 bg-black/95 z-[200] flex flex-col items-center justify-start pt-20 p-4">
-    <button onclick="closeStripe()" class="absolute top-8 right-8 text-white font-mono uppercase tracking-widest text-xs border border-white/20 px-4 py-2 hover:bg-white hover:text-black transition z-[210]">✕ Close Protocol</button>
-    
-    <!-- Subscription Table Container -->
-    <div id="subscription-table" class="w-full max-w-6xl overflow-y-auto max-h-[85vh] hidden mt-10">
-        <script async src="https://js.stripe.com/v3/pricing-table.js"></script>
-        <stripe-pricing-table pricing-table-id="prctbl_1TTeQR84iMO0lFgg0o0h2Qfv" publishable-key="pk_live_51TT0QI84iMO0lFggUwG6wtBvd761hKWXo52K8pfEs8hmXu80nJli3lURVctommWP1DsKxBY8TQr4TfuGtcishkkZ00b8bbjE6U"></stripe-pricing-table>
-    </div>
-
-    <!-- Topup Table Container -->
-    <div id="topup-table" class="w-full max-w-4xl overflow-y-auto max-h-[85vh] hidden mt-10">
-        <stripe-pricing-table pricing-table-id="prctbl_1TTeSN84iMO0lFggqj8xChHK" publishable-key="pk_live_51TT0QI84iMO0lFggUwG6wtBvd761hKWXo52K8pfEs8hmXu80nJli3lURVctommWP1DsKxBY8TQr4TfuGtcishkkZ00b8bbjE6U"></stripe-pricing-table>
-    </div>
-</div>
-
 <script>
     // --- STATE MANAGEMENT ---
     let isYearly = false;
