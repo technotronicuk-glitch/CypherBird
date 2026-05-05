@@ -377,6 +377,24 @@
 };
         };
 
+    function getCheckoutUrl(plan, isYearly, extraProduct = null) {
+    if (plan.startsWith('TopUp')) {
+        const type = plan === 'TopUp' ? 'Standard' : plan.replace('TopUp', '');
+        return checkoutLinks.topups[type];
+    }
+
+    if (extraProduct) {
+        const bundleKey = `${plan}_Plus_${extraProduct}`;
+        return isYearly 
+            ? checkoutLinks.bundleYearly[bundleKey] 
+            : checkoutLinks.bundleMonthly[bundleKey];
+    }
+
+    return isYearly 
+        ? checkoutLinks.yearly[plan] 
+        : checkoutLinks.monthly[plan];
+}
+
         // 2. Identify the selection (Check Vault first, then Protocol)
         let selection = selectedVault.name || selectedProtocol.name;
 
