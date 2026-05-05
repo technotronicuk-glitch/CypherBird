@@ -420,8 +420,16 @@
             </div>
         </div>
     </div>
-  <!-- Cookie Consent Box -->
-<div id="cookie-banner" class="fixed bottom-8 left-8 z-[100] max-w-sm bg-white border border-borders p-6 rounded-2xl shadow-2xl transition-all duration-500 transform translate-y-0">
+ <!-- Social Links -->
+                <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-x-twitter"></i></a> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cookie Consent Box (Fixed to Bottom Left) -->
+<div id="cookie-banner" class="fixed bottom-8 left-8 z-[100] max-w-sm bg-white border border-gray-200 p-6 rounded-2xl shadow-2xl transition-all duration-500 transform translate-y-0">
     <div class="flex flex-col gap-4">
         <div>
             <h5 class="text-zinc-900 font-mono text-[10px] uppercase tracking-[0.3em] mb-2">Cookie Protocol</h5>
@@ -431,77 +439,33 @@
         </div>
         <div class="flex gap-3">
             <button onclick="handleCookies('accepted')" class="flex-1 py-2 bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest hover:bg-zinc-800 transition">Accept</button>
-            <button onclick="handleCookies('declined')" class="flex-1 py-2 border border-borders text-zinc-500 text-[10px] font-black uppercase tracking-widest hover:bg-zinc-100 transition">Decline</button>
+            <button onclick="handleCookies('declined')" class="flex-1 py-2 border border-gray-200 text-zinc-500 text-[10px] font-black uppercase tracking-widest hover:bg-zinc-100 transition">Decline</button>
         </div>
     </div>
 </div>
 
 <script>
-function handleCookies(choice) {
-    const banner = document.getElementById('cookie-banner');
-    
-    // Start the fade-out animation
-    banner.style.opacity = '0';
-    banner.style.transform = 'translateY(20px)';
-    
-    // Store the choice so it doesn't pop up on the next page load
-    localStorage.setItem('cookieChoice', choice);
-    
-    // Wait for the CSS transition (500ms) before removing from layout
-    setTimeout(() => {
-        banner.style.display = 'none';
-    }, 500);
-}
-
-// Check for existing choice immediately on load
-window.addEventListener('DOMContentLoaded', (event) => {
-    if (localStorage.getItem('cookieChoice')) {
-        document.getElementById('cookie-banner').style.display = 'none';
-    }
-}); // <-- Added the missing closing brace and parenthesis here!
-</script>
-let isYearly = false;
-
-function toggleBilling() {
-    isYearly = !isYearly;
-    const knob = document.getElementById('toggle-knob');
-    const monthlyLabel = document.getElementById('monthly-label');
-    const yearlyLabel = document.getElementById('yearly-label');
-    const prices = document.querySelectorAll('.price-val');
-
-    if (isYearly) {
-        knob.classList.add('translate-x-6'); // Adjust value based on your toggle width
-        yearlyLabel.classList.add('text-zinc-900');
-        yearlyLabel.classList.remove('text-zinc-400');
-        monthlyLabel.classList.add('text-zinc-400');
-        monthlyLabel.classList.remove('text-zinc-900');
-    } else {
-        knob.classList.remove('translate-x-6');
-        monthlyLabel.classList.add('text-zinc-900');
-        monthlyLabel.classList.remove('text-zinc-400');
-        yearlyLabel.classList.add('text-zinc-400');
-        yearlyLabel.classList.remove('text-zinc-900');
-    }
-
-    prices.forEach(price => {
-        const value = isYearly ? price.getAttribute('data-yearly') : price.getAttribute('data-monthly');
-        price.textContent = value;
-    });
-}
-</script>
-    <script>
 /**
- * PROTOCOL CORE: Global Currency & Billing Logic
- * Base Currency: EUR
+ * GLOBAL STATE
  */
-
 let globalRate = 1;
 let globalCurrency = 'EUR';
 let globalLocale = 'en-IE';
 window.isYearly = false;
 
 /**
- * Initialization: Logic to detect user and fetch market rates
+ * COOKIE SYSTEM
+ */
+function handleCookies(choice) {
+    const banner = document.getElementById('cookie-banner');
+    banner.style.opacity = '0';
+    banner.style.transform = 'translateY(20px)';
+    localStorage.setItem('cookieChoice', choice);
+    setTimeout(() => { banner.style.display = 'none'; }, 500);
+}
+
+/**
+ * PRICING & CURRENCY INTELLIGENCE
  */
 async function initGlobalIntelligence() {
     try {
@@ -510,30 +474,20 @@ async function initGlobalIntelligence() {
         const geoData = await geoRes.json();
         
         globalCurrency = geoData.currency || 'EUR';
-        // Fallback to English-Ireland if locale detection is spotty
         globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
 
-        // 2. Fetch Live Market Rates (Euro Base)
-        // Using Open Exchange Rates API (No-Key Free Tier)
+        // 2. Fetch Live Market Rates
         const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
         const rateData = await rateRes.json();
-        
         globalRate = rateData.rates[globalCurrency] || 1;
 
-        console.log(`Protocol: Currency set to ${globalCurrency} at rate ${globalRate}`);
-        
-        // Initial UI Render
         updateAllPricingUI();
-
     } catch (error) {
-        console.error("Protocol Error: Connection to financial nodes failed. Defaulting to EUR.");
-        updateAllPricingUI(); // Fallback to hardcoded EUR values
+        console.error("Protocol Error: Defaulting to EUR.");
+        updateAllPricingUI();
     }
 }
 
-/**
- * UI Renderer: Updates all elements with currency-specific formatting
- */
 function updateAllPricingUI() {
     const formatter = new Intl.NumberFormat(globalLocale, {
         style: 'currency',
@@ -541,72 +495,57 @@ function updateAllPricingUI() {
         minimumFractionDigits: 2
     });
 
-    // A. Handle Subscription Tiers (.price-val)
     document.querySelectorAll('.price-val').forEach(el => {
         const baseVal = window.isYearly 
             ? el.getAttribute('data-base-yearly') 
             : el.getAttribute('data-base-monthly');
         
-        const numericBase = parseFloat(baseVal);
-
+        let numericBase = parseFloat(baseVal);
         if (numericBase === 0) {
             el.innerText = globalCurrency === 'JPY' ? '無料' : 'Free'; 
             return;
         }
 
-        // Apply Conversion + Professional Rounding (.99)
         let converted = numericBase * globalRate;
-        
-        // We only apply .99 rounding to foreign currencies to keep EUR prices exact
         if (globalCurrency !== 'EUR') {
             converted = Math.ceil(converted) - 0.01;
         }
-
         el.innerText = formatter.format(converted);
-    });
-
-    // B. Handle Neural Top-Ups (.price-topup)
-    document.querySelectorAll('.price-topup').forEach(el => {
-        const baseTopup = el.getAttribute('data-base-topup');
-        const numericBase = parseFloat(baseTopup);
-
-        let convertedTopup = numericBase * globalRate;
-        
-        if (globalCurrency !== 'EUR') {
-            convertedTopup = Math.ceil(convertedTopup) - 0.01;
-        }
-
-        el.innerText = formatter.format(convertedTopup);
     });
 }
 
 /**
- * Toggle Switch Logic: Monthly vs Yearly
+ * TOGGLE SWITCH LOGIC
  */
 function toggleBilling() {
     window.isYearly = !window.isYearly;
     
-    // UI Visual States
     const knob = document.getElementById('toggle-knob');
     const mLabel = document.getElementById('monthly-label');
     const yLabel = document.getElementById('yearly-label');
 
     if (window.isYearly) {
-        knob.style.transform = 'translateX(24px)';
-        yLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-        mLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+        if(knob) knob.style.transform = 'translateX(24px)';
+        yLabel?.classList.replace('text-zinc-400', 'text-zinc-900');
+        mLabel?.classList.replace('text-zinc-900', 'text-zinc-400');
     } else {
-        knob.style.transform = 'translateX(0)';
-        mLabel.classList.replace('text-zinc-400', 'text-zinc-900');
-        yLabel.classList.replace('text-zinc-900', 'text-zinc-400');
+        if(knob) knob.style.transform = 'translateX(0)';
+        mLabel?.classList.replace('text-zinc-400', 'text-zinc-900');
+        yLabel?.classList.replace('text-zinc-900', 'text-zinc-400');
     }
 
-    // Re-run the renderer
     updateAllPricingUI();
 }
 
-// Initialize on Document Load
-document.addEventListener('DOMContentLoaded', initGlobalIntelligence);
+// INITIALIZE ON LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    // Check Cookies
+    if (localStorage.getItem('cookieChoice')) {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+    // Check Currency
+    initGlobalIntelligence();
+});
 </script>
 </body>
 </html>
