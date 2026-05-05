@@ -102,6 +102,34 @@
                 </div>
             </div>
         </section>
+        </section>
+
+   <!-- Top-Up Quick Reference -->
+<div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+    <!-- Top-Up Standard -->
+    <div id="card-topup" onclick="selectVault('TopUp', 1.99, 0)" 
+        class="group p-6 border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95">
+        <img src="Top up 1GB.png" alt="Top Up" class="w-16 h-16 mx-auto mb-4 rounded-lg grayscale group-hover:grayscale-0 transition">
+        <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Standard</p>
+        <p class="text-zinc-900 font-black italic">500MB / €1.99</p>
+    </div>
+
+    <!-- Top-Up Advanced -->
+    <div id="card-topup2gb" onclick="selectVault('TopUp2GB', 2.99, 0)" 
+        class="group p-6 border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95">
+        <img src="Top-Up 2GB.png" alt="Top Up 2GB" class="w-16 h-16 mx-auto mb-4 rounded-lg grayscale group-hover:grayscale-0 transition">
+        <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Advanced</p>
+        <p class="text-zinc-900 font-black italic">2GB / €2.99</p>
+    </div>
+
+    <!-- Top-Up Protocol -->
+    <div id="card-topup5gb" onclick="selectVault('TopUp5GB', 4.99, 0)" 
+        class="group p-6 border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95">
+        <img src="Top-Up 5GB.png" alt="Top Up 5GB" class="w-16 h-16 mx-auto mb-4 rounded-lg grayscale group-hover:grayscale-0 transition">
+        <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Protocol</p>
+        <p class="text-zinc-900 font-black italic">5GB / €4.99</p>
+        </div>
+    </div>
 
         <section class="mb-32">
     <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Price Comparison</h2>  
@@ -160,23 +188,7 @@
             </tbody>
         </table>
     </div>
-</section>
 
-    <!-- Top-Up Quick Reference -->
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div class="p-4 border border-zinc-100 rounded-xl bg-white text-center">
-            <p class="text-zinc-400 text-[9px] uppercase mb-1">Top-Up Standard</p>
-            <p class="text-zinc-900 font-black">500MB / €1.99</p>
-        </div>
-        <div class="p-4 border border-zinc-100 rounded-xl bg-white text-center">
-            <p class="text-zinc-400 text-[9px] uppercase mb-1">Top-Up Advanced</p>
-            <p class="text-zinc-900 font-black">2GB / €2.99</p>
-        </div>
-        <div class="p-4 border border-zinc-100 rounded-xl bg-white text-center">
-            <p class="text-zinc-400 text-[9px] uppercase mb-1">Top-Up Protocol</p>
-            <p class="text-zinc-900 font-black">5GB / €4.99</p>
-        </div>
-    </div>
 </section>
         <section class="mb-32">
     <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Technical Comparison</h2> 
