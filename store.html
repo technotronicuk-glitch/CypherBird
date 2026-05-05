@@ -333,14 +333,48 @@
     function handleCheckoutClick() {
         // 1. Define your Stripe Payment Links here
         // Replace the '#' with the actual links from your Stripe Dashboard
-        const stripeLinks = {
-            'Elite': 'https://buy.stripe.com/your_elite_link',
-            'Ultra': 'https://buy.stripe.com/your_ultra_link',
-            'Alpha': 'https://buy.stripe.com/your_alpha_vault_link',
-            'Deep': 'https://buy.stripe.com/your_deep_vault_link',
-            'TopUp': 'https://buy.stripe.com/your_500mb_link',
-            'TopUp2GB': 'https://buy.stripe.com/your_2gb_link',
-            'TopUp5GB': 'https://buy.stripe.com/your_5gb_link'
+        const checkoutLinks = {
+    // 1. INDIVIDUAL MONTHLY (4 Links)
+    monthly: {
+        'Elite': 'https://buy.stripe.com/aFa28l6zccN70E89mebsc0m',
+        'Ultra': 'https://buy.stripe.com/5kQ6oBe1EdRb4Uo7e6bsc03',
+        'Alpha': 'https://buy.stripe.com/00w00dcXA8wR1Ic7e6bsc0n',
+        'Deep':  'https://buy.stripe.com/cNi3cp5v8fZj5Ys6a2bsc09',
+    },
+
+    // 2. INDIVIDUAL YEARLY (4 Links)
+    yearly: {
+        'Elite': 'https://buy.stripe.com/8x24gt1eS28t9aEfKCbsc0g',
+        'Ultra': 'https://buy.stripe.com/6oU14hbTw8wR2MgdCubsc0e',
+        'Alpha': 'https://buy.stripe.com/bJe7sF7DgcN7gD62XQbsc0f',
+        'Deep':  'https://buy.stripe.com/9B6dR37Dg7sNfz26a2bsc0h',
+    },
+
+    // 3. MONTHLY BUNDLES (4 Links)
+    // Based on image_f2069c.png
+    bundleMonthly: {
+        'Elite_Plus_Alpha': 'https://buy.stripe.com/eVqbIV8HkfZj72w41Ubsc08',  // Elite + 1 more
+        'Elite_Plus_Deep': 'https://buy.stripe.com/9B68wJcXA28t86AfKCbsc0c',  // Elite + 1 more
+        'Ultra_Plus_Alpha': 'https://buy.stripe.com/bJe7sFbTwbJ3cmQeGybsc0d',  // Ultra + 1 more
+        'Ultra_Plus_Deep':  'https://buy.stripe.com/eVq00d2iW00l72wcyqbsc0b',  // Ultra + 1more
+    },
+
+    // 4. YEARLY BUNDLES (4 Links)
+    // Based on image_f2077c.png
+    bundleYearly: {
+        'Elite_Plus_Alpha': 'https://buy.stripe.com/fZu9AN3n06oJaeIbumbsc0i',
+        'Elite_Plus_Deep': 'https://buy.stripe.com/bJeaERg9M9AVaeI55Ybsc0j',
+        'Ultra_Plus_Alpha': 'https://buy.stripe.com/fZu7sFf5IcN7dqUfKCbsc0k',
+        'Ultra_Plus_Deep':  'https://buy.stripe.com/eVqdR32iW14p86AfKCbsc0l',
+    },
+
+    // 5. TOP-UPS (3 Links)
+    topups: {
+        'Standard': 'https://buy.stripe.com/5kQ28le1E6oJ0E8gOGbsc05',
+        '2GB':      'https://buy.stripe.com/dRm28l4r414paeI0PIbsc06',
+        '5GB':      'https://buy.stripe.com/5kQaERcXA6oJ4Uo2XQbsc07',
+    }
+};
         };
 
         // 2. Identify the selection (Check Vault first, then Protocol)
