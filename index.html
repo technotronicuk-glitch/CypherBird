@@ -94,16 +94,6 @@
     </style>
 </head>
 <body class="bg-base text-silver font-sans selection:bg-cobalt selection:text-white">
-
-<!-- Cookie Consent Banner -->
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-white border-t border-borders z-[200] p-6 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] transform translate-y-full transition-transform duration-500">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div class="flex items-center gap-4">
-            <span class="text-2xl">🍪</span>
-            <p class="text-zinc-600 font-mono text-[11px] uppercase tracking-widest leading-relaxed">
-                We use proprietary protocols to enhance your experience. By continuing, you agree to our 
-                <a href="#" class="text-cobalt underline">Cookie_Policy</a>.
-            </p>
         </div>
         <div class="flex gap-4 shrink-0">
             <button onclick="acceptCookies()" class="px-8 py-3 bg-zinc-900 text-white text-[10px] font-black uppercase tracking-widest rounded-sm hover:bg-cobalt transition">Accept_All</button>
@@ -430,11 +420,11 @@
             </div>
         </div>
     </div>
-    <!-- Cookie Consent Box -->
+  <!-- Cookie Consent Box -->
 <div id="cookie-banner" class="fixed bottom-8 left-8 z-[100] max-w-sm bg-white border border-borders p-6 rounded-2xl shadow-2xl transition-all duration-500 transform translate-y-0">
     <div class="flex flex-col gap-4">
         <div>
-            <h5 class="text-zinc-900 font-mono text-[10px] uppercase tracking-[0.3em] mb-2">Cookie_Protocol</h5>
+            <h5 class="text-zinc-900 font-mono text-[10px] uppercase tracking-[0.3em] mb-2">Cookie Protocol</h5>
             <p class="text-zinc-500 text-[11px] leading-relaxed">
                 We use cookies to optimize your neural interface experience. By continuing, you accept our data encryption standards.
             </p>
@@ -445,28 +435,31 @@
         </div>
     </div>
 </div>
-</footer>
-    <script>
-        // Cookie Logic
+
+<script>
 function handleCookies(choice) {
     const banner = document.getElementById('cookie-banner');
+    
+    // Start the fade-out animation
     banner.style.opacity = '0';
     banner.style.transform = 'translateY(20px)';
     
-    // Optional: Store choice in localStorage so it stays hidden
+    // Store the choice so it doesn't pop up on the next page load
     localStorage.setItem('cookieChoice', choice);
     
+    // Wait for the CSS transition (500ms) before removing from layout
     setTimeout(() => {
         banner.style.display = 'none';
     }, 500);
 }
 
-// Check if user already made a choice on page load
-window.onload = function() {
+// Check for existing choice immediately on load
+window.addEventListener('DOMContentLoaded', (event) => {
     if (localStorage.getItem('cookieChoice')) {
         document.getElementById('cookie-banner').style.display = 'none';
     }
-}
+}); // <-- Added the missing closing brace and parenthesis here!
+</script>
 let isYearly = false;
 
 function toggleBilling() {
