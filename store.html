@@ -28,7 +28,7 @@
     </div>
 
     <header class="py-16 border-b border-borders text-center bg-white/50 backdrop-blur-md">
-        <h1 class="text-4xl font-black italic uppercase tracking-tighter mb-6 text-zinc-900">Protocol Configuration</h1>
+        <h1 class="text-4xl font-black uppercase tracking-tighter mb-6 text-zinc-900">Protocol Configuration</h1>
         <div class="flex items-center justify-center space-x-4">
             <span id="label-monthly" class="text-zinc-900 font-mono text-[10px] uppercase font-bold">Monthly</span>
             <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-100 rounded-full p-1 relative border border-zinc-200">
@@ -42,7 +42,7 @@
         
         <!-- Step 01 -->
         <section class="mb-32">
-            <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Step_01: Select Core Protocol</h2>
+            <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center"> Select Core Protocol</h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Standard -->
                 <div id="card-standard" onclick="selectProtocol('Standard', 0, 0)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-300 transition-all group relative shadow-sm">
@@ -50,7 +50,7 @@
                     <div class="h-48 w-full bg-zinc-50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-zinc-100">
                         <img id="img-standard" src="Free chat.png" class="w-full h-full object-contain p-6">
                     </div>
-                    <h3 class="text-zinc-900 font-black italic uppercase text-xl">Standard</h3>
+                    <h3 class="text-zinc-900 font-black uppercase text-xl">Standard</h3>
                     <p class="text-zinc-400 font-mono text-[10px] mt-2 uppercase">€0.00</p>
                 </div>
 
@@ -60,7 +60,7 @@
                     <div class="h-48 w-full bg-zinc-50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-zinc-100">
                         <img id="img-ultra" src="Ultra Chat.png" class="w-full h-full object-contain p-6">
                     </div>
-                    <h3 class="text-zinc-900 font-black italic uppercase text-xl">Ultra Grade</h3>
+                    <h3 class="text-zinc-900 font-black uppercase text-xl">Ultra Grade</h3>
                     <p id="price-ultra" class="text-cobalt font-mono text-[10px] mt-2 uppercase font-bold">€8.99 / mo</p>
                 </div>
 
@@ -70,7 +70,7 @@
                     <div class="h-48 w-full bg-zinc-50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-zinc-100">
                         <img id="img-elite" src="Elite Chat.png" class="w-full h-full object-contain p-6">
                     </div>
-                    <h3 class="text-zinc-900 font-black italic uppercase text-xl">Elite Grade</h3>
+                    <h3 class="text-zinc-900 font-black uppercase text-xl">Elite Grade</h3>
                     <p id="price-elite" class="text-zinc-400 font-mono text-[10px] mt-2 uppercase">€3.99 / mo</p>
                 </div>
             </div>
@@ -78,6 +78,8 @@
 
         <!-- Step 02 -->
         <section class="mb-32">
+            <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center"> Select Vault</h2>
+            <div class="grid md:grid-cols-3 gap-8">
             <div class="grid md:grid-cols-2 gap-8">
                 <div id="card-alpha" onclick="selectVault('Alpha', 4.99, 49.89)" class="flex items-center bg-surface border-2 border-borders rounded-[2.5rem] p-6 cursor-pointer hover:border-zinc-900 transition-all group relative shadow-sm">
                     <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-300 hover:text-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
@@ -85,7 +87,7 @@
                         <img id="img-alpha" src="Vault 50Gb.png" class="w-full h-full object-contain p-4">
                     </div>
                     <div class="w-2/3 flex flex-col justify-center">
-                        <h4 class="text-zinc-900 font-black italic uppercase text-xl">Alpha Vault</h4>
+                        <h4 class="text-zinc-900 font-black uppercase text-xl">Alpha Vault</h4>
                         <p id="price-alpha" class="text-zinc-400 font-mono text-[10px] mt-2">€4.99 / mo</p>
                     </div>
                 </div>
@@ -96,7 +98,7 @@
                         <img id="img-deep" src="Vault 200Gb.png" class="w-full h-full object-contain p-4">
                     </div>
                     <div class="w-2/3 flex flex-col justify-center">
-                        <h4 class="text-zinc-900 font-black italic uppercase text-xl">Deep Vault</h4>
+                        <h4 class="text-zinc-900 font-black uppercase text-xl">Deep Vault</h4>
                         <p id="price-deep" class="text-zinc-400 font-mono text-[10px] mt-2">€9.99 / mo</p>
                     </div>
                 </div>
@@ -106,30 +108,42 @@
 
    <!-- Top-Up Quick Reference -->
 <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-    <!-- Top-Up Standard -->
-    <div id="card-topup" onclick="selectVault('TopUp', 1.99, 0)" 
-        class="group p-6 border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95">
-        <img src="Top up 1GB.png" alt="Top Up" class="w-16 h-16 mx-auto mb-4 rounded-lg grayscale group-hover:grayscale-0 transition">
+    <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center"> Select Top-Up</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+<!-- Top-Up Standard -->
+                
+  <div id="card-topup" 
+     onclick="selectVault('TopUp', 1.99, 0)" 
+     class="group border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95 overflow-hidden">
+    <img src="Top Up 500MB.png" alt="Top Up" class="w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition mb-4">
+    <div class="px-6 pb-6">
         <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Standard</p>
-        <p class="text-zinc-900 font-black italic">500MB / €1.99</p>
+        <p class="text-zinc-900 font-black">500MB / €1.99</p>
     </div>
-
+</div>
     <!-- Top-Up Advanced -->
-    <div id="card-topup2gb" onclick="selectVault('TopUp2GB', 2.99, 0)" 
-        class="group p-6 border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95">
-        <img src="Top-Up 2GB.png" alt="Top Up 2GB" class="w-16 h-16 mx-auto mb-4 rounded-lg grayscale group-hover:grayscale-0 transition">
+    
+    <div id="card-topup2gb" 
+     onclick="selectVault('TopUp2GB', 2.99, 0)" 
+     class="group border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95 overflow-hidden">
+    <img src="Top Up 2GB.png" alt="Top Up 2GB" class="w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition mb-4">
+    <div class="px-6 pb-6">
         <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Advanced</p>
-        <p class="text-zinc-900 font-black italic">2GB / €2.99</p>
+        <p class="text-zinc-900 font-black">2GB / €2.99</p>
     </div>
+</div>
 
     <!-- Top-Up Protocol -->
-    <div id="card-topup5gb" onclick="selectVault('TopUp5GB', 4.99, 0)" 
-        class="group p-6 border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95">
-        <img src="Top-Up 5GB.png" alt="Top Up 5GB" class="w-16 h-16 mx-auto mb-4 rounded-lg grayscale group-hover:grayscale-0 transition">
+                
+     <div id="card-topup5gb" 
+     onclick="selectVault('TopUp5GB', 4.99, 0)" 
+     class="group border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95 overflow-hidden">
+    <img src="Top Up 5GB.png" alt="Top Up 5GB" class="w-full aspect-video object-cover grayscale group-hover:grayscale-0 transition mb-4">
+    <div class="px-6 pb-6">
         <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Protocol</p>
-        <p class="text-zinc-900 font-black italic">5GB / €4.99</p>
-        </div>
+        <p class="text-zinc-900 font-black">5GB / €4.99</p>
     </div>
+</div>
 
         <section class="mb-32">
     <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Price Comparison</h2>  
@@ -245,7 +259,7 @@
 <footer class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-zinc-200 py-8 px-12 z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.03)]">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
-            <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-widest mb-1 italic text-center md:text-left">Active Configuration</p>
+            <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-widest mb-1 text-center md:text-left">Active Configuration</p>
             <h4 id="selection-summary" class="text-zinc-900 font-black italic uppercase text-lg text-center md:text-left">
                 No Protocol Selected <span class="text-zinc-200 mx-2">+</span> No Vault
             </h4>
@@ -263,7 +277,7 @@
                 </button>
 
                 <button id="checkout-link" onclick="handleCheckoutClick()" 
-                    class="bg-zinc-900 text-white px-10 py-4 font-black italic uppercase tracking-widest text-[11px] hover:bg-cobalt transition-all shadow-xl shadow-zinc-200 disabled:opacity-20">
+                    class="bg-zinc-900 text-white px-10 py-4 font-black uppercase tracking-widest text-[11px] hover:bg-cobalt transition-all shadow-xl shadow-zinc-200 disabled:opacity-20">
                     Initialize Checkout
                 </button>
             </div>
