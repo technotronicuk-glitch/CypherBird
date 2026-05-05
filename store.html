@@ -328,123 +328,127 @@
         selectedVault = { name: null, priceM: 0, priceY: 0 };
         updateUI();
     }
+// --- CHECKOUT LOGIC ---
+    function handleCheckoutClick() {
+        const checkoutLinks = {
+            // 1. INDIVIDUAL MONTHLY (4 Links)
+            monthly: {
+                'Elite': 'https://buy.stripe.com/aFa28l6zccN70E89mebsc0m',
+                'Ultra': 'https://buy.stripe.com/5kQ6oBe1EdRb4Uo7e6bsc03',
+                'Alpha': 'https://buy.stripe.com/00w00dcXA8wR1Ic7e6bsc0n',
+                'Deep':  'https://buy.stripe.com/cNi3cp5v8fZj5Ys6a2bsc09',
+            },
 
-   // --- CHECKOUT LOGIC ---
-    function handleCheckoutClick() {
-        // 1. Define your Stripe Payment Links here
-        // Replace the '#' with the actual links from your Stripe Dashboard
-        const checkoutLinks = {
-    // 1. INDIVIDUAL MONTHLY (4 Links)
-    monthly: {
-        'Elite': 'https://buy.stripe.com/aFa28l6zccN70E89mebsc0m',
-        'Ultra': 'https://buy.stripe.com/5kQ6oBe1EdRb4Uo7e6bsc03',
-        'Alpha': 'https://buy.stripe.com/00w00dcXA8wR1Ic7e6bsc0n',
-        'Deep':  'https://buy.stripe.com/cNi3cp5v8fZj5Ys6a2bsc09',
-    },
+            // 2. INDIVIDUAL YEARLY (4 Links)
+            yearly: {
+                'Elite': 'https://buy.stripe.com/8x24gt1eS28t9aEfKCbsc0g',
+                'Ultra': 'https://buy.stripe.com/6oU14hbTw8wR2MgdCubsc0e',
+                'Alpha': 'https://buy.stripe.com/bJe7sF7DgcN7gD62XQbsc0f',
+                'Deep':  'https://buy.stripe.com/9B6dR37Dg7sNfz26a2bsc0h',
+            },
 
-    // 2. INDIVIDUAL YEARLY (4 Links)
-    yearly: {
-        'Elite': 'https://buy.stripe.com/8x24gt1eS28t9aEfKCbsc0g',
-        'Ultra': 'https://buy.stripe.com/6oU14hbTw8wR2MgdCubsc0e',
-        'Alpha': 'https://buy.stripe.com/bJe7sF7DgcN7gD62XQbsc0f',
-        'Deep':  'https://buy.stripe.com/9B6dR37Dg7sNfz26a2bsc0h',
-    },
+            // 3. MONTHLY BUNDLES (4 Links)
+            bundleMonthly: {
+                'Elite_Plus_Alpha': 'https://buy.stripe.com/eVqbIV8HkfZj72w41Ubsc08',
+                'Elite_Plus_Deep':  'https://buy.stripe.com/9B68wJcXA28t86AfKCbsc0c',
+                'Ultra_Plus_Alpha': 'https://buy.stripe.com/bJe7sFbTwbJ3cmQeGybsc0d',
+                'Ultra_Plus_Deep':  'https://buy.stripe.com/eVq00d2iW00l72wcyqbsc0b',
+            },
 
-    // 3. MONTHLY BUNDLES (4 Links)
-    // Based on image_f2069c.png
-    bundleMonthly: {
-        'Elite_Plus_Alpha': 'https://buy.stripe.com/eVqbIV8HkfZj72w41Ubsc08',  // Elite + 1 more
-        'Elite_Plus_Deep': 'https://buy.stripe.com/9B68wJcXA28t86AfKCbsc0c',  // Elite + 1 more
-        'Ultra_Plus_Alpha': 'https://buy.stripe.com/bJe7sFbTwbJ3cmQeGybsc0d',  // Ultra + 1 more
-        'Ultra_Plus_Deep':  'https://buy.stripe.com/eVq00d2iW00l72wcyqbsc0b',  // Ultra + 1more
-    },
+            // 4. YEARLY BUNDLES (4 Links)
+            bundleYearly: {
+                'Elite_Plus_Alpha': 'https://buy.stripe.com/fZu9AN3n06oJaeIbumbsc0i',
+                'Elite_Plus_Deep':  'https://buy.stripe.com/bJeaERg9M9AVaeI55Ybsc0j',
+                'Ultra_Plus_Alpha': 'https://buy.stripe.com/fZu7sFf5IcN7dqUfKCbsc0k',
+                'Ultra_Plus_Deep':  'https://buy.stripe.com/eVqdR32iW14p86AfKCbsc0l',
+            },
 
-    // 4. YEARLY BUNDLES (4 Links)
-    // Based on image_f2077c.png
-    bundleYearly: {
-        'Elite_Plus_Alpha': 'https://buy.stripe.com/fZu9AN3n06oJaeIbumbsc0i',
-        'Elite_Plus_Deep': 'https://buy.stripe.com/bJeaERg9M9AVaeI55Ybsc0j',
-        'Ultra_Plus_Alpha': 'https://buy.stripe.com/fZu7sFf5IcN7dqUfKCbsc0k',
-        'Ultra_Plus_Deep':  'https://buy.stripe.com/eVqdR32iW14p86AfKCbsc0l',
-    },
-
-    // 5. TOP-UPS (3 Links)
-    topups: {
-        'Standard': 'https://buy.stripe.com/5kQ28le1E6oJ0E8gOGbsc05',
-        '2GB':      'https://buy.stripe.com/dRm28l4r414paeI0PIbsc06',
-        '5GB':      'https://buy.stripe.com/5kQaERcXA6oJ4Uo2XQbsc07',
-    }
-};
+            // 5. TOP-UPS (3 Links)
+            topups: {
+                'Standard': 'https://buy.stripe.com/5kQ28le1E6oJ0E8gOGbsc05',
+                '2GB':      'https://buy.stripe.com/dRm28l4r414paeI0PIbsc06',
+                '5GB':      'https://buy.stripe.com/5kQaERcXA6oJ4Uo2XQbsc07',
+            }
         };
 
-    function getCheckoutUrl(plan, isYearly, extraProduct = null) {
-    if (plan.startsWith('TopUp')) {
-        const type = plan === 'TopUp' ? 'Standard' : plan.replace('TopUp', '');
-        return checkoutLinks.topups[type];
-    }
-
-    if (extraProduct) {
-        const bundleKey = `${plan}_Plus_${extraProduct}`;
-        return isYearly 
-            ? checkoutLinks.bundleYearly[bundleKey] 
-            : checkoutLinks.bundleMonthly[bundleKey];
-    }
-
-    return isYearly 
-        ? checkoutLinks.yearly[plan] 
-        : checkoutLinks.monthly[plan];
-}
-
-        // 2. Identify the selection (Check Vault first, then Protocol)
-        let selection = selectedVault.name || selectedProtocol.name;
-
-        // 3. Redirect to Stripe immediately
-        if (selection && stripeLinks[selection]) {
-            window.location.href = stripeLinks[selection];
-        } else {
-            alert("Please select a package first!");
-        }
-    }
-
-    // This function updates the footer total and text
-    function updateUI() {
-        const pName = selectedProtocol.name || "No Protocol";
-        const vName = selectedVault.name || "No Vault";
-        
-        // Use priceM for Monthly, priceY for Yearly
-        const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
-        const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
-        const total = pPrice + vPrice;
-        
-        const summary = document.getElementById('selection-summary');
-        if(summary) {
-            summary.innerHTML = `${pName} <span class="text-zinc-400 mx-2">+</span> ${vName} <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
-        }
-        
-        const totalDisplay = document.getElementById('display-total');
-        if(totalDisplay) totalDisplay.innerText = `€${total.toFixed(2)}`;
-        
-        const xBtn = document.getElementById('reset-selection');
-        const checkoutBtn = document.getElementById('checkout-link');
-        
-        if(total > 0) {
-            if(xBtn) { xBtn.style.opacity = "1"; xBtn.style.pointerEvents = "auto"; }
-            if(checkoutBtn) {
-                checkoutBtn.disabled = false;
-                checkoutBtn.style.opacity = "1";
-                checkoutBtn.style.cursor = "pointer";
+        // Helper function to find the specific link
+        function getFinalUrl(protocol, vault, isYearly) {
+            // Case 1: Top-Ups (Always separate)
+            if (vault && vault.startsWith('TopUp')) {
+                const type = vault === 'TopUp' ? 'Standard' : vault.replace('TopUp', '');
+                return checkoutLinks.topups[type];
             }
-        } else {
-            if(xBtn) { xBtn.style.opacity = "0"; xBtn.style.pointerEvents = "none"; }
-            if(checkoutBtn) {
-                checkoutBtn.disabled = true;
-                checkoutBtn.style.opacity = "0.5";
-                checkoutBtn.style.cursor = "not-allowed";
+
+            // Case 2: Bundles (Both Protocol and Vault selected)
+            if (protocol && vault && vault !== "No Vault") {
+                const bundleKey = `${protocol}_Plus_${vault}`;
+                return isYearly ? checkoutLinks.bundleYearly[bundleKey] : checkoutLinks.bundleMonthly[bundleKey];
             }
+
+            // Case 3: Protocol Only
+            if (protocol) {
+                return isYearly ? checkoutLinks.yearly[protocol] : checkoutLinks.monthly[protocol];
+            }
+
+            // Case 4: Vault Only (Standalone)
+            if (vault && vault !== "No Vault") {
+                // If you have specific standalone vault links, add them here. 
+                // Otherwise, this defaults to the Individual Alpha/Deep mapping.
+                return isYearly ? checkoutLinks.yearly[vault] : checkoutLinks.monthly[vault];
+            }
+
+            return null;
+        }
+
+        const finalUrl = getFinalUrl(selectedProtocol.name, selectedVault.name, isYearly);
+
+        if (finalUrl) {
+            window.location.href = finalUrl;
+        } else {
+            alert("Please select a valid configuration before checking out.");
         }
     }
 
-    document.addEventListener('DOMContentLoaded', updateUI);
+    // This function updates the footer total and text
+    function updateUI() {
+        const pName = selectedProtocol.name || "No Protocol";
+        const vName = selectedVault.name || "No Vault";
+        
+        // Use priceM for Monthly, priceY for Yearly
+        const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
+        const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
+        const total = pPrice + vPrice;
+        
+        const summary = document.getElementById('selection-summary');
+        if(summary) {
+            summary.innerHTML = `${pName} <span class="text-zinc-400 mx-2">+</span> ${vName} <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
+        }
+        
+        const totalDisplay = document.getElementById('display-total');
+        if(totalDisplay) totalDisplay.innerText = `€${total.toFixed(2)}`;
+        
+        const xBtn = document.getElementById('reset-selection');
+        const checkoutBtn = document.getElementById('checkout-link');
+        
+        if(total > 0) {
+            if(xBtn) { xBtn.style.opacity = "1"; xBtn.style.pointerEvents = "auto"; }
+            if(checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.style.opacity = "1";
+                checkoutBtn.style.cursor = "pointer";
+            }
+        } else {
+            if(xBtn) { xBtn.style.opacity = "0"; xBtn.style.pointerEvents = "none"; }
+            if(checkoutBtn) {
+                checkoutBtn.disabled = true;
+                checkoutBtn.style.opacity = "0.5";
+                checkoutBtn.style.cursor = "not-allowed";
+            }
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', updateUI);
 </script>
-  </body>
-</html> 
+</body>
+</html>
+   
