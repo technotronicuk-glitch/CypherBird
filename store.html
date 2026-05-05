@@ -101,7 +101,7 @@
             </div>
             <div class="w-2/3 flex flex-col justify-center">
                 <h4 class="text-zinc-900 font-black uppercase text-xl">Deep Vault</h4>
-                <p id="price-deep" class="text-zinc-400 font-mono text-[10px] mt-2">€19.99 / mo</p>
+                <p id="price-deep" class="text-zinc-400 font-mono text-[10px] mt-2">€9.99 / mo</p>
             </div>
         </div>
     </div>
@@ -346,30 +346,37 @@
         updateUI();
     }
 
-    // --- CHECKOUT LOGIC ---
+   // --- CHECKOUT LOGIC ---
     function handleCheckoutClick() {
-        const overlay = document.getElementById('stripe-overlay');
-        const subTable = document.getElementById('subscription-table');
-        const topTable = document.getElementById('topup-table');
+        // 1. Define your Stripe Payment Links here
+        // Replace the '#' with the actual links from your Stripe Dashboard
+        const stripeLinks = {
+            'Elite': 'https://buy.stripe.com/your_elite_link',
+            'Ultra': 'https://buy.stripe.com/your_ultra_link',
+            'Alpha': 'https://buy.stripe.com/your_alpha_vault_link',
+            'Deep': 'https://buy.stripe.com/your_deep_vault_link',
+            'TopUp': 'https://buy.stripe.com/your_500mb_link',
+            'TopUp2GB': 'https://buy.stripe.com/your_2gb_link',
+            'TopUp5GB': 'https://buy.stripe.com/your_5gb_link'
+        };
 
-        overlay.classList.remove('hidden');
+        // 2. Identify the selection (Check Vault first, then Protocol)
+        let selection = selectedVault.name || selectedProtocol.name;
 
-        if (selectedVault.name) {
-            topTable.classList.remove('hidden');
-            subTable.classList.add('hidden');
+        // 3. Redirect to Stripe immediately
+        if (selection && stripeLinks[selection]) {
+            window.location.href = stripeLinks[selection];
         } else {
-            subTable.classList.remove('hidden');
-            topTable.classList.add('hidden');
+            alert("Please select a package first!");
         }
     }
 
-    function closeStripe() {
-        document.getElementById('stripe-overlay').classList.add('hidden');
-    }
-
+    // This function updates the footer total and text
     function updateUI() {
         const pName = selectedProtocol.name || "No Protocol";
         const vName = selectedVault.name || "No Vault";
+        
+        // Use priceM for Monthly, priceY for Yearly
         const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
         const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
         const total = pPrice + vPrice;
@@ -387,10 +394,18 @@
         
         if(total > 0) {
             if(xBtn) { xBtn.style.opacity = "1"; xBtn.style.pointerEvents = "auto"; }
-            if(checkoutBtn) checkoutBtn.disabled = false;
+            if(checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.style.opacity = "1";
+                checkoutBtn.style.cursor = "pointer";
+            }
         } else {
             if(xBtn) { xBtn.style.opacity = "0"; xBtn.style.pointerEvents = "none"; }
-            if(checkoutBtn) checkoutBtn.disabled = true;
+            if(checkoutBtn) {
+                checkoutBtn.disabled = true;
+                checkoutBtn.style.opacity = "0.5";
+                checkoutBtn.style.cursor = "not-allowed";
+            }
         }
     }
 
