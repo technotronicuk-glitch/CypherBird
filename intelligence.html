@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence_Report | Protocol</title>
+    <title>Intelligence Report | Protocol</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -29,15 +29,22 @@
     </style>
 </head>
 <body class="bg-base text-zinc-900 antialiased">
-
-    <!-- Navigation -->
     <nav class="border-b border-borders py-6 px-8 flex justify-between items-center bg-white sticky top-0 z-50">
-        <div class="font-black tracking-tighter text-2xl uppercase">Protocol</div>
-        <div class="flex gap-8 items-center">
-            <a href="index.html" class="font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition">Return_Home</a>
-            <a href="store.html" class="bg-zinc-900 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-cobalt transition">Get_Started</a>
-        </div>
-    </nav>
+    <div>
+        <a href="index.html" class="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition-colors duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 transition-transform duration-200">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+            Return Home
+        </a>
+    </div>
+    <div>
+        <a href="store.html" class="bg-zinc-900 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-cobalt transition-colors duration-200">
+            Get Started
+        </a>
+    </div>
+</nav>
 
     <!-- Header Section (Inspired by image_4f0577.png) -->
     <section class="py-32 border-b border-borders">
@@ -47,7 +54,7 @@
             <h1 class="text-7xl font-black uppercase tracking-tighter mb-8">Zero Knowledge</h1>
             
             <div class="space-y-6">
-                <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy_Architecture_Analysis</p>
+                <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy Architecture Analysis</p>
                 <p class="text-xl text-zinc-500 leading-relaxed max-w-2xl mx-auto uppercase font-light">
                     We cannot see your data. Our architecture ensures that decryption keys never leave your local device.
                 </p>
@@ -55,7 +62,7 @@
 
             <div class="mt-12 flex justify-center items-center gap-2">
                 <span class="text-cobalt font-mono text-xs">[</span>
-                <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn_More</a>
+                <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn More</a>
                 <span class="text-cobalt font-mono text-xs">]</span>
                 <span class="text-cobalt text-xs">→</span>
             </div>
@@ -69,9 +76,9 @@
             <!-- Grid 01: Encryption -->
             <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
                 <div>
-                    <h2 class="text-4xl font-black uppercase mb-8">Hardware_Level Security</h2>
+                    <h2 class="text-4xl font-black uppercase mb-8">Hardware Level Security</h2>
                     <p class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest mb-8 leading-loose border-l-2 border-cobalt pl-4">
-                        Subsystem: Local_Key_Gen<br>
+                        Subsystem: Local Key Gen<br>
                         Status: Active Shield
                     </p>
                     <p class="text-zinc-600 leading-relaxed mb-8">
