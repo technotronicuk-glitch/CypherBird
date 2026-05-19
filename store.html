@@ -148,9 +148,9 @@
         <table class="w-full text-left font-mono text-[11px] uppercase tracking-wider">
             <thead>
                 <tr class="border-b border-zinc-100 bg-zinc-50/50">
-                    <th class="p-6 text-zinc-400 font-black text-[13px]">Service_Layer</th>
+                    <th class="p-6 text-zinc-400 font-black text-[13px]">Service Layer</th>
                     <th class="p-6 text-zinc-900 font-black text-[13px]">Alpha / Elite</th>
-                    <th class="p-6 text-cobalt font-black italic text-[13px]">Deep / Ultra</th>
+                    <th class="p-6 text-cobalt font-black text-[13px]">Deep / Ultra</th>
                 </tr>
             </thead>
             <tbody>
@@ -211,7 +211,7 @@
                     <th class="p-6 text-zinc-400 font-black text-[13px]">Feature</th>
                     <th class="p-6 text-zinc-900 font-black italic text-[13px]">Standard</th>
                     <th class="p-6 text-zinc-900 font-black text-[13px]">Elite</th>
-                    <th class="p-6 text-cobalt font-black italic text-[13px]">Ultra</th>
+                    <th class="p-6 text-cobalt font-black text-[13px]">Ultra</th>
                 </tr>
             </thead>
             <tbody>
@@ -257,14 +257,14 @@
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div>
             <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-widest mb-1 text-center md:text-left">Active Configuration</p>
-            <h4 id="selection-summary" class="text-zinc-900 font-black italic uppercase text-lg text-center md:text-left">
+            <h4 id="selection-summary" class="text-zinc-900 font-black uppercase text-lg text-center md:text-left">
                 No Protocol Selected <span class="text-zinc-200 mx-2">+</span> No Vault
             </h4>
         </div>
         <div class="flex items-center gap-12">
             <div class="text-right">
                 <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-widest">Total Investment</p>
-                <div id="display-total" class="text-zinc-900 text-4xl font-black italic tracking-tighter">€0.00</div>
+                <div id="display-total" class="text-zinc-900 text-4xl font-black tracking-tighter">€0.00</div>
             </div>
 
             <div class="relative group">
@@ -282,10 +282,114 @@
     </div>
 </footer>
 <script>
+  <script>
     // --- STATE MANAGEMENT ---
     let isYearly = false;
     let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
     let selectedVault = { name: null, priceM: 0, priceY: 0 };
+    
+    // --- CURRENCY & GEOLOCATION STATE ---
+    let globalRate = 1;
+    let globalCurrency = 'EUR';
+    let globalLocale = 'en-IE';
+
+    /**
+     * MULTI-CHANNEL GEOLOCATION & EXCHANGE RATE ENGINE
+     */
+    async function initGlobalIntelligence() {
+        let geoData = null;
+
+        // Primary Geolocation Pass
+        try {
+            const geoRes = await fetch('https://ipapi.co/json/');
+            if (geoRes.ok) {
+                geoData = await geoRes.json();
+                globalCurrency = geoData.currency || 'EUR';
+                globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+            }
+        } catch (e) {
+            console.warn("Primary API channel limited. Accessing backup routing structure...");
+        }
+
+        // Secondary Geolocation Fail-Safe
+        if (!geoData || geoData.error) {
+            try {
+                const backupRes = await fetch('http://ip-api.com/json/');
+                if (backupRes.ok) {
+                    const backupData = await backupRes.json();
+                    if (backupData && backupData.status === "success") {
+                        globalCurrency = backupData.currency || 'EUR';
+                        globalLocale = globalCurrency === 'PLN' ? 'pl-PL' : 
+                                       globalCurrency === 'GBP' ? 'en-GB' : 
+                                       globalCurrency === 'USD' ? 'en-US' : 'en-IE';
+                    }
+                }
+            } catch (backupError) {
+                console.error("All dynamic geolocation components offline. System configurations defaulted.");
+            }
+        }
+
+        // Exchange Rate Sync Engine
+        try {
+            const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
+            const rateData = await rateRes.json();
+            globalRate = rateData.rates[globalCurrency] || 1;
+        } catch (rateError) {
+            console.error("Exchange Engine Timeout:", rateError);
+        } finally {
+            // Push calculation loops into layout interfaces
+            updateAllPricingUI();
+            updateUI();
+        }
+    }
+
+    /**
+     * DYNAMIC LAYOUT PRICE FORMATTER
+     * Converts independent baseline elements (like data top-ups) matching custom configuration rules
+     */
+    function updateAllPricingUI() {
+        const formatter = new Intl.NumberFormat(globalLocale, {
+            style: 'currency',
+            currency: globalCurrency,
+            minimumFractionDigits: 2
+        });
+
+        // Formats separated static components (e.g., top-up values)
+        document.querySelectorAll('.dynamic-price').forEach(el => {
+            const baseVal = el.getAttribute('data-base-price');
+            if (!baseVal) return;
+            
+            let numericBase = parseFloat(baseVal);
+            let converted = numericBase * globalRate;
+            
+            if (globalCurrency !== 'EUR') {
+                converted = Math.ceil(converted) - 0.01;
+            }
+            el.innerText = formatter.format(converted);
+        });
+
+        // Updates conditional UI strings attached to cards
+        const updateText = (id, baseVal, suffixM, suffixY) => { 
+            const el = document.getElementById(id);
+            if (!el) return;
+            
+            let numericBase = parseFloat(baseVal);
+            let converted = numericBase * globalRate;
+            
+            if (globalCurrency !== 'EUR' && converted > 0) {
+                converted = Math.ceil(converted) - 0.01;
+            }
+            
+            const localizedPrice = formatter.format(converted);
+            el.innerText = isYearly ? `${localizedPrice}${suffixY}` : `${localizedPrice}${suffixM}`;
+        };
+
+        // Convert individual price metrics based on monthly vs yearly state
+        updateText('price-ultra', isYearly ? "99.99" : "8.99", " / mo", " / yr");
+        updateText('price-elite', isYearly ? "39.99" : "3.99", " / mo", " / yr");
+        updateText('price-alpha', isYearly ? "49.89" : "4.99", " / mo", " / yr");
+        updateText('price-deep', isYearly ? "109.99" : "9.99", " / mo", " / yr");
+    }
     
     function toggleBilling() {
         isYearly = !isYearly;
@@ -303,13 +407,8 @@
             if(yLabel) yLabel.className = 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
         }
 
-        // Card update logic
-        const updateText = (id, text) => { if(document.getElementById(id)) document.getElementById(id).innerText = text; };
-        updateText('price-ultra', isYearly ? "€99.99 / yr" : "€8.99 / mo");
-        updateText('price-elite', isYearly ? "€39.99 / yr" : "€3.99 / mo");
-        updateText('price-alpha', isYearly ? "€49.89 / yr" : "€4.99 / mo");
-        updateText('price-deep', isYearly ? "€109.99 / yr" : "€9.99 / mo");
-        
+        // Re-calculate visual string layers across individual cards
+        updateAllPricingUI();
         updateUI();
     }
 
@@ -328,42 +427,34 @@
         selectedVault = { name: null, priceM: 0, priceY: 0 };
         updateUI();
     }
-// --- CHECKOUT LOGIC ---
-    function handleCheckoutClick() {
-        const checkoutLinks = {
-            // 1. INDIVIDUAL MONTHLY (4 Links)
+
+    // --- CHECKOUT LOGIC ---
+    function handleCheckoutClick() {
+        const checkoutLinks = {
             monthly: {
                 'Elite': 'https://buy.stripe.com/aFa28l6zccN70E89mebsc0m',
                 'Ultra': 'https://buy.stripe.com/5kQ6oBe1EdRb4Uo7e6bsc03',
                 'Alpha': 'https://buy.stripe.com/00w00dcXA8wR1Ic7e6bsc0n',
                 'Deep':  'https://buy.stripe.com/cNi3cp5v8fZj5Ys6a2bsc09',
             },
-
-            // 2. INDIVIDUAL YEARLY (4 Links)
             yearly: {
                 'Elite': 'https://buy.stripe.com/8x24gt1eS28t9aEfKCbsc0g',
                 'Ultra': 'https://buy.stripe.com/6oU14hbTw8wR2MgdCubsc0e',
                 'Alpha': 'https://buy.stripe.com/bJe7sF7DgcN7gD62XQbsc0f',
                 'Deep':  'https://buy.stripe.com/9B6dR37Dg7sNfz26a2bsc0h',
             },
-
-            // 3. MONTHLY BUNDLES (4 Links)
             bundleMonthly: {
                 'Elite_Plus_Alpha': 'https://buy.stripe.com/eVqbIV8HkfZj72w41Ubsc08',
                 'Elite_Plus_Deep':  'https://buy.stripe.com/9B68wJcXA28t86AfKCbsc0c',
                 'Ultra_Plus_Alpha': 'https://buy.stripe.com/bJe7sFbTwbJ3cmQeGybsc0d',
                 'Ultra_Plus_Deep':  'https://buy.stripe.com/eVq00d2iW00l72wcyqbsc0b',
             },
-
-            // 4. YEARLY BUNDLES (4 Links)
             bundleYearly: {
                 'Elite_Plus_Alpha': 'https://buy.stripe.com/fZu9AN3n06oJaeIbumbsc0i',
                 'Elite_Plus_Deep':  'https://buy.stripe.com/bJeaERg9M9AVaeI55Ybsc0j',
                 'Ultra_Plus_Alpha': 'https://buy.stripe.com/fZu7sFf5IcN7dqUfKCbsc0k',
                 'Ultra_Plus_Deep':  'https://buy.stripe.com/eVqdR32iW14p86AfKCbsc0l',
             },
-
-            // 5. TOP-UPS (3 Links)
             topups: {
                 'Standard': 'https://buy.stripe.com/5kQ28le1E6oJ0E8gOGbsc05',
                 '2GB':      'https://buy.stripe.com/dRm28l4r414paeI0PIbsc06',
@@ -371,32 +462,21 @@
             }
         };
 
-        // Helper function to find the specific link
         function getFinalUrl(protocol, vault, isYearly) {
-            // Case 1: Top-Ups (Always separate)
             if (vault && vault.startsWith('TopUp')) {
                 const type = vault === 'TopUp' ? 'Standard' : vault.replace('TopUp', '');
                 return checkoutLinks.topups[type];
             }
-
-            // Case 2: Bundles (Both Protocol and Vault selected)
             if (protocol && vault && vault !== "No Vault") {
                 const bundleKey = `${protocol}_Plus_${vault}`;
                 return isYearly ? checkoutLinks.bundleYearly[bundleKey] : checkoutLinks.bundleMonthly[bundleKey];
             }
-
-            // Case 3: Protocol Only
             if (protocol) {
                 return isYearly ? checkoutLinks.yearly[protocol] : checkoutLinks.monthly[protocol];
             }
-
-            // Case 4: Vault Only (Standalone)
             if (vault && vault !== "No Vault") {
-                // If you have specific standalone vault links, add them here. 
-                // Otherwise, this defaults to the Individual Alpha/Deep mapping.
                 return isYearly ? checkoutLinks.yearly[vault] : checkoutLinks.monthly[vault];
             }
-
             return null;
         }
 
@@ -409,46 +489,62 @@
         }
     }
 
-    // This function updates the footer total and text
-    function updateUI() {
-        const pName = selectedProtocol.name || "No Protocol";
-        const vName = selectedVault.name || "No Vault";
-        
-        // Use priceM for Monthly, priceY for Yearly
-        const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
-        const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
-        const total = pPrice + vPrice;
-        
-        const summary = document.getElementById('selection-summary');
-        if(summary) {
-            summary.innerHTML = `${pName} <span class="text-zinc-400 mx-2">+</span> ${vName} <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
-        }
-        
-        const totalDisplay = document.getElementById('display-total');
-        if(totalDisplay) totalDisplay.innerText = `€${total.toFixed(2)}`;
-        
-        const xBtn = document.getElementById('reset-selection');
-        const checkoutBtn = document.getElementById('checkout-link');
-        
-        if(total > 0) {
-            if(xBtn) { xBtn.style.opacity = "1"; xBtn.style.pointerEvents = "auto"; }
-            if(checkoutBtn) {
-                checkoutBtn.disabled = false;
-                checkoutBtn.style.opacity = "1";
-                checkoutBtn.style.cursor = "pointer";
-            }
-        } else {
-            if(xBtn) { xBtn.style.opacity = "0"; xBtn.style.pointerEvents = "none"; }
-            if(checkoutBtn) {
-                checkoutBtn.disabled = true;
-                checkoutBtn.style.opacity = "0.5";
-                checkoutBtn.style.cursor = "not-allowed";
-            }
-        }
-    }
+    // This function updates the footer total and text with live currency rendering
+    function updateUI() {
+        const pName = selectedProtocol.name || "No Protocol";
+        const vName = selectedVault.name || "No Vault";
+        
+        // Calculate original Euro parameters internally
+        const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
+        const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
+        const totalEuro = pPrice + vPrice;
+        
+        // Render summary text configurations
+        const summary = document.getElementById('selection-summary');
+        if(summary) {
+            summary.innerHTML = `${pName} <span class="text-zinc-400 mx-2">+</span> ${vName} <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
+        }
+        
+        // Convert and format checkout investment summary calculations
+        const totalDisplay = document.getElementById('display-total');
+        if(totalDisplay) {
+            let convertedTotal = totalEuro * globalRate;
+            if (globalCurrency !== 'EUR' && totalEuro > 0) {
+                convertedTotal = Math.ceil(convertedTotal) - 0.01;
+            }
+            
+            const footerFormatter = new Intl.NumberFormat(globalLocale, {
+                style: 'currency',
+                currency: globalCurrency,
+                minimumFractionDigits: 2
+            });
+            totalDisplay.innerText = footerFormatter.format(convertedTotal);
+        }
+        
+        const xBtn = document.getElementById('reset-selection');
+        const checkoutBtn = document.getElementById('checkout-link');
+        
+        if(totalEuro > 0) {
+            if(xBtn) { xBtn.style.opacity = "1"; xBtn.style.pointerEvents = "auto"; }
+            if(checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.style.opacity = "1";
+                checkoutBtn.style.cursor = "pointer";
+            }
+        } else {
+            if(xBtn) { xBtn.style.opacity = "0"; xBtn.style.pointerEvents = "none"; }
+            if(checkoutBtn) {
+                checkoutBtn.disabled = true;
+                checkoutBtn.style.opacity = "0.5";
+                checkoutBtn.style.cursor = "not-allowed";
+            }
+        }
+    }
 
-    document.addEventListener('DOMContentLoaded', updateUI);
+    // RUN ACCELERATION LIFECYCLES
+    document.addEventListener('DOMContentLoaded', () => {
+        initGlobalIntelligence();
+    });
 </script>
 </body>
 </html>
-   
