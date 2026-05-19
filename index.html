@@ -427,6 +427,7 @@
 
 <script>
 /**
+ /**
  * GLOBAL STATE
  */
 let globalRate = 1;
@@ -439,33 +440,60 @@ window.isYearly = false;
  */
 function handleCookies(choice) {
     const banner = document.getElementById('cookie-banner');
-    banner.style.opacity = '0';
-    banner.style.transform = 'translateY(20px)';
-    localStorage.setItem('cookieChoice', choice);
-    setTimeout(() => { banner.style.display = 'none'; }, 500);
+    if (banner) {
+        banner.style.opacity = '0';
+        banner.style.transform = 'translateY(20px)';
+        localStorage.setItem('cookieChoice', choice);
+        setTimeout(() => { banner.style.display = 'none'; }, 500);
+    }
 }
 
 /**
  * PRICING & CURRENCY INTELLIGENCE
  */
 async function initGlobalIntelligence() {
-    try {
-        // 1. Locate user via IP Geolocation
-        const geoRes = await fetch('https://ipapi.co/json/');
-        const geoData = await geoRes.json();
-        
-        globalCurrency = geoData.currency || 'EUR';
-        globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+    let geoData = null;
 
-        // 2. Fetch Live Market Rates
+    // Primary Attempt: Try IPAPI
+    try {
+        const geoRes = await fetch('https://ipapi.co/json/');
+        if (geoRes.ok) {
+            geoData = await geoRes.json();
+            globalCurrency = geoData.currency || 'EUR';
+            globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+        }
+    } catch (e) {
+        console.warn("Primary Geolocation API limited/blocked. Trying backup service...");
+    }
+
+    // Secondary Attempt: Backup IP-API (Triggers if primary failed)
+    if (!geoData || geoData.error) {
+        try {
+            const backupRes = await fetch('http://ip-api.com/json/');
+            if (backupRes.ok) {
+                const backupData = await backupRes.json();
+                if (backupData && backupData.status === "success") {
+                    globalCurrency = backupData.currency || 'EUR';
+                    // Derive common locale fallback based on backup currency rules
+                    globalLocale = globalCurrency === 'PLN' ? 'pl-PL' : 
+                                   globalCurrency === 'GBP' ? 'en-GB' : 
+                                   globalCurrency === 'USD' ? 'en-US' : 'en-IE';
+                }
+            }
+        } catch (backupError) {
+            console.error("All Geolocation channels blocked. Falling back to base configurations.");
+        }
+    }
+
+    // Fetch Live Exchange Rates based on resolved currency profile
+    try {
         const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
         const rateData = await rateRes.json();
         globalRate = rateData.rates[globalCurrency] || 1;
-
-    } catch (error) {
-        console.error("Protocol Error: API fallback engaged. Processing layout formatting manually.");
+    } catch (rateError) {
+        console.error("Exchange Rate Engine communication issue:", rateError);
     } finally {
-        // CRITICAL FIX: Moving this out of try/catch ensures it runs no matter what happens with the network fetch
+        // Run UI modifications under all circumstances
         updateAllPricingUI();
     }
 }
@@ -477,7 +505,7 @@ function updateAllPricingUI() {
         minimumFractionDigits: 2
     });
 
-    // 1. Process your subscription tiers
+    // 1. Process standard subscription tiers
     document.querySelectorAll('.price-val').forEach(el => {
         const baseVal = window.isYearly 
             ? el.getAttribute('data-base-yearly') 
@@ -498,7 +526,7 @@ function updateAllPricingUI() {
         el.innerText = formatter.format(converted);
     });
 
-    // 2. Process your data top-ups simultaneously 
+    // 2. Process data top-ups 
     document.querySelectorAll('.dynamic-price').forEach(el => {
         const baseVal = el.getAttribute('data-base-price');
         if (!baseVal) return;
@@ -535,6 +563,20 @@ function toggleBilling() {
 
     updateAllPricingUI();
 }
+
+// INITIALIZE ON LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    if (localStorage.getItem('cookieChoice')) {
+        const banner = document.getElementById('cookie-banner');
+        if(banner) banner.style.display = 'none';
+    }
+    initGlobalIntelligence();
+});
+
+// Post-rendering execution loop override for dynamic content tracking
+window.addEventListener('load', () => {
+    updateAllPricingUI();
+});
 
 // INITIALIZE ON LOAD
 document.addEventListener('DOMContentLoaded', () => {
