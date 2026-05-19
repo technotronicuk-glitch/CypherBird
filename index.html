@@ -326,23 +326,20 @@
             </div>
         </div>
 
-        <!-- 5GB Card -->
-        <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
-            <img src="Top Up 5GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
-                <div class="flex justify-between items-end">
-                    <div>
-                        <h3 class="text-white font-black italic text-2xl uppercase">5GB</h3>
-                        <!-- Class and Data Attribute added for script compatibility -->
-                        <p class="dynamic-price text-blue-400 font-mono text-xs font-bold mt-1" data-base-price="4.99">€4.99</p>
-                    </div>
-                    <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
-                        [ + ADD ]
-                    </button>
-                </div>
-            </div>  
+       <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
+    <img src="Top Up 5GB.png" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+        <div class="flex justify-between items-end">
+            <div>
+                <h3 class="text-white font-black italic text-2xl uppercase">5GB</h3>
+                <p class="dynamic-price text-blue-400 font-mono text-xs font-bold mt-1" data-base-price="4.99">€4.99</p>
+            </div>
+            <a href="store.html" class="inline-block bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl text-center">
+                [ + ADD ]
+            </a>
         </div>
-    </div>
+    </div>  
+</div>
 </div>
 
     <div class="mt-24 pb-24 text-center">
@@ -479,6 +476,7 @@ function updateAllPricingUI() {
         minimumFractionDigits: 2
     });
 
+    // 1. Your original system rules for main tier subscriptions
     document.querySelectorAll('.price-val').forEach(el => {
         const baseVal = window.isYearly 
             ? el.getAttribute('data-base-yearly') 
@@ -491,6 +489,19 @@ function updateAllPricingUI() {
         }
 
         let converted = numericBase * globalRate;
+        if (globalCurrency !== 'EUR') {
+            converted = Math.ceil(converted) - 0.01;
+        }
+        el.innerText = formatter.format(converted);
+    });
+
+    // 2. FIXED: New loop to handle data top-up pricing concurrently
+    document.querySelectorAll('.dynamic-price').forEach(el => {
+        const baseVal = el.getAttribute('data-base-price');
+        let numericBase = parseFloat(baseVal);
+        
+        let converted = numericBase * globalRate;
+        // Apply your custom psychological .99/ .01 pricing rule if currency shifts
         if (globalCurrency !== 'EUR') {
             converted = Math.ceil(converted) - 0.01;
         }
