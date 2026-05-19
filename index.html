@@ -293,7 +293,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- 500MB Card -->
         <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
-            <img src="Top Up 500MB.png" class="absolute inset-0 w-full h-full object-contain bg-zinc-950 group-hover:scale-105 transition-transform duration-700">
+            <img src="Top Up 500MB.png" class="absolute inset-0 w-full h-full object-fill group-hover:scale-105 transition-transform duration-700">
             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
                 <div class="flex justify-between items-end">
                     <div>
@@ -311,8 +311,8 @@
 
         <!-- 2GB Card -->
         <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
-            <img src="Top Up 2GB.png" class="absolute inset-0 w-full h-full object-contain bg-zinc-950 group-hover:scale-105 transition-transform duration-700"> 
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+        <img src="Top Up 2GB.png" class="absolute inset-0 w-full h-full object-fill group-hover:scale-105 transition-transform duration-700"> 
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">  
                 <div class="flex justify-between items-end">
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">2GB</h3>
@@ -327,8 +327,8 @@
         </div>
 
        <div class="relative group overflow-hidden bg-zinc-900 border border-borders rounded-2xl aspect-[2/1] cursor-pointer hover:border-blue-500 transition-all shadow-sm">
-    <img src="Top Up 5GB.png" class="absolute inset-0 w-full h-full object-contain bg-zinc-950 group-hover:scale-105 transition-transform duration-700">
-    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+    <img src="Top Up 5GB.png" class="absolute inset-0 w-full h-full object-fill group-hover:scale-105 transition-transform duration-700">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
         <div class="flex justify-between items-end">
             <div>
                 <h3 class="text-white font-black italic text-2xl uppercase">5GB</h3>
@@ -462,9 +462,10 @@ async function initGlobalIntelligence() {
         const rateData = await rateRes.json();
         globalRate = rateData.rates[globalCurrency] || 1;
 
-        updateAllPricingUI();
     } catch (error) {
-        console.error("Protocol Error: Defaulting to EUR.");
+        console.error("Protocol Error: API fallback engaged. Processing layout formatting manually.");
+    } finally {
+        // CRITICAL FIX: Moving this out of try/catch ensures it runs no matter what happens with the network fetch
         updateAllPricingUI();
     }
 }
@@ -476,11 +477,13 @@ function updateAllPricingUI() {
         minimumFractionDigits: 2
     });
 
-    // 1. Your original system rules for main tier subscriptions
+    // 1. Process your subscription tiers
     document.querySelectorAll('.price-val').forEach(el => {
         const baseVal = window.isYearly 
             ? el.getAttribute('data-base-yearly') 
             : el.getAttribute('data-base-monthly');
+        
+        if (!baseVal) return;
         
         let numericBase = parseFloat(baseVal);
         if (numericBase === 0) {
@@ -495,13 +498,14 @@ function updateAllPricingUI() {
         el.innerText = formatter.format(converted);
     });
 
-    // 2. Loop to handle data top-up pricing concurrently
+    // 2. Process your data top-ups simultaneously 
     document.querySelectorAll('.dynamic-price').forEach(el => {
         const baseVal = el.getAttribute('data-base-price');
-        let numericBase = parseFloat(baseVal);
+        if (!baseVal) return;
         
+        let numericBase = parseFloat(baseVal);
         let converted = numericBase * globalRate;
-        // Apply your custom psychological .99/ .01 pricing rule if currency shifts
+        
         if (globalCurrency !== 'EUR') {
             converted = Math.ceil(converted) - 0.01;
         }
@@ -534,15 +538,14 @@ function toggleBilling() {
 
 // INITIALIZE ON LOAD
 document.addEventListener('DOMContentLoaded', () => {
-    // Check Cookies
     if (localStorage.getItem('cookieChoice')) {
-        document.getElementById('cookie-banner').style.display = 'none';
+        const banner = document.getElementById('cookie-banner');
+        if(banner) banner.style.display = 'none';
     }
-    // Check Currency immediately when text layout loads
     initGlobalIntelligence();
 });
 
-// FIXED TIMING OVERRIDE: Re-run currency calculations once images finish background rendering
+// Post-render update loop for slow-loading background components
 window.addEventListener('load', () => {
     updateAllPricingUI();
 });
