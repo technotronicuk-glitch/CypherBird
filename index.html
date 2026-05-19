@@ -103,8 +103,8 @@
             </span>
         </a>
         <nav class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
-            <a href="capabilities.html" class="text-zinc-500 hover:text-cobalt transition">Capabilities</a>
-            <a href="career.html" class="text-zinc-500 hover:text-cobalt transition">Careers</a>
+            <a href="intelligence.html" class="text-zinc-500 hover:text-cobalt transition">Intelligence</a>
+            <a href="capabilities.html" class="text-zinc-500 hover:text-cobalt transition">Capabilites</a>
             <a href="news.html" class="text-zinc-500 hover:text-cobalt transition">News</a>
             <a href="account.html" class="text-zinc-500 hover:text-cobalt transition border border-borders px-4 py-2">Account</a>
     </div>
@@ -299,11 +299,12 @@
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">500MB</h3>
                         <!-- Class and Data Attribute added for script compatibility -->
-                        <p class="price-topup text-blue-400 font-mono text-xs font-bold mt-1" data-base-topup="1.99">€1.99</p>
+                    
+                        <p class="dynamic-price text-blue-400 font-mono text-xs font-bold mt-1" data-base-price="1.99">€1.99</p>
                     </div>
-                    <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
-                        [ + ADD ]
-                    </button>
+                    <a href="store.html" class="inline-block bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl text-center">
+                [ + ADD ]
+            </a>
                 </div>
             </div>
         </div>
@@ -316,12 +317,12 @@
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">2GB</h3>
                         <!-- Class and Data Attribute added for script compatibility -->
-                        <p class="price-topup text-blue-400 font-mono text-xs font-bold mt-1" data-base-topup="2.99">€2.99</p>
+                        <p class="dynamic-price text-blue-400 font-mono text-xs font-bold mt-1" data-base-price="2.99">€2.99</p>
                     </div>
-                    <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
-                        [ + ADD ]
-                    </button>
-                </div>
+                    <a href="store.html" class="inline-block bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl text-center">
+                [ + ADD ]
+            </a>
+               </div>
             </div>
         </div>
 
@@ -333,7 +334,7 @@
                     <div>
                         <h3 class="text-white font-black italic text-2xl uppercase">5GB</h3>
                         <!-- Class and Data Attribute added for script compatibility -->
-                        <p class="price-topup text-blue-400 font-mono text-xs font-bold mt-1" data-base-topup="4.99">€4.99</p>
+                        <p class="dynamic-price text-blue-400 font-mono text-xs font-bold mt-1" data-base-price="4.99">€4.99</p>
                     </div>
                     <button class="bg-white text-zinc-900 px-4 py-2 rounded-lg text-[9px] font-black uppercase tracking-widest hover:bg-blue-500 hover:text-white transition-all shadow-xl">
                         [ + ADD ]
@@ -344,14 +345,12 @@
     </div>
 </div>
 
-    <!-- Store Button: Styled like the blue 'LEARN MORE' button in image 2 -->
-    <div class="mt-24 text-center">
-        <a href="store.html" class="inline-flex items-center px-12 py-5 bg-[#3b82f6] text-white rounded-lg hover:bg-blue-600 shadow-lg font-sans text-[13px] font-black uppercase tracking-widest transition-all duration-300 group">
-            Visit The Protocol Store
-            <span class="ml-4 group-hover:translate-x-2 transition-transform duration-500">→</span>
-        </a>
-    </div>
-</div> 
+    <div class="mt-24 pb-24 text-center">
+    <a href="store.html" class="inline-flex items-center px-12 py-5 bg-[#3b82f6] text-white rounded-lg hover:bg-blue-600 shadow-lg font-sans text-[13px] font-black uppercase tracking-widest transition-all duration-300 group">
+        Visit The Protocol Store
+        <span class="ml-4 group-hover:translate-x-2 transition-transform duration-500">→</span>
+    </a>
+</div>
     <section id="subscribe" class="py-16 bg-white border-t border-borders relative overflow-hidden">
     <!-- Slimmed the glow effect slightly -->
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-cobalt/5 blur-[100px] rounded-full"></div>
