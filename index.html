@@ -495,7 +495,7 @@ function updateAllPricingUI() {
         el.innerText = formatter.format(converted);
     });
 
-    // 2. FIXED: New loop to handle data top-up pricing concurrently
+    // 2. Loop to handle data top-up pricing concurrently
     document.querySelectorAll('.dynamic-price').forEach(el => {
         const baseVal = el.getAttribute('data-base-price');
         let numericBase = parseFloat(baseVal);
@@ -531,6 +531,21 @@ function toggleBilling() {
 
     updateAllPricingUI();
 }
+
+// INITIALIZE ON LOAD
+document.addEventListener('DOMContentLoaded', () => {
+    // Check Cookies
+    if (localStorage.getItem('cookieChoice')) {
+        document.getElementById('cookie-banner').style.display = 'none';
+    }
+    // Check Currency immediately when text layout loads
+    initGlobalIntelligence();
+});
+
+// FIXED TIMING OVERRIDE: Re-run currency calculations once images finish background rendering
+window.addEventListener('load', () => {
+    updateAllPricingUI();
+});
 
 // INITIALIZE ON LOAD
 document.addEventListener('DOMContentLoaded', () => {
