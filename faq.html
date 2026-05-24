@@ -26,6 +26,39 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* Top utility bar to pin the Return Home button to the top left */
+        .top-nav {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            z-index: 10;
+        }
+
+        .return-home-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .return-home-btn:hover {
+            color: var(--accent-blue);
+        }
+
+        .return-home-btn svg {
+            transition: transform 0.2s ease;
+        }
+
+        .return-home-btn:hover svg {
+            transform: translateX(-2px);
+        }
+
         .container {
             max-width: 700px;
             margin: 0 auto;
@@ -35,6 +68,7 @@
         header {
             text-align: center;
             margin-bottom: 80px;
+            margin-top: 40px; /* Gives space so text doesn't overlap top nav on small screens */
         }
 
         .logo-text {
@@ -59,6 +93,8 @@
             color: var(--text-muted);
             font-size: 1.2rem;
             font-weight: 400;
+            margin: 0 auto;
+            max-width: 550px;
         }
 
         .faq-section {
@@ -131,7 +167,7 @@
             background: var(--primary-black);
             color: white;
             text-decoration: none;
-            border-radius: 980px; /* Apple pill shape */
+            border-radius: 980px;
             font-weight: 500;
             transition: all 0.2s ease;
         }
@@ -143,24 +179,29 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 2.2rem; }
-            .container { padding: 60px 20px; }
+            .container { padding: 80px 20px 60px 20px; }
             .faq-question { font-size: 1.1rem; }
+            .top-nav { top: 16px; left: 16px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container mx-auto px-8 max-w-4xl">
-    <header class="mb-16 border-b border-zinc-200 pb-10 pt-12 text-left">
-        <a href="index.html" class="group inline-flex items-center gap-2 text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-600 transition-colors duration-200 mb-8">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 transition-transform duration-200">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Return Home
-        </a>
-        
-        <p class="text-xl font-light text-zinc-500 leading-relaxed max-w-2xl">
+<nav class="top-nav">
+    <a href="index.html" class="return-home-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Return Home
+    </a>
+</nav>
+
+<div class="container">
+    <header>
+        <span class="logo-text">CypherBird Protocol</span>
+        <h1>FAQ</h1>
+        <p class="intro-text">
             Understanding the Sovereign Engine and your digital rights.
         </p>
     </header>
