@@ -3,61 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | Cypherbird</title>
+    <title>Privacy Policy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { theme: { extend: { colors: { base: '#111111', surface: '#1c1c1c', borders: '#333333', silver: '#dcdcdc', accent: '#f59e0b' } } } }
+        tailwind.config = { 
+            theme: { 
+                extend: { 
+                    colors: { 
+                        brandPrimary: '#0f172a', // Deep slate for primary text
+                        brandSecondary: '#475569', // Muted slate for body text
+                        brandBorder: '#e2e8f0', // Soft gray for subtle dividers
+                        brandBg: '#f8fafc' // Warm white for section callouts
+                    } 
+                } 
+            } 
+        }
     </script>
 </head>
-<body class="bg-base text-silver font-sans">
+<body class="bg-white text-brandSecondary font-sans antialiased selection:bg-slate-100">
 
-    <nav class="p-6 border-b border-borders">
-        <a href="index.html" class="text-2xl">🦅 <span class="font-bold text-white uppercase italic ml-2">CYPHERBIRD</span></a>
+    <!-- Top Navigation -->
+    <nav class="max-w-5xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between">
+        <a href="index.html" class="inline-flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-brandPrimary transition-colors group">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4 transition-transform group-hover:-translate-x-1">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+            </svg>
+            Return Home
+        </a>
     </nav>
 
-    <main class="max-w-4xl mx-auto py-20 px-6">
-        <div class="border-l-2 border-accent pl-8">
-            <h1 class="text-5xl font-black text-white mb-4 uppercase tracking-tighter">Privacy Protocol</h1>
-            <p class="text-zinc-500 mb-12 uppercase tracking-[0.3em] text-xs">Last Updated: April 2026</p>
-        </div>
+    <!-- Main Content Area -->
+    <main class="max-w-3xl mx-auto py-12 px-6">
+        
+        <!-- Header Section -->
+        <header class="border-b border-brandBorder pb-8 mb-12">
+            <h1 class="text-4xl font-semibold tracking-tight text-brandPrimary mb-3">Privacy Policy</h1>
+            <p class="text-sm text-slate-400">Last Updated: April 2026</p>
+        </header>
 
-        <article class="prose prose-invert max-w-none space-y-12 text-zinc-300">
+        <!-- Policy Sections -->
+        <div class="space-y-10">
             
-            <section>
-                <h2 class="text-xl font-bold text-white uppercase tracking-widest mb-4">1. Zero-Log Policy</h2>
-                <p class="leading-relaxed italic">
-                    Cypherbird does not collect, store, or share any personal data. Our systems are built to be "blind" by design. We do not track IP addresses, browser fingerprints, or session metadata.
+            <section class="prose max-w-none">
+                <h2 class="text-xl font-medium text-brandPrimary mb-3">1. Zero-Log Policy</h2>
+                <p class="leading-relaxed text-brandSecondary">
+                    We do not collect, store, or share any personal data. Our systems are intentionally engineered to be entirely private by design. We explicitly avoid tracking IP addresses, browser fingerprints, or user session metadata.
                 </p>
             </section>
 
-            <section>
-                <h2 class="text-xl font-bold text-white uppercase tracking-widest mb-4">2. Encryption Standards</h2>
-                <p class="leading-relaxed">
-                    All communications within the Cypherbird nest are encrypted using AES-256 and RSA-4096 standards. Decryption keys stay on your hardware. If you lose your keys, we cannot recover your data.
+            <section class="prose max-w-none">
+                <h2 class="text-xl font-medium text-brandPrimary mb-3">2. Data Security & Encryption</h2>
+                <p class="leading-relaxed text-brandSecondary">
+                    All communication and data transfer pipelines are secured using industry-standard AES-256 and RSA-4096 cryptographic protocols. Decryption keys remain exclusively on your local hardware. Because we do not store these keys, we are unable to recover data on your behalf.
                 </p>
             </section>
 
-            <section>
-                <h2 class="text-xl font-bold text-white uppercase tracking-widest mb-4">3. Third-Party Interactions</h2>
-                <p class="leading-relaxed">
-                    We do not use third-party trackers, cookies, or analytics scripts (like Google Analytics). Our "AI Assistant" is a localized instance that does not feed data back to a central model training set.
+            <section class="prose max-w-none">
+                <h2 class="text-xl font-medium text-brandPrimary mb-3">3. Third-Party Interactions</h2>
+                <p class="leading-relaxed text-brandSecondary">
+                    Our platform operates entirely free of third-party trackers, cookies, or marketing analytics suites. Any localized AI interactions are processed through self-contained instances that do not transmit data back to external networks or centralized machine learning datasets.
                 </p>
             </section>
 
-            <section class="bg-surface p-8 rounded-2xl border border-borders">
-                <h2 class="text-xl font-bold text-white uppercase tracking-widest mb-4">The Sovereignty Pledge</h2>
-                <p class="text-sm">
-                    Cypherbird exists to protect the individual from the collective. We will never comply with data requests that compromise our core zero-knowledge architecture, as we simply do not have the data to give.
+            <!-- Formalized Callout Box -->
+            <section class="bg-brandBg border border-brandBorder p-6 rounded-lg my-8">
+                <h3 class="text-base font-semibold text-brandPrimary mb-2">Our Data Sovereignty Commitment</h3>
+                <p class="text-sm text-brandSecondary leading-relaxed">
+                    We believe individual digital privacy is fundamental. Because our technical architecture is built on a strict zero-knowledge model, we physically do not possess the capacity to aggregate, sell, or surrender your data to any external entities.
                 </p>
             </section>
 
-        </article>
-
-        <div class="mt-20 text-center">
-            <a href="index.html" class="text-xs text-zinc-600 hover:text-accent border border-borders px-6 py-3 rounded-full uppercase tracking-widest transition">
-                Return to Neutral Zone
-            </a>
         </div>
+
+        <!-- Footer Note -->
+        <footer class="mt-20 pt-6 border-t border-brandBorder text-center text-xs text-slate-400">
+            <p>© 2026 All Rights Reserved. Built with strict user privacy as the standard.</p>
+        </footer>
+
     </main>
 
 </body>
