@@ -42,19 +42,18 @@
     </nav>
 
     <header class="relative h-[75vh] flex items-center justify-center overflow-hidden bg-zinc-950 border-b border-zinc-200/50 z-10">
-        
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 pointer-events-none">
             <img 
                 src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2000" 
                 alt="Secure Data Infrastructure" 
-                class="w-full h-full object-cover object-center mix-blend-luminosity opacity-60 scale-100"
+                class="w-full h-full object-cover object-center mix-blend-luminosity opacity-60"
             />
         </div>
         
-        <div class="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950/80 via-transparent to-zinc-950/50"></div>
-        <div class="absolute inset-0 z-15 data-grid opacity-10"></div>
+        <div class="absolute inset-0 z-10 bg-gradient-to-t from-zinc-950/80 via-transparent to-zinc-950/50 pointer-events-none"></div>
+        <div class="absolute inset-0 z-20 data-grid opacity-10 pointer-events-none"></div>
         
-        <div class="relative z-20 text-center px-6 mt-20">
+        <div class="relative z-30 text-center px-6 mt-20">
             <p class="text-cobalt font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black drop-shadow-md">
                 Physical Infrastructure Layer
             </p>
@@ -82,21 +81,26 @@
                 </div>
             </div>
             
-            <div class="bg-white border border-zinc-100 p-10 rounded-[2.5rem] glow-border relative overflow-hidden group">
-                <div class="absolute inset-0 -z-10 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-700">
+            <div class="border border-zinc-100 p-10 rounded-[2.5rem] glow-border relative overflow-hidden group min-h-[300px] flex flex-col justify-center">
+                
+                <div class="absolute inset-0 bg-white z-0"></div>
+                
+                <div class="absolute inset-0 z-10 mix-blend-multiply opacity-15 group-hover:opacity-25 transition-opacity duration-500 pointer-events-none">
                     <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600" alt="Hardware Circuitry" class="w-full h-full object-cover">
                 </div>
-                <div class="absolute -top-4 -left-4 bg-zinc-900 text-white font-mono text-[10px] px-4 py-1 uppercase font-bold tracking-widest shadow-md">Secure Enclave</div>
-                <ul class="space-y-6">
+                
+                <div class="absolute -top-4 -left-4 bg-zinc-900 text-white font-mono text-[10px] px-4 py-1 uppercase font-bold tracking-widest shadow-md z-30">Secure Enclave</div>
+                
+                <ul class="space-y-6 relative z-20">
                     <li class="flex gap-4">
                         <span class="text-cobalt font-bold">01</span>
                         <p class="text-xs uppercase tracking-wider text-zinc-800 font-bold">AES-256 Client-Side Encryption</p>
                     </li>
-                    <li class="flex gap-4 border-t border-zinc-50 pt-6">
+                    <li class="flex gap-4 border-t border-zinc-100 pt-6">
                         <span class="text-cobalt font-bold">02</span>
                         <p class="text-xs uppercase tracking-wider text-zinc-800 font-bold">Encrypted Tunneling (SSL/TLS)</p>
                     </li>
-                    <li class="flex gap-4 border-t border-zinc-50 pt-6">
+                    <li class="flex gap-4 border-t border-zinc-100 pt-6">
                         <span class="text-cobalt font-bold">03</span>
                         <p class="text-xs uppercase tracking-wider text-zinc-800 font-bold">Multi-Regional Data Sharding</p>
                     </li>
@@ -124,19 +128,21 @@
             </div>
         </section>
 
-        <section class="p-12 bg-zinc-950 border border-zinc-800 rounded-[3rem] relative overflow-hidden shadow-2xl z-10">
-            <div class="absolute inset-0 z-0 opacity-15 mix-blend-screen pointer-events-none">
+        <section class="p-12 border border-zinc-800 rounded-[3rem] relative overflow-hidden shadow-2xl z-10">
+            <div class="absolute inset-0 bg-zinc-950 z-0"></div>
+
+            <div class="absolute inset-0 z-10 opacity-25 mix-blend-screen pointer-events-none">
                 <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&q=80&w=1000" alt="Digital Net Framework" class="w-full h-full object-cover">
             </div>
             
-            <div class="absolute inset-0 data-grid-dark opacity-40 z-5"></div>
-            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/80 to-transparent z-10"></div>
+            <div class="absolute inset-0 data-grid-dark opacity-40 z-20"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-zinc-950 via-zinc-950/40 to-transparent z-25"></div>
 
-            <div class="absolute top-0 right-0 p-8 z-20">
+            <div class="absolute top-0 right-0 p-8 z-30">
                 <div class="w-20 h-20 border-t-2 border-r-2 border-zinc-700 opacity-40"></div>
             </div>
 
-            <div class="max-w-3xl relative z-20">
+            <div class="max-w-3xl relative z-30">
                 <h2 class="text-zinc-500 font-mono text-sm uppercase tracking-[0.25em] mb-12">Jurisdiction & Privacy</h2>
                 <h4 class="text-2xl text-white font-black uppercase mb-6">Sovereign Data Storage</h4>
                 <p class="text-zinc-400 text-sm leading-relaxed mb-8">
@@ -153,7 +159,7 @@
             <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-[0.3em] mb-8">Secure Protocol Active</p>
             <a href="store.html" class="inline-flex items-center px-12 py-5 bg-zinc-900 text-white font-black uppercase tracking-[0.2em] text-[11px] hover:bg-cobalt transition-all shadow-xl active:scale-95 rounded-full">
                 Initialize Vault Expansion
-                <span class="ml-4">rightarrow</span>
+                <span class="ml-4">→</span>
             </a>
         </div>
     </main>
