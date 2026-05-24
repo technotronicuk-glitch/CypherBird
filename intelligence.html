@@ -47,27 +47,32 @@
 </nav>
 
     <!-- Header Section (Inspired by image_4f0577.png) -->
-    <section class="py-32 border-b border-borders">
-        <div class="max-w-4xl mx-auto px-8 text-center">
-            <div class="w-20 h-[2px] bg-cobalt mx-auto mb-16"></div>
-            
-            <h1 class="text-7xl font-black uppercase tracking-tighter mb-8">Zero Knowledge</h1>
-            
-            <div class="space-y-6">
-                <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy Architecture Analysis</p>
-                <p class="text-xl text-zinc-500 leading-relaxed max-w-2xl mx-auto uppercase font-light">
-                    We cannot see your data. Our architecture ensures that decryption keys never leave your local device.
-                </p>
-            </div>
+    <section class="relative py-32 border-b border-borders bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center bg-no-repeat">
+    
+    <div class="absolute inset-0 bg-white/92 backdrop-blur-[2px] pointer-events-none"></div>
 
-            <div class="mt-12 flex justify-center items-center gap-2">
-                <span class="text-cobalt font-mono text-xs">[</span>
-                <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn More</a>
-                <span class="text-cobalt font-mono text-xs">]</span>
-                <span class="text-cobalt text-xs">→</span>
-            </div>
+    <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
+        <div class="w-20 h-[2px] bg-cobalt mx-auto mb-16"></div>
+        
+        <h1 class="text-7xl font-black uppercase tracking-tighter mb-8 text-zinc-900 mix-blend-multiply">
+            Zero Knowledge
+        </h1>
+        
+        <div class="space-y-6">
+            <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy Architecture Analysis</p>
+            <p class="text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto uppercase font-light">
+                We cannot see your data. Our architecture ensures that decryption keys never leave your local device.
+            </p>
         </div>
-    </section>
+
+        <div class="mt-12 flex justify-center items-center gap-2">
+            <span class="text-cobalt font-mono text-xs">[</span>
+            <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn More</a>
+            <span class="text-cobalt font-mono text-xs">]</span>
+            <span class="text-cobalt text-xs">→</span>
+        </div>
+    </div>
+</section>
 
     <!-- Content Layer (Premium Grey Background) -->
     <section id="deep-dive" class="py-32 bg-surface">
