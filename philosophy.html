@@ -3,260 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Our Philosophy | CypherBird Protocol</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-
-        :root {
-            --primary-black: #0a0a0a;
-            --accent-blue: #007AFF;
-            --text-main: #1d1d1f;
-            --text-muted: #6e6e73;
-            --bg-premium: #f9f9f9; /* Premium Off-White/Grey */
-            --white: #ffffff;
-            --border-color: #e5e5e7;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap');
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-premium);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', sans-serif;
+            background-color: #09090b; /* Pure premium dark velvet zinc base */
         }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 100px 24px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 90px;
-        }
-
-        .logo-text {
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            color: var(--accent-blue);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            margin: 0 0 20px 0;
-            color: var(--primary-black);
-            line-height: 1.1;
-        }
-        .back-home {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--text-muted);
-    text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 40px;
-    transition: color 0.2s ease;
-}
-
-.back-home:hover {
-    color: var(--accent-blue);
-}
-
-.back-home svg {
-    width: 18px;
-    height: 18px;
-}
-
-        .intro-text {
-            color: var(--text-muted);
-            font-size: 1.25rem;
-            font-weight: 400;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        section {
-            background: var(--white);
-            padding: 50px;
-            border-radius: 24px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 1.75rem;
-            font-weight: 600;
-            margin-top: 0;
-            color: var(--primary-black);
-        }
-
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-        }
-
-        .comparison-table th {
-            text-align: left;
-            padding: 15px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .comparison-table td {
-            padding: 20px 15px;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 0.95rem;
-        }
-
-        .check { color: #27ae60; font-weight: bold; }
-        .cross { color: #e74c3c; font-weight: bold; }
-
-        .philosophy-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 24px;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.04);
-        }
-
-        .pricing-hero {
-            background: var(--primary-black);
-            color: var(--white);
-            padding: 60px;
-            border-radius: 32px;
-            text-align: center;
-            margin-top: 60px;
-        }
-
-        .price-tag {
-            font-size: 4rem;
-            font-weight: 600;
-            margin: 20px 0;
-        }
-
-        .price-tag span {
-            font-size: 1rem;
-            opacity: 0.6;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 100px;
-            padding-top: 40px;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2.5rem; }
-            .philosophy-grid { grid-template-columns: 1fr; }
-            .container { padding: 60px 20px; }
-            section, .card { padding: 30px; }
+        /* Technical Cyber Matrix Dots */
+        .cyber-grid { 
+            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px); 
+            background-size: 32px 32px; 
         }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white relative text-zinc-400">
 
-<div class="container">
-    <a href="index.html" class="back-home">
-    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
-    </svg>
-    Back to CypherBird
-</a>
-    <header>
-        <span class="logo-text">The CypherBird Manifesto</span>
-        <h1>Why Privacy Is Never "Free"</h1>
-        <p class="intro-text">Uncompromising digital sovereignty requires a sustainable economic foundation.</p>
+    <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+
+    <nav class="p-6 flex justify-between items-center fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-900">
+        <div>
+            <a href="index.html" class="bg-zinc-900 border border-zinc-800 text-zinc-300 px-5 py-2.5 rounded-full font-mono text-[10px] hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all tracking-widest uppercase shadow-lg active:scale-95 inline-block">
+                <span class="inline-flex items-center gap-1">
+                    <svg class="w-3 h-3 inline" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                    </svg>
+                    [ RETURN HOME ]
+                </span>
+            </a>
+        </div>
+        <div>
+            <span class="font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+                Philosophy Layer // Manifesto
+            </span>
+        </div>
+    </nav>
+
+    <header class="relative h-[55vh] flex items-center justify-center overflow-hidden bg-zinc-950 border-b border-zinc-900 z-10">
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <img 
+                src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2000" 
+                alt="Infrastructure Mainframe" 
+                class="w-full h-full object-cover object-center opacity-15 mix-blend-luminosity"
+            />
+        </div>
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent z-10 pointer-events-none"></div>
+        
+        <div class="relative z-20 text-center px-6 mt-16">
+            <p class="text-blue-500 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black">
+                The CypherBird Manifesto
+            </p>
+            <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-none">
+                Why Privacy Is <span class="text-blue-500">Never "Free"</span>
+            </h1>
+            <p class="mt-6 text-zinc-500 font-mono text-[11px] uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
+                Uncompromising digital sovereignty requires a sustainable economic foundation.
+            </p>
+        </div>
     </header>
 
-    <section>
-        <h2>The Incentives of Sovereignty</h2>
-        <p>If a service is free, your data is the currency. Silicon Valley business models depend on harvesting metadata—analyzing who you are, what you store, and when you connect. CypherBird rejects this. By charging a <strong>Protocol Maintenance Fee</strong>, we align our interests entirely with your privacy. We don't sell your attention; we sell security.</p>
+    <main class="max-w-4xl mx-auto py-24 px-8 relative z-20 space-y-12">
         
-        <table class="comparison-table">
-            <thead>
-                <tr>
-                    <th>Infrastructure Attribute</th>
-                    <th>Free Apps</th>
-                    <th>CypherBird</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Business Goal</td>
-                    <td>Data Profiling</td>
-                    <td>Data Sovereignty[cite: 1]</td>
-                </tr>
-                <tr>
-                    <td>Encryption Logic</td>
-                    <td>Cloud-Side</td>
-                    <td>Edge-Processing (Local)[cite: 1]</td>
-                </tr>
-                <tr>
-                    <td>Metadata Collection</td>
-                    <td class="check">Extensive</td>
-                    <td class="cross">Zero[cite: 1]</td>
-                </tr>
-                <tr>
-                    <td>Ethical Guardrails</td>
-                    <td>Reactive</td>
-                    <td>Proactive (Client-Side)</td>
-                </tr>
-            </tbody>
-        </table>
-       <p> Our Pledge: We are committed to price transparency. As our community reaches critical scale milestones, we commit to reducing fees or increasing storage capacity for all protocol members.</p>
-    </section>
+        <section class="border border-zinc-900 bg-zinc-950/60 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <h2 class="text-xl text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+                The Incentives of Sovereignty
+            </h2>
+            <p class="leading-relaxed text-zinc-400 text-sm md:text-base mb-8">
+                If a service is free, your data is the currency. Silicon Valley business models depend on harvesting metadata—analyzing who you are, what you store, and when you connect. CypherBird rejects this. By charging a <strong class="text-white font-semibold">Protocol Maintenance Fee</strong>, we align our interests entirely with your privacy. We don't sell your attention; we sell security.
+            </p>
+            
+            <div class="overflow-x-auto border border-zinc-900 rounded-2xl bg-zinc-950">
+                <table class="w-full border-collapse text-left text-xs md:text-sm">
+                    <thead>
+                        <tr class="border-b border-zinc-900 bg-zinc-900/40">
+                            <th class="p-4 font-mono uppercase tracking-wider text-zinc-500 font-bold">Infrastructure Attribute</th>
+                            <th class="p-4 font-mono uppercase tracking-wider text-zinc-500 font-bold">Free Apps</th>
+                            <th class="p-4 font-mono uppercase tracking-wider text-blue-500 font-bold">CypherBird</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-zinc-900/40 text-zinc-300">
+                        <tr class="hover:bg-zinc-900/20 transition-colors">
+                            <td class="p-4 font-medium text-zinc-400">Business Goal</td>
+                            <td class="p-4 text-zinc-500">Data Profiling</td>
+                            <td class="p-4 text-white font-bold tracking-wide">Data Sovereignty</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-900/20 transition-colors">
+                            <td class="p-4 font-medium text-zinc-400">Encryption Logic</td>
+                            <td class="p-4 text-zinc-500">Cloud-Side</td>
+                            <td class="p-4 text-white font-bold tracking-wide">Edge-Processing (Local)</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-900/20 transition-colors">
+                            <td class="p-4 font-medium text-zinc-400">Metadata Collection</td>
+                            <td class="p-4 text-red-400 font-semibold">Extensive</td>
+                            <td class="p-4 text-emerald-400 font-bold tracking-wider">Zero</td>
+                        </tr>
+                        <tr class="hover:bg-zinc-900/20 transition-colors">
+                            <td class="p-4 font-medium text-zinc-400">Ethical Guardrails</td>
+                            <td class="p-4 text-zinc-500">Reactive</td>
+                            <td class="p-4 text-white font-bold tracking-wide">Proactive (Client-Side)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-    <div class="philosophy-grid">
-        <div class="card">
-            <h2>The Cost of "Zero-Knowledge"</h2>
-            <p>Maintaining a <strong>Zero-Knowledge Vault</strong> is technically demanding. Unlike standard cloud storage, our servers host unreadable "Sovereign Payloads"[cite: 1]. We invest your subscription into the specialized high-redundancy hardware required to store encrypted cyphertext without compromising its integrity[cite: 1].</p>
-        </div>
-        <div class="card">
-            <h2>Ethical Infrastructure</h2>
-            <p>Part of your fee supports our <strong>Client-Side Integrity Filtering</strong>[cite: 2]. This sophisticated local algorithm ensures the CypherBird Protocol remains a sanctuary for privacy while proactively blocking illegal or underage content before it can ever be encrypted[cite: 2].</p>
-        </div>
-    </div>
-    </div>
-     <section>
-    <h2>The Circle of Trust: Social Recovery</h2>
-    <p>True sovereignty shouldn't mean total isolation. CypherBird implements <strong>Threshold Cryptography</strong> to protect you from accidental data loss. Instead of storing a 'Master Key' on our servers, your key is mathematically fragmented into 'Shards' held by your trusted contacts.</p>
-    
-    <div style="background: #f5f5f7; padding: 30px; border-radius: 16px; margin: 20px 0;">
-        <h3 style="margin-top:0;">Scientific Reliability</h3>
-        <ul style="padding-left: 20px; color: var(--text-muted);">
-            <li><strong>Privacy:</strong> No single friend—nor CypherBird itself—can access your vault. Fragments are mathematically useless on their own.</li>
-            <li><strong>Security:</strong> Key reconstruction requires a majority of your circle <em>plus</em> your unique biometric signature.[cite: 1]</li>
-            <li><strong>Independence:</strong> You choose your guardians. You control your recovery. You own the protocol.[cite: 1]</li>
-        </ul>
-    </div>
-</section>
+            <p class="leading-relaxed text-zinc-500 text-xs italic mt-8 border-t border-zinc-900 pt-6">
+                Our Pledge: We are committed to price transparency. As our community reaches critical scale milestones, we commit to reducing fees or increasing storage capacity for all protocol members.
+            </p>
+        </section>
 
-    <footer>
-        <p>Digital sovereignty is not a product—it is a discipline.</p>
-        <p style="margin-top: 20px;">&copy; 2026 CypherBird Protocol. Privacy is a Right. Sovereignty is a Duty.</p>
+        <section class="grid md:grid-cols-2 gap-8">
+            
+            <div class="border border-zinc-900 bg-zinc-950 p-8 rounded-[2rem] relative overflow-hidden group min-h-[260px]">
+                <div class="absolute inset-0 z-0 opacity-[0.05] mix-blend-screen group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+                    <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600" alt="Hardware Circuitry" class="w-full h-full object-cover">
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-base text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-3">
+                        The Cost of "Zero-Knowledge"
+                    </h3>
+                    <p class="text-xs md:text-sm text-zinc-400 leading-relaxed">
+                        Maintaining a <strong class="text-zinc-200 font-medium">Zero-Knowledge Vault</strong> is technically demanding. Unlike standard cloud storage, our servers host unreadable "Sovereign Payloads". We invest your subscription into the specialized high-redundancy hardware required to store encrypted cyphertext without compromising its integrity.
+                    </p>
+                </div>
+            </div>
+
+            <div class="border border-zinc-900 bg-zinc-950 p-8 rounded-[2rem] relative overflow-hidden group min-h-[260px]">
+                <div class="absolute inset-0 z-0 opacity-[0.05] mix-blend-screen group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+                    <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&q=80&w=600" alt="Digital Matrix Network" class="w-full h-full object-cover">
+                </div>
+                <div class="relative z-10">
+                    <h3 class="text-base text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-3">
+                        Ethical Infrastructure
+                    </h3>
+                    <p class="text-xs md:text-sm text-zinc-400 leading-relaxed">
+                        Part of your fee supports our <strong class="text-zinc-200 font-medium">Client-Side Integrity Filtering</strong>. This sophisticated local algorithm ensures the CypherBird Protocol remains a sanctuary for privacy while proactively blocking illegal or underage content before it can ever be encrypted.
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="border border-zinc-900 bg-zinc-950/60 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <h2 class="text-xl text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+                The Circle of Trust: Social Recovery
+            </h2>
+            <p class="leading-relaxed text-zinc-400 text-sm md:text-base mb-8">
+                True sovereignty shouldn't mean total isolation. CypherBird implements <strong class="text-white font-semibold">Threshold Cryptography</strong> to protect you from accidental data loss. Instead of storing a 'Master Key' on our servers, your key is mathematically fragmented into 'Shards' held by your trusted contacts.
+            </p>
+
+            <div class="bg-zinc-950 border border-zinc-900 p-6 md:p-8 rounded-2xl relative">
+                <h3 class="text-xs uppercase tracking-widest text-zinc-500 font-mono mb-6 font-bold">
+                    // Scientific Reliability Specifications
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex gap-4 items-start">
+                        <span class="text-blue-500 font-mono font-bold text-sm">A</span>
+                        <p class="text-xs md:text-sm text-zinc-300 m-0"><strong class="text-white">Privacy:</strong> No single friend—nor CypherBird itself—can access your vault. Fragments are mathematically useless on their own.</p>
+                    </li>
+                    <li class="flex gap-4 items-start border-t border-zinc-900/60 pt-4">
+                        <span class="text-blue-500 font-mono font-bold text-sm">B</span>
+                        <p class="text-xs md:text-sm text-zinc-300 m-0"><strong class="text-white">Security:</strong> Key reconstruction requires a majority of your circle <em>plus</em> your unique biometric signature.</p>
+                    </li>
+                    <li class="flex gap-4 items-start border-t border-zinc-900/60 pt-4">
+                        <span class="text-blue-500 font-mono font-bold text-sm">C</span>
+                        <p class="text-xs md:text-sm text-zinc-300 m-0"><strong class="text-white">Independence:</strong> You choose your guardians. You control your recovery. You own the protocol.</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="py-12 px-8 border-t border-zinc-900 text-center relative z-20 bg-zinc-950">
+        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-500">
+            Digital sovereignty is not a product—it is a discipline.
+        </p>
+        <p class="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-600 mt-3">
+            &copy; 2026 CypherBird Protocol. Privacy is a Right. Sovereignty is a Duty.
+        </p>
     </footer>
-</div>
 
 </body>
 </html>
