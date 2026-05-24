@@ -98,28 +98,67 @@
                             <div class="text-cobalt font-black text-xl mb-1">P-384</div>
                             <div class="text-[9px] text-zinc-400 font-mono uppercase">Elliptic Curve</div>
                         </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <div class="absolute -inset-4 bg-cobalt/5 rounded-full blur-3xl"></div>
-                    <div class="relative bg-white border border-borders p-2 rounded-[2.5rem] shadow-xl">
-                        <div class="bg-zinc-900 rounded-[2rem] p-8 aspect-square flex flex-col justify-between">
-                            <div class="flex justify-between items-start">
-                                <div class="w-12 h-12 border border-zinc-700 rounded-lg flex items-center justify-center">
-                                    <div class="w-2 h-2 bg-cobalt animate-pulse"></div>
+                    </div> <div class="relative">
+                    <div class="absolute -inset-4 bg-blue-600/5 rounded-full blur-3xl"></div>
+                    
+                    <div class="relative bg-white border border-zinc-200 p-2 rounded-[2.5rem] shadow-xl">
+                        <div class="bg-zinc-950 rounded-[2rem] p-8 aspect-square flex flex-col justify-between overflow-hidden relative">
+                            
+                            <div class="flex justify-between items-start border-b border-zinc-800 pb-4">
+                                <div class="w-12 h-12 border border-zinc-800 rounded-xl flex items-center justify-center bg-zinc-900 shadow-inner">
+                                    <div class="w-2.5 h-2.5 bg-blue-500 rounded-full animate-ping absolute"></div>
+                                    <div class="w-2.5 h-2.5 bg-blue-500 rounded-full"></div>
                                 </div>
                                 <div class="text-right">
-                                    <div class="text-zinc-500 font-mono text-[9px] uppercase">Node Status</div>
-                                    <div class="text-emerald-400 font-mono text-[10px]">ENCRYPTED</div>
+                                    <div class="text-zinc-500 font-mono text-[9px] uppercase tracking-widest">Node Status</div>
+                                    <div class="text-emerald-400 font-mono text-[11px] font-bold tracking-wider mt-0.5 flex items-center gap-1 justify-end">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                                        ENCRYPTED
+                                    </div>
                                 </div>
                             </div>
-                            <div class="space-y-2">
-                                <div class="h-1 bg-zinc-800 w-full"></div>
-                                <div class="h-1 bg-zinc-800 w-3/4"></div>
-                                <div class="h-1 bg-zinc-800 w-1/2"></div>
+                            <div class="my-auto space-y-4 font-mono text-xs">
+                                <div class="flex justify-between text-zinc-500 border-b border-zinc-900 pb-1.5">
+                                    <span>PROTOCOL:</span>
+                                    <span class="text-zinc-300 font-semibold">ZK-PROOF v2.1</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-500 border-b border-zinc-900 pb-1.5">
+                                    <span>CIPHER BLOCK:</span>
+                                    <span class="text-blue-400 font-semibold">AES-256-GCM</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-500 border-b border-zinc-900 pb-1.5">
+                                    <span>ELLIPTIC CURVE:</span>
+                                    <span class="text-zinc-300">NIST P-384</span>
+                                </div>
+                                <div class="flex justify-between text-zinc-500">
+                                    <span>LOCAL KEY AUTH:</span>
+                                    <span class="text-emerald-400 font-bold">VERIFIED</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-zinc-900/50 rounded-xl p-4 font-mono text-[11px] text-zinc-400 space-y-1.5 border border-zinc-800/40">
+                                <div class="flex items-center gap-2 text-zinc-500">
+                                    <span>&gt;</span>
+                                    <p class="truncate animate-pulse">Initializing hardware entropy container...</p>
+                                </div>
+                                <div class="flex items-center gap-2 text-blue-400/90">
+                                    <span>&gt;</span>
+                                    <p class="truncate">Local asymmetric keys generated successfully.</p>
+                                </div>
+                                <div class="flex items-center gap-2 text-zinc-500">
+                                    <span>&gt;</span>
+                                    <p class="truncate">Zero-Knowledge handshake: <span class="text-emerald-400 font-medium">PASS</span></p>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div> ```
+
+### Improvements Implemented:
+* **True-to-Topic Content:** Removed the empty structural layout bars and replaced them with genuine technical indicators related to your section (`AES-256`, `P-384`, `Zero Knowledge Proofs`).
+* **Active UI Elements:** Added clean, real-time animation primitives like a rhythmic pulsing network status beacon and loading subtext status values.
+* **Safe Tailwind Classes:** Swapped your custom non-standard class configurations (`bg-cobalt`) with highly cross-compatible native declarations (`bg-blue-500` / `bg-zinc-950`) to guarantee execution without breakage.
                 </div>
             </div>
 
