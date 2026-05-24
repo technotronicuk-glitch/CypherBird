@@ -29,56 +29,53 @@
     </style>
 </head>
 <body class="bg-base text-zinc-900 antialiased">
-    <nav class="border-b border-borders py-6 px-8 flex justify-between items-center bg-white sticky top-0 z-50">
-    <div>
-        <a href="index.html" class="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition-colors duration-200">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 transition-transform duration-200">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
-            Return Home
-        </a>
-    </div>
-    <div>
-        <a href="store.html" class="bg-zinc-900 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-cobalt transition-colors duration-200">
-            Get Started
-        </a>
-    </div>
-</nav>
-
-    <!-- Header Section (Inspired by image_4f0577.png) -->
-    <section class="relative py-32 border-b border-borders bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center bg-no-repeat">
     
-    <div class="absolute inset-0 bg-white/92 backdrop-blur-[2px] pointer-events-none"></div>
-
-    <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
-        <div class="w-20 h-[2px] bg-cobalt mx-auto mb-16"></div>
-        
-        <h1 class="text-7xl font-black uppercase tracking-tighter mb-8 text-zinc-900 mix-blend-multiply">
-            Zero Knowledge
-        </h1>
-        
-        <div class="space-y-6">
-            <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy Architecture Analysis</p>
-            <p class="text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto uppercase font-light">
-                We cannot see your data. Our architecture ensures that decryption keys never leave your local device.
-            </p>
+    <nav class="border-b border-borders py-6 px-8 flex justify-between items-center bg-white sticky top-0 z-50">
+        <div>
+            <a href="index.html" class="group flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-400 hover:text-zinc-900 transition-colors duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transform group-hover:-translate-x-0.5 transition-transform duration-200">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Return Home
+            </a>
         </div>
-
-        <div class="mt-12 flex justify-center items-center gap-2">
-            <span class="text-cobalt font-mono text-xs">[</span>
-            <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn More</a>
-            <span class="text-cobalt font-mono text-xs">]</span>
-            <span class="text-cobalt text-xs">→</span>
+        <div>
+            <a href="store.html" class="bg-zinc-900 text-white px-5 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-cobalt transition-colors duration-200">
+                Get Started
+            </a>
         </div>
-    </div>
-</section>
+    </nav>
 
-    <!-- Content Layer (Premium Grey Background) -->
+    <section class="relative py-32 border-b border-borders bg-[url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center bg-no-repeat">
+        <div class="absolute inset-0 bg-white/92 backdrop-blur-[2px] pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
+            <div class="w-20 h-[2px] bg-cobalt mx-auto mb-16"></div>
+            
+            <h1 class="text-7xl font-black uppercase tracking-tighter mb-8 text-zinc-900 mix-blend-multiply">
+                Zero Knowledge
+            </h1>
+            
+            <div class="space-y-6">
+                <p class="text-zinc-500 font-mono text-xs uppercase tracking-[0.4em]">Privacy Architecture Analysis</p>
+                <p class="text-xl text-zinc-600 leading-relaxed max-w-2xl mx-auto uppercase font-light">
+                    We cannot see your data. Our architecture ensures that decryption keys never leave your local device.
+                </p>
+            </div>
+
+            <div class="mt-12 flex justify-center items-center gap-2">
+                <span class="text-cobalt font-mono text-xs">[</span>
+                <a href="#deep-dive" class="text-cobalt font-mono text-xs uppercase tracking-widest hover:underline">Learn More</a>
+                <span class="text-cobalt font-mono text-xs">]</span>
+                <span class="text-cobalt text-xs">→</span>
+            </div>
+        </div>
+    </section>
+
     <section id="deep-dive" class="py-32 bg-surface">
         <div class="max-w-7xl mx-auto px-8">
             
-            <!-- Grid 01: Encryption -->
             <div class="grid md:grid-cols-2 gap-24 items-center mb-40">
                 <div>
                     <h2 class="text-4xl font-black uppercase mb-8">Hardware Level Security</h2>
@@ -98,7 +95,10 @@
                             <div class="text-cobalt font-black text-xl mb-1">P-384</div>
                             <div class="text-[9px] text-zinc-400 font-mono uppercase">Elliptic Curve</div>
                         </div>
-                    </div> <div class="relative">
+                    </div>
+                </div> 
+
+                <div class="relative">
                     <div class="absolute -inset-4 bg-blue-600/5 rounded-full blur-3xl"></div>
                     
                     <div class="relative bg-white border border-zinc-200 p-2 rounded-[2.5rem] shadow-xl">
@@ -117,6 +117,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="my-auto space-y-4 font-mono text-xs">
                                 <div class="flex justify-between text-zinc-500 border-b border-zinc-900 pb-1.5">
                                     <span>PROTOCOL:</span>
@@ -155,7 +156,6 @@
                 </div>
             </div>
 
-            <!-- Grid 02: Intelligence Layer -->
             <div class="grid md:grid-cols-2 gap-24 items-center">
                 <div class="order-2 md:order-1 bg-zinc-900 p-10 rounded-3xl shadow-2xl overflow-hidden relative">
                     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cobalt to-transparent"></div>
@@ -194,7 +194,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="py-20 border-t border-borders bg-white">
         <div class="max-w-7xl mx-auto px-8 text-center">
             <div class="font-black tracking-tighter text-xl uppercase mb-4">Protocol</div>
