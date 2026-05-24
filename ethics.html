@@ -3,173 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Ethics & Digital Sovereignty | CypherBird Protocol</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
-
-        :root {
-            --primary-black: #0a0a0a;
-            --accent-red: #E02424;
-            --accent-blue: #007AFF;
-            --text-main: #1d1d1f;
-            --text-muted: #6e6e73;
-            --bg-white: #ffffff;
-            --border-color: #d2d2d7;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;900&display=swap');
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-white);
-            color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            font-family: 'Inter', sans-serif;
+            background-color: #fafafa;
         }
 
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 100px 24px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .logo-text {
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            letter-spacing: -0.015em;
-            margin: 0 0 16px 0;
-            color: var(--primary-black);
-        }
-
-        .intro-text {
-            color: var(--text-muted);
-            font-size: 1.2rem;
-            font-weight: 400;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .section {
-            margin-bottom: 60px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-black);
-            margin-bottom: 16px;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 16px;
-        }
-
-        p {
-            font-size: 1.05rem;
-            color: var(--text-main);
-            margin-bottom: 20px;
-        }
-
-        .highlight-box {
-            background-color: #f5f5f7;
-            padding: 24px;
-            border-radius: 12px;
-            border-left: 4px solid var(--accent-red);
-            margin: 32px 0;
-        }
-
-        .highlight-box h3 {
-            margin-top: 0;
-            color: var(--accent-red);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .bullet-list {
-            padding-left: 20px;
-        }
-
-        .bullet-list li {
-            margin-bottom: 12px;
-            color: var(--text-main);
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 100px;
-            padding-top: 40px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border-color);
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 2.2rem; }
-            .container { padding: 60px 20px; }
+        /* Premium Data Grid Overlay */
+        .data-grid { 
+            background-image: radial-gradient(#e5e5e5 1px, transparent 1px); 
+            background-size: 30px 30px; 
         }
     </style>
 </head>
-<body>
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white relative text-zinc-600">
 
-<div class="container mx-auto px-8">
-    <header class="mb-16 border-b border-zinc-200 pb-10 pt-6 text-left">
-        <a href="index.html" class="group inline-flex items-center gap-2 text-zinc-400 text-[10px] font-bold tracking-[0.3em] uppercase hover:text-blue-600 transition-colors duration-200 mb-6">
-            ← Return to Home
-        </a>
-        <h1 class="font-black text-4xl text-zinc-900 mt-2">Ethics & Safety</h1>
+    <div class="fixed inset-0 data-grid pointer-events-none opacity-40 z-0"></div>
+
+    <nav class="p-6 flex justify-between items-center fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl border-b border-zinc-200">
+        <div>
+            <a href="index.html" class="bg-zinc-900 text-white px-5 py-2.5 rounded-full font-mono text-[10px] hover:bg-blue-600 transition-all tracking-widest uppercase shadow-lg active:scale-95 inline-block">
+                [ RETURN HOME ]
+            </a>
+        </div>
+        <div>
+            <span class="font-mono text-[9px] text-zinc-400 tracking-widest uppercase">
+                Compliance Layer // V4.0
+            </span>
+        </div>
+    </nav>
+
+    <header class="relative h-[55vh] flex items-center justify-center overflow-hidden bg-zinc-950 border-b border-zinc-200/50 z-10">
+        <div class="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.05)_1px,transparent_1px)] [background-size:30px_30px] opacity-40"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-transparent to-zinc-950/40 pointer-events-none"></div>
+        
+        <div class="relative z-20 text-center px-6 mt-16">
+            <p class="text-blue-500 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black">
+                Governance & Protocol Framework
+            </p>
+            <h1 class="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none drop-shadow-xl">
+                Ethics & <span class="text-blue-500">Safety</span>
+            </h1>
+            <p class="mt-6 text-zinc-400 font-mono text-[11px] uppercase tracking-widest max-w-md mx-auto leading-relaxed">
+                Decentralization requires complete architectural accountability.
+            </p>
+        </div>
     </header>
 
-    <div class="section">
-        <h2>Digital Sovereignty</h2>
-        <p>At CypherBird, we believe that privacy is a fundamental human right, not a luxury. Our mission is to return ownership of digital media to the individual. In an age of mass surveillance and data harvesting, the CypherBird Protocol stands as a sanctuary for free expression and personal security.</p>
-    </div>
+    <main class="max-w-3xl mx-auto py-24 px-8 relative z-20">
+        
+        <section class="mb-16 relative">
+            <h2 class="text-xl text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+                Digital Sovereignty
+            </h2>
+            <p class="leading-relaxed text-zinc-500 text-base">
+                At CypherBird, we believe that privacy is a fundamental human right, not a luxury. Our mission is to return ownership of digital media to the individual. In an age of mass surveillance and data harvesting, the CypherBird Protocol stands as a sanctuary for free expression and personal security.
+            </p>
+        </section>
 
-    <div class="section">
-        <h2>The Zero-Knowledge Standard</h2>
-        <p>We operate on a Zero-Knowledge architecture. This means that from the moment your media is processed by our <strong>Sovereign Scrambler</strong>, it becomes unreadable to everyone—including us. We do not hold your keys, we do not monitor your traffic, and we do not sell your metadata.</p>
-    </div>
+        <section class="mb-16 relative">
+            <h2 class="text-xl text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+                The Zero-Knowledge Standard
+            </h2>
+            <p class="leading-relaxed text-zinc-500 text-base">
+                We operate on a Zero-Knowledge architecture. This means that from the moment your media is processed by our <strong class="text-zinc-900 font-semibold">Sovereign Scrambler</strong>, it becomes unreadable to everyone—including us. We do not hold your keys, we do not monitor your traffic, and we do not sell your metadata.
+            </p>
+        </section>
 
-    <div class="highlight-box">
-        <h3>Zero-Tolerance Policy</h3>
-        <p>While we provide the tools for absolute privacy, we do not provide a sanctuary for illegal acts. CypherBird strictly prohibits the use of its protocol for:</p>
-        <ul class="bullet-list">
-            <li>Production or distribution of underage exploitation material.</li>
-            <li>Promoting or organizing acts of violence or terrorism.</li>
-            <li>Distribution of non-consensual intimate imagery.</li>
-            <li>Any activity that violates international human rights laws.</li>
-        </ul>
-    </div>
+        <section class="my-20 bg-white border border-red-200/60 p-8 md:p-10 rounded-[2.5rem] shadow-sm relative overflow-hidden group">
+            <div class="absolute -top-4 -left-4 bg-red-600 text-white font-mono text-[9px] px-4 py-1 uppercase font-bold tracking-widest shadow-md">
+                Zero-Tolerance Policy
+            </div>
+            
+            <p class="text-zinc-700 font-medium mb-6 mt-2 text-base">
+                While we provide the tools for absolute privacy, we do not provide a sanctuary for illegal acts. CypherBird strictly prohibits the use of its protocol for:
+            </p>
+            
+            <ul class="space-y-4">
+                <li class="flex gap-4 items-start">
+                    <span class="text-red-600 font-mono font-bold text-sm">01</span>
+                    <p class="text-sm uppercase tracking-wide text-zinc-800 font-bold m-0 pt-0.5">Production or distribution of underage exploitation material.</p>
+                </li>
+                <li class="flex gap-4 items-start border-t border-zinc-100 pt-4">
+                    <span class="text-red-600 font-mono font-bold text-sm">02</span>
+                    <p class="text-sm uppercase tracking-wide text-zinc-800 font-bold m-0 pt-0.5">Promoting or organizing acts of violence or terrorism.</p>
+                </li>
+                <li class="flex gap-4 items-start border-t border-zinc-100 pt-4">
+                    <span class="text-red-600 font-mono font-bold text-sm">03</span>
+                    <p class="text-sm uppercase tracking-wide text-zinc-800 font-bold m-0 pt-0.5">Distribution of non-consensual intimate imagery.</p>
+                </li>
+                <li class="flex gap-4 items-start border-t border-zinc-100 pt-4">
+                    <span class="text-red-600 font-mono font-bold text-sm">04</span>
+                    <p class="text-sm uppercase tracking-wide text-zinc-800 font-bold m-0 pt-0.5">Any activity that violates international human rights laws.</p>
+                </li>
+            </ul>
+        </section>
 
-    <div class="section">
-        <h2>Automated Integrity Checks</h2>
-        <p>To uphold these ethics without compromising your privacy, CypherBird utilizes <strong>Client-Side Integrity Filtering</strong>. This local algorithm checks the digital fingerprint (hash) of media <em>before</em> encryption occurs. This process stays entirely on your device.</p>
-        <p>If a file matches a known database of prohibited illegal content, the protocol will refuse to execute the encryption. We do not see your file; our engine simply refuses to protect it.</p>
-    </div>
+        <section class="mb-16 relative">
+            <h2 class="text-xl text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+                Automated Integrity Checks
+            </h2>
+            <p class="leading-relaxed text-zinc-500 text-base mb-4">
+                To uphold these ethics without compromising your privacy, CypherBird utilizes <strong class="text-zinc-900 font-semibold">Client-Side Integrity Filtering</strong>. This local algorithm checks the digital fingerprint (hash) of media <em>before</em> encryption occurs. This process stays entirely on your device.
+            </p>
+            <p class="leading-relaxed text-zinc-500 text-base">
+                If a file matches a known database of prohibited illegal content, the protocol will refuse to execute the encryption. We do not see your file; our engine simply refuses to protect it.
+            </p>
+        </section>
 
-    <div class="section">
-        <h2>Accountability</h2>
-        <p>CypherBird reserves the right to permanently block access to our Vault infrastructure for any user found attempting to bypass our safety algorithms. While we cannot decrypt your data for third parties, we will comply with legal requests to identify account headers that have triggered critical safety violations within our ethical framework.</p>
-    </div>
+        <section class="mb-16 relative">
+            <h2 class="text-xl text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+                Accountability
+            </h2>
+            <p class="leading-relaxed text-zinc-500 text-base">
+                CypherBird reserves the right to permanently block access to our Vault infrastructure for any user found attempting to bypass our safety algorithms. While we cannot decrypt your data for third parties, we will comply with legal requests to identify account headers that have triggered critical safety violations within our ethical framework.
+            </p>
+        </section>
 
-    <footer>
-        <p>Building a safer, more private web together.</p>
-        <p style="margin-top: 20px;">&copy; 2026 CypherBird Protocol. Privacy is a Right. Safety is a Duty.</p>
+    </main>
+
+    <footer class="py-12 px-8 border-t border-zinc-200 text-center relative z-20 bg-white">
+        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-400">
+            Building a safer, more private web together.
+        </p>
+        <p class="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-400 mt-3">
+            &copy; 2026 CypherBird Protocol. Privacy is a Right. Safety is a Duty.
+        </p>
     </footer>
-</div>
 
 </body>
 </html>
