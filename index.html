@@ -945,19 +945,16 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
     <!-- Popup Overlay -->
-<div id="cb-popup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 9999;">
-  <div style="background: #ffffff; padding: 40px; border-radius: 12px; max-width: 500px; text-align: center; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+<div id="cb-popup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: flex-start; justify-content: center; z-index: 9999; overflow-y: auto;">
+  <div style="background: #ffffff; padding: 40px; border-radius: 12px; max-width: 500px; text-align: center; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-top: 50px;">
+    
     <h2 style="color: #333; margin-top: 0;">Cypherbird App Launching Soon!</h2>
     <p style="color: #666; line-height: 1.6;">We are working hard to bring you a secure and seamless experience. In the meantime, feel free to explore our website to learn more about what we do.</p>
     
-    <div style="margin-top: 25px; display: flex; flex-direction: column; gap: 10px;">
-      <a href="/capabilities" style="padding: 12px; background: #007bff; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Our Capabilities</a>
-      <a href="/terms" style="color: #555; text-decoration: underline; font-size: 0.9em;">Terms of Service</a>
-      <a href="/privacy-policy" style="color: #555; text-decoration: underline; font-size: 0.9em;">Privacy Policy</a>
-    </div>
+    <button onclick="document.getElementById('cb-popup').style.display='none'" style="margin-top: 20px; background: transparent; border: none; cursor: pointer; color: #999; font-size: 0.8em; text-decoration: underline;">Close & Explore Website</button>
     
-    <button onclick="document.getElementById('cb-popup').style.display='none'" style="margin-top: 20px; background: transparent; border: none; cursor: pointer; color: #999; font-size: 0.8em;">Close & Explore Website</button>
   </div>
+</div>
 </div>
 </body>
 </html>
