@@ -59,11 +59,35 @@
         const RSS_FEED_URL = 'https://thehackernews.com/feeds/posts/default';
         const API_URL = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(RSS_FEED_URL)}`;
 
-        // Function to extract image URL from the article description HTML
-        function extractImageUrl(content) {
-            const imgRegExp = /<img[^>]+src="([^">]+)"/;
-            const match = imgRegExp.exec(content);
-            return match ? match[1] : null;
+        // Comprehensive extraction for multiple image patterns in RSS feeds (enclosures, media tags, HTML tags)
+        function extractImageUrl(item) {
+            // 1. Check item.thumbnail or item.enclosure link if image
+            if (item.thumbnail && item.thumbnail.length > 0) return item.thumbnail;
+            if (item.enclosure && item.enclosure.link && item.enclosure.type && item.enclosure.type.startsWith('image')) {
+                return item.enclosure.link;
+            }
+
+            const contentSource = item.content || item.description || '';
+
+            // 2. Look for standard <img src="..."> tag inside content/description
+            const imgRegExp = /<img[^>]+src=["']([^"']+)["']/i;
+            const match = imgRegExp.exec(contentSource);
+            if (match && match[1]) {
+                return match[1];
+            }
+
+            // 3. Fallback to category-specific curated tech backgrounds if no article image is found
+            const fallbacks = [
+                'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800',
+                'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=800',
+                'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800',
+                'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800',
+                'https://images.unsplash.com/photo-1510519138161-5364d8cd7bb5?auto=format&fit=crop&q=80&w=800'
+            ];
+            
+            // Generate a pseudo-random stable index based on item title length to vary fallbacks safely
+            const hash = item.title ? item.title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) : 0;
+            return fallbacks[hash % fallbacks.length];
         }
 
         async function fetchNews() {
@@ -77,19 +101,17 @@
                     
                     data.items.slice(0, 9).forEach(item => {
                         const date = new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                        
-                        // Try to get image from standard field, then try extracting from content
-                        const extractedImg = extractImageUrl(item.content || item.description);
-                        const thumbnail = extractedImg || item.thumbnail || `https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800`;
+                        const thumbnail = extractImageUrl(item);
+                        const category = (item.categories && item.categories.length > 0) ? item.categories[0] : 'Intelligence';
 
                         const article = `
                             <div class="news-card flex flex-col rounded-2xl transition-all duration-300 overflow-hidden group">
-                                <div class="h-48 overflow-hidden bg-zinc-100">
-                                    <img src="${thumbnail}" alt="news-image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                                <div class="h-48 overflow-hidden bg-zinc-100 relative">
+                                    <img src="${thumbnail}" alt="news-image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800'">
                                 </div>
                                 <div class="p-6 flex flex-col flex-grow">
                                     <div class="flex justify-between items-start mb-3">
-                                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">${item.categories[0] || 'Intelligence'}</span>
+                                        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">${category}</span>
                                         <span class="text-[10px] text-zinc-400 font-mono">${date}</span>
                                     </div>
                                     <h3 class="text-lg font-bold mb-3 text-zinc-900 group-hover:text-blue-600 transition-colors leading-tight">
@@ -108,7 +130,8 @@
                     });
                 }
             } catch (error) {
-                container.innerHTML = '<p class="text-zinc-500">Uplink failed. Please refresh.</p>';
+                const container = document.getElementById('news-feed');
+                container.innerHTML = '<p class="text-zinc-500 col-span-3 text-center py-12 font-mono text-xs uppercase tracking-widest">Uplink failed or feed restricted. Please refresh.</p>';
             }
         }
 
