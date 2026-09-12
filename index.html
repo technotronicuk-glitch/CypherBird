@@ -520,7 +520,7 @@
                 </div>
             </div>
 
-            <!-- Right Column: Polished Interface Card -->
+            <!-- Right Column: Polished Interface Card with Integrated Team/Facility Picture -->
             <div class="lg:col-span-6 flex justify-center items-center w-full">
                 <div class="w-full max-w-[460px] bg-[#0c0c0e] rounded-3xl border border-zinc-800/80 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.5)] overflow-hidden group transition-all duration-300 hover:border-zinc-700/90">
                     
@@ -538,17 +538,21 @@
                         </div>
                     </div>
 
-                    <!-- Cleaned Graphic Content Area -->
-                    <div class="p-8 bg-[#0c0c0e] relative flex flex-col items-center justify-center text-center space-y-4">
-                        <div class="w-16 h-16 rounded-2xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-2xl shadow-inner">
-                            🛡️
+                    <!-- Restored Image & Media Content Area -->
+                    <div class="relative h-64 w-full overflow-hidden bg-zinc-900">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=800" alt="Core Development Team" class="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-700">
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0c0c0e] via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+                            <span class="text-white font-mono text-[10px] bg-black/70 px-3 py-1.5 backdrop-blur-md border border-white/10 rounded-lg uppercase tracking-widest">[ Core_Team_Secured ]</span>
                         </div>
-                        <div>
-                            <h3 class="text-white text-sm font-bold font-mono uppercase tracking-wider mb-1">End-to-End Sovereignty</h3>
-                            <p class="text-zinc-400 text-xs font-light max-w-xs leading-relaxed">
-                                Hardware-isolated stream processing ensures complete protection against third-party network surveillance.
-                            </p>
-                        </div>
+                    </div>
+
+                    <!-- Content Description -->
+                    <div class="p-6 bg-[#0c0c0e] text-left">
+                        <h3 class="text-white text-sm font-bold font-mono uppercase tracking-wider mb-1">End-to-End Sovereignty</h3>
+                        <p class="text-zinc-400 text-xs font-light leading-relaxed">
+                            Hardware-isolated stream processing ensures complete protection against third-party network surveillance.
+                        </p>
                     </div>
 
                     <!-- Card Footer Metrics -->
