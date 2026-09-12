@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol | Configuration Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { background-color: #fcfcfc; color: #18181b; }
+        .bg-surface { background-color: #ffffff; }
+        .border-borders { border-color: #e4e4e7; }
+        .text-cobalt { color: #4484ff; }
+        .bg-cobalt { background-color: #4484ff; }
+        .glow-active { box-shadow: 0 10px 40px rgba(68, 132, 255, 0.15); }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #f4f4f5; }
+        ::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 10px; }
+    </style>
+</head>
+<body class="font-sans antialiased pb-48">
+
+    <!-- Back Navigation -->
+    <div class="fixed top-8 left-8 z-50">
+        <a href="index.html" class="flex items-center text-zinc-400 hover:text-zinc-900 font-mono text-[9px] uppercase tracking-[0.3em] transition-all group">
+            <span class="mr-3 group-hover:-translate-x-1 transition-transform">←</span>
+            <span>[ BACK TO DASHBOARD ]</span>
+        </a>
+    </div>
+
+    <header class="py-16 border-b border-borders text-center bg-white/50 backdrop-blur-md">
+        <h1 class="text-4xl font-black uppercase tracking-tighter mb-6 text-zinc-900">Protocol Configuration</h1>
+        <div class="flex items-center justify-center space-x-4">
+            <span id="label-monthly" class="text-zinc-900 font-mono text-[10px] uppercase font-bold">Monthly</span>
+            <button onclick="toggleBilling()" class="w-12 h-6 bg-zinc-100 rounded-full p-1 relative border border-zinc-200">
+                <div id="toggle-knob" class="bg-cobalt w-4 h-4 rounded-full transition-transform duration-300 translate-x-0"></div>
+            </button>
+            <span id="label-yearly" class="text-zinc-400 font-mono text-[10px] uppercase tracking-widest">Yearly (Save €20+)</span>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-8 py-20">
+        
+        <!-- Step 01 -->
+        <section class="mb-32">
+            <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center"> Select Core Protocol</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Standard -->
+                <div id="card-standard" onclick="selectProtocol('Standard', 0, 0)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-300 transition-all group relative shadow-sm">
+                    <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-300 hover:text-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="h-48 w-full bg-zinc-50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-zinc-100">
+                        <img id="img-standard" src="Free chat.png" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-zinc-900 font-black uppercase text-xl">Standard</h3>
+                    <p class="text-zinc-400 font-mono text-[10px] mt-2 uppercase">€0.00</p>
+                </div>
+
+                <!-- Ultra -->
+                <div id="card-ultra" onclick="selectProtocol('Ultra', 8.99, 99.99)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-cobalt transition-all group relative shadow-sm">
+                    <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-300 hover:text-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="h-48 w-full bg-zinc-50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-zinc-100">
+                        <img id="img-ultra" src="Ultra Chat.png" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-zinc-900 font-black uppercase text-xl">Ultra Grade</h3>
+                    <p id="price-ultra" class="text-cobalt font-mono text-[10px] mt-2 uppercase font-bold">€8.99 / mo</p>
+                </div>
+
+                <!-- Elite -->
+                <div id="card-elite" onclick="selectProtocol('Elite', 3.99, 39.99)" class="bg-surface border-2 border-borders p-8 rounded-3xl cursor-pointer hover:border-zinc-900 transition-all group relative shadow-sm">
+                    <button onclick="event.stopPropagation(); removeProtocol()" class="absolute top-4 right-4 text-zinc-300 hover:text-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+                    <div class="h-48 w-full bg-zinc-50 rounded-2xl mb-6 flex items-center justify-center overflow-hidden border border-zinc-100">
+                        <img id="img-elite" src="Elite Chat.png" class="w-full h-full object-contain">
+                    </div>
+                    <h3 class="text-zinc-900 font-black uppercase text-xl">Elite Grade</h3>
+                    <p id="price-elite" class="text-zinc-400 font-mono text-[10px] mt-2 uppercase">€3.99 / mo</p>
+                </div>
+            </div>
+        </section>
+<!-- Step 02: SELECT VAULT -->
+<section class="mb-32">
+    <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Select Vault</h2>
+    
+    <!-- Fixed: Single clean grid container -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <!-- Alpha Vault -->
+        <div id="card-alpha" onclick="selectVault('Alpha', 4.99, 49.89)" class="flex items-center bg-white border border-zinc-100 rounded-[2.5rem] p-6 cursor-pointer hover:border-zinc-900 transition-all group relative shadow-sm">
+            <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-300 hover:text-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+            <div class="w-1/3 h-32 bg-zinc-50 rounded-2xl mr-6 overflow-hidden border border-zinc-100 flex items-center justify-center">
+                <img id="img-alpha" src="Vault 50Gb.png" class="w-full h-full object-cover">
+            </div>
+            <div class="w-2/3 flex flex-col justify-center">
+                <h4 class="text-zinc-900 font-black uppercase text-xl">Alpha Vault</h4>
+                <p id="price-alpha" class="text-zinc-400 font-mono text-[10px] mt-2">€4.99 / mo</p>
+            </div>
+        </div>
+
+        <!-- Deep Vault -->
+        <div id="card-deep" onclick="selectVault('Deep', 19.99, 109.99)" class="flex items-center bg-white border border-zinc-100 rounded-[2.5rem] p-6 cursor-pointer hover:border-zinc-900 transition-all group relative shadow-sm">
+            <button onclick="event.stopPropagation(); removeVault()" class="absolute top-4 right-4 text-zinc-300 hover:text-zinc-900 opacity-0 group-hover:opacity-100 transition-opacity">✕</button>
+            <div class="w-1/3 h-32 bg-zinc-50 rounded-2xl mr-6 overflow-hidden border border-zinc-100 flex items-center justify-center">
+                <img id="img-deep" src="Vault 200Gb.png" class="w-full h-full object-cover">
+            </div>
+            <div class="w-2/3 flex flex-col justify-center">
+                <h4 class="text-zinc-900 font-black uppercase text-xl">Deep Vault</h4>
+                <p id="price-deep" class="text-zinc-400 font-mono text-[10px] mt-2">€9.99 / mo</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SELECT TOP-UP -->
+<section class="mb-32">
+    <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Select Top-Up</h2>
+    
+    <!-- Fixed: Grid now contains only the cards, ensuring they spread evenly -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Top-Up Standard -->
+        <div id="card-topup" onclick="selectVault('TopUp', 1.99, 0)" class="group border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95 overflow-hidden">
+            <img src="Top Up 500MB.png" alt="Top Up" class="w-full aspect-video object-cover transition">
+            <div class="px-6 py-8">
+                <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Standard</p>
+                <p class="text-zinc-900 font-black uppercase">500MB / <span class="dynamic-price" data-base-price="1.99">€1.99</span></p>
+            </div>
+        </div>
+
+        <!-- Top-Up Advanced -->
+        <div id="card-topup2gb" onclick="selectVault('TopUp2GB', 2.99, 0)" class="group border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95 overflow-hidden">
+            <img src="Top Up 2GB.png" alt="Top Up 2GB" class="w-full aspect-video object-cover transition">
+            <div class="px-6 py-8">
+                <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Advanced</p>
+                <p class="text-zinc-900 font-black uppercase">2GB / <span class="dynamic-price" data-base-price="2.99">€2.99</span></p>
+            </div>
+        </div>
+
+        <!-- Top-Up Protocol -->
+        <div id="card-topup5gb" onclick="selectVault('TopUp5GB', 4.99, 0)" class="group border border-zinc-100 rounded-2xl bg-white text-center cursor-pointer transition-all hover:border-zinc-900 hover:shadow-xl active:scale-95 overflow-hidden">
+            <img src="Top Up 5GB.png" alt="Top Up 5GB" class="w-full aspect-video object-cover transition">
+            <div class="px-6 py-8">
+                <p class="text-zinc-400 text-[9px] uppercase tracking-widest mb-1">Top-Up Protocol</p>
+                <p class="text-zinc-900 font-black uppercase">5GB / <span class="dynamic-price" data-base-price="4.99">€4.99</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+       
+        <section class="mb-32">
+    <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Price Comparison</h2>  
+    <div class="overflow-hidden bg-white border border-zinc-100 rounded-[2rem] shadow-sm">
+        <table class="w-full text-left font-mono text-[11px] uppercase tracking-wider">
+            <thead>
+                <tr class="border-b border-zinc-100 bg-zinc-50/50">
+                    <th class="p-6 text-zinc-400 font-black text-[13px]">Service Layer</th>
+                    <th class="p-6 text-zinc-900 font-black text-[13px]">Alpha / Elite</th>
+                    <th class="p-6 text-cobalt font-black text-[13px]">Deep / Ultra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Vault Services -->
+                <tr class="border-b border-zinc-100 hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Standalone Vault (Monthly)</td>
+                    <td class="p-6"><span class="dynamic-price" data-base-price="4.99">€4.99</span> <span class="text-[9px] text-zinc-400 ml-2">(50GB)</span></td>
+                    <td class="p-6 text-cobalt"><span class="dynamic-price" data-base-price="9.99">€9.99</span> <span class="text-[9px] text-zinc-400 ml-2">(200GB)</span></td>
+                </tr>
+                <!-- Subscription Monthly -->
+                <tr class="border-b border-zinc-100 hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Standard Subscription (Monthly)</td>
+                    <td class="p-6"><span class="dynamic-price" data-base-price="3.99">€3.99</span></td>
+                    <td class="p-6 text-cobalt"><span class="dynamic-price" data-base-price="8.99">€8.99</span></td>
+                </tr>
+                <!-- Monthly Bundles -->
+                <tr class="border-b border-zinc-100 bg-blue-50/20">
+                    <td class="p-6 text-zinc-900 font-black">Monthly Bundle (Sub + Vault)</td>
+                    <td class="p-6 font-bold"><span class="dynamic-price" data-base-price="8.98">€8.98</span></td>
+                    <td class="p-6 text-cobalt font-bold"><span class="dynamic-price" data-base-price="18.98">€18.98</span></td>
+                </tr>
+                <!-- Annual Packages -->
+                <tr class="border-b border-zinc-100 hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Annual Subscription Package</td>
+                    <td class="p-6"><span class="dynamic-price" data-base-price="39.99">€39.99</span> <span class="block text-[9px] text-green-600">DIS: <span class="dynamic-price" data-base-price="7.89">€7.89</span></span></td>
+                    <td class="p-6 text-cobalt"><span class="dynamic-price" data-base-price="99.99">€99.99</span> <span class="block text-[9px] text-green-600">DIS: <span class="dynamic-price" data-base-price="7.89">€7.89</span></span></td>
+                </tr>
+                <!-- Annual Vault -->
+                <tr class="border-b border-zinc-100 hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Annual Vault Package</td>
+                    <td class="p-6"><span class="dynamic-price" data-base-price="49.99">€49.99</span> <span class="block text-[9px] text-green-600">DIS: <span class="dynamic-price" data-base-price="9.89">€9.89</span></span></td>
+                    <td class="p-6 text-cobalt"><span class="dynamic-price" data-base-price="109.99">€109.99</span> <span class="block text-[9px] text-green-600">DIS: <span class="dynamic-price" data-base-price="9.89">€9.89</span></span></td>
+                </tr>
+                <!-- Yearly Bundles -->
+                <tr class="bg-zinc-900 text-white">
+                    <td class="p-6 font-black uppercase">Full Yearly Bundle</td>
+                        <td class="p-6">
+    <span class="text-xl dynamic-price" data-base-price="99.99">€99.99</span>
+    <span class="block text-[9px] text-zinc-400">DIS APPLIED: <span class="dynamic-price" data-base-price="7.89">€7.89</span></span>
+                    </td>
+                    <td class="p-6 text-cobalt">
+    <span class="text-xl dynamic-price" data-base-price="209.99">€209.99</span>
+    <span class="block text-[9px] text-blue-400">DIS APPLIED: <span class="dynamic-price" data-base-price="17.77">€17.77</span></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</section>
+        <section class="mb-32">
+    <h2 class="text-zinc-900 font-mono text-xs md:text-sm font-bold uppercase tracking-[0.5em] mb-12 text-center">Technical Comparison</h2> 
+    <div class="overflow-hidden bg-white border border-borders rounded-[2rem] shadow-sm">
+        <table class="w-full text-left font-mono text-[11px] uppercase tracking-wider">
+            <thead>
+                <tr class="border-b border-borders bg-zinc-50/50">
+                    <!-- Increased text size to text-[13px] and added font-black for the header -->
+                    <th class="p-6 text-zinc-400 font-black text-[13px]">Feature</th>
+                    <th class="p-6 text-zinc-900 font-black italic text-[13px]">Standard</th>
+                    <th class="p-6 text-zinc-900 font-black text-[13px]">Elite</th>
+                    <th class="p-6 text-cobalt font-black text-[13px]">Ultra</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="border-b border-borders hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">AES-256 Scrambling</td>
+                    <td class="p-6">✓ Basic</td>
+                    <td class="p-6">✓ Advanced</td>
+                    <td class="p-6 text-cobalt">✓ Neural_Triple</td>
+                </tr>
+                <tr class="border-b border-borders hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Max File Size</td>
+                    <td class="p-6">25MB</td>
+                    <td class="p-6">500MB</td>
+                    <td class="p-6 text-cobalt">Unlimited</td>
+                </tr>
+                <!-- Added Vault Row -->
+                <tr class="border-b border-borders hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Vault Storage</td>
+                    <td class="p-6">0GB</td>
+                    <td class="p-6">1GB</td>
+                    <td class="p-6 text-cobalt">2GB</td>
+                </tr>
+                <!-- Added EEC SecureChat Row -->
+                <tr class="border-b border-borders hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">EEC SecureChat</td>
+                    <td class="p-6">✓ FREE</td>
+                    <td class="p-6">✓ FREE</td>
+                    <td class="p-6 text-cobalt">✓ FREE</td>
+                </tr>
+                <tr class="hover:bg-zinc-50/50 transition-colors">
+                    <td class="p-6 text-zinc-500 font-bold">Priority Support</td>
+                    <td class="p-6">Email</td>
+                    <td class="p-6">Email</td>
+                    <td class="p-6 text-cobalt">24/7 Neural</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+    </main>
+<!-- 1. FOOTER (Stays at bottom) -->
+<footer class="fixed bottom-0 left-0 w-full bg-white/80 backdrop-blur-2xl border-t border-zinc-200 py-8 px-12 z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.03)]">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+        <div>
+            <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-widest mb-1 text-center md:text-left">Active Configuration</p>
+            <h4 id="selection-summary" class="text-zinc-900 font-black uppercase text-lg text-center md:text-left">
+                No Protocol Selected <span class="text-zinc-200 mx-2">+</span> No Vault
+            </h4>
+        </div>
+        <div class="flex items-center gap-12">
+            <div class="text-right">
+                <p class="text-zinc-400 font-mono text-[9px] uppercase tracking-widest">Total Investment</p>
+                <div id="display-total" class="text-zinc-900 text-4xl font-black tracking-tighter">€0.00</div>
+            </div>
+
+            <div class="relative group">
+                <button id="reset-selection" onclick="resetAllSelections()" 
+                    class="absolute -top-3 -right-3 bg-zinc-900 text-white w-6 h-6 rounded-full flex items-center justify-center text-[10px] border border-white shadow-lg opacity-0 pointer-events-none transition-all hover:bg-red-600 z-[60]">
+                    ✕
+                </button>
+
+                <button id="checkout-link" onclick="handleCheckoutClick()" 
+                    class="bg-zinc-900 text-white px-10 py-4 font-black uppercase tracking-widest text-[11px] hover:bg-cobalt transition-all shadow-xl shadow-zinc-200 disabled:opacity-20">
+                    Initialize Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+</footer>
+  <script>
+    // --- STATE MANAGEMENT ---
+    let isYearly = false;
+    let selectedProtocol = { name: null, priceM: 0, priceY: 0 };
+    let selectedVault = { name: null, priceM: 0, priceY: 0 };
+    
+    // --- CURRENCY & GEOLOCATION STATE ---
+    let globalRate = 1;
+    let globalCurrency = 'EUR';
+    let globalLocale = 'en-IE';
+
+    /**
+     * MULTI-CHANNEL GEOLOCATION & EXCHANGE RATE ENGINE
+     */
+    async function initGlobalIntelligence() {
+        let geoData = null;
+
+        // Primary Geolocation Pass
+        try {
+            const geoRes = await fetch('https://ipapi.co/json/');
+            if (geoRes.ok) {
+                geoData = await geoRes.json();
+                globalCurrency = geoData.currency || 'EUR';
+                globalLocale = geoData.languages?.split(',')[0] || 'en-IE';
+            }
+        } catch (e) {
+            console.warn("Primary API channel limited. Accessing backup routing structure...");
+        }
+
+        // Secondary Geolocation Fail-Safe
+        if (!geoData || geoData.error) {
+            try {
+                const backupRes = await fetch('http://ip-api.com/json/');
+                if (backupRes.ok) {
+                    const backupData = await backupRes.json();
+                    if (backupData && backupData.status === "success") {
+                        globalCurrency = backupData.currency || 'EUR';
+                        globalLocale = globalCurrency === 'PLN' ? 'pl-PL' : 
+                                       globalCurrency === 'GBP' ? 'en-GB' : 
+                                       globalCurrency === 'USD' ? 'en-US' : 'en-IE';
+                    }
+                }
+            } catch (backupError) {
+                console.error("All dynamic geolocation components offline. System configurations defaulted.");
+            }
+        }
+
+        // Exchange Rate Sync Engine
+        try {
+            const rateRes = await fetch('https://open.er-api.com/v6/latest/EUR');
+            const rateData = await rateRes.json();
+            globalRate = rateData.rates[globalCurrency] || 1;
+        } catch (rateError) {
+            console.error("Exchange Engine Timeout:", rateError);
+        } finally {
+            // Push calculation loops into layout interfaces
+            updateAllPricingUI();
+            updateUI();
+        }
+    }
+
+    /**
+     * DYNAMIC LAYOUT PRICE FORMATTER
+     * Converts independent baseline elements (like data top-ups) matching custom configuration rules
+     */
+    function updateAllPricingUI() {
+        const formatter = new Intl.NumberFormat(globalLocale, {
+            style: 'currency',
+            currency: globalCurrency,
+            minimumFractionDigits: 2
+        });
+
+        // Formats separated static components (e.g., top-up values)
+        document.querySelectorAll('.dynamic-price').forEach(el => {
+            const baseVal = el.getAttribute('data-base-price');
+            if (!baseVal) return;
+            
+            let numericBase = parseFloat(baseVal);
+            let converted = numericBase * globalRate;
+            
+            if (globalCurrency !== 'EUR') {
+                converted = Math.ceil(converted) - 0.01;
+            }
+            el.innerText = formatter.format(converted);
+        });
+
+        // Updates conditional UI strings attached to cards
+        const updateText = (id, baseVal, suffixM, suffixY) => { 
+            const el = document.getElementById(id);
+            if (!el) return;
+            
+            let numericBase = parseFloat(baseVal);
+            let converted = numericBase * globalRate;
+            
+            if (globalCurrency !== 'EUR' && converted > 0) {
+                converted = Math.ceil(converted) - 0.01;
+            }
+            
+            const localizedPrice = formatter.format(converted);
+            el.innerText = isYearly ? `${localizedPrice}${suffixY}` : `${localizedPrice}${suffixM}`;
+        };
+
+        // Convert individual price metrics based on monthly vs yearly state
+        updateText('price-ultra', isYearly ? "99.99" : "8.99", " / mo", " / yr");
+        updateText('price-elite', isYearly ? "39.99" : "3.99", " / mo", " / yr");
+        updateText('price-alpha', isYearly ? "49.89" : "4.99", " / mo", " / yr");
+        updateText('price-deep', isYearly ? "109.99" : "9.99", " / mo", " / yr");
+    }
+    
+    function toggleBilling() {
+        isYearly = !isYearly;
+        const knob = document.getElementById('toggle-knob');
+        const mLabel = document.getElementById('label-monthly');
+        const yLabel = document.getElementById('label-yearly');
+        
+        if(knob) knob.style.transform = isYearly ? 'translateX(24px)' : 'translateX(0px)';
+        
+        if (isYearly) {
+            if(yLabel) yLabel.className = 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
+            if(mLabel) mLabel.className = 'text-zinc-400 font-mono text-[10px] uppercase';
+        } else {
+            if(mLabel) mLabel.className = 'text-zinc-900 font-mono text-[10px] uppercase font-bold';
+            if(yLabel) yLabel.className = 'text-zinc-400 font-mono text-[10px] uppercase tracking-widest';
+        }
+
+        // Re-calculate visual string layers across individual cards
+        updateAllPricingUI();
+        updateUI();
+    }
+
+    function selectProtocol(name, priceM, priceY) {
+        selectedProtocol = { name, priceM, priceY };
+        updateUI();
+    }
+
+    function selectVault(name, priceM, priceY) {
+        selectedVault = { name, priceM, priceY };
+        updateUI();
+    }
+
+    function resetAllSelections() {
+        selectedProtocol = { name: null, priceM: 0, priceY: 0 };
+        selectedVault = { name: null, priceM: 0, priceY: 0 };
+        updateUI();
+    }
+
+    // --- CHECKOUT LOGIC ---
+    function handleCheckoutClick() {
+        const checkoutLinks = {
+            monthly: {
+                'Elite': 'https://buy.stripe.com/aFa28l6zccN70E89mebsc0m',
+                'Ultra': 'https://buy.stripe.com/5kQ6oBe1EdRb4Uo7e6bsc03',
+                'Alpha': 'https://buy.stripe.com/00w00dcXA8wR1Ic7e6bsc0n',
+                'Deep':  'https://buy.stripe.com/cNi3cp5v8fZj5Ys6a2bsc09',
+            },
+            yearly: {
+                'Elite': 'https://buy.stripe.com/8x24gt1eS28t9aEfKCbsc0g',
+                'Ultra': 'https://buy.stripe.com/6oU14hbTw8wR2MgdCubsc0e',
+                'Alpha': 'https://buy.stripe.com/bJe7sF7DgcN7gD62XQbsc0f',
+                'Deep':  'https://buy.stripe.com/9B6dR37Dg7sNfz26a2bsc0h',
+            },
+            bundleMonthly: {
+                'Elite_Plus_Alpha': 'https://buy.stripe.com/eVqbIV8HkfZj72w41Ubsc08',
+                'Elite_Plus_Deep':  'https://buy.stripe.com/9B68wJcXA28t86AfKCbsc0c',
+                'Ultra_Plus_Alpha': 'https://buy.stripe.com/bJe7sFbTwbJ3cmQeGybsc0d',
+                'Ultra_Plus_Deep':  'https://buy.stripe.com/eVq00d2iW00l72wcyqbsc0b',
+            },
+            bundleYearly: {
+                'Elite_Plus_Alpha': 'https://buy.stripe.com/fZu9AN3n06oJaeIbumbsc0i',
+                'Elite_Plus_Deep':  'https://buy.stripe.com/bJeaERg9M9AVaeI55Ybsc0j',
+                'Ultra_Plus_Alpha': 'https://buy.stripe.com/fZu7sFf5IcN7dqUfKCbsc0k',
+                'Ultra_Plus_Deep':  'https://buy.stripe.com/eVqdR32iW14p86AfKCbsc0l',
+            },
+            topups: {
+                'Standard': 'https://buy.stripe.com/5kQ28le1E6oJ0E8gOGbsc05',
+                '2GB':      'https://buy.stripe.com/dRm28l4r414paeI0PIbsc06',
+                '5GB':      'https://buy.stripe.com/5kQaERcXA6oJ4Uo2XQbsc07',
+            }
+        };
+
+        function getFinalUrl(protocol, vault, isYearly) {
+            if (vault && vault.startsWith('TopUp')) {
+                const type = vault === 'TopUp' ? 'Standard' : vault.replace('TopUp', '');
+                return checkoutLinks.topups[type];
+            }
+            if (protocol && vault && vault !== "No Vault") {
+                const bundleKey = `${protocol}_Plus_${vault}`;
+                return isYearly ? checkoutLinks.bundleYearly[bundleKey] : checkoutLinks.bundleMonthly[bundleKey];
+            }
+            if (protocol) {
+                return isYearly ? checkoutLinks.yearly[protocol] : checkoutLinks.monthly[protocol];
+            }
+            if (vault && vault !== "No Vault") {
+                return isYearly ? checkoutLinks.yearly[vault] : checkoutLinks.monthly[vault];
+            }
+            return null;
+        }
+
+        const finalUrl = getFinalUrl(selectedProtocol.name, selectedVault.name, isYearly);
+
+        if (finalUrl) {
+            window.location.href = finalUrl;
+        } else {
+            alert("Please select a valid configuration before checking out.");
+        }
+    }
+
+    // This function updates the footer total and text with live currency rendering
+    function updateUI() {
+        const pName = selectedProtocol.name || "No Protocol";
+        const vName = selectedVault.name || "No Vault";
+        
+        // Calculate original Euro parameters internally
+        const pPrice = isYearly ? selectedProtocol.priceY : selectedProtocol.priceM;
+        const vPrice = isYearly ? selectedVault.priceY : selectedVault.priceM;
+        const totalEuro = pPrice + vPrice;
+        
+        // Render summary text configurations
+        const summary = document.getElementById('selection-summary');
+        if(summary) {
+            summary.innerHTML = `${pName} <span class="text-zinc-400 mx-2">+</span> ${vName} <span class="text-zinc-300 ml-2 text-sm">(${isYearly ? 'Yearly' : 'Monthly'})</span>`;
+        }
+        
+        // Convert and format checkout investment summary calculations
+        const totalDisplay = document.getElementById('display-total');
+        if(totalDisplay) {
+            let convertedTotal = totalEuro * globalRate;
+            if (globalCurrency !== 'EUR' && totalEuro > 0) {
+                convertedTotal = Math.ceil(convertedTotal) - 0.01;
+            }
+            
+            const footerFormatter = new Intl.NumberFormat(globalLocale, {
+                style: 'currency',
+                currency: globalCurrency,
+                minimumFractionDigits: 2
+            });
+            totalDisplay.innerText = footerFormatter.format(convertedTotal);
+        }
+        
+        const xBtn = document.getElementById('reset-selection');
+        const checkoutBtn = document.getElementById('checkout-link');
+        
+        if(totalEuro > 0) {
+            if(xBtn) { xBtn.style.opacity = "1"; xBtn.style.pointerEvents = "auto"; }
+            if(checkoutBtn) {
+                checkoutBtn.disabled = false;
+                checkoutBtn.style.opacity = "1";
+                checkoutBtn.style.cursor = "pointer";
+            }
+        } else {
+            if(xBtn) { xBtn.style.opacity = "0"; xBtn.style.pointerEvents = "none"; }
+            if(checkoutBtn) {
+                checkoutBtn.disabled = true;
+                checkoutBtn.style.opacity = "0.5";
+                checkoutBtn.style.cursor = "not-allowed";
+            }
+        }
+    }
+
+    // RUN ACCELERATION LIFECYCLES
+    document.addEventListener('DOMContentLoaded', () => {
+        initGlobalIntelligence();
+    });
+</script>
+</body>
+</html>
