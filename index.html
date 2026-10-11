@@ -192,98 +192,98 @@
             </div>
         </div>
 
-    <!-- Parent Container that holds both the overlapping card and the phone mockup -->
-<div class="relative w-full max-w-[550px] h-[650px] flex items-center justify-center mx-auto">
-        
-    <!-- 1. The Family Image Card (Overlapping on the Left/Back) -->
-    <div class="absolute left-0 top-12 w-[65%] h-[520px] bg-zinc-900 rounded-[32px] overflow-hidden border border-zinc-800/50 shadow-2xl z-10 group">
-        <img src="photo-m.avif" alt="Family Memory" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-        
-        <!-- Status Overlay Badge -->
-        <div class="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-black/40 p-4 border border-white/15 rounded-2xl shadow-xl z-20">
-            <p class="text-blue-400 text-[9px] font-black uppercase tracking-widest mb-0.5">Status: Vaulted</p>
-            <p class="text-white text-xs font-mono font-bold">CB-PRV-MEM-882.AES</p>
-        </div>
-    </div>
-
-    <!-- 2. The Phone Mockup Card (Overlapping on the Right/Front) -->
-    <!-- (Insert your responsive phone mockup card code here, positioned with absolute right-0 or relative offset) -->
-
-</div>
-
-        <div class="relative left-2 bottom-6 w-full max-w-[280px] md:max-w-[320px] aspect-[9/18] bg-[#09090b] rounded-[44px] p-4 md:p-5 border-[6px] border-zinc-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] z-30 flex flex-col justify-between font-sans transition-transform duration-500 hover:-translate-y-1 overflow-hidden">
-    
-    <!-- Top Content Section -->
-    <div class="w-full flex flex-col justify-between">
-        <div class="flex justify-between items-center pt-1 pb-2 border-b border-zinc-900">
-            <div class="flex items-center gap-1.5">
-                <span class="text-xs">🦅</span>
-                <p class="text-[9px] font-black font-mono uppercase tracking-widest text-zinc-200">CYPHERBIRD</p>
+        <!-- RIGHT SIDE: Unified Parent Container Holding Both Overlapping Cards Properly -->
+        <div class="relative w-full max-w-[550px] h-[650px] flex items-center justify-center mx-auto">
+                
+            <!-- 1. The Family Image Card (Overlapping on the Left/Back) -->
+            <div class="absolute left-0 top-12 w-[60%] h-[520px] bg-zinc-900 rounded-[32px] overflow-hidden border border-zinc-800/50 shadow-2xl z-10 group">
+                <img src="photo-m.avif" alt="Family Memory" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                
+                <!-- Status Overlay Badge -->
+                <div class="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-black/40 p-4 border border-white/15 rounded-2xl shadow-xl z-20">
+                    <p class="text-blue-400 text-[9px] font-black uppercase tracking-widest mb-0.5">Status: Vaulted</p>
+                    <p class="text-white text-xs font-mono font-bold">CB-PRV-MEM-882.AES</p>
+                </div>
             </div>
-            <span class="text-[7px] font-mono px-1.5 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-500 font-bold">V_3.02</span>
-        </div>
 
-        <div class="flex justify-between items-start my-2 px-0.5">
-            <div>
-                <h4 class="text-[11px] font-black tracking-wide text-zinc-100 uppercase">Arthur Scherbius</h4>
-                <p class="text-[7px] font-mono tracking-wider text-zinc-500 uppercase mt-0.5">CB-NODE-ACTIVE</p>
-            </div>
-            <div class="flex gap-2.5 text-[8px] font-bold tracking-wider text-zinc-400 uppercase pt-0.5">
-                <span class="cursor-pointer hover:text-white transition-colors">Gallery</span>
-                <span class="cursor-pointer hover:text-white transition-colors">Contacts</span>
-            </div>
-        </div>
-
-        <div class="w-full bg-zinc-950 border border-zinc-900/80 rounded-xl px-2.5 py-2 flex justify-between items-center mb-2">
-            <div class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-zinc-700 animate-pulse"></span>
-                <span class="text-[9px] font-mono text-zinc-600 tracking-wide">SELECT RECIPIENT...</span>
-            </div>
-            <button class="text-[7px] font-black bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 border border-blue-500/20 px-2 py-0.5 rounded uppercase tracking-wider transition-colors">
-                + Add
-            </button>
-        </div>
-        
-        <div class="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-3 flex flex-col justify-between h-32 md:h-36">
-            <span class="text-[10px] font-mono text-zinc-500 tracking-wide">Input Sovereign Payload...</span>
+            <!-- 2. The Phone Mockup Card (Overlapping on the Right/Front - Now safely nested inside!) -->
+            <div class="absolute right-0 bottom-0 w-[62%] max-w-[320px] aspect-[9/18] bg-[#09090b] rounded-[44px] p-4 md:p-5 border-[6px] border-zinc-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] z-30 flex flex-col justify-between font-sans transition-transform duration-500 hover:-translate-y-1 overflow-hidden">
             
-            <div class="flex justify-between items-center text-zinc-500 pt-2 border-t border-zinc-900/40">
-                <button class="hover:text-zinc-300 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                </button>
-                <button class="hover:text-zinc-300 transition-colors">
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 009 11a5 5 0 00-10 0c0 1.017.07 2.019.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
-                </button>
+                <!-- Top Content Section -->
+                <div class="w-full flex flex-col justify-between">
+                    <div class="flex justify-between items-center pt-1 pb-2 border-b border-zinc-900">
+                        <div class="flex items-center gap-1.5">
+                            <span class="text-xs">🦅</span>
+                            <p class="text-[9px] font-black font-mono uppercase tracking-widest text-zinc-200">CYPHERBIRD</p>
+                        </div>
+                        <span class="text-[7px] font-mono px-1.5 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-500 font-bold">V_3.02</span>
+                    </div>
+
+                    <div class="flex justify-between items-start my-2 px-0.5">
+                        <div>
+                            <h4 class="text-[11px] font-black tracking-wide text-zinc-100 uppercase">Arthur Scherbius</h4>
+                            <p class="text-[7px] font-mono tracking-wider text-zinc-500 uppercase mt-0.5">CB-NODE-ACTIVE</p>
+                        </div>
+                        <div class="flex gap-2.5 text-[8px] font-bold tracking-wider text-zinc-400 uppercase pt-0.5">
+                            <span class="cursor-pointer hover:text-white transition-colors">Gallery</span>
+                            <span class="cursor-pointer hover:text-white transition-colors">Contacts</span>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-zinc-950 border border-zinc-900/80 rounded-xl px-2.5 py-2 flex justify-between items-center mb-2">
+                        <div class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-zinc-700 animate-pulse"></span>
+                            <span class="text-[9px] font-mono text-zinc-600 tracking-wide">SELECT RECIPIENT...</span>
+                        </div>
+                        <button class="text-[7px] font-black bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 border border-blue-500/20 px-2 py-0.5 rounded uppercase tracking-wider transition-colors">
+                            + Add
+                        </button>
+                    </div>
+                    
+                    <div class="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-3 flex flex-col justify-between h-32 md:h-36">
+                        <span class="text-[10px] font-mono text-zinc-500 tracking-wide">Input Sovereign Payload...</span>
+                        
+                        <div class="flex justify-between items-center text-zinc-500 pt-2 border-t border-zinc-900/40">
+                            <button class="hover:text-zinc-300 transition-colors">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            </button>
+                            <button class="hover:text-zinc-300 transition-colors">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 009 11a5 5 0 00-10 0c0 1.017.07 2.019.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Actions Section -->
+                <div class="w-full mt-2">
+                    <div class="grid grid-cols-2 gap-2 mb-1.5">
+                        <div class="bg-white text-black font-mono font-black text-[9px] text-center py-2 rounded-lg uppercase tracking-wider cursor-pointer">
+                            Encrypt
+                        </div>
+                        <div class="bg-zinc-950 border border-zinc-900 text-zinc-600 font-mono font-bold text-[9px] text-center py-2 rounded-lg uppercase tracking-wider cursor-not-allowed">
+                            Reveal
+                        </div>
+                    </div>
+                    
+                    <div class="w-full bg-white hover:bg-zinc-100 text-black font-black text-[9px] tracking-widest uppercase text-center py-2.5 rounded-xl shadow-md cursor-pointer transition-colors mb-1.5">
+                        Execute Encryption
+                    </div>
+
+                    <div class="w-full bg-zinc-950/40 border border-zinc-900/60 rounded-xl py-2 text-center cursor-pointer hover:bg-zinc-950/80 transition-colors">
+                        <p class="text-[8px] font-black tracking-widest text-zinc-300 uppercase">Secret Conversation</p>
+                        <p class="text-[6px] font-mono tracking-wider text-zinc-600 uppercase mt-0.5">SHA-512 Secured</p>
+                    </div>
+
+                    <p class="text-[6px] font-mono tracking-widest text-zinc-700 uppercase text-center mt-2">
+                        © 2026 CYPHERBIRD • PRIVACY PROTOCOL
+                    </p>
+                </div>
+
             </div>
-        </div>
-    </div>
-    
-    <!-- Bottom Actions Section -->
-    <div class="w-full mt-2">
-        <div class="grid grid-cols-2 gap-2 mb-1.5">
-            <div class="bg-white text-black font-mono font-black text-[9px] text-center py-2 rounded-lg uppercase tracking-wider cursor-pointer">
-                Encrypt
-            </div>
-            <div class="bg-zinc-950 border border-zinc-900 text-zinc-600 font-mono font-bold text-[9px] text-center py-2 rounded-lg uppercase tracking-wider cursor-not-allowed">
-                Reveal
-            </div>
-        </div>
-        
-        <div class="w-full bg-white hover:bg-zinc-100 text-black font-black text-[9px] tracking-widest uppercase text-center py-2.5 rounded-xl shadow-md cursor-pointer transition-colors mb-1.5">
-            Execute Encryption
+
         </div>
 
-        <div class="w-full bg-zinc-950/40 border border-zinc-900/60 rounded-xl py-2 text-center cursor-pointer hover:bg-zinc-950/80 transition-colors">
-            <p class="text-[8px] font-black tracking-widest text-zinc-300 uppercase">Secret Conversation</p>
-            <p class="text-[6px] font-mono tracking-wider text-zinc-600 uppercase mt-0.5">SHA-512 Secured</p>
-        </div>
-
-        <p class="text-[6px] font-mono tracking-widest text-zinc-700 uppercase text-center mt-2">
-            © 2026 CYPHERBIRD • PRIVACY PROTOCOL
-        </p>
-    </div>
-
-</div>
+</section>
 </main>
 
     <section id="commitments" class="py-32 bg-base border-t border-borders">
