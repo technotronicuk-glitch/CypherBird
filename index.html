@@ -92,24 +92,62 @@
 
 .show { display: block !important; }
     </style>
-</head>
-<body class="bg-base text-silver font-sans selection:bg-cobalt selection:text-white">
-        <header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
-        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
-        <a href="index.html" class="flex items-center gap-4 shrink-0 group">
-            <img src="logo.png" alt="Cypherbird Logo" class="h-10 w-auto object-contain"> 
-            <span class="text-2xl font-black tracking-tighter text-zinc-900 uppercase leading-none">
+<header class="border-b border-borders sticky top-0 bg-base/95 backdrop-blur-sm z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        <!-- Logo & Brand Name -->
+        <a href="index.html" class="flex items-center gap-3 shrink-0 group">
+            <img src="logo.png" alt="Cypherbird Logo" class="h-8 lg:h-10 w-auto object-contain"> 
+            <span class="text-lg sm:text-xl lg:text-2xl font-black tracking-tighter text-zinc-900 uppercase leading-none">
                 CYPHERBIRD
             </span>
         </a>
-        <nav class="hidden lg:flex items-center space-x-10 text-[11px] font-bold uppercase tracking-[0.2em]">
+
+        <!-- Desktop Navigation (Hidden on Mobile) -->
+        <nav class="hidden lg:flex items-center space-x-8 text-[11px] font-bold uppercase tracking-[0.2em]">
             <a href="intelligence.html" class="text-zinc-500 hover:text-cobalt transition">Intelligence</a>
             <a href="pricing.html" class="text-zinc-500 hover:text-cobalt transition">Pricing</a>
-            <a href="capabilities.html" class="text-zinc-500 hover:text-cobalt transition">Capabilites</a>
+            <a href="capabilities.html" class="text-zinc-500 hover:text-cobalt transition">Capabilities</a>
             <a href="news.html" class="text-zinc-500 hover:text-cobalt transition">News</a>
             <a href="account.html" class="text-zinc-500 hover:text-cobalt transition border border-borders px-4 py-2">Account</a>
+        </nav>
+
+        <!-- Mobile Hamburger Button (Visible only on Mobile/Tablet) -->
+        <button id="mobile-menu-button" class="lg:hidden text-zinc-800 focus:outline-none p-2 rounded-lg hover:bg-zinc-100 transition" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars text-xl"></i>
+        </button>
     </div>
-</div>
+
+    <!-- Mobile Dropdown Menu (Hidden by default, toggled via script) -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-borders bg-base/98 px-6 py-4 space-y-3 shadow-lg">
+        <a href="intelligence.html" class="block text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-cobalt py-2">Intelligence</a>
+        <a href="pricing.html" class="block text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-cobalt py-2">Pricing</a>
+        <a href="capabilities.html" class="block text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-cobalt py-2">Capabilities</a>
+        <a href="news.html" class="block text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-cobalt py-2">News</a>
+        <a href="account.html" class="block text-xs font-bold uppercase tracking-wider text-zinc-800 border border-borders text-center py-2.5 rounded mt-2">Account</a>
+    </div>
+</header>
+
+<!-- Mobile Menu Toggle Script -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const menuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+
+        menuButton.addEventListener("click", function() {
+            mobileMenu.classList.toggle("hidden");
+            // Switch icon between bars and close (X)
+            const icon = menuButton.querySelector("i");
+            if (mobileMenu.classList.contains("hidden")) {
+                icon.classList.remove("fa-xmark");
+                icon.classList.add("fa-bars");
+            } else {
+                icon.classList.remove("fa-bars");
+                icon.classList.add("fa-xmark");
+            }
+        });
+    });
+</script>
         </nav>
     </div>
 <main class="relative">
@@ -169,79 +207,79 @@
     </div>
 </div>
 
-        <div class="absolute left-2 bottom-6 w-[64%] h-[620px] bg-[#09090b] rounded-[44px] p-5 border-[6px] border-zinc-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] z-30 flex flex-col justify-between font-sans transition-transform duration-500 hover:-translate-y-1">
-            
-            <div class="w-full">
-                <div class="flex justify-between items-center pt-1 pb-3 border-b border-zinc-900">
-                    <div class="flex items-center gap-1.5">
-                        <span class="text-xs">🦅</span>
-                        <p class="text-[10px] font-black font-mono uppercase tracking-widest text-zinc-200">CYPHERBIRD</p>
-                    </div>
-                    <span class="text-[8px] font-mono px-1.5 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-500 font-bold">V_3.02</span>
-                </div>
-
-                <div class="flex justify-between items-start mt-4 mb-4 px-0.5">
-                    <div>
-                        <h4 class="text-xs font-black tracking-wide text-zinc-100 uppercase">Arthur Scherbius </h4>
-                        <p class="text-[8px] font-mono tracking-wider text-zinc-500 uppercase mt-0.5">CB-NODE-ACTIVE</p>
-                    </div>
-                    <div class="flex gap-3 text-[9px] font-bold tracking-wider text-zinc-400 uppercase pt-0.5">
-                        <span class="cursor-pointer hover:text-white transition-colors">Gallery</span>
-                        <span class="cursor-pointer hover:text-white transition-colors">Contacts</span>
-                    </div>
-                </div>
-
-                <div class="w-full bg-zinc-950 border border-zinc-900/80 rounded-xl px-3 py-2.5 flex justify-between items-center mb-3">
-                    <div class="flex items-center gap-2">
-                        <span class="w-1.5 h-1.5 rounded-full bg-zinc-700 animate-pulse"></span>
-                        <span class="text-[10px] font-mono text-zinc-600 tracking-wide">SELECT RECIPIENT...</span>
-                    </div>
-                    <button class="text-[8px] font-black bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 border border-blue-500/20 px-2 py-0.5 rounded uppercase tracking-wider transition-colors">
-                        + Add
-                    </button>
-                </div>
-                
-                <div class="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-3.5 h-44 flex flex-col justify-between">
-                    <span class="text-[11px] font-mono text-zinc-500 tracking-wide">Input Sovereign Payload...</span>
-                    
-                    <div class="flex justify-between items-center text-zinc-500 pt-2 border-t border-zinc-900/40">
-                        <button class="hover:text-zinc-300 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-line-cap="round" stroke-line-join="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                        </button>
-                        <button class="hover:text-zinc-300 transition-colors">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-line-cap="round" stroke-line-join="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 009 11a5 5 0 00-10 0c0 1.017.07 2.019.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
-                        </button>
-                    </div>
-                </div>
+        <div class="relative left-2 bottom-6 w-full max-w-[280px] md:max-w-[320px] aspect-[9/18] bg-[#09090b] rounded-[44px] p-4 md:p-5 border-[6px] border-zinc-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] z-30 flex flex-col justify-between font-sans transition-transform duration-500 hover:-translate-y-1 overflow-hidden">
+    
+    <!-- Top Content Section -->
+    <div class="w-full flex flex-col justify-between">
+        <div class="flex justify-between items-center pt-1 pb-2 border-b border-zinc-900">
+            <div class="flex items-center gap-1.5">
+                <span class="text-xs">🦅</span>
+                <p class="text-[9px] font-black font-mono uppercase tracking-widest text-zinc-200">CYPHERBIRD</p>
             </div>
-            
-            <div class="w-full">
-                <div class="grid grid-cols-2 gap-2 mb-2">
-                    <div class="bg-white text-black font-mono font-black text-[10px] text-center py-2.5 rounded-lg uppercase tracking-wider cursor-pointer">
-                        Encrypt
-                    </div>
-                    <div class="bg-zinc-950 border border-zinc-900 text-zinc-600 font-mono font-bold text-[10px] text-center py-2.5 rounded-lg uppercase tracking-wider cursor-not-allowed">
-                        Reveal
-                    </div>
-                </div>
-                
-                <div class="w-full bg-white hover:bg-zinc-100 text-black font-black text-[10px] tracking-widest uppercase text-center py-3 rounded-xl shadow-md cursor-pointer transition-colors mb-2">
-                    Execute Encryption
-                </div>
+            <span class="text-[7px] font-mono px-1.5 py-0.5 rounded bg-zinc-950 border border-zinc-800 text-zinc-500 font-bold">V_3.02</span>
+        </div>
 
-                <div class="w-full bg-zinc-950/40 border border-zinc-900/60 rounded-xl py-2.5 text-center cursor-pointer hover:bg-zinc-950/80 transition-colors">
-                    <p class="text-[9px] font-black tracking-widest text-zinc-300 uppercase">Secret Conversation</p>
-                    <p class="text-[7px] font-mono tracking-wider text-zinc-600 uppercase mt-0.5">SHA-512 Secured</p>
-                </div>
-
-                <p class="text-[7px] font-mono tracking-widest text-zinc-700 uppercase text-center mt-3">
-                    © 2026 CYPHERBIRD • PRIVACY PROTOCOL
-                </p>
+        <div class="flex justify-between items-start my-2 px-0.5">
+            <div>
+                <h4 class="text-[11px] font-black tracking-wide text-zinc-100 uppercase">Arthur Scherbius</h4>
+                <p class="text-[7px] font-mono tracking-wider text-zinc-500 uppercase mt-0.5">CB-NODE-ACTIVE</p>
             </div>
+            <div class="flex gap-2.5 text-[8px] font-bold tracking-wider text-zinc-400 uppercase pt-0.5">
+                <span class="cursor-pointer hover:text-white transition-colors">Gallery</span>
+                <span class="cursor-pointer hover:text-white transition-colors">Contacts</span>
+            </div>
+        </div>
 
+        <div class="w-full bg-zinc-950 border border-zinc-900/80 rounded-xl px-2.5 py-2 flex justify-between items-center mb-2">
+            <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-zinc-700 animate-pulse"></span>
+                <span class="text-[9px] font-mono text-zinc-600 tracking-wide">SELECT RECIPIENT...</span>
+            </div>
+            <button class="text-[7px] font-black bg-blue-600/10 hover:bg-blue-600/20 text-blue-500 border border-blue-500/20 px-2 py-0.5 rounded uppercase tracking-wider transition-colors">
+                + Add
+            </button>
+        </div>
+        
+        <div class="w-full bg-zinc-950 border border-zinc-900 rounded-xl p-3 flex flex-col justify-between h-32 md:h-36">
+            <span class="text-[10px] font-mono text-zinc-500 tracking-wide">Input Sovereign Payload...</span>
+            
+            <div class="flex justify-between items-center text-zinc-500 pt-2 border-t border-zinc-900/40">
+                <button class="hover:text-zinc-300 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                </button>
+                <button class="hover:text-zinc-300 transition-colors">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 009 11a5 5 0 00-10 0c0 1.017.07 2.019.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"/></svg>
+                </button>
+            </div>
         </div>
     </div>
-</section>
+    
+    <!-- Bottom Actions Section -->
+    <div class="w-full mt-2">
+        <div class="grid grid-cols-2 gap-2 mb-1.5">
+            <div class="bg-white text-black font-mono font-black text-[9px] text-center py-2 rounded-lg uppercase tracking-wider cursor-pointer">
+                Encrypt
+            </div>
+            <div class="bg-zinc-950 border border-zinc-900 text-zinc-600 font-mono font-bold text-[9px] text-center py-2 rounded-lg uppercase tracking-wider cursor-not-allowed">
+                Reveal
+            </div>
+        </div>
+        
+        <div class="w-full bg-white hover:bg-zinc-100 text-black font-black text-[9px] tracking-widest uppercase text-center py-2.5 rounded-xl shadow-md cursor-pointer transition-colors mb-1.5">
+            Execute Encryption
+        </div>
+
+        <div class="w-full bg-zinc-950/40 border border-zinc-900/60 rounded-xl py-2 text-center cursor-pointer hover:bg-zinc-950/80 transition-colors">
+            <p class="text-[8px] font-black tracking-widest text-zinc-300 uppercase">Secret Conversation</p>
+            <p class="text-[6px] font-mono tracking-wider text-zinc-600 uppercase mt-0.5">SHA-512 Secured</p>
+        </div>
+
+        <p class="text-[6px] font-mono tracking-widest text-zinc-700 uppercase text-center mt-2">
+            © 2026 CYPHERBIRD • PRIVACY PROTOCOL
+        </p>
+    </div>
+
+</div>
 </main>
 
     <section id="commitments" class="py-32 bg-base border-t border-borders">
@@ -320,21 +358,24 @@
                 </div>
             </div>
 
-            <div class="lg:col-span-7 flex justify-center items-center bg-zinc-50 rounded-[40px] p-8 border border-zinc-100/80 min-h-[580px]">
+            <div class="lg:col-span-7 flex justify-center items-center bg-zinc-50 rounded-[40px] p-4 md:p-8 border border-zinc-100/80 min-h-[400px]">
                 
-                <div class="w-[80%] max-w-[310px] h-[620px] bg-[#09090b] rounded-[44px] p-3 border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] relative overflow-hidden flex items-center justify-center">
-                    
-                    <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-4 bg-zinc-900 rounded-full z-30 border border-zinc-800/40"></div>
-                    
-                    <div class="w-full h-full rounded-[34px] overflow-hidden relative z-20 bg-black">
-                        <video 
-                            class="w-full h-full object-cover transform scale-105" 
-                            autoplay 
-                            loop 
-                            muted 
-                            playsinline
-                        >
-                            <source src="cypher-bird.mp4" type="video/mp4">
+    <!-- Phone Mockup Container -->
+    <div class="w-full max-w-[280px] md:max-w-[310px] aspect-[9/19] bg-[#09090b] rounded-[44px] p-3 border-[6px] border-zinc-800 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.35)] relative overflow-hidden flex items-center justify-center">
+        
+        <!-- Speaker / Notch Notch -->
+        <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-4 bg-zinc-900 rounded-full z-30 border border-zinc-800/40"></div>
+        
+        <!-- Video Wrapper -->
+        <div class="w-full h-full rounded-[34px] overflow-hidden relative z-20 bg-black">
+            <video 
+                class="w-full h-full object-cover transform scale-105" 
+                autoplay 
+                loop 
+                muted 
+                playsinline
+            >
+                <source src="cypher-bird.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -763,8 +804,8 @@
             </div>
             <div class="flex flex-col md:items-end gap-6">
                 <div class="flex gap-6 text-xl text-zinc-400">
-                    <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-facebook"></i></a> 
+                    <a href="https://www.instagram.com/cypherbird.io" class="hover:text-cobalt transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61590720124176" class="hover:text-cobalt transition"><i class="fa-brands fa-facebook"></i></a> 
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-whatsapp"></i></a>
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-linkedin"></i></a>
                     <a href="#" class="hover:text-cobalt transition"><i class="fa-brands fa-x-twitter"></i></a> 
@@ -966,17 +1007,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initGlobalIntelligence();
 });
 </script>
-    <!-- Popup Overlay -->
-<div id="cb-popup" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: flex; align-items: flex-start; justify-content: center; z-index: 9999; overflow-y: auto;">
-  <div style="background: #ffffff; padding: 40px; border-radius: 12px; max-width: 500px; text-align: center; font-family: sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.3); margin-top: 50px;">
-    
-    <h2 style="color: #333; margin-top: 0;">Cypherbird App Launching Soon!</h2>
-    <p style="color: #666; line-height: 1.6;">We are working hard to bring you a secure and seamless experience. In the meantime, feel free to explore our website to learn more about what we do.</p>
-    
-    <button onclick="document.getElementById('cb-popup').style.display='none'" style="margin-top: 20px; background: transparent; border: none; cursor: pointer; color: #999; font-size: 0.8em; text-decoration: underline;">Close & Explore Website</button>
-    
-  </div>
-</div>
-</div>
 </body>
 </html>
