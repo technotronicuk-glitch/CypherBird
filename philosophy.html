@@ -10,23 +10,25 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #09090b; /* Pure premium dark velvet zinc base */
+            background-color: #ffffff; /* Clean white background */
+            color: #18181b;
         }
 
-        /* Technical Cyber Matrix Dots */
+        /* Subtle Light Cyber Grid */
         .cyber-grid { 
-            background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px); 
+            background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px); 
             background-size: 32px 32px; 
         }
     </style>
 </head>
-<body class="font-sans antialiased selection:bg-blue-600 selection:text-white relative text-zinc-400">
+<body class="font-sans antialiased selection:bg-blue-600 selection:text-white relative text-zinc-700">
 
     <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
 
-    <nav class="p-6 flex justify-between items-center fixed top-0 w-full z-50 bg-zinc-950/80 backdrop-blur-xl border-b border-zinc-900">
-        <div>
-            <a href="index.html" class="bg-zinc-900 border border-zinc-800 text-zinc-300 px-5 py-2.5 rounded-full font-mono text-[10px] hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all tracking-widest uppercase shadow-lg active:scale-95 inline-block">
+    <!-- Responsive Navbar -->
+    <nav class="p-4 sm:p-6 flex flex-col sm:flex-row justify-between items-center gap-4 fixed top-0 w-full z-50 bg-white/90 backdrop-blur-xl border-b border-zinc-200">
+        <div class="w-full sm:w-auto flex justify-between sm:justify-start items-center">
+            <a href="index.html" class="bg-zinc-100 border border-zinc-200 text-zinc-800 px-4 sm:px-5 py-2.5 rounded-full font-mono text-[10px] hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all tracking-widest uppercase shadow-sm active:scale-95 inline-block">
                 <span class="inline-flex items-center gap-1">
                     <svg class="w-3 h-3 inline" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
@@ -34,142 +36,149 @@
                     [ RETURN HOME ]
                 </span>
             </a>
+            <span class="font-mono text-[9px] text-zinc-400 tracking-widest uppercase sm:hidden">
+                Philosophy Layer
+            </span>
         </div>
-        <div>
-            <span class="font-mono text-[9px] text-zinc-500 tracking-widest uppercase">
+        <div class="hidden sm:block">
+            <span class="font-mono text-[9px] text-zinc-400 tracking-widest uppercase">
                 Philosophy Layer // Manifesto
             </span>
         </div>
     </nav>
 
-    <header class="relative h-[55vh] flex items-center justify-center overflow-hidden bg-zinc-950 border-b border-zinc-900 z-10">
+    <!-- Header Section -->
+    <header class="relative h-[55vh] flex items-center justify-center overflow-hidden bg-zinc-50 border-b border-zinc-200 z-10 pt-16 sm:pt-0">
         <div class="absolute inset-0 z-0 pointer-events-none">
             <img 
                 src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=2000" 
                 alt="Infrastructure Mainframe" 
-                class="w-full h-full object-cover object-center opacity-15 mix-blend-luminosity"
+                class="w-full h-full object-cover object-center opacity-10 mix-blend-multiply"
             />
         </div>
-        <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/50 to-transparent z-10 pointer-events-none"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent z-10 pointer-events-none"></div>
         
         <div class="relative z-20 text-center px-6 mt-16">
-            <p class="text-blue-500 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black">
+            <p class="text-blue-600 font-mono text-[10px] uppercase tracking-[0.6em] mb-4 font-black">
                 The CypherBird Manifesto
             </p>
-            <h1 class="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter leading-none">
-                Why Privacy Is <span class="text-blue-500">Never "Free"</span>
+            <h1 class="text-4xl md:text-6xl font-black text-zinc-900 uppercase tracking-tighter leading-none">
+                Why Privacy Is <span class="text-blue-600">Never "Free"</span>
             </h1>
-            <p class="mt-6 text-zinc-500 font-mono text-[11px] uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
+            <p class="mt-6 text-zinc-600 font-mono text-[11px] uppercase tracking-widest max-w-xl mx-auto leading-relaxed">
                 Uncompromising digital sovereignty requires a sustainable economic foundation.
             </p>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto py-24 px-8 relative z-20 space-y-12">
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto py-24 px-6 sm:px-8 relative z-20 space-y-12">
         
-        <section class="border border-zinc-900 bg-zinc-950/60 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-            <h2 class="text-xl text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+        <section class="border border-zinc-200 bg-white shadow-xl p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+            <h2 class="text-xl text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-600 pl-4">
                 The Incentives of Sovereignty
             </h2>
-            <p class="leading-relaxed text-zinc-400 text-sm md:text-base mb-8">
-                If a service is free, your data is the currency. Silicon Valley business models depend on harvesting metadata—analyzing who you are, what you store, and when you connect. CypherBird rejects this. By charging a <strong class="text-white font-semibold">Protocol Maintenance Fee</strong>, we align our interests entirely with your privacy. We don't sell your attention; we sell security.
+            <p class="leading-relaxed text-zinc-600 text-sm md:text-base mb-8">
+                If a service is free, your data is the currency. Silicon Valley business models depend on harvesting metadata—analyzing who you are, what you store, and when you connect. CypherBird rejects this. By charging a <strong class="text-zinc-900 font-semibold">Protocol Maintenance Fee</strong>, we align our interests entirely with your privacy. We don't sell your attention; we sell security.
             </p>
             
-            <div class="overflow-x-auto border border-zinc-900 rounded-2xl bg-zinc-950">
+            <div class="overflow-x-auto border border-zinc-200 rounded-2xl bg-zinc-50 shadow-sm">
                 <table class="w-full border-collapse text-left text-xs md:text-sm">
                     <thead>
-                        <tr class="border-b border-zinc-900 bg-zinc-900/40">
-                            <th class="p-4 font-mono uppercase tracking-wider text-zinc-500 font-bold">Infrastructure Attribute</th>
-                            <th class="p-4 font-mono uppercase tracking-wider text-zinc-500 font-bold">Free Apps</th>
-                            <th class="p-4 font-mono uppercase tracking-wider text-blue-500 font-bold">CypherBird</th>
+                        <tr class="border-b border-zinc-200 bg-zinc-100">
+                            <th class="p-4 font-mono uppercase tracking-wider text-zinc-700 font-bold">Infrastructure Attribute</th>
+                            <th class="p-4 font-mono uppercase tracking-wider text-zinc-700 font-bold">Free Apps</th>
+                            <th class="p-4 font-mono uppercase tracking-wider text-blue-600 font-bold">CypherBird</th>
                         </tr>
                     </thead>
-                    <tbody class="divide-y divide-zinc-900/40 text-zinc-300">
-                        <tr class="hover:bg-zinc-900/20 transition-colors">
-                            <td class="p-4 font-medium text-zinc-400">Business Goal</td>
+                    <tbody class="divide-y divide-zinc-200 text-zinc-700">
+                        <tr class="hover:bg-zinc-100/60 transition-colors">
+                            <td class="p-4 font-medium text-zinc-800">Business Goal</td>
                             <td class="p-4 text-zinc-500">Data Profiling</td>
-                            <td class="p-4 text-white font-bold tracking-wide">Data Sovereignty</td>
+                            <td class="p-4 text-zinc-900 font-bold tracking-wide">Data Sovereignty</td>
                         </tr>
-                        <tr class="hover:bg-zinc-900/20 transition-colors">
-                            <td class="p-4 font-medium text-zinc-400">Encryption Logic</td>
+                        <tr class="hover:bg-zinc-100/60 transition-colors">
+                            <td class="p-4 font-medium text-zinc-800">Encryption Logic</td>
                             <td class="p-4 text-zinc-500">Cloud-Side</td>
-                            <td class="p-4 text-white font-bold tracking-wide">Edge-Processing (Local)</td>
+                            <td class="p-4 text-zinc-900 font-bold tracking-wide">Edge-Processing (Local)</td>
                         </tr>
-                        <tr class="hover:bg-zinc-900/20 transition-colors">
-                            <td class="p-4 font-medium text-zinc-400">Metadata Collection</td>
-                            <td class="p-4 text-red-400 font-semibold">Extensive</td>
-                            <td class="p-4 text-emerald-400 font-bold tracking-wider">Zero</td>
+                        <tr class="hover:bg-zinc-100/60 transition-colors">
+                            <td class="p-4 font-medium text-zinc-800">Metadata Collection</td>
+                            <td class="p-4 text-red-600 font-semibold">Extensive</td>
+                            <td class="p-4 text-emerald-600 font-bold tracking-wider">Zero</td>
                         </tr>
-                        <tr class="hover:bg-zinc-900/20 transition-colors">
-                            <td class="p-4 font-medium text-zinc-400">Ethical Guardrails</td>
+                        <tr class="hover:bg-zinc-100/60 transition-colors">
+                            <td class="p-4 font-medium text-zinc-800">Ethical Guardrails</td>
                             <td class="p-4 text-zinc-500">Reactive</td>
-                            <td class="p-4 text-white font-bold tracking-wide">Proactive (Client-Side)</td>
+                            <td class="p-4 text-zinc-900 font-bold tracking-wide">Proactive (Client-Side)</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <p class="leading-relaxed text-zinc-500 text-xs italic mt-8 border-t border-zinc-900 pt-6">
+            <p class="leading-relaxed text-zinc-500 text-xs italic mt-8 border-t border-zinc-200 pt-6">
                 Our Pledge: We are committed to price transparency. As our community reaches critical scale milestones, we commit to reducing fees or increasing storage capacity for all protocol members.
             </p>
         </section>
 
+        <!-- Grid Cards -->
         <section class="grid md:grid-cols-2 gap-8">
             
-            <div class="border border-zinc-900 bg-zinc-950 p-8 rounded-[2rem] relative overflow-hidden group min-h-[260px]">
-                <div class="absolute inset-0 z-0 opacity-[0.05] mix-blend-screen group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+            <div class="border border-zinc-200 bg-white shadow-lg p-8 rounded-[2rem] relative overflow-hidden group min-h-[260px]">
+                <div class="absolute inset-0 z-0 opacity-[0.03] mix-blend-multiply group-hover:opacity-5 transition-opacity duration-500 pointer-events-none">
                     <img src="https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&q=80&w=600" alt="Hardware Circuitry" class="w-full h-full object-cover">
                 </div>
                 <div class="relative z-10">
-                    <h3 class="text-base text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-3">
+                    <h3 class="text-base text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-600 pl-3">
                         The Cost of "Zero-Knowledge"
                     </h3>
-                    <p class="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                        Maintaining a <strong class="text-zinc-200 font-medium">Zero-Knowledge Vault</strong> is technically demanding. Unlike standard cloud storage, our servers host unreadable "Sovereign Payloads". We invest your subscription into the specialized high-redundancy hardware required to store encrypted cyphertext without compromising its integrity.
+                    <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">
+                        Maintaining a <strong class="text-zinc-900 font-semibold">Zero-Knowledge Vault</strong> is technically demanding. Unlike standard cloud storage, our servers host unreadable "Sovereign Payloads". We invest your subscription into the specialized high-redundancy hardware required to store encrypted cyphertext without compromising its integrity.
                     </p>
                 </div>
             </div>
 
-            <div class="border border-zinc-900 bg-zinc-950 p-8 rounded-[2rem] relative overflow-hidden group min-h-[260px]">
-                <div class="absolute inset-0 z-0 opacity-[0.05] mix-blend-screen group-hover:opacity-10 transition-opacity duration-500 pointer-events-none">
+            <div class="border border-zinc-200 bg-white shadow-lg p-8 rounded-[2rem] relative overflow-hidden group min-h-[260px]">
+                <div class="absolute inset-0 z-0 opacity-[0.03] mix-blend-multiply group-hover:opacity-5 transition-opacity duration-500 pointer-events-none">
                     <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&q=80&w=600" alt="Digital Matrix Network" class="w-full h-full object-cover">
                 </div>
                 <div class="relative z-10">
-                    <h3 class="text-base text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-3">
+                    <h3 class="text-base text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-600 pl-3">
                         Ethical Infrastructure
                     </h3>
-                    <p class="text-xs md:text-sm text-zinc-400 leading-relaxed">
-                        Part of your fee supports our <strong class="text-zinc-200 font-medium">Client-Side Integrity Filtering</strong>. This sophisticated local algorithm ensures the CypherBird Protocol remains a sanctuary for privacy while proactively blocking illegal or underage content before it can ever be encrypted.
+                    <p class="text-xs md:text-sm text-zinc-600 leading-relaxed">
+                        Part of your fee supports our <strong class="text-zinc-900 font-semibold">Client-Side Integrity Filtering</strong>. This sophisticated local algorithm ensures the CypherBird Protocol remains a sanctuary for privacy while proactively blocking illegal or underage content before it can ever be encrypted.
                     </p>
                 </div>
             </div>
 
         </section>
 
-        <section class="border border-zinc-900 bg-zinc-950/60 backdrop-blur-md p-8 md:p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
-            <h2 class="text-xl text-white font-black uppercase tracking-tight mb-4 border-l-4 border-blue-500 pl-4">
+        <!-- Circle of Trust Section -->
+        <section class="border border-zinc-200 bg-white shadow-xl p-8 md:p-12 rounded-[2.5rem] relative overflow-hidden">
+            <h2 class="text-xl text-zinc-900 font-black uppercase tracking-tight mb-4 border-l-4 border-blue-600 pl-4">
                 The Circle of Trust: Social Recovery
             </h2>
-            <p class="leading-relaxed text-zinc-400 text-sm md:text-base mb-8">
-                True sovereignty shouldn't mean total isolation. CypherBird implements <strong class="text-white font-semibold">Threshold Cryptography</strong> to protect you from accidental data loss. Instead of storing a 'Master Key' on our servers, your key is mathematically fragmented into 'Shards' held by your trusted contacts.
+            <p class="leading-relaxed text-zinc-600 text-sm md:text-base mb-8">
+                True sovereignty shouldn't mean total isolation. CypherBird implements <strong class="text-zinc-900 font-semibold">Threshold Cryptography</strong> to protect you from accidental data loss. Instead of storing a 'Master Key' on our servers, your key is mathematically fragmented into 'Shards' held by your trusted contacts.
             </p>
 
-            <div class="bg-zinc-950 border border-zinc-900 p-6 md:p-8 rounded-2xl relative">
+            <div class="bg-zinc-50 border border-zinc-200 p-6 md:p-8 rounded-2xl relative shadow-sm">
                 <h3 class="text-xs uppercase tracking-widest text-zinc-500 font-mono mb-6 font-bold">
                     // Scientific Reliability Specifications
                 </h3>
                 <ul class="space-y-4">
                     <li class="flex gap-4 items-start">
-                        <span class="text-blue-500 font-mono font-bold text-sm">A</span>
-                        <p class="text-xs md:text-sm text-zinc-300 m-0"><strong class="text-white">Privacy:</strong> No single friend—nor CypherBird itself—can access your vault. Fragments are mathematically useless on their own.</p>
+                        <span class="text-blue-600 font-mono font-bold text-sm">A</span>
+                        <p class="text-xs md:text-sm text-zinc-700 m-0"><strong class="text-zinc-900">Privacy:</strong> No single friend—nor CypherBird itself—can access your vault. Fragments are mathematically useless on their own.</p>
                     </li>
-                    <li class="flex gap-4 items-start border-t border-zinc-900/60 pt-4">
-                        <span class="text-blue-500 font-mono font-bold text-sm">B</span>
-                        <p class="text-xs md:text-sm text-zinc-300 m-0"><strong class="text-white">Security:</strong> Key reconstruction requires a majority of your circle <em>plus</em> your unique biometric signature.</p>
+                    <li class="flex gap-4 items-start border-t border-zinc-200 pt-4">
+                        <span class="text-blue-600 font-mono font-bold text-sm">B</span>
+                        <p class="text-xs md:text-sm text-zinc-700 m-0"><strong class="text-zinc-900">Security:</strong> Key reconstruction requires a majority of your circle <em>plus</em> your unique biometric signature.</p>
                     </li>
-                    <li class="flex gap-4 items-start border-t border-zinc-900/60 pt-4">
-                        <span class="text-blue-500 font-mono font-bold text-sm">C</span>
-                        <p class="text-xs md:text-sm text-zinc-300 m-0"><strong class="text-white">Independence:</strong> You choose your guardians. You control your recovery. You own the protocol.</p>
+                    <li class="flex gap-4 items-start border-t border-zinc-200 pt-4">
+                        <span class="text-blue-600 font-mono font-bold text-sm">C</span>
+                        <p class="text-xs md:text-sm text-zinc-700 m-0"><strong class="text-zinc-900">Independence:</strong> You choose your guardians. You control your recovery. You own the protocol.</p>
                     </li>
                 </ul>
             </div>
@@ -177,11 +186,12 @@
 
     </main>
 
-    <footer class="py-12 px-8 border-t border-zinc-900 text-center relative z-20 bg-zinc-950">
-        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-500">
+    <!-- Footer -->
+    <footer class="py-12 px-8 border-t border-zinc-200 text-center relative z-20 bg-zinc-50">
+        <p class="text-[9px] font-mono uppercase tracking-[0.5em] text-zinc-600">
             Digital sovereignty is not a product—it is a discipline.
         </p>
-        <p class="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-600 mt-3">
+        <p class="text-[9px] font-mono uppercase tracking-[0.4em] text-zinc-500 mt-3">
             &copy; 2026 CypherBird Protocol. Privacy is a Right. Sovereignty is a Duty.
         </p>
     </footer>
