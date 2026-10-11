@@ -192,19 +192,23 @@
             </div>
         </div>
 
-        <div class="relative w-full max-w-[550px] h-[700px] flex items-center justify-center">
+    <!-- Parent Container that holds both the overlapping card and the phone mockup -->
+<div class="relative w-full max-w-[550px] h-[650px] flex items-center justify-center mx-auto">
         
-       <div class="relative w-full max-w-[550px] h-[700px] flex items-center justify-center">
+    <!-- 1. The Family Image Card (Overlapping on the Left/Back) -->
+    <div class="absolute left-0 top-12 w-[65%] h-[520px] bg-zinc-900 rounded-[32px] overflow-hidden border border-zinc-800/50 shadow-2xl z-10 group">
+        <img src="photo-m.avif" alt="Family Memory" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
         
-    <div class="absolute right-2 top-6 w-[78%] h-[580px] bg-zinc-900 rounded-[48px] overflow-hidden border border-zinc-800/50 shadow-2xl z-10">
-    
-        <img src="photo-m.avif" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-        
-        <div class="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-white/10 p-4 border border-white/15 rounded-2xl shadow-xl z-20">
+        <!-- Status Overlay Badge -->
+        <div class="absolute bottom-6 left-6 right-6 backdrop-blur-xl bg-black/40 p-4 border border-white/15 rounded-2xl shadow-xl z-20">
             <p class="text-blue-400 text-[9px] font-black uppercase tracking-widest mb-0.5">Status: Vaulted</p>
             <p class="text-white text-xs font-mono font-bold">CB-PRV-MEM-882.AES</p>
         </div>
     </div>
+
+    <!-- 2. The Phone Mockup Card (Overlapping on the Right/Front) -->
+    <!-- (Insert your responsive phone mockup card code here, positioned with absolute right-0 or relative offset) -->
+
 </div>
 
         <div class="relative left-2 bottom-6 w-full max-w-[280px] md:max-w-[320px] aspect-[9/18] bg-[#09090b] rounded-[44px] p-4 md:p-5 border-[6px] border-zinc-800 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.9)] z-30 flex flex-col justify-between font-sans transition-transform duration-500 hover:-translate-y-1 overflow-hidden">
@@ -347,16 +351,17 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
             
             <div class="lg:col-span-5">
-                <div class="border-l-4 border-cobalt pl-8">
-                    <h3 class="text-3xl font-black text-zinc-950 tracking-tight mb-6">
-                        Share Without Insecurity
-                    </h3>
-                    <p class="text-zinc-800 text-base md:text-lg font-medium leading-relaxed mb-6">
-                        State-of-the-art end-to-end encryption turns your digital communication into a sovereign, private vault. We never store your keys, meaning we can't read your payloads or monitor your connection logs—and neither can anyone else.
-                        Privacy isn't just an optional mode in Cypherbird; it is fundamental structural math. Your identity keys stay local to your device, shielding your dynamic data footprints from centralized servers and third-party surveillance.
-                    </p>
-                </div>
-            </div>
+    <div class="border-l-4 border-cobalt pl-8">
+        <h3 class="text-3xl font-black text-zinc-950 tracking-tight mb-6">
+            Share Without Insecurity
+        </h3>
+        <!-- Added style="color: #09090b !important; opacity: 1 !important;" to override any conflicting inherited styles -->
+        <p class="text-base md:text-lg font-semibold leading-relaxed mb-6" style="color: #09090b !important; opacity: 1 !important;">
+            State-of-the-art end-to-end encryption turns your digital communication into a sovereign, private vault. We never store your keys, meaning we can't read your payloads or monitor your connection logs—and neither can anyone else. 
+            Privacy isn't just an optional mode in Cypherbird; it is fundamental structural math. Your identity keys stay local to your device, shielding your dynamic data footprints from centralized servers and third-party surveillance.
+        </p>
+    </div>
+</div>
 
             <div class="lg:col-span-7 flex justify-center items-center bg-zinc-50 rounded-[40px] p-4 md:p-8 border border-zinc-100/80 min-h-[400px]">
                 
