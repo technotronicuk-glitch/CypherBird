@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Block common scanner paths that don't exist on this static site
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /xmlrpc.php
+Disallow: /.env
+Disallow: /.git
+Disallow: /phpinfo.php
+
+# Reference the sitemap so search engines can discover all pages
+Sitemap: https://cypherbird.uk/sitemap.xml
