@@ -8,39 +8,12 @@
     <title>Portal Access | Cypherbird</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #f8f9fa; 
-            color: #1a1a1a; 
-        }
-
-        .premium-card {
-            background: white;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e5e7eb;
-        }
-
-        .input-field {
-            background-color: #fcfcfc;
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
-
-        .input-field:focus {
-            border-color: #3b82f6;
-            background-color: #fff;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a1a1a; }
+        .premium-card { background: white; box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05); border: 1px solid #e5e7eb; }
+        .input-field { background-color: #fcfcfc; border: 1px solid #e2e8f0; transition: all 0.2s ease; }
+        .input-field:focus { border-color: #3b82f6; background-color: #fff; outline: none; box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1); }
         .hidden { display: none; }
-        
-        .tab-active {
-            border-bottom: 2px solid #3b82f6;
-            color: #1a1a1a;
-            font-weight: 800;
-        }
+        .tab-active { border-bottom: 2px solid #3b82f6; color: #1a1a1a; font-weight: 800; }
     </style>
 </head>
 <body class="flex flex-col min-h-screen">
@@ -49,7 +22,7 @@
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <a href="index.html" class="text-xl"><span class="font-black text-zinc-900 ml-2 uppercase tracking-tighter">Cypherbird</span></a>
             <div id="user-status-nav" class="hidden text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-widest">
-                Tier: Ultra
+                Tier: Verified Secure
             </div>
         </div>
     </nav>
@@ -97,7 +70,7 @@
                 </div>
                 <div>
                     <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Phone Number</label>
-                    <input type="tel" id="signup-phone" placeholder="+X XXX XXX XXXX" class="input-field w-full p-3 rounded-xl">
+                    <input type="tel" id="signup-phone" placeholder="+43XXXXXXXXX" class="input-field w-full p-3 rounded-xl">
                 </div>
                 <div>
                     <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Setup 4-Digit PIN</label>
@@ -105,7 +78,7 @@
                 </div>
                 <div class="flex items-start space-x-3 pt-2">
                     <input type="checkbox" id="policy" class="mt-1">
-                    <label for="policy" class="text-[10px] text-zinc-400 leading-tight">I accept the Protocol Policies and confirm that I am solely responsible for my Cypher ID keys.</label>
+                    <label for="policy" class="text-[10px] text-zinc-400 leading-tight">I accept protocol rules and authorize account creation.</label>
                 </div>
                 <button type="button" id="signup-btn" class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl uppercase tracking-widest text-xs hover:bg-zinc-900 transition shadow-lg shadow-blue-100">
                     Generate Identity
@@ -116,39 +89,24 @@
             <div id="status-view" class="premium-card p-8 rounded-3xl space-y-6 hidden">
                 <div class="flex justify-between items-center border-b border-zinc-100 pb-4">
                     <div>
-                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Active Tier</p>
-                        <h2 class="text-2xl font-black text-blue-600">ULTRA SERVICE</h2>
+                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Active Status</p>
+                        <h2 id="auth-status-title" class="text-xl font-black text-amber-500">SESSION LOCKED</h2>
                     </div>
                     <div class="text-right">
-                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">ID Status</p>
-                        <span class="text-[10px] bg-green-50 text-green-600 px-2 py-1 rounded font-bold uppercase">Verified</span>
+                        <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Verification</p>
+                        <span id="verification-badge" class="text-[10px] bg-amber-50 text-amber-600 px-2 py-1 rounded font-bold uppercase">Pending Email</span>
                     </div>
                 </div>
 
-                <div class="space-y-2">
-                    <div class="flex justify-between text-[10px] font-bold uppercase tracking-widest">
-                        <span class="text-zinc-400">Vault Storage Usage</span>
-                        <span class="text-zinc-900" id="storage-text">0% Used</span>
-                    </div>
-                    <div class="w-full h-3 bg-zinc-100 rounded-full overflow-hidden">
-                        <div id="storage-bar" class="bg-blue-600 h-full w-[0%] rounded-full shadow-inner transition-all duration-500"></div>
-                    </div>
-                    <div class="flex justify-between text-xs font-medium pt-1">
-                        <span class="text-zinc-500 font-mono" id="used-gb">0 GB Used</span>
-                        <span class="text-blue-600 font-mono" id="left-gb">1000 GB Left</span>
-                    </div>
-                </div>
-
-                <div class="bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
-                    <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Cypher ID Fingerprint</p>
-                    <p id="display-cypher-id" class="font-mono text-[11px] break-all text-zinc-600">Awaiting Authentication...</p>
+                <div class="bg-zinc-50 p-4 rounded-2xl border border-zinc-100 space-y-2">
+                    <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Registered Identity</p>
+                    <p id="display-user-email" class="font-mono text-xs text-zinc-700">No active session</p>
+                    <p id="display-cypher-id" class="font-mono text-[11px] text-blue-600">ID: --</p>
                 </div>
 
                 <button type="button" id="logout-btn" class="w-full py-3 bg-red-50 text-red-600 font-bold rounded-xl uppercase tracking-widest text-xs hover:bg-red-100 transition">
                     Disconnect Terminal
                 </button>
-
-                <p class="text-center text-[9px] text-zinc-300 uppercase tracking-widest font-bold">Encrypted via Cypherbird v5.1 Uplink</p>
             </div>
 
             <div class="text-center mt-8">
@@ -157,14 +115,11 @@
         </div>
     </main>
 
-    <!-- Main Logic Script -->
     <script type="module">
-        // Change to './src/firebase.js' if your file is inside a src folder, or keep as './firebase.js' if it's in the root folder alongside account.html
-        import { auth, db } from './firebase.js'; 
-        import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+        import { auth, db } from './firebase.js';
+        import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendEmailVerification, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
         import { doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
 
-        // Global Tab Switching Function
         window.switchTab = function(tab) {
             document.getElementById('login-view').classList.add('hidden');
             document.getElementById('signup-view').classList.add('hidden');
@@ -174,11 +129,8 @@
             document.getElementById('signup-tab').classList.remove('tab-active');
             document.getElementById('status-tab').classList.remove('tab-active');
             
-            const targetView = document.getElementById(tab + '-view');
-            const targetTab = document.getElementById(tab + '-tab');
-
-            if (targetView) targetView.classList.remove('hidden');
-            if (targetTab) targetTab.classList.add('tab-active');
+            document.getElementById(tab + '-view').classList.remove('hidden');
+            document.getElementById(tab + '-tab').classList.add('tab-active');
 
             if(tab === 'status') {
                 document.getElementById('user-status-nav').classList.remove('hidden');
@@ -187,50 +139,52 @@
             }
         };
 
-        // Monitor Real-Time Auth State
+        // Real-time listener for secure session state
         onAuthStateChanged(auth, async (user) => {
             if (user) {
+                document.getElementById('display-user-email').innerText = user.email;
+                if (user.emailVerified) {
+                    document.getElementById('auth-status-titleinnerText') = "SECURE TERMINAL ACTIVE";
+                    document.getElementById('auth-status-title').className = "text-xl font-black text-blue-600";
+                    document.getElementById('verification-badge').innerText = "Verified";
+                    document.getElementById('verification-badge').className = "text-[10px] bg-green-50 text-green-600 px-2 py-1 rounded font-bold uppercase";
+                }
                 try {
                     const userDoc = await getDoc(doc(db, "users", user.uid));
                     if (userDoc.exists()) {
-                        const data = userDoc.data();
-                        document.getElementById('display-cypher-id').innerText = data.cypherId || user.uid;
-                        document.getElementById('storage-text').innerText = "15% Used";
-                        document.getElementById('storage-bar').style.width = "15%";
-                        document.getElementById('used-gb').innerText = "150 GB Used";
-                        document.getElementById('left-gb').innerText = "850 GB Left";
+                        document.getElementById('display-cypher-id').innerText = "ID: " + userDoc.data().cypherId;
                     }
-                } catch (err) {
-                    console.error("Error loading user profile:", err);
-                }
+                } catch(e) { console.error(e); }
+            } else {
+                document.getElementById('display-user-email').innerText = "No active session";
+                document.getElementById('display-cypher-id').innerText = "ID: --";
             }
         });
 
-        // Sign Up Execution
+        // Sign Up with Verification Trigger
         document.getElementById('signup-btn').addEventListener('click', async () => {
             const fullName = document.getElementById('signup-fullname').value.trim();
             const country = document.getElementById('signup-country').value.trim();
             const email = document.getElementById('signup-email').value.trim();
             const phone = document.getElementById('signup-phone').value.trim();
             const pin = document.getElementById('signup-pin').value.trim();
-            const policyChecked = document.getElementById('policy').checked;
 
             if (!fullName || !email || !pin || pin.length !== 4) {
-                alert("Please fill in all required fields and enter a valid 4-digit PIN.");
-                return;
-            }
-            if (!policyChecked) {
-                alert("You must accept the Protocol Policies.");
+                alert("Please fill required fields and provide a 4-digit PIN.");
                 return;
             }
 
             try {
                 const securePassword = `Cypher_${pin}_2026`;
-                const cypherId = 'CB-' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(1000 + Math.random() * 9000) + '-ULTR';
+                const cypherId = 'CB-' + Math.floor(1000 + Math.random() * 9000);
 
-                const userCredential = await createUserWithEmailAndPassword(auth, email, securePassword);
-                const user = userCredential.user;
+                const userCred = await createUserWithEmailAndPassword(auth, email, securePassword);
+                const user = userCred.user;
 
+                // Send Firebase verification email
+                await sendEmailVerification(user);
+
+                // Save profile details to Firestore including phone number
                 await setDoc(doc(db, "users", user.uid), {
                     uid: user.uid,
                     fullName,
@@ -241,40 +195,35 @@
                     createdAt: new Date().toISOString()
                 });
 
-                alert("Identity Generated Successfully!");
+                alert("Account created successfully! Verification email sent. Please check your inbox.");
                 window.switchTab('status');
             } catch (error) {
-                console.error("Signup failed:", error.message);
-                alert("Registration Error: " + error.message);
+                alert("Error: " + error.message);
             }
         });
 
-        // Login Execution
+        // Login Handler
         document.getElementById('login-btn').addEventListener('click', async () => {
             const email = document.getElementById('login-email').value.trim();
             const pin = document.getElementById('login-pin').value.trim();
 
-            if (!email || !pin || pin.length !== 4) {
-                alert("Please enter your email and 4-digit security PIN.");
+            if (!email || !pin) {
+                alert("Enter email and PIN.");
                 return;
             }
 
             try {
                 const securePassword = `Cypher_${pin}_2026`;
                 await signInWithEmailAndPassword(auth, email, securePassword);
-                
-                alert("Terminal Accessed Successfully!");
+                alert("Logged in successfully.");
                 window.switchTab('status');
             } catch (error) {
-                console.error("Login failed:", error.message);
-                alert("Access Denied: Check your credentials or 4-digit PIN.");
+                alert("Login failed: " + error.message);
             }
         });
 
-        // Logout Execution
         document.getElementById('logout-btn').addEventListener('click', async () => {
             await signOut(auth);
-            alert("Disconnected from terminal.");
             window.switchTab('login');
         });
     </script>
