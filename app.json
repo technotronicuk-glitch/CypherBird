@@ -1,0 +1,36 @@
+{
+  "expo": {
+    "name": "Cypherbird",
+    "slug": "cypherbird-ultra",
+    "version": "3.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "web": {
+      "bundler": "metro",
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Cypherbird needs access to your gallery to scramble and protect your media."
+        }
+      ]
+    ],
+    "android": {
+      "permissions": [
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "CAMERA"
+      ],
+      "package": "com.anshu.cypherbird"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anshu.cypherbird",
+      "infoPlist": {
+        "NSPhotoLibraryUsageDescription": "Protect your media with SHA-512 encryption."
+      }
+    }
+  }
+}
