@@ -159,7 +159,8 @@
 
     <!-- Main Logic Script -->
     <script type="module">
-        import { auth, db } from './src/firebase.js'; // Adjust to './firebase.js' if firebase.js is in the same root folder
+        // Change to './src/firebase.js' if your file is inside a src folder, or keep as './firebase.js' if it's in the root folder alongside account.html
+        import { auth, db } from './firebase.js'; 
         import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
         import { doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
 
@@ -195,7 +196,7 @@
                         const data = userDoc.data();
                         document.getElementById('display-cypher-id').innerText = data.cypherId || user.uid;
                         document.getElementById('storage-text').innerText = "15% Used";
-                        document.getElementById('storage-bar.style.width').style = "width: 15%";
+                        document.getElementById('storage-bar').style.width = "15%";
                         document.getElementById('used-gb').innerText = "150 GB Used";
                         document.getElementById('left-gb').innerText = "850 GB Left";
                     }
@@ -224,7 +225,6 @@
             }
 
             try {
-                // Pad PIN to satisfy Firebase 6-character rule
                 const securePassword = `Cypher_${pin}_2026`;
                 const cypherId = 'CB-' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(1000 + Math.random() * 9000) + '-ULTR';
 
