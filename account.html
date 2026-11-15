@@ -47,7 +47,7 @@
 
     <nav class="p-6 border-b border-zinc-200 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-xl"> <span class="font-black text-zinc-900 ml-2 uppercase tracking-tighter">Cypherbird</span></a>
+            <a href="index.html" class="text-xl"><span class="font-black text-zinc-900 ml-2 uppercase tracking-tighter">Cypherbird</span></a>
             <div id="user-status-nav" class="hidden text-[10px] font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-full uppercase tracking-widest">
                 Tier: Ultra
             </div>
@@ -59,15 +59,15 @@
             
             <!-- Tab Navigation -->
             <div class="flex justify-center space-x-8 mb-8">
-                <button onclick="showTab('login')" id="login-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2 tab-active">Login</button>
-                <button onclick="showTab('signup')" id="signup-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2">Sign Up</button>
-                <button onclick="showTab('status')" id="status-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2">Live Status</button>
+                <button onclick="window.switchTab('login')" id="login-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2 tab-active">Login</button>
+                <button onclick="window.switchTab('signup')" id="signup-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2">Sign Up</button>
+                <button onclick="window.switchTab('status')" id="status-tab" class="text-[10px] uppercase tracking-widest font-bold text-zinc-400 pb-2">Live Status</button>
             </div>
 
             <!-- LOGIN VIEW -->
             <div id="login-view" class="premium-card p-8 rounded-3xl space-y-5">
                 <div>
-                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2">Mail Address / Cypher ID</label>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-2">Mail Address</label>
                     <input type="email" id="login-email" placeholder="secure@cypherbird.com" class="input-field w-full p-3 rounded-xl">
                 </div>
                 <div>
@@ -88,7 +88,7 @@
                     </div>
                     <div>
                         <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Country</label>
-                        <input type="text" id="signup-country" placeholder="e.g. USA" class="input-field w-full p-3 rounded-xl">
+                        <input type="text" id="signup-country" placeholder="e.g. Austria" class="input-field w-full p-3 rounded-xl">
                     </div>
                 </div>
                 <div>
@@ -128,20 +128,20 @@
                 <div class="space-y-2">
                     <div class="flex justify-between text-[10px] font-bold uppercase tracking-widest">
                         <span class="text-zinc-400">Vault Storage Usage</span>
-                        <span class="text-zinc-900">75% Used</span>
+                        <span class="text-zinc-900" id="storage-text">0% Used</span>
                     </div>
                     <div class="w-full h-3 bg-zinc-100 rounded-full overflow-hidden">
-                        <div class="bg-blue-600 h-full w-[75%] rounded-full shadow-inner"></div>
+                        <div id="storage-bar" class="bg-blue-600 h-full w-[0%] rounded-full shadow-inner transition-all duration-500"></div>
                     </div>
                     <div class="flex justify-between text-xs font-medium pt-1">
-                        <span class="text-zinc-500 font-mono">750 GB Used</span>
-                        <span class="text-blue-600 font-mono">250 GB Left</span>
+                        <span class="text-zinc-500 font-mono" id="used-gb">0 GB Used</span>
+                        <span class="text-blue-600 font-mono" id="left-gb">1000 GB Left</span>
                     </div>
                 </div>
 
                 <div class="bg-zinc-50 p-4 rounded-2xl border border-zinc-100">
                     <p class="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Cypher ID Fingerprint</p>
-                    <p id="display-cypher-id" class="font-mono text-[11px] break-all text-zinc-600">CB-8821-4490-X9-ULTR</p>
+                    <p id="display-cypher-id" class="font-mono text-[11px] break-all text-zinc-600">Awaiting Authentication...</p>
                 </div>
 
                 <button type="button" id="logout-btn" class="w-full py-3 bg-red-50 text-red-600 font-bold rounded-xl uppercase tracking-widest text-xs hover:bg-red-100 transition">
@@ -157,14 +157,14 @@
         </div>
     </main>
 
-    <!-- Script to handle UI switching and Firebase Connection -->
+    <!-- Main Logic Script -->
     <script type="module">
-        import { auth, db } from './firebase.js';
-        import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
+        import { auth, db } from './src/firebase.js'; // Adjust to './firebase.js' if firebase.js is in the same root folder
+        import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js';
         import { doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
 
-        // Tab Switching Logic
-        window.showTab = function(tab) {
+        // Global Tab Switching Function
+        window.switchTab = function(tab) {
             document.getElementById('login-view').classList.add('hidden');
             document.getElementById('signup-view').classList.add('hidden');
             document.getElementById('status-view').classList.add('hidden');
@@ -173,8 +173,11 @@
             document.getElementById('signup-tab').classList.remove('tab-active');
             document.getElementById('status-tab').classList.remove('tab-active');
             
-            document.getElementById(tab + '-view').classList.remove('hidden');
-            document.getElementById(tab + '-tab').classList.add('tab-active');
+            const targetView = document.getElementById(tab + '-view');
+            const targetTab = document.getElementById(tab + '-tab');
+
+            if (targetView) targetView.classList.remove('hidden');
+            if (targetTab) targetTab.classList.add('tab-active');
 
             if(tab === 'status') {
                 document.getElementById('user-status-nav').classList.remove('hidden');
@@ -183,17 +186,36 @@
             }
         };
 
-        // SIGN UP HANDLER
+        // Monitor Real-Time Auth State
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                try {
+                    const userDoc = await getDoc(doc(db, "users", user.uid));
+                    if (userDoc.exists()) {
+                        const data = userDoc.data();
+                        document.getElementById('display-cypher-id').innerText = data.cypherId || user.uid;
+                        document.getElementById('storage-text').innerText = "15% Used";
+                        document.getElementById('storage-bar.style.width').style = "width: 15%";
+                        document.getElementById('used-gb').innerText = "150 GB Used";
+                        document.getElementById('left-gb').innerText = "850 GB Left";
+                    }
+                } catch (err) {
+                    console.error("Error loading user profile:", err);
+                }
+            }
+        });
+
+        // Sign Up Execution
         document.getElementById('signup-btn').addEventListener('click', async () => {
-            const fullName = document.getElementById('signup-fullname').value;
-            const country = document.getElementById('signup-country').value;
-            const email = document.getElementById('signup-email').value;
-            const phone = document.getElementById('signup-phone').value;
-            const pin = document.getElementById('signup-pin').value;
+            const fullName = document.getElementById('signup-fullname').value.trim();
+            const country = document.getElementById('signup-country').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const phone = document.getElementById('signup-phone').value.trim();
+            const pin = document.getElementById('signup-pin').value.trim();
             const policyChecked = document.getElementById('policy').checked;
 
             if (!fullName || !email || !pin || pin.length !== 4) {
-                alert("Please fill in all required fields and provide a 4-digit PIN.");
+                alert("Please fill in all required fields and enter a valid 4-digit PIN.");
                 return;
             }
             if (!policyChecked) {
@@ -202,40 +224,35 @@
             }
 
             try {
-                // Pad 4-digit PIN to meet Firebase's 6-character requirement safely
+                // Pad PIN to satisfy Firebase 6-character rule
                 const securePassword = `Cypher_${pin}_2026`;
-                
-                // Generate a unique Cypher ID
                 const cypherId = 'CB-' + Math.floor(1000 + Math.random() * 9000) + '-' + Math.floor(1000 + Math.random() * 9000) + '-ULTR';
 
-                // Create user in Firebase Auth
                 const userCredential = await createUserWithEmailAndPassword(auth, email, securePassword);
                 const user = userCredential.user;
 
-                // Save user metadata and vault profile to Firestore
                 await setDoc(doc(db, "users", user.uid), {
                     uid: user.uid,
-                    fullName: fullName,
-                    country: country,
-                    email: email,
-                    phone: phone,
-                    cypherId: cypherId,
+                    fullName,
+                    country,
+                    email,
+                    phone,
+                    cypherId,
                     createdAt: new Date().toISOString()
                 });
 
                 alert("Identity Generated Successfully!");
-                document.getElementById('display-cypher-id').innerText = cypherId;
-                showTab('status');
+                window.switchTab('status');
             } catch (error) {
-                console.error("Signup error:", error.message);
-                alert("Registration Failed: " + error.message);
+                console.error("Signup failed:", error.message);
+                alert("Registration Error: " + error.message);
             }
         });
 
-        // LOGIN HANDLER
+        // Login Execution
         document.getElementById('login-btn').addEventListener('click', async () => {
-            const email = document.getElementById('login-email').value;
-            const pin = document.getElementById('login-pin').value;
+            const email = document.getElementById('login-email').value.trim();
+            const pin = document.getElementById('login-pin').value.trim();
 
             if (!email || !pin || pin.length !== 4) {
                 alert("Please enter your email and 4-digit security PIN.");
@@ -244,28 +261,21 @@
 
             try {
                 const securePassword = `Cypher_${pin}_2026`;
-                const userCredential = await signInWithEmailAndPassword(auth, email, securePassword);
+                await signInWithEmailAndPassword(auth, email, securePassword);
                 
-                // Fetch user data from Firestore
-                const userDoc = await getDoc(doc(db, "users", userCredential.user.uid));
-                if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    document.getElementById('display-cypher-id').innerText = userData.cypherId || "CB-VERIFIED-USER";
-                }
-
                 alert("Terminal Accessed Successfully!");
-                showTab('status');
+                window.switchTab('status');
             } catch (error) {
-                console.error("Login error:", error.message);
-                alert("Access Denied: Check your email or 4-digit PIN.");
+                console.error("Login failed:", error.message);
+                alert("Access Denied: Check your credentials or 4-digit PIN.");
             }
         });
 
-        // LOGOUT HANDLER
+        // Logout Execution
         document.getElementById('logout-btn').addEventListener('click', async () => {
             await signOut(auth);
             alert("Disconnected from terminal.");
-            showTab('login');
+            window.switchTab('login');
         });
     </script>
 </body>
