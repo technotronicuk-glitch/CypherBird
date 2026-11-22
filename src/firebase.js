@@ -1,20 +1,18 @@
-import { initializeApp } from 'firebase/app';
-import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Your actual web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD-YourActualKeyHere...",
-  authDomain: "your-project-id.firebaseapp.com",
-  projectId: "your-project-id",
-  storageBucket: "your-project-id.appspot.com",
-  messagingSenderId: "123456789012",
-  appId: "1:123456789012:web:abcdef123456"
+  apiKey: "AIzaSyBmt6H3xYAscQFgSgoUvpSVN0b7AfjfezU",
+  authDomain: "cypherbird-e57bb.firebaseapp.com",
+  projectId: "cypherbird-e57bb",
+  storageBucket: "cypherbird-e576b.firebasestorage.app",
+  messagingSenderId: "976037053956",
+  appId: "1:976037053956:web:b766f6c21b1c37c8bb1751",
+  measurementId: "G-5ZQPLEL2ZC"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Export authentication and database services for your app components
 export const auth = getAuth(app);
 export const db = getFirestore(app);
