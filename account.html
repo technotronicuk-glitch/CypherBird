@@ -74,7 +74,7 @@
                 </div>
                 <div>
                     <label class="text-[10px] font-bold uppercase tracking-widest text-zinc-400 block mb-1">Setup 6-Digit PIN</label>
-                    <input type="password" id="signup-pin" maxlength="4" placeholder="••••" class="input-field w-full p-3 rounded-xl tracking-[1em] text-center">
+                    <input type="password" id="signup-pin" maxlength="6" placeholder="••••••" class="input-field w-full p-3 rounded-xl tracking-[1em] text-center">
                 </div>
                 <div class="flex items-start space-x-3 pt-2">
                     <input type="checkbox" id="policy" class="mt-1">
@@ -169,8 +169,8 @@
             const phone = document.getElementById('signup-phone').value.trim();
             const pin = document.getElementById('signup-pin').value.trim();
 
-            if (!fullName || !email || !pin || pin.length !== 4) {
-                alert("Please fill required fields and provide a 4-digit PIN.");
+            if (!fullName || !email || !pin || pin.length !== 6) {
+                alert("Please fill required fields and provide a 6-digit PIN.");
                 return;
             }
 
