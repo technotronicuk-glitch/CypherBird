@@ -144,7 +144,7 @@
             if (user) {
                 document.getElementById('display-user-email').innerText = user.email;
                 if (user.emailVerified) {
-                    document.getElementById('auth-status-titleinnerText') = "SECURE TERMINAL ACTIVE";
+                    document.getElementById('auth-status-title').innerText = "SECURE TERMINAL ACTIVE";
                     document.getElementById('auth-status-title').className = "text-xl font-black text-blue-600";
                     document.getElementById('verification-badge').innerText = "Verified";
                     document.getElementById('verification-badge').className = "text-[10px] bg-green-50 text-green-600 px-2 py-1 rounded font-bold uppercase";
